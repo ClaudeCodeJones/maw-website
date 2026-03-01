@@ -132,41 +132,61 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
-      background: var(--navy);
+      background-color: #070f1b;
       overflow: hidden;
     }
 
-    /* Subtle grid lines */
+    /* Background image layer — isolated element so filter only affects the image */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background-image: url('images/hero.webp');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      filter: brightness(0.6) contrast(1.05);
+    }
+
+    /* Left-to-right gradient fade: solid dark left → transparent right */
     #hero::before {
       content: '';
       position: absolute;
       inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
-      background-size: 72px 72px;
+      z-index: 1;
+      background: linear-gradient(
+        90deg,
+        #070f1b 0%,
+        #070f1b 40%,
+        rgba(7,15,27,0.85) 55%,
+        rgba(7,15,27,0.55) 70%,
+        rgba(7,15,27,0.25) 85%,
+        rgba(7,15,27,0)   100%
+      );
       pointer-events: none;
     }
-    /* Radial glow from bottom-left */
+
+    /* Radial orange glow from bottom-left */
     #hero::after {
       content: '';
       position: absolute;
       bottom: -80px; left: -80px;
       width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(242,101,34,0.07) 0%, transparent 65%);
+      background: radial-gradient(circle, rgba(242,101,34,0.09) 0%, transparent 65%);
       pointer-events: none;
-      z-index: 1;
+      z-index: 2;
     }
 
-    /* Right diagonal hazard-stripe panel */
+    /* Right diagonal hazard-stripe panel — transparent bg so image shows through */
     .hero-panel {
       position: absolute;
       top: 0; right: 0;
-      width: 42%;
+      width: 58%;
       height: 100%;
-      background: var(--navy-mid);
       clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+      z-index: 3;
     }
+    /* Diagonal stripe pattern */
     .hero-panel::before {
       content: '';
       position: absolute;
@@ -175,18 +195,18 @@
         -52deg,
         transparent,
         transparent 32px,
-        rgba(242, 101, 34, 0.055) 32px,
-        rgba(242, 101, 34, 0.055) 36px
+        rgba(242, 101, 34, 0.02) 32px,
+        rgba(242, 101, 34, 0.02) 36px
       );
     }
+    /* Very light bottom vignette only — dark overlays removed so image shows through */
     .hero-panel::after {
       content: '';
       position: absolute;
       inset: 0;
-      background:
-        linear-gradient(140deg, rgba(242,101,34,0.12) 0%, transparent 45%),
-        linear-gradient(to bottom, rgba(13,27,42,0.2) 0%, transparent 40%, rgba(13,27,42,0.5) 100%);
+      background: linear-gradient(to bottom, transparent 60%, rgba(7,15,27,0.22) 100%);
     }
+
     /* Orange corner accent on hero panel */
     .hero-panel-corner {
       position: absolute;
@@ -204,6 +224,21 @@
       left: 0; top: 0; bottom: 0;
       width: 3px;
       background: var(--orange);
+      z-index: 4;
+    }
+
+    /* Mobile: heavier overlay — text readability over image */
+    @media (max-width: 768px) {
+      #hero::before {
+        background: linear-gradient(
+          90deg,
+          #070f1b 0%,
+          #070f1b 50%,
+          rgba(7,15,27,0.92) 70%,
+          rgba(7,15,27,0.75) 100%
+        );
+      }
+      .hero-panel { width: 42%; }
     }
 
     /* ── Section labels ── */
@@ -381,13 +416,13 @@
      NAVIGATION
 ══════════════════════════════════════ -->
 <nav id="navbar" role="navigation" aria-label="Main navigation">
-  <div style="max-width:1280px; margin:0 auto; padding:0 24px; display:flex; align-items:center; justify-content:space-between; height:72px;">
+  <div style="max-width:1280px; margin:0 auto; padding:0 24px; display:flex; align-items:center; justify-content:space-between; height:96px;">
 
     <!-- Logo -->
     <a href="index.html" style="flex-shrink:0; display:flex; align-items:center;">
       <img src="brand_assets/MAW_TM_Logo_Horizontal-02-WHITE.png"
            alt="Men at Work Traffic Management"
-           style="height:38px; width:auto;" />
+           style="height:74px; width:auto;" />
     </a>
 
     <!-- Desktop links -->
@@ -432,6 +467,7 @@
      HERO
 ══════════════════════════════════════ -->
 <section id="hero" aria-label="Hero">
+  <div class="hero-bg" aria-hidden="true"></div>
   <div class="hero-accent-line" aria-hidden="true"></div>
   <div class="hero-panel" aria-hidden="true">
     <div class="hero-panel-corner" aria-hidden="true"></div>

@@ -54,3 +54,5 @@ All UI work should be built mobile-first. The site is expected to have roughly e
 - Do not stop after one screenshot pass
 - Do not use `transition-all`
 - Do not use default Tailwind blue/indigo as primary color
+
+Do not push any changes to GitHub until I tell you to.
