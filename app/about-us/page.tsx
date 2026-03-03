@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import RevealObserver from '../components/RevealObserver'
 
@@ -21,40 +22,35 @@ const locations = [
 const groupEntities = [
   {
     name: 'Men at Work Traffic Management',
-    body: 'Comprehensive traffic management solutions across infrastructure, civil, and event environments.',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <polygon points="3,11 12,2 21,11"/><rect x="5" y="11" width="14" height="11"/>
-      </svg>
-    ),
+    headline: 'Comprehensive traffic management across infrastructure, civil, and event environments.',
+    body: 'From complex motorway shutdowns to community events, our accredited team delivers every project safely, compliantly, and on time.',
+    href: '#',
+    logo: '/logos/mwtrafficmanagement_white.webp',
+    modifier: 'group-card--traffic',
   },
   {
     name: 'MW Training & Planning',
-    body: 'Specialist TMP design, planning, and industry training services.',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
-      </svg>
-    ),
+    headline: 'Specialist TMP design, planning, and industry training services.',
+    body: 'We equip traffic management professionals with the qualifications and practical skills to operate confidently across all project types and site conditions.',
+    href: '#',
+    logo: '/logos/mwtrainingandplanning_white.webp',
+    modifier: 'group-card--training',
   },
   {
     name: 'The Temp Company',
-    body: 'Flexible workforce solutions supporting civil, infrastructure, and construction sectors.',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
-      </svg>
-    ),
+    headline: 'Flexible workforce solutions supporting civil, infrastructure, and construction sectors.',
+    body: 'We connect skilled, vetted workers with the right opportunities across the South Island, quickly and reliably.',
+    href: '#',
+    logo: '/logos/thetempcompany_white.webp',
+    modifier: 'group-card--temp',
   },
   {
     name: 'QualCard',
-    body: 'Digital qualification management platform built specifically for the traffic management industry.',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
-      </svg>
-    ),
+    headline: 'A digital qualification management platform built for the traffic management industry.',
+    body: 'QualCard streamlines compliance tracking, card issuance, and workforce verification, all in one place.',
+    href: '#',
+    logo: '/logos/qualcard_white.webp',
+    modifier: 'group-card--qualcard',
   },
 ]
 
@@ -63,11 +59,21 @@ const leadership = [
   { name: 'Esther Hyde', title: 'Director' },
   { name: 'Hayden Wilson', title: 'General Manager' },
   { name: 'Nathan Jones', title: 'Business Manager' },
+  { name: 'Daniel Adams', title: 'Training and Compliance Manager' },
   { name: 'Kurt Puryer-Smith', title: 'Regional Manager – Central' },
   { name: 'Royden van Dyk', title: 'Regional Manager – Southern' },
   { name: 'Brock Vuleta', title: 'Business Development Manager' },
-  { name: 'Daniel Adams', title: 'Training and Compliance Manager' },
 ]
+
+const leadershipImages: Record<string, string> = {
+  'Dean Hyde': '/leadership/dean_hyde.png',
+  'Esther Hyde': '/leadership/esther_hyde.png',
+  'Hayden Wilson': '/leadership/hayden_wilson.png',
+  'Nathan Jones': '/leadership/nathan_jones.png',
+  'Daniel Adams': '/leadership/daniel_adams.png',
+  'Kurt Puryer-Smith': '/leadership/kurt_puryer_smith.png',
+  'Brock Vuleta': '/leadership/brock_vuleta.png',
+}
 
 /* ── Page ── */
 
@@ -88,9 +94,7 @@ export default function AboutUsPage() {
         }}
         aria-label="About Us hero"
       >
-        {/* Radial glow */}
         <div style={{ position: 'absolute', top: '-100px', left: '50%', transform: 'translateX(-50%)', width: '700px', height: '700px', background: 'radial-gradient(circle, rgba(242,101,34,0.07) 0%, transparent 65%)', pointerEvents: 'none' }} aria-hidden="true" />
-        {/* Orange left accent line */}
         <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '3px', background: 'var(--orange)' }} aria-hidden="true" />
 
         <div style={{ position: 'relative', zIndex: 10, maxWidth: '800px', margin: '0 auto', padding: '0 24px' }}>
@@ -115,7 +119,6 @@ export default function AboutUsPage() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <div className="two-col-grid">
 
-            {/* Left: copy */}
             <div>
               <div className="reveal">
                 <span className="eyebrow">Our Beginnings</span>
@@ -128,13 +131,11 @@ export default function AboutUsPage() {
                 In 2008, Dean and Esther Hyde purchased Men at Work Limited and have led the business as hands-on owner-operators from day one. What began as a focused traffic management company in Christchurch has steadily expanded in capability, reach, and responsibility.
               </p>
               <p className="reveal d2" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', marginTop: '16px' }}>
-                Since establishing our purpose-built head office in Belfast Business Park in 2017, the company has continued to grow across the South Island while maintaining a practical, people-first culture grounded in accountability and steady leadership.
+                Since establishing our purpose-built head office in Belfast Business Park in 2017, the company has continued to grow across the South Island and into the North Island while maintaining a practical, people-first culture grounded in accountability and steady leadership.
               </p>
             </div>
 
-            {/* Right: image placeholder */}
             <div className="reveal d1">
-              {/* Replace with head office or operations image */}
               <div style={{
                 width: '100%',
                 aspectRatio: '4/3',
@@ -203,39 +204,8 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* ── MORE THAN TRAFFIC ── */}
-      <section style={{ background: 'var(--off-white)', padding: '100px 0' }} aria-label="Group services">
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-
-          <div style={{ marginBottom: '60px' }}>
-            <div className="reveal" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
-              <span className="eyebrow">The MAW Group</span>
-              <div style={{ width: '28px', height: '2px', background: 'var(--orange)' }} />
-            </div>
-            <h2 className="section-title reveal d1" style={{ fontSize: 'clamp(1.8rem,3.5vw,3rem)', color: 'var(--navy)' }}>
-              More Than Traffic
-            </h2>
-            <div className="orange-rule reveal d2" style={{ marginTop: '16px' }} />
-            <p className="reveal d3" style={{ fontSize: '1rem', lineHeight: 1.78, color: '#5a6a7a', maxWidth: '600px', marginTop: '20px' }}>
-              While traffic management remains our core service, the Men at Work Group delivers broader capability across training, workforce supply, and digital compliance.
-            </p>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: '20px' }}>
-            {groupEntities.map(({ name, body, icon }, i) => (
-              <div key={name} className={`service-card reveal d${(i % 4) + 1}`}>
-                <div className="service-icon">{icon}</div>
-                <h3 className="font-display" style={{ fontWeight: 600, fontSize: '1.1rem', color: 'var(--navy)' }}>{name}</h3>
-                <p style={{ fontSize: '1rem', lineHeight: 1.7, color: '#5a6a7a', marginTop: '10px' }}>{body}</p>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
       {/* ── LEADERSHIP ── */}
-      <section style={{ background: 'var(--navy)', padding: '100px 0' }} aria-label="Leadership team">
+      <section style={{ background: 'var(--off-white)', padding: '100px 0' }} aria-label="Leadership team">
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
 
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
@@ -243,11 +213,11 @@ export default function AboutUsPage() {
               <span className="eyebrow">Our People</span>
               <div style={{ width: '28px', height: '2px', background: 'var(--orange)' }} />
             </div>
-            <h2 className="section-title reveal d1" style={{ fontSize: 'clamp(1.8rem,3.5vw,3rem)', color: '#fff' }}>
+            <h2 className="section-title reveal d1" style={{ fontSize: 'clamp(1.8rem,3.5vw,3rem)', color: 'var(--navy)' }}>
               Leadership
             </h2>
             <div className="orange-rule reveal d2" style={{ margin: '16px auto 0' }} />
-            <p className="reveal d3" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '480px', margin: '20px auto 0' }}>
+            <p className="reveal d3" style={{ fontSize: '1rem', lineHeight: 1.78, color: '#5a6a7a', maxWidth: '480px', margin: '20px auto 0' }}>
               Experienced leadership across operations, regions, compliance, and growth.
             </p>
           </div>
@@ -258,25 +228,122 @@ export default function AboutUsPage() {
                 key={name}
                 className={`team-card reveal d${(i % 4) + 1}`}
                 style={{
-                  background: 'var(--charcoal)',
-                  border: '1px solid rgba(255,255,255,0.06)',
+                  background: '#fff',
+                  border: '1px solid rgba(0,0,0,0.08)',
                   borderRadius: '2px',
                   overflow: 'hidden',
                 }}
               >
-                {/* Image placeholder — structured for next/image replacement */}
-                <div style={{ width: '100%', aspectRatio: '1', background: 'var(--navy-mid)', borderBottom: '2px solid var(--orange)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  {/* Replace with: <Image src="/images/team/..." alt={name} fill style={{ objectFit: 'cover' }} /> */}
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--slate)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
-                  </svg>
+                <div style={{ position: 'relative', width: '100%', aspectRatio: '1', background: 'var(--light)', borderBottom: '2px solid var(--orange)', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  {leadershipImages[name] ? (
+                    <Image
+                      src={leadershipImages[name]}
+                      alt={name}
+                      fill
+                      style={{ objectFit: 'cover', objectPosition: 'center top' }}
+                      sizes="(max-width: 640px) 50vw, (max-width: 1280px) 25vw, 300px"
+                    />
+                  ) : (
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                  )}
                 </div>
-                {/* Details */}
                 <div style={{ padding: '20px 24px' }}>
-                  <p className="font-display" style={{ fontWeight: 600, fontSize: '1rem', color: '#fff', lineHeight: 1.3 }}>{name}</p>
-                  <p style={{ fontSize: '0.825rem', color: 'var(--muted)', marginTop: '5px', lineHeight: 1.5 }}>{title}</p>
+                  <p className="font-display" style={{ fontWeight: 600, fontSize: '1rem', color: 'var(--navy)', lineHeight: 1.3 }}>{name}</p>
+                  <p style={{ fontSize: '0.825rem', color: '#5a6a7a', marginTop: '5px', lineHeight: 1.5 }}>{title}</p>
                 </div>
               </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* ── MORE THAN TRAFFIC ── */}
+      <section style={{ background: 'var(--navy)', padding: '100px 0' }} aria-label="Group services">
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+
+          <div style={{ marginBottom: '80px' }}>
+            <div className="reveal" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
+              <span className="eyebrow">The MW Group</span>
+              <div style={{ width: '28px', height: '2px', background: 'var(--orange)' }} />
+            </div>
+            <h2 className="section-title reveal d1" style={{ fontSize: 'clamp(1.8rem,3.5vw,3rem)', color: '#fff' }}>
+              More Than Traffic
+            </h2>
+            <div className="orange-rule reveal d2" style={{ marginTop: '16px' }} />
+            <p className="reveal d3" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '600px', marginTop: '20px' }}>
+              While traffic management remains our core service, the MW Group delivers broader capability across training, workforce supply, and digital compliance.
+            </p>
+          </div>
+
+          {/* 2×2 card grid */}
+          <div className="group-grid">
+            {groupEntities.map(({ name, headline, body, href, logo, modifier }, i) => (
+              <a
+                key={name}
+                href={href}
+                className={`group-card ${modifier} reveal d${(i % 2) + 1}`}
+                aria-label={`Visit ${name}`}
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  background: 'var(--charcoal)',
+                  borderRadius: '2px',
+                  padding: '36px 32px',
+                  textDecoration: 'none',
+                  cursor: 'pointer',
+                }}
+              >
+                {/* Logo container */}
+                <div style={{
+                  position: 'relative',
+                  width: '100%',
+                  maxWidth: '220px',
+                  height: '80px',
+                  margin: '0 auto',
+                  flexShrink: 0,
+                }}>
+                  <Image
+                    src={logo}
+                    alt={`${name} logo`}
+                    fill
+                    style={{ objectFit: 'contain' }}
+                    sizes="220px"
+                  />
+                </div>
+
+                {/* Positioning headline */}
+                <p className="font-display" style={{
+                  fontWeight: 600,
+                  fontSize: '1rem',
+                  color: '#fff',
+                  lineHeight: 1.45,
+                  marginTop: '40px',
+                }}>
+                  {headline}
+                </p>
+
+                {/* Supporting copy */}
+                <p style={{
+                  fontSize: '0.875rem',
+                  lineHeight: 1.78,
+                  color: 'var(--muted)',
+                  marginTop: '10px',
+                  flexGrow: 1,
+                }}>
+                  {body}
+                </p>
+
+                {/* CTA */}
+                <div className="group-card-cta" style={{ marginTop: '14px' }}>
+                  Visit Site
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+              </a>
             ))}
           </div>
 

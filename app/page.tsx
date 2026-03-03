@@ -109,7 +109,7 @@ export default function HomePage() {
                 icon: <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>,
                 extra: <><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10,9 9,9 8,9"/></>,
                 title: 'Traffic Management Plans',
-                body: 'Custom TMPs designed to meet compliance standards and keep your project on schedule — safely and efficiently.',
+                body: 'Custom TMPs designed to meet compliance standards and keep your project on schedule, safely and efficiently.',
                 delay: 'd1',
               },
               {
@@ -193,7 +193,7 @@ export default function HomePage() {
                   { d: 'd1', title: 'Fully Accredited & Certified', body: 'All team members hold current accreditations and certifications to the highest industry standards.' },
                   { d: 'd2', title: 'Tailored to Your Project', body: 'No two projects are the same. Every traffic management plan is custom-built for your site, scope, and schedule.' },
                   { d: 'd3', title: 'Zero Compromise on Safety', body: 'Our approach starts and ends with safety. Every decision, every deployment, every plan is safety-driven.' },
-                  { d: 'd4', title: 'Rapid Mobilisation', body: 'Our teams are ready to mobilise at short notice — 24 hours a day, 7 days a week, 365 days a year.' },
+                  { d: 'd4', title: 'Rapid Mobilisation', body: 'Our teams are ready to mobilise at short notice, 24 hours a day, 7 days a week, 365 days a year.' },
                 ].map(({ d, title, body }) => (
                   <div key={title} className={`reveal ${d}`} style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
                     <div className="feature-icon">

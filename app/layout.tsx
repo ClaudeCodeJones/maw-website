@@ -4,7 +4,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 
 export const metadata: Metadata = {
-  title: 'MW Traffic Management — Professional Traffic Solutions',
+  title: 'MW Traffic Management | Professional Traffic Solutions',
   description: 'Professional traffic management for road works, construction, events, and infrastructure projects. Accredited, reliable, and safety-first.',
 }
 
