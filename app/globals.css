@@ -648,6 +648,33 @@ body {
   .group-grid { grid-template-columns: 1fr; }
 }
 
+/* ── Locations map pins ── */
+@keyframes pinPulse {
+  0%   { transform: scale(1);   opacity: 0.7; }
+  65%  { transform: scale(2.8); opacity: 0;   }
+  100% { transform: scale(2.8); opacity: 0;   }
+}
+/* SVG circles need fill-box so scale() animates from the circle's own centre */
+.pinPulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pinPulse 2s ease-out infinite;
+}
+
+/* Mobile: popup becomes a fixed bottom sheet */
+@media (max-width: 560px) {
+  .location-popup {
+    position: fixed !important;
+    bottom: 16px !important;
+    left: 16px !important;
+    right: 16px !important;
+    top: auto !important;
+    width: auto !important;
+    transform: none !important;
+    z-index: 100;
+  }
+}
+
 /* ── Scroll reveal ── */
 .reveal {
   opacity: 0;

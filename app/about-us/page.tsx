@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import RevealObserver from '../components/RevealObserver'
+import LocationsMap from '../components/LocationsMap'
 
 export const metadata: Metadata = {
   title: 'About Us | Men at Work Traffic Management',
@@ -11,13 +12,6 @@ export const metadata: Metadata = {
 
 /* ── Data ── */
 
-const locations = [
-  { name: 'Christchurch', isHQ: true },
-  { name: 'Wellington', isHQ: false },
-  { name: 'Nelson', isHQ: false },
-  { name: 'Blenheim', isHQ: false },
-  { name: 'Timaru', isHQ: false },
-]
 
 const groupEntities = [
   {
@@ -109,7 +103,7 @@ export default function AboutUsPage() {
             Built on hard work. Grown on trust. Since 2008.
           </p>
           <p className="reveal d3" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '560px', margin: '20px auto 0' }}>
-            Since 2008, Men at Work has grown from an owner-operated traffic management company into a multi-division group operating across five South Island regions.
+            Since 2008, Men at Work has grown from an owner-operated traffic management company into a multi-division group delivering traffic management, planning, and consultancy services across New Zealand.
           </p>
         </div>
       </section>
@@ -128,10 +122,10 @@ export default function AboutUsPage() {
                 <div className="orange-rule" style={{ marginTop: '16px' }} />
               </div>
               <p className="reveal d1" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', marginTop: '24px' }}>
-                In 2008, Dean and Esther Hyde purchased Men at Work Limited and have led the business as hands-on owner-operators from day one. What began as a focused traffic management company in Christchurch has steadily expanded in capability, reach, and responsibility.
+                In 2008, Dean and Esther Hyde took ownership of Men at Work and have led the business as hands-on owner-operators ever since. What began as a focused traffic management company in Christchurch has grown steadily through strong leadership, experienced crews, and long-term client relationships.
               </p>
               <p className="reveal d2" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', marginTop: '16px' }}>
-                Since establishing our purpose-built head office in Belfast Business Park in 2017, the company has continued to grow across the South Island and into the North Island while maintaining a practical, people-first culture grounded in accountability and steady leadership.
+                Today, Men at Work operates across multiple regions with a purpose-built head office in Belfast Business Park and a reputation for practical, dependable traffic management across civil, infrastructure, and event projects.
               </p>
             </div>
 
@@ -175,30 +169,8 @@ export default function AboutUsPage() {
             <div className="orange-rule reveal d2" style={{ margin: '16px auto 0' }} />
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', gap: '20px' }}>
-            {locations.map(({ name, isHQ }, i) => (
-              <div key={name} className={`service-card reveal d${(i % 4) + 1}`}>
-                <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '16px' }}>
-                  <div className="service-icon" style={{ marginBottom: 0 }}>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
-                    </svg>
-                  </div>
-                  {isHQ && (
-                    <span style={{ fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', background: 'var(--orange)', color: '#fff', padding: '3px 8px', borderRadius: '9999px' }}>
-                      Head Office
-                    </span>
-                  )}
-                </div>
-                <h3 className="font-display" style={{ fontWeight: 600, fontSize: '1.1rem', color: 'var(--navy)' }}>{name}</h3>
-                <p style={{ fontSize: '0.875rem', color: '#7a8a99', marginTop: '10px', lineHeight: 1.6 }}>
-                  Branch Manager: <span style={{ color: '#5a6a7a' }}>[Name Placeholder]</span>
-                </p>
-                <p style={{ fontSize: '0.875rem', color: '#7a8a99', marginTop: '6px', lineHeight: 1.6 }}>
-                  Phone: <span style={{ color: '#5a6a7a' }}>[Placeholder]</span>
-                </p>
-              </div>
-            ))}
+          <div className="reveal d1">
+            <LocationsMap />
           </div>
 
         </div>
