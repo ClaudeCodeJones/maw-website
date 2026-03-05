@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import BranchCard, { type Branch } from './BranchCard'
 
 const VB_W = 545.25
@@ -9,15 +9,27 @@ const VB_H = 795
 type Location = Branch & { x: number; y: number }
 
 const locations: Location[] = [
-  { name: 'Nelson',       x: 295, y: 414, manager: 'Darryn Clearwater', role: 'Operations Co-ordinator', phone: '027 464 1864' },
-  { name: 'Blenheim',     x: 332, y: 458, manager: 'Luke Roberts',       role: 'Branch Manager',          phone: '027 255 8482' },
-  { name: 'Wellington',   x: 389, y: 423, manager: 'Jason Rankin',        role: 'Branch Manager',          phone: '027 269 2614' },
-  { name: 'Christchurch', x: 264, y: 560, manager: 'Pete Manahi',         role: 'Branch Manager',          phone: '021 072 3413' },
-  { name: 'Timaru',       x: 194, y: 624, manager: 'Christina Elliott',   role: 'Branch Manager',          phone: '027 236 9095' },
+  { name: 'Nelson',       x: 295, y: 414, manager: 'Darryn Clearwater', role: 'Operations Co-ordinator', phone: '0800 639 289' },
+  { name: 'Blenheim',     x: 332, y: 458, manager: 'Luke Roberts',       role: 'Branch Manager',          phone: '0800 639 289' },
+  { name: 'Wellington',   x: 389, y: 423, manager: 'Jason Rankin',        role: 'Branch Manager',          phone: '0800 639 289' },
+  { name: 'Christchurch', x: 264, y: 560, manager: 'Pete Manahi',         role: 'Branch Manager',          phone: '0800 639 289' },
+  { name: 'Timaru',       x: 194, y: 624, manager: 'Christina Elliott',   role: 'Branch Manager',          phone: '0800 639 289' },
 ]
 
 export default function LocationsMap() {
   const [activeBranch, setActiveBranch] = useState<Location | null>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (!entry.isIntersecting) setActiveBranch(null) },
+      { threshold: 0.1 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
 
   function toggle(location: Location) {
     setActiveBranch(prev => prev?.name === location.name ? null : location)
@@ -25,6 +37,7 @@ export default function LocationsMap() {
 
   return (
     <div
+      ref={containerRef}
       style={{
         display: 'flex',
         gap: '48px',
@@ -69,7 +82,7 @@ export default function LocationsMap() {
       </div>
 
       {/* Card column — always in flow, no shift when card appears */}
-      <div style={{ flex: '0 0 360px', width: '360px', minWidth: '280px', alignSelf: 'flex-start' }}>
+      <div style={{ flex: '0 0 360px', width: '360px', minWidth: '280px', alignSelf: 'center' }}>
         {activeBranch && (
           <BranchCard branch={activeBranch} onClose={() => setActiveBranch(null)} />
         )}
