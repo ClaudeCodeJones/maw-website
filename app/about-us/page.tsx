@@ -25,7 +25,7 @@ const groupEntities = [
   {
     name: 'MW Training & Planning',
     headline: 'Specialist TMP design, planning, and industry training services.',
-    body: 'We equip traffic management professionals with the qualifications and practical skills to operate confidently across all project types and site conditions.',
+    body: 'We design compliant Traffic Management Plans and deliver practical training to support safe, professional worksites.',
     href: '#',
     logo: '/logos/mwtrainingandplanning_white.webp',
     modifier: 'group-card--training',
@@ -133,20 +133,17 @@ export default function AboutUsPage() {
               <div style={{
                 width: '100%',
                 aspectRatio: '4/3',
-                background: 'var(--charcoal)',
-                border: '1px solid rgba(255,255,255,0.08)',
                 borderRadius: '2px',
+                border: '1px solid rgba(255,255,255,0.14)',
                 borderTop: '3px solid var(--orange)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexDirection: 'column',
-                gap: '12px',
+                overflow: 'hidden',
               }}>
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--slate)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/>
-                </svg>
-                <span style={{ fontSize: '0.75rem', color: 'var(--slate)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Head Office Image</span>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/dean-esther.svg"
+                  alt="Dean and Esther Hyde"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                />
               </div>
             </div>
 

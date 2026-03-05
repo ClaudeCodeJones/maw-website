@@ -675,6 +675,23 @@ body {
   transform: scale(1.2);
 }
 
+/* ── Hiring cards ── */
+.hiring-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+}
+
+/* ── Form input focus ── */
+input:focus, select:focus, textarea:focus {
+  border-color: var(--orange) !important;
+  box-shadow: 0 0 0 3px rgba(242,101,34,0.12);
+}
+
+/* ── Application form mobile ── */
+@media (max-width: 640px) {
+  .application-form-grid { grid-template-columns: 1fr !important; }
+}
+
 /* Mobile: popup becomes a fixed bottom sheet */
 @media (max-width: 560px) {
   .location-popup {

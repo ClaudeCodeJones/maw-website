@@ -5,6 +5,8 @@ export type Branch = {
   manager: string
   role: string
   phone: string
+  address?: string
+  illustration?: string
 }
 
 export default function BranchCard({
@@ -21,68 +23,45 @@ export default function BranchCard({
       style={{
         background: '#0D1B2A',
         borderRadius: '12px',
-        borderTop: '3px solid #F26522',
         boxShadow:
           '0 0 0 1px rgba(242,101,34,0.15), 0 4px 6px rgba(0,0,0,0.2), 0 24px 48px rgba(0,0,0,0.5)',
+        border: '1px solid rgba(255,255,255,0.14)',
+        borderTop: '3px solid #F26522',
         overflow: 'hidden',
+        position: 'relative',
         width: '100%',
       }}
     >
-      {/* Placeholder header — space for future city illustration */}
-      <div
+      {/* Close button */}
+      <button
+        onClick={onClose}
+        aria-label="Close branch card"
         style={{
-          height: '120px',
-          background:
-            'linear-gradient(135deg, rgba(242,101,34,0.12) 0%, rgba(13,27,42,0) 100%)',
-          borderBottom: '1px solid rgba(255,255,255,0.06)',
-          position: 'relative',
+          position: 'absolute',
+          top: 14,
+          right: 14,
+          width: 30,
+          height: 30,
+          borderRadius: '50%',
+          background: 'rgba(255,255,255,0.06)',
+          border: '1px solid rgba(255,255,255,0.1)',
+          cursor: 'pointer',
+          color: 'rgba(255,255,255,0.6)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
+          flexShrink: 0,
         }}
       >
-        {/* Placeholder pin icon */}
-        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" opacity={0.25} aria-hidden="true">
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
           <path
-            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
-            stroke="#F26522"
+            d="M1 1l9 9M10 1L1 10"
+            stroke="currentColor"
             strokeWidth="1.5"
-            fill="rgba(242,101,34,0.2)"
+            strokeLinecap="round"
           />
-          <circle cx="12" cy="9" r="2.5" fill="#F26522" />
         </svg>
-
-        {/* Close button */}
-        <button
-          onClick={onClose}
-          aria-label="Close branch card"
-          style={{
-            position: 'absolute',
-            top: 14,
-            right: 14,
-            width: 30,
-            height: 30,
-            borderRadius: '50%',
-            background: 'rgba(255,255,255,0.06)',
-            border: '1px solid rgba(255,255,255,0.1)',
-            cursor: 'pointer',
-            color: 'rgba(255,255,255,0.6)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexShrink: 0,
-          }}
-        >
-          <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
-            <path
-              d="M1 1l9 9M10 1L1 10"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-            />
-          </svg>
-        </button>
-      </div>
+      </button>
 
       {/* Content */}
       <div style={{ padding: '28px 28px 32px' }}>
@@ -141,6 +120,20 @@ export default function BranchCard({
         >
           {branch.role}
         </p>
+
+        {branch.address && (
+          <p
+            style={{
+              fontFamily: 'Inter, sans-serif',
+              fontSize: '0.825rem',
+              color: 'rgba(255,255,255,0.45)',
+              marginBottom: '28px',
+              lineHeight: 1.5,
+            }}
+          >
+            {branch.address}
+          </p>
+        )}
 
         <a
           href={telHref}
