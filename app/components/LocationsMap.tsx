@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import BranchCard, { type Branch } from './BranchCard'
+import { branchHiring } from '../../data/hiringStatus'
 
 const VB_W = 545.25
 const VB_H = 795
@@ -126,6 +127,7 @@ export default function LocationsMap() {
           <BranchCard
             branch={activeBranch}
             onClose={() => setActiveBranch(null)}
+            hiringStatus={branchHiring.find(b => b.branch === activeBranch.name)?.status}
           />
         )}
       </div>

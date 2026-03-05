@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import type { BranchHiring, HiringStatus } from '../../../data/hiringStatus'
 import { statusLabel } from '../../../data/hiringStatus'
 
@@ -35,7 +36,7 @@ export default function BranchHiringCard({ item }: { item: BranchHiring }) {
         gap: '16px',
         transition: 'transform 0.28s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.28s ease',
       }}
-      className="hiring-card"
+      className="hiring-card hover:-translate-y-1 hover:shadow-[0_14px_40px_rgba(242,101,34,0.14)]"
     >
       {/* Header */}
       <div>
@@ -152,6 +153,29 @@ export default function BranchHiringCard({ item }: { item: BranchHiring }) {
             {statusLabel[item.status]}
           </span>
         </div>
+
+      </div>
+
+      {/* CTA — separated with divider */}
+      <div style={{ marginTop: '20px', paddingTop: '20px', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+        {item.status !== 'closed' ? (
+          <Link
+            href={`/careers?branch=${item.branch.toLowerCase()}#apply`}
+            className="inline-flex items-center justify-center gap-2 w-full rounded-md border border-white/10 bg-transparent px-4 py-2 text-xs font-medium text-white/40 transition duration-200 hover:border-[#F26522]/60 hover:text-[#F26522] active:scale-[0.98]"
+          >
+            Apply Now
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </Link>
+        ) : (
+          <span className="inline-flex items-center justify-center gap-2 w-full rounded-md border border-white/6 bg-transparent px-4 py-2 text-xs font-medium text-white/20 cursor-not-allowed select-none">
+            Apply Now
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </span>
+        )}
       </div>
     </div>
   )

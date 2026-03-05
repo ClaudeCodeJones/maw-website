@@ -118,6 +118,23 @@ All demos must be built as proper Next routes (e.g. `/demo`).
 - Use installed Tailwind configuration.
 - Mobile-first responsive.
 
+### Component Structure
+
+Reusable UI components must live in:
+
+/app/components/
+
+Typical structure:
+
+/app/components
+  Hero.tsx
+  Section.tsx
+  ServiceCard.tsx
+  Button.tsx
+  BranchCard.tsx
+
+Page-specific components may remain inside their page folder.
+
 ---
 
 ## Brand Assets
@@ -141,7 +158,7 @@ All demos must be built as proper Next routes (e.g. `/demo`).
   - Use layered, color-tinted shadows with low opacity.
 
 - Typography:
-  - Never use the same font for headings and body.
+  - Prefer a clear hierarchy between headings and body text.This can be achieved through font pairing or through weight/scale.
   - Pair display/serif with clean sans.
   - Apply tight tracking (-0.03em) on large headings.
   - Use generous body line-height (~1.7).
@@ -163,10 +180,30 @@ All demos must be built as proper Next routes (e.g. `/demo`).
 - Images:
   - Use overlays intentionally.
   - Ensure contrast and readability.
+ - Use next/image for all images unless explicitly instructed otherwise.
+
+Images must include:
+- width
+- height
+- alt text
 
 - Spacing:
   - Use consistent spacing tokens.
   - Avoid arbitrary Tailwind steps.
+  
+  ### Layout Containers
+
+All sections should use a consistent container pattern:
+
+max-w-7xl
+mx-auto
+px-6 (mobile)
+px-8 (desktop)
+
+Vertical section spacing:
+
+py-20 (mobile)
+py-28 (desktop)
 
 - Depth:
   - Implement clear layering hierarchy (base → elevated → floating).

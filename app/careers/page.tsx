@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { Suspense } from 'react'
 import RevealObserver from '../components/RevealObserver'
 import CareerPath from '../components/careers/CareerPath'
 import BranchHiringCard from '../components/careers/BranchHiringCard'
@@ -218,7 +219,7 @@ export default function CareersPage() {
             </h2>
             <div className="orange-rule reveal d2" style={{ marginTop: '16px' }} />
             <p className="reveal d3" style={{ fontSize: '1rem', lineHeight: 1.78, color: '#5a6a7a', maxWidth: '520px', marginTop: '20px' }}>
-              Most of our managers started on the tools. We build careers, not just rosters.
+              Most of our managers started on the tools. We build careers, not just short-term rosters.
             </p>
           </div>
 
@@ -307,7 +308,9 @@ export default function CareersPage() {
 
             {/* Right: form */}
             <div className="reveal d2">
-              <ApplicationForm />
+              <Suspense fallback={<div />}>
+                <ApplicationForm />
+              </Suspense>
             </div>
 
           </div>

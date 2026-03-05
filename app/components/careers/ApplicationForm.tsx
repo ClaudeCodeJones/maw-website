@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
 
 type FormState = 'idle' | 'submitting' | 'success' | 'error'
 
@@ -114,9 +115,15 @@ function CheckboxOption({
 }
 
 export default function ApplicationForm() {
+  const searchParams = useSearchParams()
   const [step, setStep] = useState<1 | 2>(1)
   const [state, setState] = useState<FormState>('idle')
   const [errors, setErrors] = useState<Record<string, string>>({})
+
+  const branchParam = searchParams.get('branch')
+  const preselectedBranch = branchParam
+    ? branches.find(b => b.toLowerCase() === branchParam.toLowerCase()) ?? ''
+    : ''
 
   const [form, setForm] = useState({
     firstName: '',
@@ -125,7 +132,7 @@ export default function ApplicationForm() {
     phone: '',
     city: '',
     startDate: '',
-    branch: '',
+    branch: preselectedBranch,
     experience: '',
     licences: [] as string[],
     contactMethod: '',
@@ -144,6 +151,13 @@ export default function ApplicationForm() {
     setForm(prev => ({ ...prev, [field]: value }))
     setErrors(prev => ({ ...prev, [field]: '' }))
   }
+
+  useEffect(() => {
+    const matched = branchParam
+      ? branches.find(b => b.toLowerCase() === branchParam.toLowerCase()) ?? ''
+      : ''
+    setForm(prev => ({ ...prev, branch: matched }))
+  }, [branchParam])
 
   function toggleLicence(licence: string) {
     setForm(prev => ({
