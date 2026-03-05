@@ -302,6 +302,7 @@ function Popup({
 
 export default function LocationsMap() {
   const [activeName, setActiveName] = useState<string | null>(null)
+  const [hoverName, setHoverName] = useState<string | null>(null)
 
   const activeLocation = LOCATIONS.find(l => l.name === activeName) ?? null
 
@@ -338,59 +339,111 @@ export default function LocationsMap() {
           aria-label="Map of New Zealand showing Men at Work branch locations"
           role="img"
         >
+          <defs>
+            {/* Tight glow: small circle + low stdDeviation keeps it crisp, not smudged */}
+            <filter id="marker-glow-filter" x="-200%" y="-200%" width="500%" height="500%">
+              <feGaussianBlur stdDeviation="5" />
+            </filter>
+            {/*
+              Map tone filter: shifts white PNG lines to #6B7F91 (cool mid-grey)
+              Matrix maps R→0.42, G→0.50, B→0.57 — matching the target hex value.
+              Alpha row * 0.9 gives the requested strokeOpacity equivalent.
+            */}
+            <filter id="map-tone-filter">
+              <feColorMatrix
+                type="matrix"
+                values="0.42 0    0    0 0
+                        0    0.50 0    0 0
+                        0    0    0.57 0 0
+                        0    0    0    0.9 0"
+              />
+            </filter>
+          </defs>
+
           <image
             href="/images/nz-outline.png"
             width={VB_W}
             height={VB_H}
-            opacity={0.85}
+            filter="url(#map-tone-filter)"
           />
 
-          {LOCATIONS.map(location => (
-            <g
-              key={location.name}
-              onClick={() => toggle(location.name)}
-              role="button"
-              tabIndex={0}
-              aria-label={`View ${location.name} branch details`}
-              aria-pressed={activeName === location.name}
-              onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(location.name) } }}
-              style={{ outline: 'none' }}
-            >
-              <circle
-                cx={location.cx}
-                cy={location.cy}
-                r="34"
-                className="fill-orange-500 opacity-15 pinPulse"
-              />
-              <circle
-                cx={location.cx}
-                cy={location.cy}
-                r="20"
-                className="fill-orange-500 cursor-pointer"
-              />
-              <circle
-                cx={location.cx}
-                cy={location.cy}
-                r="5"
-                fill="#fff"
-                style={{ pointerEvents: 'none' }}
-              />
-              <text
-                x={location.cx}
-                y={location.cy + 32}
-                textAnchor="middle"
-                fill="rgba(255,255,255,0.85)"
-                fontSize={13}
-                fontWeight="700"
-                fontFamily="Inter, sans-serif"
-                letterSpacing="1.5"
-                style={{ pointerEvents: 'none' }}
+          {LOCATIONS.map(location => {
+            const isActive = activeName === location.name
+            return (
+              <g
+                key={location.name}
+                className={`map-marker-group${isActive ? ' is-active' : ''}`}
+                onClick={() => toggle(location.name)}
+                onMouseEnter={() => setHoverName(location.name)}
+                onMouseLeave={() => setHoverName(null)}
+                onFocus={() => setHoverName(location.name)}
+                onBlur={() => setHoverName(null)}
+                role="button"
+                tabIndex={0}
+                aria-label={`View ${location.name} branch details`}
+                aria-pressed={isActive}
+                onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(location.name) } }}
+                style={{ outline: 'none', cursor: 'pointer' }}
               >
-                {location.name.toUpperCase()}
-              </text>
-            </g>
-          ))}
+                {/* Controlled glow — tight radius + low stdDeviation = crisp halo */}
+                <circle
+                  className="marker-glow"
+                  cx={location.cx}
+                  cy={location.cy}
+                  r="10"
+                  fill="#F26522"
+                  filter="url(#marker-glow-filter)"
+                />
+                {/* Solid core dot */}
+                <circle
+                  className="marker-core"
+                  cx={location.cx}
+                  cy={location.cy}
+                  r="4"
+                  fill={isActive ? '#d4551a' : '#F26522'}
+                />
+              </g>
+            )
+          })}
         </svg>
+
+        {/* Hover tooltip — hidden when the full popup is already open for that marker */}
+        {hoverName && hoverName !== activeName && (() => {
+          const loc = LOCATIONS.find(l => l.name === hoverName)!
+          const leftPct = (loc.cx / VB_W) * 100
+          const topPct  = (loc.cy / VB_H) * 100
+          const showLeft = leftPct > 60
+          return (
+            <div
+              aria-hidden="true"
+              style={{
+                position: 'absolute',
+                top: `${topPct}%`,
+                left: `${leftPct}%`,
+                transform: showLeft
+                  ? 'translate(calc(-100% - 12px), -50%)'
+                  : 'translate(12px, -50%)',
+                pointerEvents: 'none',
+                zIndex: 50,
+              }}
+            >
+              <div style={{
+                background: '#0D1B2A',
+                color: 'rgba(210, 225, 240, 0.92)',
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '0.72rem',
+                fontWeight: 500,
+                letterSpacing: '0.07em',
+                padding: '5px 11px',
+                borderRadius: '6px',
+                whiteSpace: 'nowrap',
+                boxShadow: '0 2px 10px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.06)',
+              }}>
+                {loc.name}
+              </div>
+            </div>
+          )
+        })()}
 
         {activeLocation && (
           <Popup location={activeLocation} onClose={close} />

@@ -649,16 +649,30 @@ body {
 }
 
 /* ── Locations map pins ── */
-@keyframes pinPulse {
-  0%   { transform: scale(1);   opacity: 0.7; }
-  65%  { transform: scale(2.8); opacity: 0;   }
-  100% { transform: scale(2.8); opacity: 0;   }
+.marker-glow {
+  opacity: 0.28;
+  transition: opacity 200ms ease-out;
+  pointer-events: none;
 }
-/* SVG circles need fill-box so scale() animates from the circle's own centre */
-.pinPulse {
+.marker-core {
   transform-box: fill-box;
   transform-origin: center;
-  animation: pinPulse 2s ease-out infinite;
+  transition: transform 200ms ease-out;
+  pointer-events: none;
+}
+.map-marker-group:hover .marker-glow,
+.map-marker-group:focus-visible .marker-glow {
+  opacity: 0.48;
+}
+.map-marker-group:hover .marker-core,
+.map-marker-group:focus-visible .marker-core {
+  transform: scale(1.15);
+}
+.map-marker-group.is-active .marker-glow {
+  opacity: 0.58;
+}
+.map-marker-group.is-active .marker-core {
+  transform: scale(1.2);
 }
 
 /* Mobile: popup becomes a fixed bottom sheet */
