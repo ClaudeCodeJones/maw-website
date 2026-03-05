@@ -422,7 +422,7 @@ export default function ApplicationForm() {
               <textarea
                 rows={3}
                 placeholder={placeholder}
-                value={(form as Record<string, string>)[field]}
+                value={(form as Record<string, unknown>)[field] as string}
                 onChange={e => set(field, e.target.value)}
                 style={{
                   ...inputStyle,
