@@ -155,10 +155,10 @@ export default function AboutUsPage() {
       </section>
 
       {/* ── LOCATIONS ── */}
-      <section style={{ background: '#0A1623', padding: '100px 0', borderTop: '1px solid rgba(255,255,255,0.04)' }} aria-label="Our locations">
+      <section style={{ background: '#0A1623', padding: '80px 0', borderTop: '1px solid rgba(255,255,255,0.04)' }} aria-label="Our locations">
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
 
-          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '40px' }}>
             <div className="reveal" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '10px' }}>
               <span className="eyebrow">Where We Operate</span>
               <div style={{ width: '28px', height: '2px', background: 'var(--orange)' }} />
