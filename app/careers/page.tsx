@@ -278,8 +278,8 @@ export default function CareersPage() {
               </p>
               <p className="reveal d4" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', marginTop: '16px' }}>
                 You can also reach us directly on{' '}
-                <a href="tel:0800639289" style={{ color: 'var(--orange)', textDecoration: 'none', fontWeight: 500 }}>
-                  0800 639 289
+                <a href="tel:0800636289" style={{ color: 'var(--orange)', textDecoration: 'none', fontWeight: 500 }}>
+                  0800 636 289
                 </a>
                 .
               </p>

@@ -21,13 +21,12 @@ export default function Footer() {
               style={{ height: '36px', width: 'auto', marginBottom: '16px' }}
             />
             <p style={{ fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: 1.72, maxWidth: '280px' }}>
-              Professional traffic management solutions built on authority, safety, and excellence.
+              Professional traffic management solutions built on experience, safety, and excellence.
             </p>
             <div style={{ display: 'flex', gap: '10px', marginTop: '24px' }}>
               {[
                 { label: 'Facebook', path: 'M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z', filled: true },
                 { label: 'LinkedIn', path: 'M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z', extra: <circle cx="4" cy="4" r="2" key="c" />, filled: false },
-                { label: 'Instagram', path: '', rect: true, filled: false },
               ].map(({ label }) => (
                 <a
                   key={label}
@@ -65,8 +64,8 @@ export default function Footer() {
           <div>
             <div className="footer-heading">Services</div>
             <ul style={{ display: 'flex', flexDirection: 'column', gap: '11px', listStyle: 'none' }}>
-              {['Traffic Management Plans','Road Works Control','Event Traffic Management','Pedestrian Management','VMS & Signage','Emergency Response'].map(s => (
-                <li key={s}><Link href="/services" className="footer-link">{s}</Link></li>
+              {['Traffic Management for Roadworks','Traffic Management Plans','Event Traffic Management'].map(s => (
+                <li key={s}><a href="/#services" className="footer-link">{s}</a></li>
               ))}
             </ul>
           </div>
@@ -75,26 +74,20 @@ export default function Footer() {
           <div>
             <div className="footer-heading">Contact</div>
             <ul style={{ display: 'flex', flexDirection: 'column', gap: '14px', listStyle: 'none' }}>
-              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="var(--orange)" strokeWidth="1.4" style={{ flexShrink: 0, marginTop: '2px' }} aria-hidden="true">
-                  <circle cx="7.5" cy="7.5" r="5.5"/><path d="M7.5 4.5v3l2 1.5"/>
-                </svg>
-                <span style={{ fontSize: '0.82rem', color: 'var(--muted)', lineHeight: 1.5 }}>Available 24/7 for emergency callouts</span>
-              </li>
               <li>
-                <a href="tel:+611800000000" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
+                <a href="tel:0800636289" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
                   <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="var(--orange)" strokeWidth="1.4" aria-hidden="true">
                     <path d="M13.5 9.7a1.17 1.17 0 0 1-1.07.77c-3.73.1-7.35-3.52-7.25-7.25A1.17 1.17 0 0 1 6 2.07l1.02-.49a.59.59 0 0 1 .66.25l1.75 2.93a.59.59 0 0 1-.12.75l-1.17.97a6.45 6.45 0 0 0 3.01 3.01l.97-1.17a.59.59 0 0 1 .75-.12l2.93 1.75a.59.59 0 0 1 .25.66l-.49 1.02Z"/>
                   </svg>
-                  <span style={{ fontSize: '0.82rem', color: 'var(--muted)' }}>1800 000 000</span>
+                  <span style={{ fontSize: '0.82rem', color: 'var(--muted)' }}>0800 636 289</span>
                 </a>
               </li>
               <li>
-                <a href="mailto:info@mwtrafficmgmt.com.au" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
+                <a href="mailto:info@menatwork.co.nz" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
                   <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="var(--orange)" strokeWidth="1.4" aria-hidden="true">
                     <rect x="1.5" y="3" width="12" height="9" rx="1"/><polyline points="1.5,3 7.5,8.5 13.5,3"/>
                   </svg>
-                  <span style={{ fontSize: '0.82rem', color: 'var(--muted)' }}>info@mwtrafficmgmt.com.au</span>
+                  <span style={{ fontSize: '0.82rem', color: 'var(--muted)' }}>info@menatwork.co.nz</span>
                 </a>
               </li>
             </ul>

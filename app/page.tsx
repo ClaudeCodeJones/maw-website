@@ -19,26 +19,25 @@ export default function HomePage() {
           <div style={{ maxWidth: '660px' }}>
 
             <div className="reveal" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
-              <span className="eyebrow">Traffic Management Solutions</span>
+              <span className="eyebrow">Traffic Management Specialists</span>
               <div style={{ width: '28px', height: '2px', background: 'var(--orange)' }} />
             </div>
 
             <h1 className="reveal d1 font-display"
                 style={{ fontWeight: 700, fontSize: 'clamp(2.6rem,6vw,5rem)', lineHeight: 1.05, letterSpacing: '-0.03em' }}>
-              We Don&apos;t<br />
-              Just Manage<br />
-              <span style={{ color: 'var(--orange)' }}>Traffic.</span>
+              Traffic Management<br />
+              <span style={{ color: 'var(--orange)' }}>You Can Rely On</span>
             </h1>
 
             <p className="reveal d2 font-display"
                style={{ fontWeight: 600, fontSize: 'clamp(1.1rem,2vw,1.4rem)', letterSpacing: '-0.01em', color: 'var(--light)', marginTop: '20px' }}>
-              We manage it well.
+              Keeping roads moving safely
             </p>
 
             <p className="reveal d3"
                style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '460px', marginTop: '20px' }}>
-              Professional traffic management for road works, construction sites, events, and infrastructure projects.
-              Accredited, reliable, and safety-first.
+              Professional traffic management for roadworks, construction sites, events, and infrastructure projects.
+              Trusted, reliable, and safety focused.
             </p>
 
             <div className="reveal d4" style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', marginTop: '36px' }}>
@@ -48,7 +47,7 @@ export default function HomePage() {
                   <path d="M3 8.5h11M10 5l3.5 3.5L10 12" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </Link>
-              <Link href="/services" className="btn-ghost" style={{ padding: '14px 28px', fontSize: '0.9rem' }}>View Services</Link>
+              <Link href="#services" className="btn-ghost" style={{ padding: '14px 28px', fontSize: '0.9rem' }}>View Services</Link>
             </div>
 
           </div>
@@ -57,15 +56,24 @@ export default function HomePage() {
         {/* Stats bar */}
         <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 10, background: 'rgba(22,36,53,0.92)', backdropFilter: 'blur(10px)', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
           <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', borderLeft: '1px solid rgba(255,255,255,0.06)' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', borderLeft: '1px solid rgba(255,255,255,0.06)' }}>
               {[
-                { value: '15+', label: 'Years Experience' },
+                { value: '18+', label: 'Years Experience' },
                 { value: '500+', label: 'Projects Completed' },
-                { value: '24/7', label: 'Emergency Response' },
               ].map(({ value, label }, i) => (
-                <div key={value} style={{ padding: '20px 24px', borderRight: i < 2 ? '1px solid rgba(255,255,255,0.06)' : undefined, textAlign: 'center' }}>
+                <div key={value} style={{ padding: '20px 24px', borderRight: '1px solid rgba(255,255,255,0.06)', textAlign: 'center' }}>
                   <div className="font-display" style={{ fontWeight: 700, fontSize: '2rem', color: 'var(--orange)', lineHeight: 1 }}>{value}</div>
                   <div style={{ fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--muted)', marginTop: '4px' }}>{label}</div>
+                </div>
+              ))}
+              {[
+                { name: 'Sitewise', sub: 'Gold Certified' },
+                { name: 'Totika', sub: 'Certified' },
+                { name: 'Amotai', sub: 'Registered' },
+              ].map(({ name, sub }, i) => (
+                <div key={name} style={{ padding: '20px 24px', borderRight: i < 2 ? '1px solid rgba(255,255,255,0.06)' : undefined, textAlign: 'center' }}>
+                  <div className="font-display" style={{ fontWeight: 700, fontSize: '2rem', color: 'var(--orange)', lineHeight: 1 }}>{name}</div>
+                  <div style={{ fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--muted)', marginTop: '4px' }}>{sub}</div>
                 </div>
               ))}
             </div>
@@ -73,20 +81,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── ACCREDITATION BAND ── */}
-      <div style={{ background: 'var(--navy-mid)', borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '18px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
-          <span style={{ fontSize: '0.72rem', letterSpacing: '0.13em', textTransform: 'uppercase', color: 'var(--muted)', fontWeight: 500 }}>Accredited &amp; Certified Traffic Management Specialists</span>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '28px', flexWrap: 'wrap' }}>
-            {['Workzone Certified','RMS Approved','ISO 9001 Compliant','SafeWork NSW'].map((cert, i) => (
-              <Fragment key={cert}>
-                {i > 0 && <div style={{ width: '1px', height: '16px', background: 'rgba(255,255,255,0.15)' }} />}
-                <span style={{ fontSize: '0.72rem', color: 'var(--muted)', letterSpacing: '0.08em', textTransform: 'uppercase', opacity: 0.7 }}>{cert}</span>
-              </Fragment>
-            ))}
-          </div>
-        </div>
-      </div>
+
 
       {/* ── SERVICES ── */}
       <section id="services" style={{ background: 'var(--off-white)', padding: '100px 0' }}>
@@ -106,45 +101,24 @@ export default function HomePage() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: '20px' }}>
             {[
               {
-                icon: <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>,
-                extra: <><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10,9 9,9 8,9"/></>,
-                title: 'Traffic Management Plans',
-                body: 'Custom TMPs designed to meet compliance standards and keep your project on schedule, safely and efficiently.',
+                icon: <><polygon points="12,2 17,18 7,18"/><rect x="5" y="19" width="14" height="3" rx="1"/><line x1="8.5" y1="10" x2="15.5" y2="10"/><line x1="7.5" y1="14" x2="16.5" y2="14"/></>,
+                extra: null,
+                title: 'Traffic Management for Roadworks',
+                body: 'Experienced traffic management for roadworks, helping contractors complete projects safely while minimising disruption to road users.',
                 delay: 'd1',
               },
               {
-                icon: <rect x="1" y="3" width="15" height="13"/>,
-                extra: <><polygon points="16,8 20,8 23,11 23,16 16,16 16,8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></>,
-                title: 'Road Works Control',
-                body: 'Safe, compliant traffic control for road works, maintenance, and construction projects of all scales and durations.',
+                icon: <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>,
+                extra: <><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10,9 9,9 8,9"/></>,
+                title: 'Traffic Management Plans',
+                body: 'Expertly designed Traffic Management Plans ensuring safety, compliance, and smooth traffic flow for roadworks, events, and projects.',
                 delay: 'd2',
               },
               {
                 icon: <><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></>,
                 extra: null,
                 title: 'Event Traffic Management',
-                body: 'Seamless vehicle and crowd flow for sporting events, concerts, festivals, and large-scale public gatherings.',
-                delay: 'd3',
-              },
-              {
-                icon: <><circle cx="12" cy="5" r="3"/><path d="M12 8v8M9 14l3 3 3-3M8 10c-2 0-4 1.5-4 4"/><path d="M16 10c2 0 4 1.5 4 4"/></>,
-                extra: null,
-                title: 'Pedestrian Management',
-                body: 'Safe pedestrian access and flow through work zones, construction sites, and high foot-traffic areas.',
-                delay: 'd1',
-              },
-              {
-                icon: <><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></>,
-                extra: null,
-                title: 'VMS & Signage',
-                body: 'Variable message signs, temporary road signage, and lane markings to redirect traffic clearly and safely.',
-                delay: 'd2',
-              },
-              {
-                icon: <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.36 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l1.27-.45a2 2 0 0 1 2.11.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 18.92z"/>,
-                extra: null,
-                title: '24/7 Emergency Response',
-                body: 'Rapid on-site deployment for emergency incidents, urgent callouts, and after-hours traffic management requirements.',
+                body: 'Professional traffic management for events, helping keep participants, road users, and surrounding areas safe and moving smoothly.',
                 delay: 'd3',
               },
             ].map(({ icon, extra, title, body, delay }) => (
@@ -156,8 +130,8 @@ export default function HomePage() {
                 </div>
                 <h3 className="font-display" style={{ fontWeight: 600, fontSize: '1.1rem', color: 'var(--navy)' }}>{title}</h3>
                 <p style={{ fontSize: '1rem', lineHeight: 1.7, color: '#5a6a7a', marginTop: '10px' }}>{body}</p>
-                <Link href="/services" className="service-link">
-                  Learn More{' '}
+                <Link href="/contact" className="service-link" style={{ marginTop: '16px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                  Contact Us{' '}
                   <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
                     <path d="M2 6.5h9M8 3l3 3.5-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
@@ -213,7 +187,7 @@ export default function HomePage() {
             {/* Right: stat boxes */}
             <div className="reveal" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', position: 'relative' }}>
               <div className="stat-box" style={{ background: 'var(--navy-mid)', border: '1px solid rgba(255,255,255,0.06)' }}>
-                <div className="stat-num" style={{ fontSize: 'clamp(2.5rem,4.5vw,4rem)' }}>15+</div>
+                <div className="stat-num" style={{ fontSize: 'clamp(2.5rem,4.5vw,4rem)' }}>18+</div>
                 <div style={{ fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--muted)', marginTop: '8px' }}>Years of Experience</div>
               </div>
               <div className="stat-box" style={{ background: 'var(--orange)' }}>
@@ -252,8 +226,8 @@ export default function HomePage() {
             <div className="process-connector" style={{ position: 'absolute', top: '27px', left: '12.5%', right: '12.5%', height: '2px', background: 'linear-gradient(90deg, var(--orange) 0%, rgba(242,101,34,0.15) 100%)', pointerEvents: 'none', zIndex: 0 }} />
 
             {[
-              { n: '01', title: 'Initial Consult', body: 'We discuss your project, timeline, and site-specific needs to understand the full scope.', solid: true },
-              { n: '02', title: 'Plan & Design', body: 'Our engineers develop a detailed, compliant traffic management plan tailored to your project.', solid: false },
+              { n: '01', title: 'Plan & Design', body: 'Our designers develop a detailed, compliant traffic management plan tailored to your project.', solid: false },
+              { n: '02', title: 'Initial Consult', body: 'We discuss your project, timeline, and site-specific needs to understand the full scope.', solid: false },
               { n: '03', title: 'Deploy & Execute', body: 'Accredited teams arrive on-site with equipment and signage ready to go from day one.', solid: false },
               { n: '04', title: 'Monitor & Report', body: 'Ongoing real-time monitoring with comprehensive reporting delivered at project completion.', solid: false },
             ].map(({ n, title, body, solid }, i) => (
@@ -287,11 +261,11 @@ export default function HomePage() {
                   <path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </Link>
-              <a href="tel:+611800000000" className="btn-outline-white">
+              <a href="tel:0800636289" className="btn-outline-white">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                   <path d="M14.5 10.3a1.25 1.25 0 0 1-1.14.84c-3.98.1-7.82-3.74-7.72-7.72A1.25 1.25 0 0 1 6.48 2.28l1.09-.52a.63.63 0 0 1 .7.27l1.88 3.13a.63.63 0 0 1-.13.8l-1.25 1.04a6.88 6.88 0 0 0 3.22 3.22l1.04-1.25a.63.63 0 0 1 .8-.13l3.13 1.88a.63.63 0 0 1 .27.7l-.52 1.09Z" stroke="currentColor" strokeWidth="1.3"/>
                 </svg>
-                1800 000 000
+                0800 636 289
               </a>
             </div>
           </div>

@@ -10,11 +10,11 @@ const VB_H = 795
 type Location = Branch & { x: number; y: number }
 
 const locations: Location[] = [
-  { name: 'Nelson',       x: 295, y: 414, manager: 'Darryn Clearwater', role: 'Operations Co-ordinator', phone: '0800 639 289', address: '750 Lower Queen St, Richmond',      illustration: '/images/nsn-sun.svg' },
-  { name: 'Blenheim',     x: 332, y: 458, manager: 'Luke Roberts',       role: 'Branch Manager',          phone: '0800 639 289', address: '7 Freswick St, Blenheim Central' },
-  { name: 'Wellington',   x: 389, y: 423, manager: 'Jason Rankin',       role: 'Branch Manager',          phone: '0800 639 289', address: '23 Meachen St, Seaview',            illustration: '/images/wlg-beehive.svg' },
-  { name: 'Christchurch', x: 264, y: 560, manager: 'Pete Manahi',        role: 'Branch Manager',          phone: '0800 639 289', address: '25 Blakes Rd, Belfast',             illustration: '/images/chc-cathedral.svg' },
-  { name: 'Timaru',       x: 194, y: 624, manager: 'Christina Elliott',  role: 'Branch Manager',          phone: '0800 639 289', address: '83 Meadows Rd, Washdyke',           illustration: '/images/tiu-lighthouse.svg' },
+  { name: 'Nelson',       x: 295, y: 414, manager: 'Darryn Clearwater', role: 'Operations Co-ordinator', phone: '0800 636 289', address: '750 Lower Queen St, Richmond',      illustration: '/images/nsn-sun.svg' },
+  { name: 'Blenheim',     x: 332, y: 458, manager: 'Luke Roberts',       role: 'Branch Manager',          phone: '0800 636 289', address: '7 Freswick St, Blenheim Central' },
+  { name: 'Wellington',   x: 389, y: 423, manager: 'Jason Rankin',       role: 'Branch Manager',          phone: '0800 636 289', address: '23 Meachen St, Seaview',            illustration: '/images/wlg-beehive.svg' },
+  { name: 'Christchurch', x: 264, y: 560, manager: 'Pete Manahi',        role: 'Branch Manager',          phone: '0800 636 289', address: '25 Blakes Rd, Belfast',             illustration: '/images/chc-cathedral.svg' },
+  { name: 'Timaru',       x: 194, y: 624, manager: 'Christina Elliott',  role: 'Branch Manager',          phone: '0800 636 289', address: '83 Meadows Rd, Washdyke',           illustration: '/images/tiu-lighthouse.svg' },
 ]
 
 export default function LocationsMap() {
