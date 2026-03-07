@@ -91,7 +91,7 @@ export default function ContactPage() {
           position: 'relative',
           background: '#070f1b',
           paddingTop: '180px',
-          paddingBottom: '100px',
+          paddingBottom: '56px',
           overflow: 'hidden',
           textAlign: 'center',
         }}
@@ -109,14 +109,14 @@ export default function ContactPage() {
             Contact Us
           </h1>
           <p className="reveal d2" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '480px', margin: '20px auto 0' }}>
-            Get in touch with our team to discuss your traffic management requirements.
+            Send us the details of your project and our team will respond as soon as possible.
           </p>
         </div>
       </section>
 
       {/* ── FORM SECTION ── */}
-      <section style={{ background: 'var(--navy)', padding: '80px 0 100px' }}>
-        <div style={{ maxWidth: '672px', margin: '0 auto', padding: '0 24px' }}>
+      <section style={{ background: 'var(--navy)', padding: '36px 0 100px' }}>
+        <div style={{ maxWidth: '700px', margin: '0 auto', padding: '0 24px' }}>
 
           <div
             className="reveal"
@@ -203,10 +203,14 @@ export default function ContactPage() {
                 type="submit"
                 disabled={status === 'submitting'}
                 className="btn-orange"
-                style={{ width: '100%', padding: '14px 28px', fontSize: '0.9rem', opacity: status === 'submitting' ? 0.7 : 1, cursor: status === 'submitting' ? 'not-allowed' : 'pointer' }}
+                style={{ width: '100%', padding: '14px 28px', fontSize: '0.9rem', justifyContent: 'center', opacity: status === 'submitting' ? 0.7 : 1, cursor: status === 'submitting' ? 'not-allowed' : 'pointer' }}
               >
                 {status === 'submitting' ? 'Sending...' : 'Send Message'}
               </button>
+
+              <p style={{ marginTop: '20px', textAlign: 'center', fontSize: '0.82rem', color: 'var(--muted)', lineHeight: 1.6 }}>
+                Prefer to call? <span style={{ color: '#fff', fontWeight: 600 }}>0800 636 289</span>
+              </p>
 
               {status === 'success' && (
                 <p

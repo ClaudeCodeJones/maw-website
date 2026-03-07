@@ -1,44 +1,29 @@
-import { NextResponse } from 'next/server'
-import nodemailer from 'nodemailer'
+import { NextResponse } from "next/server"
+import { sendEmail } from "@/lib/email"
 
 export async function POST(req: Request) {
-  const { name, email, phone, branch, message } = await req.json()
+  try {
+    const body = await req.json()
+    const { name, email, phone, branch, message } = body
 
-  if (!name || !email || !phone || !branch || !message) {
-    return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
+    await sendEmail({
+      to: { email: "office@menatwork.co.nz", name: "Men at Work Office" },
+      subject: `Men at Work Website Enquiry - ${name}`,
+      replyTo: { email },
+      html: `
+        <h2>New Website Enquiry</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Branch:</strong> ${branch}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message}</p>
+      `,
+    })
+
+    return NextResponse.json({ success: true })
+  } catch (error) {
+    console.error(error)
+    return NextResponse.json({ success: false }, { status: 500 })
   }
-
-  const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: Number(process.env.SMTP_PORT) || 587,
-    secure: false,
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
-    },
-  })
-
-  await transporter.sendMail({
-    from: `"Men at Work Website" <${process.env.SMTP_USER}>`,
-    to: 'office@menatwork.co.nz',
-    subject: 'New Website Contact Form Submission',
-    text: [
-      `Name: ${name}`,
-      `Email: ${email}`,
-      `Phone: ${phone}`,
-      `Branch: ${branch}`,
-      `Message:\n${message}`,
-    ].join('\n\n'),
-    html: `
-      <table style="font-family:Arial,sans-serif;font-size:14px;color:#333;width:100%;max-width:600px;">
-        <tr><td style="padding:8px 0;border-bottom:1px solid #eee;"><strong>Name</strong></td><td style="padding:8px 0;border-bottom:1px solid #eee;">${name}</td></tr>
-        <tr><td style="padding:8px 0;border-bottom:1px solid #eee;"><strong>Email</strong></td><td style="padding:8px 0;border-bottom:1px solid #eee;">${email}</td></tr>
-        <tr><td style="padding:8px 0;border-bottom:1px solid #eee;"><strong>Phone</strong></td><td style="padding:8px 0;border-bottom:1px solid #eee;">${phone}</td></tr>
-        <tr><td style="padding:8px 0;border-bottom:1px solid #eee;"><strong>Branch</strong></td><td style="padding:8px 0;border-bottom:1px solid #eee;">${branch}</td></tr>
-        <tr><td style="padding:8px 0;" valign="top"><strong>Message</strong></td><td style="padding:8px 0;">${message.replace(/\n/g, '<br>')}</td></tr>
-      </table>
-    `,
-  })
-
-  return NextResponse.json({ success: true })
 }
