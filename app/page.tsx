@@ -15,7 +15,7 @@ export default function HomePage() {
           <div className="hero-panel-corner" aria-hidden="true" />
         </div>
 
-        <div className="hero-content-wrap" style={{ position: 'relative', zIndex: 10, maxWidth: '1280px', margin: '0 auto', padding: '140px 24px 160px', width: '100%' }}>
+        <div className="hero-content-wrap" style={{ position: 'relative', zIndex: 10, maxWidth: '1280px', margin: '0 auto', padding: '200px 24px 160px', width: '100%' }}>
           <div style={{ maxWidth: '660px' }}>
 
             <div className="reveal" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
@@ -53,36 +53,6 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Stats bar */}
-        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 10, background: 'rgba(22,36,53,0.92)', backdropFilter: 'blur(10px)', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
-          <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-            <div className="hero-stats-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', borderLeft: '1px solid rgba(255,255,255,0.06)' }}>
-              {[
-                { value: '18+', label: 'Years Experience' },
-                { value: '100% NZ', label: 'Owned and Operated' },
-              ].map(({ value, label }) => (
-                <div key={value} style={{ padding: '20px 24px', borderRight: '1px solid rgba(255,255,255,0.06)', textAlign: 'center' }}>
-                  <div className="font-display" style={{ fontWeight: 700, fontSize: '2rem', color: 'var(--orange)', lineHeight: 1 }}>{value}</div>
-                  <div style={{ fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--muted)', marginTop: '4px' }}>{label}</div>
-                </div>
-              ))}
-              {[
-                { name: 'Sitewise', sub: 'Gold Certified', href: 'https://sitewise.co.nz/howitworks/sitewise-gold/' },
-                { name: 'Totika', sub: 'Certified', href: 'https://www.totika.org/' },
-                { name: 'Amotai', sub: 'Registered', href: 'https://amotai.nz/' },
-              ].map(({ name, sub, href }, i) => (
-                <div key={name} style={{ padding: '20px 24px', borderRight: i < 2 ? '1px solid rgba(255,255,255,0.06)' : undefined, textAlign: 'center' }}>
-                  {href ? (
-                    <a href={href} target="_blank" rel="noopener noreferrer" className="font-display stats-cert-link" style={{ fontWeight: 700, fontSize: '2rem', color: 'var(--orange)', lineHeight: 1, textDecoration: 'none', display: 'block' }}>{name}</a>
-                  ) : (
-                    <div className="font-display" style={{ fontWeight: 700, fontSize: '2rem', color: 'var(--orange)', lineHeight: 1 }}>{name}</div>
-                  )}
-                  <div style={{ fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--muted)', marginTop: '4px' }}>{sub}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
       </section>
 
 
@@ -208,7 +178,7 @@ export default function HomePage() {
                 <div className="orange-rule" style={{ marginTop: '16px' }} />
                 <p style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', marginTop: '20px', maxWidth: '440px' }}>
                   With over 18 years of experience, Men at Work delivers safe, reliable traffic management across New Zealand.
-                  Every plan is built with precision, every deployment executed with care.
+                  Every job is executed with care.
                 </p>
               </div>
 
@@ -234,22 +204,38 @@ export default function HomePage() {
             </div>
 
             {/* Right: stat boxes */}
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', position: 'relative' }}>
+            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', position: 'relative' }}>
               <div className="stat-box" style={{ background: 'var(--navy-mid)', border: '1px solid rgba(255,255,255,0.06)' }}>
-                <div className="stat-num" style={{ fontSize: 'clamp(2.5rem,4.5vw,4rem)' }}>18+</div>
+                <div className="font-display" style={{ fontWeight: 700, fontSize: '2.25rem', color: 'var(--orange)', lineHeight: 1 }}>18+</div>
                 <div style={{ fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--muted)', marginTop: '8px' }}>Years of Experience</div>
               </div>
               <div className="stat-box" style={{ background: 'var(--orange)' }}>
-                <div className="font-display" style={{ fontWeight: 700, fontSize: 'clamp(2.5rem,4.5vw,4rem)', color: '#fff', lineHeight: 1 }}>150+</div>
+                <div className="font-display" style={{ fontWeight: 700, fontSize: '2.25rem', color: '#fff', lineHeight: 1 }}>150+</div>
                 <div style={{ fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.75)', marginTop: '8px' }}>Qualified Staff</div>
               </div>
               <div className="stat-box" style={{ background: 'var(--navy-mid)', border: '1px solid rgba(255,255,255,0.06)' }}>
-                <div className="stat-num" style={{ fontSize: 'clamp(2.5rem,4.5vw,4rem)' }}>5</div>
+                <div className="font-display" style={{ fontWeight: 700, fontSize: '2.25rem', color: 'var(--orange)', lineHeight: 1 }}>5</div>
                 <div style={{ fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--muted)', marginTop: '8px' }}>Branch Locations</div>
               </div>
               <div className="stat-box" style={{ background: 'var(--charcoal)', border: '1px solid rgba(255,255,255,0.06)' }}>
-                <div className="stat-num" style={{ fontSize: 'clamp(2.5rem,4.5vw,4rem)' }}>100+</div>
+                <div className="font-display" style={{ fontWeight: 700, fontSize: '2.25rem', color: 'var(--orange)', lineHeight: 1 }}>100+</div>
                 <div style={{ fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--muted)', marginTop: '8px' }}>Specialised TM Vehicles</div>
+              </div>
+              <div className="stat-box" style={{ background: 'var(--orange)' }}>
+                <div className="font-display" style={{ fontWeight: 700, fontSize: '2.25rem', color: '#fff', lineHeight: 1 }}>100% NZ</div>
+                <div style={{ fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.75)', marginTop: '8px' }}>Owned &amp; Operated</div>
+              </div>
+              <div className="stat-box" style={{ background: 'var(--navy-mid)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                <div className="font-display" style={{ fontWeight: 700, fontSize: '2.25rem', color: 'var(--orange)', lineHeight: 1 }}>Sitewise</div>
+                <div style={{ fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--muted)', marginTop: '8px' }}>Gold Certified</div>
+              </div>
+              <div className="stat-box" style={{ background: 'var(--navy-mid)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                <div className="font-display" style={{ fontWeight: 700, fontSize: '2.25rem', color: 'var(--orange)', lineHeight: 1 }}>Totika</div>
+                <div style={{ fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--muted)', marginTop: '8px' }}>Accredited</div>
+              </div>
+              <div className="stat-box" style={{ background: 'var(--navy-mid)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                <div className="font-display" style={{ fontWeight: 700, fontSize: '2.25rem', color: 'var(--orange)', lineHeight: 1 }}>Amotai</div>
+                <div style={{ fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--muted)', marginTop: '8px' }}>Registered</div>
               </div>
               <div style={{ position: 'absolute', top: 0, right: '-10px', bottom: 0, width: '3px', background: 'var(--orange)', borderRadius: '2px' }} />
             </div>

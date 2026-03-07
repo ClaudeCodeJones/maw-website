@@ -185,11 +185,14 @@ body {
 /* ── Hero ── */
 #hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   background-color: #070f1b;
   overflow: hidden;
+}
+@media (min-width: 1024px) {
+  #hero { min-height: 90vh; }
 }
 .hero-bg {
   position: absolute;
@@ -270,14 +273,7 @@ body {
 }
 @media (max-width: 640px) {
   .hero-content-wrap {
-    padding-bottom: 220px !important;
-  }
-  .hero-stats-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-  .hero-stats-grid > *:last-child {
-    grid-column: 1 / -1;
-    border-right: none !important;
+    padding-bottom: 120px !important;
   }
 }
 @media (max-width: 768px) {
@@ -442,17 +438,19 @@ body {
   }
 }
 
-/* ── Hero stats cert links ── */
-.stats-cert-link {
-  transition: opacity 0.2s ease;
-}
-.stats-cert-link:hover { opacity: 0.75; }
-.stats-cert-link:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
 
 /* ── Stats ── */
 .stat-box {
   padding: 32px;
   border-radius: 2px;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: box-shadow 0.3s ease;
+}
+.stat-box:hover {
+  box-shadow: 0 0 0 1px var(--orange), 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 .stat-num {
   font-family: 'Poppins', sans-serif;
