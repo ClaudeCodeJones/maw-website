@@ -71,8 +71,8 @@ export default function Navbar() {
 
         {/* CTA + hamburger */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <Link href="/contact" className="btn-orange hidden-mobile" style={{ fontSize: '0.8rem', padding: '10px 20px' }}>
-            Get a Quote
+          <Link href="/request-quote" className="btn-orange hidden-mobile" style={{ fontSize: '0.8rem', padding: '10px 20px' }}>
+            Get an Estimate
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
               <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
@@ -104,8 +104,8 @@ export default function Navbar() {
               {label}
             </Link>
           ))}
-          <Link href="/contact" className="btn-orange" style={{ textAlign: 'center', marginTop: '8px' }}>
-            Get a Quote
+          <Link href="/request-quote" className="btn-orange" style={{ textAlign: 'center', marginTop: '8px' }}>
+            Get an Estimate
           </Link>
         </div>
       </div>

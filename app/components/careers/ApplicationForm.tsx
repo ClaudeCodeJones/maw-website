@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
+import SelectWrapper from '../SelectWrapper'
 
 type FormState = 'idle' | 'submitting' | 'success' | 'error'
 
@@ -126,8 +127,7 @@ export default function ApplicationForm() {
     : ''
 
   const [form, setForm] = useState({
-    firstName: '',
-    lastName: '',
+    fullName: '',
     email: '',
     phone: '',
     city: '',
@@ -171,8 +171,7 @@ export default function ApplicationForm() {
 
   function validateStep1() {
     const e: Record<string, string> = {}
-    if (!form.firstName.trim()) e.firstName = 'Required'
-    if (!form.lastName.trim()) e.lastName = 'Required'
+    if (!form.fullName.trim()) e.fullName = 'Required'
     if (!form.email.trim()) e.email = 'Required'
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Enter a valid email'
     if (!form.phone.trim()) e.phone = 'Required'
@@ -275,25 +274,14 @@ export default function ApplicationForm() {
       {/* ── STEP 1 ── */}
       {step === 1 && (
         <div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
-            <div>
-              <label style={labelStyle}>First Name</label>
-              <input
-                type="text" autoComplete="given-name" value={form.firstName}
-                onChange={e => set('firstName', e.target.value)}
-                style={{ ...inputStyle, borderColor: errors.firstName ? '#f87171' : 'rgba(255,255,255,0.12)' }}
-              />
-              <FieldError msg={errors.firstName} />
-            </div>
-            <div>
-              <label style={labelStyle}>Last Name</label>
-              <input
-                type="text" autoComplete="family-name" value={form.lastName}
-                onChange={e => set('lastName', e.target.value)}
-                style={{ ...inputStyle, borderColor: errors.lastName ? '#f87171' : 'rgba(255,255,255,0.12)' }}
-              />
-              <FieldError msg={errors.lastName} />
-            </div>
+          <div style={{ marginBottom: '20px' }}>
+            <label style={labelStyle}>Full Name</label>
+            <input
+              type="text" autoComplete="name" value={form.fullName}
+              onChange={e => set('fullName', e.target.value)}
+              style={{ ...inputStyle, borderColor: errors.fullName ? '#f87171' : 'rgba(255,255,255,0.12)' }}
+            />
+            <FieldError msg={errors.fullName} />
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
@@ -340,23 +328,11 @@ export default function ApplicationForm() {
 
           <div style={fieldGroupStyle}>
             <label style={labelStyle}>Applying For</label>
-            <div style={{ position: 'relative' }}>
-              <select
-                value={form.branch}
-                onChange={e => set('branch', e.target.value)}
-                style={{ ...inputStyle, borderColor: errors.branch ? '#f87171' : 'rgba(255,255,255,0.12)', cursor: 'pointer', paddingRight: '36px' }}
-              >
-                <option value="" disabled style={{ background: '#1F2D3D' }}>Select branch</option>
-                {branches.map(b => (
-                  <option key={b} value={b} style={{ background: '#1F2D3D' }}>{b}</option>
-                ))}
-              </select>
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', color: 'var(--muted)' }}
-                aria-hidden="true">
-                <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </div>
+            <SelectWrapper value={form.branch} onChange={v => set('branch', v)} error={errors.branch} placeholder="Select branch">
+              {branches.map(b => (
+                <option key={b} value={b} style={{ background: '#1F2D3D', color: '#fff' }}>{b}</option>
+              ))}
+            </SelectWrapper>
             <FieldError msg={errors.branch} />
           </div>
 

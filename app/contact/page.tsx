@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import RevealObserver from '../components/RevealObserver'
+import SelectWrapper from '../components/SelectWrapper'
 
 type FormState = 'idle' | 'submitting' | 'success' | 'error'
 
@@ -111,6 +112,13 @@ export default function ContactPage() {
           <p className="reveal d2" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '480px', margin: '20px auto 0' }}>
             Send us the details of your project and our team will respond as soon as possible.
           </p>
+          <div style={{ width: '40px', height: '1px', background: 'rgba(255,255,255,0.15)', margin: '20px auto' }} />
+          <p className="reveal d3" style={{ marginTop: '0', fontSize: '0.82rem', color: 'var(--muted)', lineHeight: 1.6 }}>
+            Prefer to call or email?<br />
+            <span style={{ color: '#fff', fontWeight: 600 }}>0800 636 289</span>
+            <span style={{ margin: '0 8px', opacity: 0.4 }}>|</span>
+            <a href="mailto:office@menatwork.co.nz" style={{ color: '#fff', fontWeight: 600, textDecoration: 'none' }}>office@menatwork.co.nz</a>
+          </p>
         </div>
       </section>
 
@@ -170,20 +178,9 @@ export default function ContactPage() {
 
               <div style={fieldStyle}>
                 <label htmlFor="branch" style={labelStyle}>Branch</label>
-                <div style={{ position: 'relative' }}>
-                  <select
-                    id="branch"
-                    value={form.branch}
-                    onChange={e => set('branch', e.target.value)}
-                    style={{ ...inputStyle, background: '#0d1f33', borderColor: errors.branch ? '#f87171' : 'rgba(255,255,255,0.12)', paddingRight: '40px', cursor: 'pointer' }}
-                  >
-                    <option value="" disabled style={{ background: '#0d1f33', color: 'rgba(255,255,255,0.4)' }}>Select a branch</option>
-                    {branches.map(b => <option key={b} value={b} style={{ background: '#0d1f33', color: '#fff' }}>{b}</option>)}
-                  </select>
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', color: 'var(--muted)' }} aria-hidden="true">
-                    <path d="M3 5l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
+                <SelectWrapper id="branch" value={form.branch} onChange={v => set('branch', v)} error={errors.branch} placeholder="Select a branch">
+                  {branches.map(b => <option key={b} value={b} style={{ background: '#0d1f33', color: '#fff' }}>{b}</option>)}
+                </SelectWrapper>
                 <FieldError msg={errors.branch} />
               </div>
 
@@ -207,10 +204,6 @@ export default function ContactPage() {
               >
                 {status === 'submitting' ? 'Sending...' : 'Send Message'}
               </button>
-
-              <p style={{ marginTop: '20px', textAlign: 'center', fontSize: '0.82rem', color: 'var(--muted)', lineHeight: 1.6 }}>
-                Prefer to call? <span style={{ color: '#fff', fontWeight: 600 }}>0800 636 289</span>
-              </p>
 
               {status === 'success' && (
                 <p

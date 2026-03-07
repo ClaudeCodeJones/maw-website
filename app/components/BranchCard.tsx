@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import type { HiringStatus } from '../../data/hiringStatus'
 
 export type Branch = {
@@ -99,7 +100,18 @@ export default function BranchCard({
         </a>
       </div>
 
-      <div style={{ paddingBottom: '32px' }} />
+      <div style={{ padding: '20px 28px 28px' }}>
+        <Link
+          href="/request-quote"
+          className="btn-orange"
+          style={{ width: '100%', justifyContent: 'center', fontSize: '0.82rem', padding: '11px 20px' }}
+        >
+          Get an Estimate
+          <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </Link>
+      </div>
     </div>
   )
 }

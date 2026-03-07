@@ -247,7 +247,7 @@ export default function CareersPage() {
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '20px' }}>
-            {branchHiring.map((item, i) => (
+            {[...branchHiring].sort((a, b) => ({ hiring: 0, limited: 1, closed: 2 }[a.status] ?? 3) - ({ hiring: 0, limited: 1, closed: 2 }[b.status] ?? 3)).map((item, i) => (
               <div key={item.branch} className={`reveal d${(i % 4) + 1}`}>
                 <BranchHiringCard item={item} />
               </div>

@@ -41,8 +41,8 @@ export default function HomePage() {
             </p>
 
             <div className="reveal d4" style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', marginTop: '36px' }}>
-              <Link href="/contact" className="btn-orange" style={{ padding: '14px 28px', fontSize: '0.9rem' }}>
-                Get a Free Quote
+              <Link href="/request-quote" className="btn-orange" style={{ padding: '14px 28px', fontSize: '0.9rem' }}>
+                Get an Estimate
                 <svg width="17" height="17" viewBox="0 0 17 17" fill="none" aria-hidden="true">
                   <path d="M3 8.5h11M10 5l3.5 3.5L10 12" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
@@ -111,8 +111,8 @@ export default function HomePage() {
                 body: 'Experienced traffic management for roadworks, helping contractors complete projects safely while minimising disruption to road users.',
                 delay: 'd1',
                 image: '/services/works.webp',
-                linkHref: '/contact',
-                linkLabel: 'Contact Us',
+                linkHref: '/request-quote',
+                linkLabel: 'Get an Estimate',
                 linkExternal: false,
               },
               {
@@ -124,8 +124,8 @@ export default function HomePage() {
                 image: '/services/events.webp',
                 bgSize: '120%',
                 bgPosition: 'center top',
-                linkHref: '/contact',
-                linkLabel: 'Contact Us',
+                linkHref: '/request-quote',
+                linkLabel: 'Get an Estimate',
                 linkExternal: false,
               },
               {
@@ -304,11 +304,11 @@ export default function HomePage() {
               Ready to Get Started?
             </h2>
             <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.88)', maxWidth: '480px', margin: '20px auto 0', lineHeight: 1.72 }}>
-              Contact our team today for a free consultation and quote. We&apos;ll have a plan ready before your project begins.
+              Contact our team today for a free consultation and estimate. We&apos;ll have a plan ready before your project begins.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '14px', marginTop: '36px' }}>
               <Link href="/contact" className="btn-white">
-                Get a Free Quote
+                Get an Estimate
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                   <path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
