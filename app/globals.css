@@ -267,6 +267,18 @@ body {
   background: var(--orange);
   z-index: 4;
 }
+@media (max-width: 640px) {
+  .hero-content-wrap {
+    padding-bottom: 220px !important;
+  }
+  .hero-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .hero-stats-grid > *:last-child {
+    grid-column: 1 / -1;
+    border-right: none !important;
+  }
+}
 @media (max-width: 768px) {
   #hero::before {
     background: linear-gradient(
@@ -280,20 +292,79 @@ body {
   .hero-panel { width: 42%; }
 }
 
+/* ── Services grid ── */
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+@media (min-width: 640px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 /* ── Service cards ── */
 .service-card {
-  background: #fff;
+  background-color: var(--navy-mid);
+  background-size: cover;
+  background-position: center;
   border-top: 3px solid var(--orange);
   padding: 32px;
   border-radius: 2px;
+  position: relative;
+  overflow: hidden;
   transition: transform 0.28s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.28s ease;
+}
+.service-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(7, 15, 27, 0.86) 0%,
+    rgba(13, 27, 42, 0.80) 55%,
+    rgba(22, 36, 53, 0.74) 100%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+.service-card > * {
+  position: relative;
+  z-index: 1;
 }
 .service-card:hover {
   transform: translateY(-5px);
   box-shadow:
-    0 2px 4px rgba(0,0,0,0.06),
-    0 12px 32px rgba(242,101,34,0.14),
-    0 32px 64px rgba(0,0,0,0.12);
+    0 2px 4px rgba(0,0,0,0.3),
+    0 12px 32px rgba(242,101,34,0.22),
+    0 32px 64px rgba(0,0,0,0.45);
+}
+.service-card--training {
+  border-top: 3px solid rgb(41,131,194);
+}
+.service-card--training:hover {
+  box-shadow:
+    0 2px 4px rgba(0,0,0,0.3),
+    0 12px 32px rgba(41,131,194,0.22),
+    0 32px 64px rgba(0,0,0,0.45);
+}
+.service-card--training .service-icon {
+  background: rgba(41,131,194,0.12);
+}
+.service-card--training .service-icon svg {
+  stroke: rgb(41,131,194);
+}
+.service-card--training .service-link {
+  color: rgb(41,131,194);
+}
+.service-card--training .service-link:focus-visible {
+  outline-color: rgb(41,131,194);
 }
 .service-icon {
   width: 48px; height: 48px;
@@ -316,6 +387,48 @@ body {
 }
 .service-link:hover { gap: 9px; }
 .service-link:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+
+/* ── Worksite banner ── */
+.worksite-banner {
+  width: 100%;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+}
+.worksite-banner-bg {
+  position: absolute;
+  inset: -15% 0;
+  background-image: url('/images/worksite-divider.webp');
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+}
+.worksite-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(13,27,42,0.55) 0%,
+    rgba(13,27,42,0.38) 50%,
+    rgba(10,22,35,0.65) 100%
+  );
+}
+@media (max-width: 768px) {
+  .worksite-banner {
+    height: 220px;
+  }
+  .worksite-banner-bg {
+    inset: 0;
+    will-change: auto;
+  }
+}
+
+/* ── Hero stats cert links ── */
+.stats-cert-link {
+  transition: opacity 0.2s ease;
+}
+.stats-cert-link:hover { opacity: 0.75; }
+.stats-cert-link:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
 
 /* ── Stats ── */
 .stat-box {
@@ -597,14 +710,14 @@ body {
 }
 
 /* Brand colour modifier — resting top border */
-.group-card--traffic  { border-top: 2px solid rgba(253, 79,   0, 0.65); }
+.group-card--sweepco  { border-top: 2px solid rgba(204,  35,  36, 0.65); }
 .group-card--training { border-top: 2px solid rgba( 41,131, 194, 0.65); }
 .group-card--temp     { border-top: 2px solid rgba(188,156,  34, 0.65); }
 .group-card--qualcard { border-top: 2px solid rgba(162,128, 255, 0.65); }
 
 /* Brand colour modifier — hover glow */
-.group-card--traffic:hover,
-.group-card--traffic:focus-visible   { border-top-color: rgba(253, 79,   0, 1); box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(253, 79,   0, 0.22), 0 0 44px rgba(253, 79,   0, 0.13); }
+.group-card--sweepco:hover,
+.group-card--sweepco:focus-visible   { border-top-color: rgba(204,  35,  36, 1); box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(204,  35,  36, 0.22), 0 0 44px rgba(204,  35,  36, 0.13); }
 .group-card--training:hover,
 .group-card--training:focus-visible  { border-top-color: rgba( 41,131, 194, 1); box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba( 41,131, 194, 0.22), 0 0 44px rgba( 41,131, 194, 0.13); }
 .group-card--temp:hover,
@@ -644,6 +757,10 @@ body {
   transition: gap 0.2s ease;
 }
 .group-card:hover .group-card-cta { gap: 10px; }
+.group-card--sweepco  .group-card-cta { color: #cc2324; }
+.group-card--training .group-card-cta { color: rgb(41,131,194); }
+.group-card--temp     .group-card-cta { color: rgb(188,156,34); }
+.group-card--qualcard .group-card-cta { color: rgb(162,128,255); }
 @media (max-width: 580px) {
   .group-grid { grid-template-columns: 1fr; }
 }

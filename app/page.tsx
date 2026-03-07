@@ -1,6 +1,6 @@
-import { Fragment } from 'react'
 import Link from 'next/link'
 import RevealObserver from './components/RevealObserver'
+import WorksiteBanner from './components/WorksiteBanner'
 
 export default function HomePage() {
   return (
@@ -15,7 +15,7 @@ export default function HomePage() {
           <div className="hero-panel-corner" aria-hidden="true" />
         </div>
 
-        <div style={{ position: 'relative', zIndex: 10, maxWidth: '1280px', margin: '0 auto', padding: '140px 24px 160px', width: '100%' }}>
+        <div className="hero-content-wrap" style={{ position: 'relative', zIndex: 10, maxWidth: '1280px', margin: '0 auto', padding: '140px 24px 160px', width: '100%' }}>
           <div style={{ maxWidth: '660px' }}>
 
             <div className="reveal" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
@@ -56,23 +56,27 @@ export default function HomePage() {
         {/* Stats bar */}
         <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 10, background: 'rgba(22,36,53,0.92)', backdropFilter: 'blur(10px)', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
           <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', borderLeft: '1px solid rgba(255,255,255,0.06)' }}>
+            <div className="hero-stats-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', borderLeft: '1px solid rgba(255,255,255,0.06)' }}>
               {[
                 { value: '18+', label: 'Years Experience' },
                 { value: '500+', label: 'Projects Completed' },
-              ].map(({ value, label }, i) => (
+              ].map(({ value, label }) => (
                 <div key={value} style={{ padding: '20px 24px', borderRight: '1px solid rgba(255,255,255,0.06)', textAlign: 'center' }}>
                   <div className="font-display" style={{ fontWeight: 700, fontSize: '2rem', color: 'var(--orange)', lineHeight: 1 }}>{value}</div>
                   <div style={{ fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--muted)', marginTop: '4px' }}>{label}</div>
                 </div>
               ))}
               {[
-                { name: 'Sitewise', sub: 'Gold Certified' },
-                { name: 'Totika', sub: 'Certified' },
-                { name: 'Amotai', sub: 'Registered' },
-              ].map(({ name, sub }, i) => (
+                { name: 'Sitewise', sub: 'Gold Certified', href: 'https://sitewise.co.nz/howitworks/sitewise-gold/' },
+                { name: 'Totika', sub: 'Certified', href: 'https://www.totika.org/' },
+                { name: 'Amotai', sub: 'Registered', href: 'https://amotai.nz/' },
+              ].map(({ name, sub, href }, i) => (
                 <div key={name} style={{ padding: '20px 24px', borderRight: i < 2 ? '1px solid rgba(255,255,255,0.06)' : undefined, textAlign: 'center' }}>
-                  <div className="font-display" style={{ fontWeight: 700, fontSize: '2rem', color: 'var(--orange)', lineHeight: 1 }}>{name}</div>
+                  {href ? (
+                    <a href={href} target="_blank" rel="noopener noreferrer" className="font-display stats-cert-link" style={{ fontWeight: 700, fontSize: '2rem', color: 'var(--orange)', lineHeight: 1, textDecoration: 'none', display: 'block' }}>{name}</a>
+                  ) : (
+                    <div className="font-display" style={{ fontWeight: 700, fontSize: '2rem', color: 'var(--orange)', lineHeight: 1 }}>{name}</div>
+                  )}
                   <div style={{ fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--muted)', marginTop: '4px' }}>{sub}</div>
                 </div>
               ))}
@@ -98,7 +102,7 @@ export default function HomePage() {
             <div className="orange-rule reveal d2" style={{ marginTop: '16px' }} />
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: '20px' }}>
+          <div className="services-grid">
             {[
               {
                 icon: <><polygon points="12,2 17,18 7,18"/><rect x="5" y="19" width="14" height="3" rx="1"/><line x1="8.5" y1="10" x2="15.5" y2="10"/><line x1="7.5" y1="14" x2="16.5" y2="14"/></>,
@@ -106,36 +110,82 @@ export default function HomePage() {
                 title: 'Traffic Management for Roadworks',
                 body: 'Experienced traffic management for roadworks, helping contractors complete projects safely while minimising disruption to road users.',
                 delay: 'd1',
-              },
-              {
-                icon: <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>,
-                extra: <><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10,9 9,9 8,9"/></>,
-                title: 'Traffic Management Plans',
-                body: 'Expertly designed Traffic Management Plans ensuring safety, compliance, and smooth traffic flow for roadworks, events, and projects.',
-                delay: 'd2',
+                image: '/services/works.webp',
+                linkHref: '/contact',
+                linkLabel: 'Contact Us',
+                linkExternal: false,
               },
               {
                 icon: <><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></>,
                 extra: null,
                 title: 'Event Traffic Management',
                 body: 'Professional traffic management for events, helping keep participants, road users, and surrounding areas safe and moving smoothly.',
-                delay: 'd3',
+                delay: 'd2',
+                image: '/services/events.webp',
+                bgSize: '120%',
+                bgPosition: 'center top',
+                linkHref: '/contact',
+                linkLabel: 'Contact Us',
+                linkExternal: false,
               },
-            ].map(({ icon, extra, title, body, delay }) => (
-              <div key={title} className={`service-card reveal ${delay}`}>
+              {
+                icon: <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>,
+                extra: <><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10,9 9,9 8,9"/></>,
+                title: 'Traffic Management Plans',
+                body: 'Traffic Management Plans developed by our specialist planning division, MW Training & Planning, ensuring safe and compliant traffic control.',
+                delay: 'd3',
+                image: '/services/tmps.webp',
+                logo: '/logos/mwtrainingandplanning_white.webp',
+                modifier: 'service-card--training',
+                linkHref: 'https://www.mwtrainplan.co.nz/tmpdesign',
+                linkLabel: 'Request a TMP',
+                linkExternal: true,
+              },
+              {
+                icon: <><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></>,
+                extra: null,
+                title: 'Industry Training',
+                body: 'Industry-recognised traffic management training delivered through our specialist division, MW Training & Planning, helping workers start and progress their careers.',
+                delay: 'd4',
+                image: '/services/training.webp',
+                logo: '/logos/mwtrainingandplanning_white.webp',
+                modifier: 'service-card--training',
+                linkHref: 'https://www.mwtrainplan.co.nz/courses',
+                linkLabel: 'View Training Courses',
+                linkExternal: true,
+              },
+            ].map(({ icon, extra, title, body, delay, image, bgSize, bgPosition, logo, modifier, linkHref, linkLabel, linkExternal }) => (
+              <div key={title} className={`service-card reveal ${delay}${modifier ? ` ${modifier}` : ''}`} style={{ backgroundImage: `url(${image})`, ...(bgSize && { backgroundSize: bgSize }), ...(bgPosition && { backgroundPosition: bgPosition }) }}>
+                {logo && (
+                  <img
+                    src={logo}
+                    alt=""
+                    aria-hidden="true"
+                    style={{ position: 'absolute', top: '14px', right: '14px', height: '36px', width: 'auto', opacity: 0.85, zIndex: 2, pointerEvents: 'none' }}
+                  />
+                )}
                 <div className="service-icon">
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     {icon}{extra}
                   </svg>
                 </div>
-                <h3 className="font-display" style={{ fontWeight: 600, fontSize: '1.1rem', color: 'var(--navy)' }}>{title}</h3>
-                <p style={{ fontSize: '1rem', lineHeight: 1.7, color: '#5a6a7a', marginTop: '10px' }}>{body}</p>
-                <Link href="/contact" className="service-link" style={{ marginTop: '16px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                  Contact Us{' '}
-                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
-                    <path d="M2 6.5h9M8 3l3 3.5-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </Link>
+                <h3 className="font-display" style={{ fontWeight: 600, fontSize: '1.1rem', color: '#fff' }}>{title}</h3>
+                <p style={{ fontSize: '1rem', lineHeight: 1.7, color: 'rgba(255,255,255,0.62)', marginTop: '10px' }}>{body}</p>
+                {linkExternal ? (
+                  <a href={linkHref} target="_blank" rel="noopener noreferrer" className="service-link" style={{ marginTop: '16px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                    {linkLabel}{' '}
+                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+                      <path d="M2 6.5h9M8 3l3 3.5-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </a>
+                ) : (
+                  <Link href={linkHref} className="service-link" style={{ marginTop: '16px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                    {linkLabel}{' '}
+                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+                      <path d="M2 6.5h9M8 3l3 3.5-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </Link>
+                )}
               </div>
             ))}
           </div>
@@ -157,7 +207,7 @@ export default function HomePage() {
                 </h2>
                 <div className="orange-rule" style={{ marginTop: '16px' }} />
                 <p style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', marginTop: '20px', maxWidth: '440px' }}>
-                  Men at Work Traffic Management brings industry-leading expertise and an unwavering commitment to safety.
+                  With over 18 years of experience, Men at Work delivers safe, reliable traffic management across New Zealand.
                   Every plan is built with precision, every deployment executed with care.
                 </p>
               </div>
@@ -167,7 +217,6 @@ export default function HomePage() {
                   { d: 'd1', title: 'Fully Accredited & Certified', body: 'All team members hold current accreditations and certifications to the highest industry standards.' },
                   { d: 'd2', title: 'Tailored to Your Project', body: 'No two projects are the same. Every traffic management plan is custom-built for your site, scope, and schedule.' },
                   { d: 'd3', title: 'Zero Compromise on Safety', body: 'Our approach starts and ends with safety. Every decision, every deployment, every plan is safety-driven.' },
-                  { d: 'd4', title: 'Rapid Mobilisation', body: 'Our teams are ready to mobilise at short notice, 24 hours a day, 7 days a week, 365 days a year.' },
                 ].map(({ d, title, body }) => (
                   <div key={title} className={`reveal ${d}`} style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
                     <div className="feature-icon">
@@ -194,13 +243,13 @@ export default function HomePage() {
                 <div className="font-display" style={{ fontWeight: 700, fontSize: 'clamp(2.5rem,4.5vw,4rem)', color: '#fff', lineHeight: 1 }}>500+</div>
                 <div style={{ fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.75)', marginTop: '8px' }}>Projects Completed</div>
               </div>
-              <div className="stat-box" style={{ background: 'var(--charcoal)', border: '1px solid rgba(255,255,255,0.06)' }}>
-                <div className="stat-num" style={{ fontSize: 'clamp(2.5rem,4.5vw,4rem)' }}>100%</div>
-                <div style={{ fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--muted)', marginTop: '8px' }}>Accredited Staff</div>
-              </div>
               <div className="stat-box" style={{ background: 'var(--navy-mid)', border: '1px solid rgba(255,255,255,0.06)' }}>
-                <div className="stat-num" style={{ fontSize: 'clamp(2.5rem,4.5vw,4rem)' }}>24/7</div>
-                <div style={{ fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--muted)', marginTop: '8px' }}>Emergency Support</div>
+                <div className="stat-num" style={{ fontSize: 'clamp(2.5rem,4.5vw,4rem)' }}>5</div>
+                <div style={{ fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--muted)', marginTop: '8px' }}>Branch Locations</div>
+              </div>
+              <div className="stat-box" style={{ background: 'var(--charcoal)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                <div className="stat-num" style={{ fontSize: 'clamp(2.5rem,4.5vw,4rem)' }}>150+</div>
+                <div style={{ fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--muted)', marginTop: '8px' }}>Qualified Staff</div>
               </div>
               <div style={{ position: 'absolute', top: 0, right: '-10px', bottom: 0, width: '3px', background: 'var(--orange)', borderRadius: '2px' }} />
             </div>
@@ -208,6 +257,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ── FULL-WIDTH IMAGE BANNER ── */}
+      <WorksiteBanner />
 
       {/* ── HOW IT WORKS ── */}
       <section id="process" style={{ background: '#0A1623', padding: '100px 0', borderTop: '1px solid rgba(255,255,255,0.04)' }}>
@@ -229,7 +281,7 @@ export default function HomePage() {
               { n: '01', title: 'Plan & Design', body: 'Our designers develop a detailed, compliant traffic management plan tailored to your project.', solid: false },
               { n: '02', title: 'Initial Consult', body: 'We discuss your project, timeline, and site-specific needs to understand the full scope.', solid: false },
               { n: '03', title: 'Deploy & Execute', body: 'Accredited teams arrive on-site with equipment and signage ready to go from day one.', solid: false },
-              { n: '04', title: 'Monitor & Report', body: 'Ongoing real-time monitoring with comprehensive reporting delivered at project completion.', solid: false },
+              { n: '04', title: 'Ongoing Site Management', body: 'Ongoing site monitoring ensures traffic management remains safe and effective as work progresses.', solid: false },
             ].map(({ n, title, body, solid }, i) => (
               <div key={n} className={`reveal d${i+1}`} style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
                 <div className={solid ? 'step-circle-solid' : 'step-circle-outline'} style={{ margin: '0 auto' }}>

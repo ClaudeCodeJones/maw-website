@@ -15,18 +15,10 @@ export const metadata: Metadata = {
 
 const groupEntities = [
   {
-    name: 'Men at Work Traffic Management',
-    headline: 'Comprehensive traffic management across infrastructure, civil, and event environments.',
-    body: 'From complex motorway shutdowns to community events, our accredited team delivers every project safely, compliantly, and on time.',
-    href: '#',
-    logo: '/logos/mwtrafficmanagement_white.webp',
-    modifier: 'group-card--traffic',
-  },
-  {
     name: 'MW Training & Planning',
     headline: 'Specialist TMP design, planning, and industry training services.',
     body: 'We design compliant Traffic Management Plans and deliver practical training to support safe, professional worksites.',
-    href: '#',
+    href: 'https://www.mwtrainplan.co.nz',
     logo: '/logos/mwtrainingandplanning_white.webp',
     modifier: 'group-card--training',
   },
@@ -34,15 +26,23 @@ const groupEntities = [
     name: 'The Temp Company',
     headline: 'Flexible workforce solutions supporting civil, infrastructure, and construction sectors.',
     body: 'We connect skilled, vetted workers with the right opportunities across the South Island, quickly and reliably.',
-    href: '#',
+    href: 'https://www.thetempcompany.co.nz',
     logo: '/logos/thetempcompany_white.webp',
     modifier: 'group-card--temp',
+  },
+  {
+    name: 'Sweepco',
+    headline: 'Professional sweeping services for construction sites, industrial yards, and public spaces.',
+    body: 'From post-construction clean-ups to ongoing site maintenance, our specialised sweepers remove debris, dust, and loose material to keep surfaces safe, tidy, and operational.',
+    href: '/',
+    logo: '/logos/sweepco_white.png',
+    modifier: 'group-card--sweepco',
   },
   {
     name: 'QualCard',
     headline: 'A digital qualification management platform built for the traffic management industry.',
     body: 'QualCard streamlines compliance tracking, card issuance, and workforce verification, all in one place.',
-    href: '#',
+    href: 'https://www.qualcard.co.nz',
     logo: '/logos/qualcard_white.webp',
     modifier: 'group-card--qualcard',
   },
@@ -102,7 +102,7 @@ export default function AboutUsPage() {
           <p className="reveal d2 font-display" style={{ fontWeight: 600, fontSize: 'clamp(1rem,2vw,1.3rem)', letterSpacing: '-0.01em', color: 'var(--light)', marginTop: '20px' }}>
             Built on hard work. Grown on trust. Since 2008.
           </p>
-          <p className="reveal d3" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '560px', margin: '20px auto 0' }}>
+          <p className="reveal d3" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '540px', margin: '20px auto 0' }}>
             Since 2008, Men at Work has grown from an owner-operated traffic management company into a multi-division group delivering traffic management, planning, and consultancy services across New Zealand.
           </p>
         </div>
@@ -121,11 +121,11 @@ export default function AboutUsPage() {
                 </h2>
                 <div className="orange-rule" style={{ marginTop: '16px' }} />
               </div>
-              <p className="reveal d1" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', marginTop: '24px' }}>
+              <p className="reveal d1" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', marginTop: '24px', maxWidth: '540px' }}>
                 In 2008, Dean and Esther Hyde took ownership of Men at Work and have led the business as hands-on owner-operators ever since. What began as a focused traffic management company in Christchurch has grown steadily through strong leadership, experienced crews, and long-term client relationships.
               </p>
-              <p className="reveal d2" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', marginTop: '16px' }}>
-                Today, Men at Work operates across multiple regions with a purpose-built head office in Belfast Business Park and a reputation for practical, dependable traffic management across civil, infrastructure, and event projects.
+              <p className="reveal d2" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', marginTop: '16px', maxWidth: '540px' }}>
+                Today, Men at Work operates across multiple regions with a purpose-built head office in Belfast and a reputation for practical, dependable traffic management across civil, infrastructure, and event projects.
               </p>
             </div>
 
@@ -133,10 +133,9 @@ export default function AboutUsPage() {
               <div style={{
                 width: '100%',
                 aspectRatio: '4/3',
-                borderRadius: '2px',
-                border: '1px solid rgba(255,255,255,0.14)',
-                borderTop: '3px solid var(--orange)',
+                borderRadius: '12px',
                 overflow: 'hidden',
+                boxShadow: '0 10px 30px rgba(0,0,0,0.25)',
               }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -250,19 +249,15 @@ export default function AboutUsPage() {
           {/* 2×2 card grid */}
           <div className="group-grid">
             {groupEntities.map(({ name, headline, body, href, logo, modifier }, i) => (
-              <a
+              <div
                 key={name}
-                href={href}
                 className={`group-card ${modifier} reveal d${(i % 2) + 1}`}
-                aria-label={`Visit ${name}`}
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
                   background: 'var(--charcoal)',
                   borderRadius: '2px',
                   padding: '36px 32px',
-                  textDecoration: 'none',
-                  cursor: 'pointer',
                 }}
               >
                 {/* Logo container */}
@@ -306,13 +301,13 @@ export default function AboutUsPage() {
                 </p>
 
                 {/* CTA */}
-                <div className="group-card-cta" style={{ marginTop: '14px' }}>
+                <a href={href} target="_blank" rel="noopener noreferrer" className="group-card-cta" style={{ marginTop: '14px' }}>
                   Visit Site
                   <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                     <path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                </div>
-              </a>
+                </a>
+              </div>
             ))}
           </div>
 
