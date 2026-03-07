@@ -94,7 +94,6 @@ export default function ContactPage() {
           paddingTop: '180px',
           paddingBottom: '56px',
           overflow: 'hidden',
-          textAlign: 'center',
         }}
         aria-label="Contact hero"
       >
@@ -102,17 +101,16 @@ export default function ContactPage() {
         <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '3px', background: 'var(--orange)' }} aria-hidden="true" />
 
         <div style={{ position: 'relative', zIndex: 10, maxWidth: '800px', margin: '0 auto', padding: '0 24px' }}>
-          <div className="reveal" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '20px' }}>
+          <div className="reveal" style={{ marginBottom: '20px' }}>
             <span className="eyebrow">Contact</span>
-            <div style={{ width: '28px', height: '2px', background: 'var(--orange)' }} />
           </div>
           <h1 className="reveal d1 font-display" style={{ fontWeight: 700, fontSize: 'clamp(2.4rem,5vw,4.5rem)', lineHeight: 1.05, letterSpacing: '-0.03em', color: '#fff' }}>
             Contact Us
           </h1>
-          <p className="reveal d2" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '480px', margin: '20px auto 0' }}>
+          <p className="reveal d2" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '480px', marginTop: '20px' }}>
             Send us the details of your project and our team will respond as soon as possible.
           </p>
-          <div style={{ width: '40px', height: '1px', background: 'rgba(255,255,255,0.15)', margin: '20px auto' }} />
+          <div style={{ width: '40px', height: '1px', background: 'rgba(255,255,255,0.15)', margin: '20px 0' }} />
           <p className="reveal d3" style={{ marginTop: '0', fontSize: '0.82rem', color: 'var(--muted)', lineHeight: 1.6 }}>
             Prefer to call or email?<br />
             <span style={{ color: '#fff', fontWeight: 600 }}>0800 636 289</span>

@@ -19,6 +19,15 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  const closeMenu = () => {
+    setMenuOpen(false)
+    if (h1Ref.current && h2Ref.current && h3Ref.current) {
+      h1Ref.current.style.transform = ''
+      h2Ref.current.style.opacity = '1'
+      h3Ref.current.style.transform = ''
+    }
+  }
+
   const toggleMenu = () => {
     const next = !menuOpen
     setMenuOpen(next)
@@ -46,7 +55,7 @@ export default function Navbar() {
 
   return (
     <nav id="navbar" className={scrolled ? 'scrolled' : ''} role="navigation" aria-label="Main navigation">
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '96px' }}>
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 18px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '96px' }}>
 
         {/* Logo */}
         <Link href="/" style={{ flexShrink: 0, display: 'flex', alignItems: 'center' }}>
@@ -61,7 +70,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop links */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '36px' }} className="hidden-mobile">
+        <div className="hidden lg:flex items-center gap-6">
           {navLinks.map(({ href, label }) => (
             <Link key={href} href={href} className={`nav-link${isActive(href) ? ' active' : ''}`}>
               {label}
@@ -71,27 +80,30 @@ export default function Navbar() {
 
         {/* CTA + hamburger */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <Link href="/request-quote" className="btn-orange hidden-mobile" style={{ fontSize: '0.8rem', padding: '10px 20px' }}>
-            Get an Estimate
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-              <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </Link>
+          <div id="hdrcta-wrap">
+            <Link id="hdrcta" href="/request-quote" className="btn-orange" style={{ fontSize: '0.8rem', padding: '10px 20px' }}>
+              Get an Estimate
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </Link>
+          </div>
           <button
             id="ham-btn"
             onClick={toggleMenu}
             aria-label="Toggle menu"
-            style={{ display: 'none', flexDirection: 'column', gap: '5px', background: 'none', border: 'none', cursor: 'pointer', padding: '4px' }}
+            className="lg:hidden flex flex-col items-center justify-center gap-1.5"
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '4px' }}
           >
-            <span ref={h1Ref} style={{ display: 'block', width: '22px', height: '2px', background: '#fff', transition: 'transform 0.2s ease, opacity 0.2s ease' }} />
-            <span ref={h2Ref} style={{ display: 'block', width: '22px', height: '2px', background: '#fff', transition: 'opacity 0.2s ease' }} />
-            <span ref={h3Ref} style={{ display: 'block', width: '22px', height: '2px', background: '#fff', transition: 'transform 0.2s ease' }} />
+            <span ref={h1Ref} className="block w-6 h-[2px] bg-white" style={{ transition: 'transform 0.2s ease, opacity 0.2s ease' }} />
+            <span ref={h2Ref} className="block w-6 h-[2px] bg-white" style={{ transition: 'opacity 0.2s ease' }} />
+            <span ref={h3Ref} className="block w-6 h-[2px] bg-white" style={{ transition: 'transform 0.2s ease' }} />
           </button>
         </div>
       </div>
 
       {/* Mobile menu */}
-      <div id="mobile-menu" className={menuOpen ? 'open' : ''} style={{ background: 'var(--navy-mid)', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
+      <div id="mobile-menu" className={`fixed left-0 right-0 top-[96px] w-full max-w-full overflow-x-hidden z-40 ${menuOpen ? 'open' : ''}`} style={{ background: 'var(--navy-mid)', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '20px 24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
           {navLinks.map(({ href, label }, i) => (
             <Link
@@ -99,12 +111,12 @@ export default function Navbar() {
               href={href}
               className="nav-link"
               style={{ fontSize: '1rem', padding: '8px 0', borderBottom: i < navLinks.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none' }}
-              onClick={() => setMenuOpen(false)}
+              onClick={closeMenu}
             >
               {label}
             </Link>
           ))}
-          <Link href="/request-quote" className="btn-orange" style={{ textAlign: 'center', marginTop: '8px' }}>
+          <Link id="mobcta" href="/request-quote" className="lg:hidden btn-orange w-full" style={{ textAlign: 'center', marginTop: '8px' }} onClick={closeMenu}>
             Get an Estimate
           </Link>
         </div>

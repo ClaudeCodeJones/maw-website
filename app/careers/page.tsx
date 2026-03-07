@@ -59,7 +59,6 @@ export default function CareersPage() {
           paddingTop: '180px',
           paddingBottom: '100px',
           overflow: 'hidden',
-          textAlign: 'center',
         }}
         aria-label="Careers hero"
       >
@@ -67,9 +66,8 @@ export default function CareersPage() {
         <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '3px', background: 'var(--orange)' }} aria-hidden="true" />
 
         <div style={{ position: 'relative', zIndex: 10, maxWidth: '800px', margin: '0 auto', padding: '0 24px' }}>
-          <div className="reveal" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '20px' }}>
+          <div className="reveal" style={{ marginBottom: '20px' }}>
             <span className="eyebrow">Join the Team</span>
-            <div style={{ width: '28px', height: '2px', background: 'var(--orange)' }} />
           </div>
           <h1 className="reveal d1 font-display" style={{ fontWeight: 700, fontSize: 'clamp(2.4rem,5vw,4.5rem)', lineHeight: 1.05, letterSpacing: '-0.03em', color: '#fff' }}>
             Build a Career in Traffic
@@ -77,7 +75,7 @@ export default function CareersPage() {
           <p className="reveal d2 font-display" style={{ fontWeight: 600, fontSize: 'clamp(1rem,2vw,1.3rem)', letterSpacing: '-0.01em', color: 'var(--light)', marginTop: '20px' }}>
             Real work. Solid teams. A clear path forward.
           </p>
-          <p className="reveal d3" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '540px', margin: '20px auto 0' }}>
+          <p className="reveal d3" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '540px', marginTop: '20px' }}>
             Men at Work has been building teams across New Zealand since 2008. We look for people who take safety seriously, show up, and want to grow in a hands-on industry.
           </p>
           <div className="reveal d4" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '14px', marginTop: '40px' }}>
@@ -97,16 +95,15 @@ export default function CareersPage() {
       {/* ── BEFORE YOU APPLY ── */}
       <section style={{ background: 'var(--charcoal)', borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)', padding: '72px 0' }} aria-label="Before you apply">
         <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 24px' }}>
-          <div className="reveal" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
+          <div className="reveal" style={{ marginBottom: '24px' }}>
             <span className="eyebrow">Before You Apply</span>
-            <div style={{ width: '28px', height: '2px', background: 'var(--orange)' }} />
           </div>
           <p className="reveal d1" style={{ fontSize: '1.05rem', lineHeight: 1.8, color: 'var(--light)', marginBottom: '24px' }}>
             We are always looking for great people, whether you are already qualified or just starting out. Traffic management offers a clear career pathway, and we support our team to develop and progress.
             <br /><br />
             Before applying, please ensure you meet the basic requirements below.
           </p>
-          <div className="reveal d2" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(420px, 1fr))', gap: '20px', marginBottom: '28px' }}>
+          <div className="reveal d2" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(420px, 100%), 1fr))', gap: '20px', marginBottom: '28px' }}>
             {[
               {
                 label: 'Right to Work',
@@ -155,7 +152,7 @@ export default function CareersPage() {
                 ),
               },
             ].map(({ label, body, icon }) => (
-              <div key={label} style={{ padding: '24px 28px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderLeft: '3px solid var(--orange)', borderRadius: '2px', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '24px' }}>
+              <div key={label} style={{ padding: '24px 28px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderLeft: '3px solid var(--orange)', borderRadius: '2px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '24px' }}>
                 <div>
                   <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--orange)', marginBottom: '8px' }}>{label}</p>
                   <p style={{ fontSize: '0.875rem', lineHeight: 1.65, color: 'var(--muted)' }}>{body}</p>
@@ -177,10 +174,9 @@ export default function CareersPage() {
 
             {/* Left: heading + intro */}
             <div className="reveal">
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
+              <div style={{ marginBottom: '10px' }}>
                 <span className="eyebrow">Why Men at Work</span>
-                <div style={{ width: '28px', height: '2px', background: 'var(--orange)' }} />
-              </div>
+                </div>
               <h2 className="section-title" style={{ fontSize: 'clamp(1.8rem,3.5vw,3rem)', color: '#fff', marginTop: '8px' }}>
                 Why Join Men at Work
               </h2>
@@ -191,7 +187,7 @@ export default function CareersPage() {
             </div>
 
             {/* Right: feature list */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '28px 40px' }}>
+            <div className="benefits-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '28px 40px' }}>
               {benefits.map(({ icon, title, body }, i) => (
                 <div key={title} className={`reveal d${(i % 3) + 1}`} style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
                   <div style={{ width: '40px', height: '40px', borderRadius: '8px', background: 'rgba(242,101,34,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
@@ -216,9 +212,8 @@ export default function CareersPage() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
 
           <div style={{ maxWidth: '672px', marginBottom: '60px' }}>
-            <div className="reveal" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
+            <div className="reveal" style={{ marginBottom: '10px' }}>
               <span className="eyebrow">Your Path</span>
-              <div style={{ width: '28px', height: '2px', background: 'var(--orange)' }} />
             </div>
             <h2 className="section-title reveal d1" style={{ fontSize: 'clamp(1.8rem,3.5vw,3rem)', color: 'var(--navy)' }}>
               Build a Career with Us
@@ -239,9 +234,8 @@ export default function CareersPage() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
 
           <div style={{ marginBottom: '60px' }}>
-            <div className="reveal" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
+            <div className="reveal" style={{ marginBottom: '10px' }}>
               <span className="eyebrow">Current Openings</span>
-              <div style={{ width: '28px', height: '2px', background: 'var(--orange)' }} />
             </div>
             <h2 className="section-title reveal d1" style={{ fontSize: 'clamp(1.8rem,3.5vw,3rem)', color: '#fff' }}>
               Where We Are Hiring
@@ -271,10 +265,9 @@ export default function CareersPage() {
 
             {/* Left: copy */}
             <div>
-              <div className="reveal" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
+              <div className="reveal" style={{ marginBottom: '10px' }}>
                 <span className="eyebrow">Get In Touch</span>
-                <div style={{ width: '28px', height: '2px', background: 'var(--orange)' }} />
-              </div>
+                </div>
               <h2 className="section-title reveal d1" style={{ fontSize: 'clamp(1.8rem,3.5vw,3rem)', color: '#fff' }}>
                 Apply Now
               </h2>

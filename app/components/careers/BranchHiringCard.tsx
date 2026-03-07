@@ -65,10 +65,21 @@ export default function BranchHiringCard({ item }: { item: BranchHiring }) {
         >
           {item.branch}
         </h3>
+        <p
+          style={{
+            fontFamily: 'Inter, sans-serif',
+            fontSize: '0.75rem',
+            fontWeight: 600,
+            color: colors.text,
+            marginTop: '6px',
+          }}
+        >
+          {statusLabel[item.status]}
+        </p>
       </div>
 
       {/* Divider */}
-      <div style={{ width: '32px', height: '2px', background: 'var(--orange)' }} />
+      <div style={{ width: '100%', height: '1px', background: 'rgba(255,255,255,0.08)' }} />
 
       {/* Roles */}
       {item.roles.length > 0 ? (
@@ -119,62 +130,49 @@ export default function BranchHiringCard({ item }: { item: BranchHiring }) {
         </p>
       )}
 
-      {/* Status badge — bottom */}
-      <div style={{ marginTop: 'auto', paddingTop: '4px' }}>
-        <div
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '6px',
-            background: colors.bg,
-            borderRadius: '9999px',
-            padding: '5px 10px',
-          }}
-        >
-          <span
-            style={{
-              width: '6px',
-              height: '6px',
-              borderRadius: '50%',
-              background: colors.dot,
-              flexShrink: 0,
-            }}
-          />
-          <span
-            style={{
-              fontFamily: 'Inter, sans-serif',
-              fontSize: '0.7rem',
-              fontWeight: 600,
-              color: colors.text,
-              letterSpacing: '0.04em',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            {statusLabel[item.status]}
-          </span>
-        </div>
-
-      </div>
-
       {/* CTA — separated with divider */}
       <div style={{ marginTop: '20px', paddingTop: '20px', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
         {item.status !== 'closed' ? (
-          <Link
-            href={`/careers?branch=${item.branch.toLowerCase()}#apply`}
-            className="inline-flex items-center justify-center gap-2 w-full rounded-md border border-white/10 bg-transparent px-4 py-2 text-xs font-medium text-white/40 transition duration-200 hover:border-[#F26522]/60 hover:text-[#F26522] active:scale-[0.98]"
-          >
-            Apply Now
-            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </Link>
+          <>
+            {/* Mobile: text link */}
+            <Link
+              href={`/careers?branch=${item.branch.toLowerCase()}#apply`}
+              className="md:hidden inline-flex items-center gap-2 text-xs font-medium text-white/40 hover:text-[#F26522] transition duration-200"
+            >
+              Apply Now
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </Link>
+            {/* Desktop: full-width pill */}
+            <Link
+              href={`/careers?branch=${item.branch.toLowerCase()}#apply`}
+              className="hidden md:inline-flex items-center justify-center gap-2 w-full rounded-full border border-slate-600 bg-transparent px-8 text-xs font-medium text-white/40 transition duration-200 hover:border-[#F26522]/60 hover:text-[#F26522] active:scale-[0.98]"
+              style={{ paddingTop: '14px', paddingBottom: '14px' }}
+            >
+              Apply Now
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </Link>
+          </>
         ) : (
-          <span className="inline-flex items-center justify-center gap-2 w-full rounded-md border border-white/6 bg-transparent px-4 py-2 text-xs font-medium text-white/20 cursor-not-allowed select-none">
-            Apply Now
-            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </span>
+          <>
+            {/* Mobile: disabled text */}
+            <span className="md:hidden inline-flex items-center gap-2 text-xs font-medium text-white/20 cursor-not-allowed select-none">
+              Apply Now
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
+            {/* Desktop: disabled pill */}
+            <span className="hidden md:inline-flex items-center justify-center gap-2 w-full rounded-full border border-slate-600/40 bg-transparent px-8 text-xs font-medium text-white/20 cursor-not-allowed select-none" style={{ paddingTop: '14px', paddingBottom: '14px' }}>
+              Apply Now
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
+          </>
         )}
       </div>
     </div>

@@ -18,9 +18,8 @@ export default function HomePage() {
         <div className="hero-content-wrap" style={{ position: 'relative', zIndex: 10, maxWidth: '1280px', margin: '0 auto', padding: '200px 24px 160px', width: '100%' }}>
           <div style={{ maxWidth: '660px' }}>
 
-            <div className="reveal" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
+            <div className="reveal" style={{ marginBottom: '20px' }}>
               <span className="eyebrow">Traffic Management Specialists</span>
-              <div style={{ width: '28px', height: '2px', background: 'var(--orange)' }} />
             </div>
 
             <h1 className="reveal d1 font-display"
@@ -47,7 +46,7 @@ export default function HomePage() {
                   <path d="M3 8.5h11M10 5l3.5 3.5L10 12" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </Link>
-              <Link href="#services" className="btn-ghost" style={{ padding: '14px 28px', fontSize: '0.9rem' }}>View Services</Link>
+              {/* View Services button hidden */}
             </div>
 
           </div>
@@ -62,9 +61,8 @@ export default function HomePage() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
 
           <div style={{ marginBottom: '60px' }}>
-            <div className="reveal" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
+            <div className="reveal" style={{ marginBottom: '10px' }}>
               <span className="eyebrow">What We Do</span>
-              <div style={{ width: '28px', height: '2px', background: 'var(--orange)' }} />
             </div>
             <h2 className="section-title reveal d1" style={{ fontSize: 'clamp(1.8rem,3.5vw,3rem)', color: 'var(--navy)' }}>
               Comprehensive Traffic<br />Management Services
@@ -163,7 +161,7 @@ export default function HomePage() {
       </section>
 
       {/* ── WHY CHOOSE US ── */}
-      <section id="why-us" style={{ background: 'var(--navy)', padding: '100px 0' }}>
+      <section id="why-us" className="w-full max-w-full overflow-x-hidden" style={{ background: 'var(--navy)', padding: '100px 0' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <div className="two-col-grid">
 
@@ -176,7 +174,7 @@ export default function HomePage() {
                   <span style={{ color: 'var(--orange)' }}>Excellence.</span>
                 </h2>
                 <div className="orange-rule" style={{ marginTop: '16px' }} />
-                <p style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', marginTop: '20px', maxWidth: '440px' }}>
+                <p style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', marginTop: '20px', maxWidth: '440px', width: '100%' }}>
                   With over 18 years of experience, Men at Work delivers safe, reliable traffic management across New Zealand.
                   Every job is executed with care.
                 </p>
@@ -204,7 +202,7 @@ export default function HomePage() {
             </div>
 
             {/* Right: stat boxes */}
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', position: 'relative' }}>
+            <div className="reveal grid grid-cols-1 md:grid-cols-2 gap-4" style={{ position: 'relative' }}>
               <div className="stat-box" style={{ background: 'var(--navy-mid)', border: '1px solid rgba(255,255,255,0.06)' }}>
                 <div className="font-display" style={{ fontWeight: 700, fontSize: '2.25rem', color: 'var(--orange)', lineHeight: 1 }}>18+</div>
                 <div style={{ fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--muted)', marginTop: '8px' }}>Years of Experience</div>
@@ -251,13 +249,14 @@ export default function HomePage() {
       <section id="process" style={{ background: '#0A1623', padding: '100px 0', borderTop: '1px solid rgba(255,255,255,0.04)' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
 
-          <div className="reveal" style={{ textAlign: 'center', marginBottom: '64px' }}>
+          <div className="reveal" style={{ marginBottom: '64px' }}>
             <span className="eyebrow">Our Process</span>
+            <div style={{ width: '28px', height: '2px', background: 'var(--orange)', marginTop: '8px' }} />
             <h2 className="section-title" style={{ fontSize: 'clamp(1.8rem,3.5vw,3rem)', color: '#fff', marginTop: '8px' }}>
               Simple. Efficient.<br />
               <span style={{ color: 'var(--orange)' }}>Reliable.</span>
             </h2>
-            <div className="orange-rule" style={{ margin: '16px auto 0' }} />
+            <div className="orange-rule" style={{ marginTop: '16px' }} />
           </div>
 
           <div className="process-grid">

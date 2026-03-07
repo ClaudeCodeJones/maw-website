@@ -86,10 +86,10 @@ export default function CareerPath() {
           box-shadow: 0 2px 4px rgba(0,0,0,0.3), 0 12px 32px rgba(242,101,34,0.22), 0 32px 64px rgba(0,0,0,0.45);
         }
       `}</style>
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
       {steps.map(({ title, description, image, icon, LucideIcon }) => (
         <div
-          className="career-path-card"
+          className="career-path-card h-[240px] md:h-[360px]"
           key={title}
           style={{
             backgroundImage: `url('${image}')`,
@@ -98,7 +98,6 @@ export default function CareerPath() {
             borderTop: '3px solid var(--orange)',
             borderRadius: '2px',
             padding: '32px',
-            minHeight: '320px',
             position: 'relative',
             overflow: 'hidden',
           }}

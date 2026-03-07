@@ -82,9 +82,8 @@ export default function AboutUsPage() {
           position: 'relative',
           background: '#070f1b',
           paddingTop: '180px',
-          paddingBottom: '100px',
+          paddingBottom: '80px',
           overflow: 'hidden',
-          textAlign: 'center',
         }}
         aria-label="About Us hero"
       >
@@ -92,9 +91,8 @@ export default function AboutUsPage() {
         <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '3px', background: 'var(--orange)' }} aria-hidden="true" />
 
         <div style={{ position: 'relative', zIndex: 10, maxWidth: '800px', margin: '0 auto', padding: '0 24px' }}>
-          <div className="reveal" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '20px' }}>
+          <div className="reveal" style={{ marginBottom: '20px' }}>
             <span className="eyebrow">Who We Are</span>
-            <div style={{ width: '28px', height: '2px', background: 'var(--orange)' }} />
           </div>
           <h1 className="reveal d1 font-display" style={{ fontWeight: 700, fontSize: 'clamp(2.4rem,5vw,4.5rem)', lineHeight: 1.05, letterSpacing: '-0.03em', color: '#fff' }}>
             About Men at Work
@@ -102,7 +100,7 @@ export default function AboutUsPage() {
           <p className="reveal d2 font-display" style={{ fontWeight: 600, fontSize: 'clamp(1rem,2vw,1.3rem)', letterSpacing: '-0.01em', color: 'var(--light)', marginTop: '20px' }}>
             Built on hard work. Grown on trust. Since 2008.
           </p>
-          <p className="reveal d3" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '540px', margin: '20px auto 0' }}>
+          <p className="reveal d3" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '540px', marginTop: '20px' }}>
             Since 2008, Men at Work has grown from an owner-operated traffic management company into a multi-division group delivering traffic management, planning, and consultancy services across New Zealand.
           </p>
         </div>
@@ -154,15 +152,14 @@ export default function AboutUsPage() {
       <section style={{ background: '#0A1623', padding: '80px 0', borderTop: '1px solid rgba(255,255,255,0.04)' }} aria-label="Our locations">
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
 
-          <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-            <div className="reveal" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '10px' }}>
+          <div style={{ marginBottom: '40px' }}>
+            <div className="reveal" style={{ marginBottom: '10px' }}>
               <span className="eyebrow">Where We Operate</span>
-              <div style={{ width: '28px', height: '2px', background: 'var(--orange)' }} />
             </div>
             <h2 className="section-title reveal d1" style={{ fontSize: 'clamp(1.8rem,3.5vw,3rem)', color: '#fff' }}>
               Five Locations. One Standard.
             </h2>
-            <div className="orange-rule reveal d2" style={{ margin: '16px auto 0' }} />
+            <div className="orange-rule reveal d2" style={{ marginTop: '16px' }} />
           </div>
 
           <div className="reveal d1">
@@ -176,16 +173,15 @@ export default function AboutUsPage() {
       <section style={{ background: 'var(--off-white)', padding: '100px 0' }} aria-label="Leadership team">
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
 
-          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-            <div className="reveal" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '10px' }}>
+          <div style={{ marginBottom: '60px' }}>
+            <div className="reveal" style={{ marginBottom: '10px' }}>
               <span className="eyebrow">Our People</span>
-              <div style={{ width: '28px', height: '2px', background: 'var(--orange)' }} />
             </div>
             <h2 className="section-title reveal d1" style={{ fontSize: 'clamp(1.8rem,3.5vw,3rem)', color: 'var(--navy)' }}>
               Leadership
             </h2>
-            <div className="orange-rule reveal d2" style={{ margin: '16px auto 0' }} />
-            <p className="reveal d3" style={{ fontSize: '1rem', lineHeight: 1.78, color: '#5a6a7a', maxWidth: '480px', margin: '20px auto 0' }}>
+            <div className="orange-rule reveal d2" style={{ marginTop: '16px' }} />
+            <p className="reveal d3" style={{ fontSize: '1rem', lineHeight: 1.78, color: '#5a6a7a', maxWidth: '480px', marginTop: '20px' }}>
               Experienced leadership across operations, regions, compliance, and growth.
             </p>
           </div>
@@ -202,7 +198,7 @@ export default function AboutUsPage() {
                   overflow: 'hidden',
                 }}
               >
-                <div style={{ position: 'relative', width: '100%', aspectRatio: '1', background: 'var(--light)', borderBottom: '2px solid var(--orange)', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div className="leadership-img-wrap" style={{ position: 'relative', width: '100%', aspectRatio: '1', background: 'var(--light)', borderBottom: '2px solid var(--orange)', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   {leadershipImages[name] ? (
                     <Image
                       src={leadershipImages[name]}
@@ -233,9 +229,8 @@ export default function AboutUsPage() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
 
           <div style={{ marginBottom: '80px' }}>
-            <div className="reveal" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
+            <div className="reveal" style={{ marginBottom: '10px' }}>
               <span className="eyebrow">The MW Group</span>
-              <div style={{ width: '28px', height: '2px', background: 'var(--orange)' }} />
             </div>
             <h2 className="section-title reveal d1" style={{ fontSize: 'clamp(1.8rem,3.5vw,3rem)', color: '#fff' }}>
               More Than Traffic

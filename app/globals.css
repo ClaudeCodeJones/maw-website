@@ -52,6 +52,9 @@ body {
 }
 
 /* ── Navigation ── */
+#hdrcta-wrap { display: none; }
+@media (min-width: 1024px) { #hdrcta-wrap { display: block; } }
+
 #navbar {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -273,7 +276,17 @@ body {
 }
 @media (max-width: 640px) {
   .hero-content-wrap {
-    padding-bottom: 120px !important;
+    padding-bottom: 80px !important;
+  }
+  .leadership-img-wrap {
+    aspect-ratio: unset !important;
+    height: 192px !important;
+  }
+  .benefits-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .hiring-card {
+    padding: 20px !important;
   }
 }
 @media (max-width: 768px) {
@@ -896,7 +909,6 @@ input:focus, select:focus, textarea:focus {
 /* ── Responsive ── */
 @media (max-width: 900px) {
   .hidden-mobile { display: none !important; }
-  #ham-btn { display: flex !important; }
   .hero-panel { display: none; }
 
   .two-col-grid {

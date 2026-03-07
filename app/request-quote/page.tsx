@@ -235,21 +235,20 @@ export default function RequestQuotePage() {
 
   const heroContent = (
     <section
-      style={{ position: 'relative', background: '#070f1b', paddingTop: '180px', paddingBottom: '56px', overflow: 'hidden', textAlign: 'center' }}
+      style={{ position: 'relative', background: '#070f1b', paddingTop: '180px', paddingBottom: '56px', overflow: 'hidden' }}
       aria-label="Request an estimate"
     >
       <div style={{ position: 'absolute', top: '-100px', left: '50%', transform: 'translateX(-50%)', width: '700px', height: '700px', background: 'radial-gradient(circle, rgba(242,101,34,0.07) 0%, transparent 65%)', pointerEvents: 'none' }} aria-hidden="true" />
       <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '3px', background: 'var(--orange)' }} aria-hidden="true" />
       <div style={{ position: 'relative', zIndex: 10, maxWidth: '800px', margin: '0 auto', padding: '0 24px' }}>
-        <div className="reveal" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '20px' }}>
+        <div className="reveal" style={{ marginBottom: '20px' }}>
           <span className="eyebrow">Traffic Management Services</span>
-          <div style={{ width: '28px', height: '2px', background: 'var(--orange)' }} />
         </div>
         <h1 className="reveal d1 font-display" style={{ fontWeight: 700, fontSize: 'clamp(2.4rem,5vw,4.5rem)', lineHeight: 1.05, letterSpacing: '-0.03em', color: '#fff' }}>
           {status === 'success' ? 'Request Submitted' : 'Request an Estimate'}
         </h1>
         {status !== 'success' && (
-          <p className="reveal d2" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '480px', margin: '20px auto 0' }}>
+          <p className="reveal d2" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '480px', marginTop: '20px' }}>
             Provide a few details about your project and our team will prepare pricing for you.
           </p>
         )}
