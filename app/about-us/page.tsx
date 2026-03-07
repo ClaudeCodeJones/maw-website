@@ -242,7 +242,7 @@ export default function AboutUsPage() {
             </h2>
             <div className="orange-rule reveal d2" style={{ marginTop: '16px' }} />
             <p className="reveal d3" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '600px', marginTop: '20px' }}>
-              While traffic management remains our core service, the MW Group delivers broader capability across training, workforce supply, and digital compliance.
+              While traffic management remains our core service, the MW Group delivers broader capability across training, workforce supply, road sweeping, and digital compliance.
             </p>
           </div>
 

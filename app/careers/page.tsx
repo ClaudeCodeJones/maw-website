@@ -15,58 +15,34 @@ export const metadata: Metadata = {
 
 const benefits = [
   {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-      </svg>
-    ),
+    icon: <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />,
     title: 'Safe by Default',
-    body: 'Safety is not a box we tick. It is how every team member thinks and works, from day one.',
+    body: 'Safety is not a box we tick. It is how every team member works, from day one.',
   },
   {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
-      </svg>
-    ),
+    icon: <><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" /></>,
     title: 'Real Teams',
-    body: 'You work alongside people who have been in the industry for years. Experienced crews to help you develop.',
+    body: 'Work alongside experienced crews who support your development.',
   },
   {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-      </svg>
-    ),
+    icon: <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />,
     title: 'Grow With Us',
-    body: 'We promote from within. STMs become Leads. Leads become managers. There is a path here.',
+    body: 'Clear pathways from TTM to STMS, Lead STMS, and beyond.',
   },
   {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <rect x="2" y="3" width="20" height="14" rx="2" ry="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" />
-      </svg>
-    ),
+    icon: <><rect x="2" y="3" width="20" height="14" rx="2" ry="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" /></>,
     title: 'Training Provided',
-    body: 'We develop our own people. Through in-house training we build qualifications, competencies, and real site experience.',
+    body: 'In-house training that builds real qualifications and site experience.',
   },
   {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" />
-      </svg>
-    ),
+    icon: <><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></>,
     title: 'Industry Leadership',
-    body: 'Men at Work is known for delivering quality traffic management. Join a team that takes pride in doing the job properly.',
+    body: 'Trusted by contractors across the region for professional traffic management.',
   },
   {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" />
-      </svg>
-    ),
+    icon: <><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></>,
     title: 'Five Locations',
-    body: 'With branches in Wellington, Nelson, Blenheim, Christchurch, and Timaru, opportunities exist across New Zealand.',
+    body: 'Opportunities across Wellington, Nelson, Blenheim, Christchurch, and Timaru.',
   },
 ]
 
@@ -120,23 +96,71 @@ export default function CareersPage() {
 
       {/* ── BEFORE YOU APPLY ── */}
       <section style={{ background: 'var(--charcoal)', borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)', padding: '72px 0' }} aria-label="Before you apply">
-        <div style={{ maxWidth: '900px', margin: '0 auto', padding: '0 24px' }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 24px' }}>
           <div className="reveal" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
             <span className="eyebrow">Before You Apply</span>
             <div style={{ width: '28px', height: '2px', background: 'var(--orange)' }} />
           </div>
           <p className="reveal d1" style={{ fontSize: '1.05rem', lineHeight: 1.8, color: 'var(--light)', marginBottom: '24px' }}>
-            We are always on the lookout for great people, whether you are qualified or not. Traffic management has a clear career pathway, and we will support you to upskill from the ground up. If you are already qualified, we will help you take the next step.
+            We are always looking for great people, whether you are already qualified or just starting out. Traffic management offers a clear career pathway, and we support our team to develop and progress.
+            <br /><br />
+            Before applying, please ensure you meet the basic requirements below.
           </p>
-          <div className="reveal d2" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px', marginBottom: '28px' }}>
+          <div className="reveal d2" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(420px, 1fr))', gap: '20px', marginBottom: '28px' }}>
             {[
-              { label: 'Right to Work', body: 'You must hold a working holiday visa or have the legal right to work in New Zealand.' },
-              { label: 'Drug Testing', body: 'All successful applicants are required to pass a pre-employment drug and alcohol test.' },
-              { label: 'Licence Requirement', body: 'A minimum Restricted Class 1 (car) licence is required. A Full Class 1 is preferred.' },
-            ].map(({ label, body }) => (
-              <div key={label} style={{ padding: '20px 24px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderLeft: '3px solid var(--orange)', borderRadius: '2px' }}>
-                <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--orange)', marginBottom: '8px' }}>{label}</p>
-                <p style={{ fontSize: '0.875rem', lineHeight: 1.65, color: 'var(--muted)' }}>{body}</p>
+              {
+                label: 'Right to Work',
+                body: 'You must hold a working holiday visa or have the legal right to work in New Zealand.',
+                icon: (
+                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                    <rect x="4" y="7" width="24" height="18" rx="2" stroke="currentColor" strokeWidth="1.8"/>
+                    <circle cx="11" cy="14" r="3" stroke="currentColor" strokeWidth="1.8"/>
+                    <path d="M5 22c1.5-3 4-4 6-4s4.5 1 6 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+                    <path d="M20 13h5M20 17h3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+                  </svg>
+                ),
+              },
+              {
+                label: 'Drug Testing',
+                body: 'All successful applicants are required to pass a pre-employment drug and alcohol test.',
+                icon: (
+                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                    <path d="M13 4h6M16 4v4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+                    <path d="M11 8h10l2 4v12a2 2 0 01-2 2H11a2 2 0 01-2-2V12l2-4z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round"/>
+                    <path d="M9 16h14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+                    <circle cx="14" cy="21" r="1.5" fill="currentColor" opacity="0.5"/>
+                    <circle cx="18" cy="21" r="1.5" fill="currentColor" opacity="0.5"/>
+                  </svg>
+                ),
+              },
+              {
+                label: 'Licence Requirement',
+                body: 'A minimum Restricted Class 1 (car) licence is required. A Full Class 1 is preferred.',
+                icon: (
+                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                    <rect x="3" y="8" width="26" height="16" rx="2" stroke="currentColor" strokeWidth="1.8"/>
+                    <circle cx="10" cy="16" r="3" stroke="currentColor" strokeWidth="1.8"/>
+                    <path d="M16 13h8M16 17h6M16 21h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+                  </svg>
+                ),
+              },
+              {
+                label: 'Criminal Checks',
+                body: 'All successful applicants may be subject to Ministry of Justice criminal history checks, which may affect employment eligibility.',
+                icon: (
+                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                    <path d="M16 3L5 7v9c0 6 5 10 11 13 6-3 11-7 11-13V7L16 3z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round"/>
+                    <path d="M11 16l3.5 3.5 6.5-7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                ),
+              },
+            ].map(({ label, body, icon }) => (
+              <div key={label} style={{ padding: '24px 28px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderLeft: '3px solid var(--orange)', borderRadius: '2px', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '24px' }}>
+                <div>
+                  <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--orange)', marginBottom: '8px' }}>{label}</p>
+                  <p style={{ fontSize: '0.875rem', lineHeight: 1.65, color: 'var(--muted)' }}>{body}</p>
+                </div>
+                <div style={{ color: 'rgba(255,255,255,0.25)', flexShrink: 0, marginTop: '2px' }}>{icon}</div>
               </div>
             ))}
           </div>
@@ -149,76 +173,58 @@ export default function CareersPage() {
       {/* ── WHY WORK WITH US ── */}
       <section style={{ background: 'var(--navy)', padding: '100px 0' }} aria-label="Why work with us">
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '60px', alignItems: 'start' }} className="two-col-grid">
 
-          <div style={{ marginBottom: '60px' }}>
-            <div className="reveal" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
-              <span className="eyebrow">Why Men at Work</span>
-              <div style={{ width: '28px', height: '2px', background: 'var(--orange)' }} />
-            </div>
-            <h2 className="section-title reveal d1" style={{ fontSize: 'clamp(1.8rem,3.5vw,3rem)', color: '#fff' }}>
-              Why Work With Us
-            </h2>
-            <div className="orange-rule reveal d2" style={{ marginTop: '16px' }} />
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '24px' }}>
-            {benefits.map(({ icon, title, body }, i) => (
-              <div
-                key={title}
-                className={`reveal d${(i % 4) + 1}`}
-                style={{
-                  display: 'flex',
-                  gap: '16px',
-                  padding: '28px',
-                  background: 'var(--charcoal)',
-                  border: '1px solid rgba(255,255,255,0.06)',
-                  borderRadius: '2px',
-                }}
-              >
-                <div
-                  style={{
-                    width: '40px',
-                    height: '40px',
-                    background: 'var(--orange)',
-                    borderRadius: '2px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: '#fff',
-                    flexShrink: 0,
-                  }}
-                >
-                  {icon}
-                </div>
-                <div>
-                  <h3 className="font-display" style={{ fontWeight: 600, fontSize: '0.95rem', color: '#fff', marginBottom: '8px', lineHeight: 1.3 }}>
-                    {title}
-                  </h3>
-                  <p style={{ fontSize: '0.85rem', lineHeight: 1.72, color: 'var(--muted)' }}>
-                    {body}
-                  </p>
-                </div>
+            {/* Left: heading + intro */}
+            <div className="reveal">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
+                <span className="eyebrow">Why Men at Work</span>
+                <div style={{ width: '28px', height: '2px', background: 'var(--orange)' }} />
               </div>
-            ))}
-          </div>
+              <h2 className="section-title" style={{ fontSize: 'clamp(1.8rem,3.5vw,3rem)', color: '#fff', marginTop: '8px' }}>
+                Why Join Men at Work
+              </h2>
+              <div className="orange-rule" style={{ marginTop: '16px' }} />
+              <p style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', marginTop: '24px', maxWidth: '440px' }}>
+                Join a team that values safety, experience, and real career progression.
+              </p>
+            </div>
 
+            {/* Right: feature list */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '28px 40px' }}>
+              {benefits.map(({ icon, title, body }, i) => (
+                <div key={title} className={`reveal d${(i % 3) + 1}`} style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
+                  <div style={{ width: '40px', height: '40px', borderRadius: '8px', background: 'rgba(242,101,34,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      {icon}
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-display" style={{ fontWeight: 600, fontSize: '1rem', color: '#fff', marginBottom: '6px' }}>{title}</h3>
+                    <p style={{ fontSize: '0.875rem', lineHeight: 1.7, color: 'var(--muted)' }}>{body}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+          </div>
         </div>
       </section>
 
       {/* ── CAREER PATH ── */}
-      <section style={{ background: 'var(--off-white)', padding: '100px 0' }} aria-label="Career path">
+      <section style={{ background: 'var(--off-white)', padding: '112px 0 100px' }} aria-label="Career path">
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
 
-          <div style={{ marginBottom: '60px' }}>
+          <div style={{ maxWidth: '672px', marginBottom: '60px' }}>
             <div className="reveal" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
               <span className="eyebrow">Your Path</span>
               <div style={{ width: '28px', height: '2px', background: 'var(--orange)' }} />
             </div>
             <h2 className="section-title reveal d1" style={{ fontSize: 'clamp(1.8rem,3.5vw,3rem)', color: 'var(--navy)' }}>
-              Where You Can Go
+              Build a Career with Us
             </h2>
             <div className="orange-rule reveal d2" style={{ marginTop: '16px' }} />
-            <p className="reveal d3" style={{ fontSize: '1rem', lineHeight: 1.78, color: '#5a6a7a', maxWidth: '520px', marginTop: '20px' }}>
+            <p className="reveal d3" style={{ fontSize: '1rem', lineHeight: 1.78, color: '#5a6a7a', marginTop: '20px' }}>
               Most of our managers started on the tools. We build careers, not just short-term rosters.
             </p>
           </div>

@@ -59,7 +59,7 @@ export default function HomePage() {
             <div className="hero-stats-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', borderLeft: '1px solid rgba(255,255,255,0.06)' }}>
               {[
                 { value: '18+', label: 'Years Experience' },
-                { value: '500+', label: 'Projects Completed' },
+                { value: '100% NZ', label: 'Owned and Operated' },
               ].map(({ value, label }) => (
                 <div key={value} style={{ padding: '20px 24px', borderRight: '1px solid rgba(255,255,255,0.06)', textAlign: 'center' }}>
                   <div className="font-display" style={{ fontWeight: 700, fontSize: '2rem', color: 'var(--orange)', lineHeight: 1 }}>{value}</div>
@@ -214,9 +214,9 @@ export default function HomePage() {
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', marginTop: '36px' }}>
                 {[
-                  { d: 'd1', title: 'Fully Accredited & Certified', body: 'All team members hold current accreditations and certifications to the highest industry standards.' },
+                  { d: 'd1', title: 'Fully Accredited & Certified', body: 'All team members hold current qualifications and competencies to the highest industry standards.' },
                   { d: 'd2', title: 'Tailored to Your Project', body: 'No two projects are the same. Every traffic management plan is custom-built for your site, scope, and schedule.' },
-                  { d: 'd3', title: 'Zero Compromise on Safety', body: 'Our approach starts and ends with safety. Every decision, every deployment, every plan is safety-driven.' },
+                  { d: 'd3', title: 'Zero Compromise on Safety', body: 'Field-tested safety protocols backed by Sitewise Gold accreditation. Every decision, every deployment, every plan is safety-driven.' },
                 ].map(({ d, title, body }) => (
                   <div key={title} className={`reveal ${d}`} style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
                     <div className="feature-icon">
@@ -240,16 +240,16 @@ export default function HomePage() {
                 <div style={{ fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--muted)', marginTop: '8px' }}>Years of Experience</div>
               </div>
               <div className="stat-box" style={{ background: 'var(--orange)' }}>
-                <div className="font-display" style={{ fontWeight: 700, fontSize: 'clamp(2.5rem,4.5vw,4rem)', color: '#fff', lineHeight: 1 }}>500+</div>
-                <div style={{ fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.75)', marginTop: '8px' }}>Projects Completed</div>
+                <div className="font-display" style={{ fontWeight: 700, fontSize: 'clamp(2.5rem,4.5vw,4rem)', color: '#fff', lineHeight: 1 }}>150+</div>
+                <div style={{ fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.75)', marginTop: '8px' }}>Qualified Staff</div>
               </div>
               <div className="stat-box" style={{ background: 'var(--navy-mid)', border: '1px solid rgba(255,255,255,0.06)' }}>
                 <div className="stat-num" style={{ fontSize: 'clamp(2.5rem,4.5vw,4rem)' }}>5</div>
                 <div style={{ fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--muted)', marginTop: '8px' }}>Branch Locations</div>
               </div>
               <div className="stat-box" style={{ background: 'var(--charcoal)', border: '1px solid rgba(255,255,255,0.06)' }}>
-                <div className="stat-num" style={{ fontSize: 'clamp(2.5rem,4.5vw,4rem)' }}>150+</div>
-                <div style={{ fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--muted)', marginTop: '8px' }}>Qualified Staff</div>
+                <div className="stat-num" style={{ fontSize: 'clamp(2.5rem,4.5vw,4rem)' }}>100+</div>
+                <div style={{ fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--muted)', marginTop: '8px' }}>Specialised TM Vehicles</div>
               </div>
               <div style={{ position: 'absolute', top: 0, right: '-10px', bottom: 0, width: '3px', background: 'var(--orange)', borderRadius: '2px' }} />
             </div>
@@ -278,17 +278,18 @@ export default function HomePage() {
             <div className="process-connector" style={{ position: 'absolute', top: '27px', left: '12.5%', right: '12.5%', height: '2px', background: 'linear-gradient(90deg, var(--orange) 0%, rgba(242,101,34,0.15) 100%)', pointerEvents: 'none', zIndex: 0 }} />
 
             {[
-              { n: '01', title: 'Plan & Design', body: 'Our designers develop a detailed, compliant traffic management plan tailored to your project.', solid: false },
-              { n: '02', title: 'Initial Consult', body: 'We discuss your project, timeline, and site-specific needs to understand the full scope.', solid: false },
+              { n: '01', title: 'Initial Consult', body: 'We discuss your project, timeline, and site-specific needs to understand the full scope.', solid: false },
+              { n: '02', title: 'Plan & Design *', body: 'Our designers develop a detailed, compliant traffic management plan tailored to your project.', note: '* Not required if you already have an approved plan in place.', solid: false },
               { n: '03', title: 'Deploy & Execute', body: 'Accredited teams arrive on-site with equipment and signage ready to go from day one.', solid: false },
               { n: '04', title: 'Ongoing Site Management', body: 'Ongoing site monitoring ensures traffic management remains safe and effective as work progresses.', solid: false },
-            ].map(({ n, title, body, solid }, i) => (
+            ].map(({ n, title, body, note, solid }, i) => (
               <div key={n} className={`reveal d${i+1}`} style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
                 <div className={solid ? 'step-circle-solid' : 'step-circle-outline'} style={{ margin: '0 auto' }}>
                   <span className="step-num">{n}</span>
                 </div>
                 <h3 className="font-display" style={{ fontWeight: 600, fontSize: '1rem', color: '#fff', marginTop: '20px' }}>{title}</h3>
                 <p style={{ fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: 1.7, marginTop: '10px' }}>{body}</p>
+                {note && <p style={{ fontSize: '0.75rem', color: 'var(--muted)', lineHeight: 1.6, marginTop: '14px', opacity: 0.7 }}>{note}</p>}
               </div>
             ))}
           </div>

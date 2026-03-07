@@ -293,6 +293,23 @@ body {
   .hero-panel { width: 42%; }
 }
 
+/* ── Career path grid ── */
+.career-path-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+@media (min-width: 640px) {
+  .career-path-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 768px) {
+  .career-path-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 /* ── Services grid ── */
 .services-grid {
   display: grid;
@@ -322,6 +339,7 @@ body {
   overflow: hidden;
   transition: transform 0.28s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.28s ease;
 }
+
 .service-card::before {
   content: '';
   position: absolute;
@@ -844,6 +862,17 @@ input:focus, select:focus, textarea:focus {
 /* ── Mobile menu ── */
 #mobile-menu { display: none; }
 #mobile-menu.open { display: block; }
+
+/* ── Before You Apply cards grid ── */
+.before-apply-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 640px) {
+  .before-apply-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
 /* ── Responsive layout grids ── */
 .two-col-grid {
