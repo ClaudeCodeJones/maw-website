@@ -61,14 +61,14 @@ const leadership = [
 ]
 
 const leadershipImages: Record<string, string> = {
-  'Dean Hyde': '/leadership/dean_hyde_new.png',
-  'Esther Hyde': '/leadership/esther_hyde_new.png',
-  'Hayden Wilson': '/leadership/hayden_wilson_new.png',
-  'Nathan Jones': '/leadership/nathan_jones_new.png',
-  'Daniel Adams': '/leadership/daniel_adams_new.png',
-  'Kurt Puryer-Smith': '/leadership/kurt_puryersmith_v2.png',
-  'Brock Vuleta': '/leadership/brock_vuleta_new.png',
-  'Royden van Dyk': '/leadership/royden_vandyk.png',
+  'Dean Hyde': '/leadership/dean_hyde.png',
+  'Esther Hyde': '/leadership/esther_hyde.png',
+  'Hayden Wilson': '/leadership/hayden_wilson.png',
+  'Nathan Jones': '/leadership/nathan_jones.png',
+  'Daniel Adams': '/leadership/daniel_adams.png',
+  'Kurt Puryer-Smith': '/leadership/kurt_puryersmith.png',
+  'Brock Vuleta': '/leadership/brock_vuleta.png',
+  'Royden van Dyk': '/leadership/pete_manahi.png',
 }
 
 /* ── Page ── */
