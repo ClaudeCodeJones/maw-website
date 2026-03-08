@@ -213,7 +213,7 @@ export default function HomePage() {
             </div>
 
             {/* Right: stat boxes */}
-            <div className="reveal grid grid-cols-1 md:grid-cols-2 gap-4" style={{ position: 'relative' }}>
+            <div className="reveal grid grid-cols-2 gap-3" style={{ position: 'relative' }}>
               <div className="stat-box" style={{ background: 'var(--navy-mid)', border: '1px solid rgba(255,255,255,0.06)' }}>
                 <div className="font-display" style={{ fontWeight: 700, fontSize: '2.25rem', color: 'var(--orange)', lineHeight: 1 }}>18+</div>
                 <div style={{ fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--muted)', marginTop: '8px' }}>Years of Experience</div>

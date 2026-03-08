@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import RevealObserver from '../components/RevealObserver'
 import LocationsMap from '../components/LocationsMap'
+import Timeline from '../components/about/Timeline'
 
 export const metadata: Metadata = {
   title: 'About Us | Men at Work Traffic Management',
@@ -34,7 +35,7 @@ const groupEntities = [
     name: 'Sweepco',
     headline: 'Professional sweeping services for construction sites, industrial yards, and public spaces.',
     body: 'From post-construction clean-ups to ongoing site maintenance, our specialised sweepers remove debris, dust, and loose material to keep surfaces safe, tidy, and operational.',
-    href: '/',
+    href: 'https://www.sweepco.co.nz',
     logo: '/logos/sweepco_white.png',
     modifier: 'group-card--sweepco',
   },
@@ -49,14 +50,14 @@ const groupEntities = [
 ]
 
 const leadership = [
-  { name: 'Dean Hyde', title: 'Managing Director' },
-  { name: 'Esther Hyde', title: 'Director' },
-  { name: 'Hayden Wilson', title: 'General Manager' },
-  { name: 'Nathan Jones', title: 'Business Manager' },
-  { name: 'Daniel Adams', title: 'Training and Compliance Manager' },
-  { name: 'Kurt Puryer-Smith', title: 'Regional Manager – Central' },
-  { name: 'Royden van Dyk', title: 'Regional Manager – Southern' },
-  { name: 'Brock Vuleta', title: 'Business Development Manager' },
+  { name: 'Dean Hyde', title: 'Managing Director', region: 'MW Group' },
+  { name: 'Esther Hyde', title: 'Director', region: 'MW Group' },
+  { name: 'Hayden Wilson', title: 'General Manager', region: 'MW Group' },
+  { name: 'Nathan Jones', title: 'Business Manager', region: 'MW Group' },
+  { name: 'Daniel Adams', title: 'Training & Compliance Manager', region: 'National' },
+  { name: 'Kurt Puryer-Smith', title: 'Regional Manager', region: 'Central' },
+  { name: 'Royden van Dyk', title: 'Regional Manager', region: 'Southern' },
+  { name: 'Brock Vuleta', title: 'Business Development Manager', titleShort: 'BDM', region: 'National' },
 ]
 
 const leadershipImages: Record<string, string> = {
@@ -148,6 +149,11 @@ export default function AboutUsPage() {
         </div>
       </section>
 
+      {/* ── TIMELINE ── */}
+      <section style={{ background: 'var(--off-white)', borderTop: '1px solid rgba(13,27,42,0.06)', borderBottom: '1px solid rgba(13,27,42,0.06)' }} aria-label="Company history">
+        <Timeline />
+      </section>
+
       {/* ── LOCATIONS ── */}
       <section style={{ background: '#0A1623', padding: '80px 0', borderTop: '1px solid rgba(255,255,255,0.04)' }} aria-label="Our locations">
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
@@ -170,35 +176,35 @@ export default function AboutUsPage() {
       </section>
 
       {/* ── LEADERSHIP ── */}
-      <section style={{ background: 'var(--off-white)', padding: '100px 0' }} aria-label="Leadership team">
+      <section style={{ background: 'var(--navy)', padding: '100px 0', borderTop: '1px solid rgba(255,255,255,0.04)' }} aria-label="Leadership team">
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
 
           <div style={{ marginBottom: '60px' }}>
             <div className="reveal" style={{ marginBottom: '10px' }}>
               <span className="eyebrow">Our People</span>
             </div>
-            <h2 className="section-title reveal d1" style={{ fontSize: 'clamp(1.8rem,3.5vw,3rem)', color: 'var(--navy)' }}>
+            <h2 className="section-title reveal d1" style={{ fontSize: 'clamp(1.8rem,3.5vw,3rem)', color: '#fff' }}>
               Leadership
             </h2>
             <div className="orange-rule reveal d2" style={{ marginTop: '16px' }} />
-            <p className="reveal d3" style={{ fontSize: '1rem', lineHeight: 1.78, color: '#5a6a7a', maxWidth: '480px', marginTop: '20px' }}>
+            <p className="reveal d3" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '480px', marginTop: '20px' }}>
               Experienced leadership across operations, regions, compliance, and growth.
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(240px,1fr))', gap: '20px' }}>
-            {leadership.map(({ name, title }, i) => (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {leadership.map(({ name, title, titleShort, region }, i) => (
               <div
                 key={name}
                 className={`team-card reveal d${(i % 4) + 1}`}
                 style={{
-                  background: '#fff',
-                  border: '1px solid rgba(0,0,0,0.08)',
+                  background: 'var(--navy-mid)',
+                  border: '1px solid rgba(255,255,255,0.07)',
                   borderRadius: '2px',
                   overflow: 'hidden',
                 }}
               >
-                <div className="leadership-img-wrap" style={{ position: 'relative', width: '100%', aspectRatio: '1', background: 'var(--light)', borderBottom: '2px solid var(--orange)', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div className="leadership-img-wrap" style={{ position: 'relative', width: '100%', aspectRatio: '1', background: 'var(--charcoal)', borderBottom: '2px solid var(--orange)', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   {leadershipImages[name] ? (
                     <Image
                       src={leadershipImages[name]}
@@ -213,9 +219,11 @@ export default function AboutUsPage() {
                     </svg>
                   )}
                 </div>
-                <div style={{ padding: '20px 24px' }}>
-                  <p className="font-display" style={{ fontWeight: 600, fontSize: '1rem', color: 'var(--navy)', lineHeight: 1.3 }}>{name}</p>
-                  <p style={{ fontSize: '0.825rem', color: '#5a6a7a', marginTop: '5px', lineHeight: 1.5 }}>{title}</p>
+                <div style={{ padding: '16px 18px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                  <p className="font-display" style={{ fontWeight: 600, fontSize: '0.9rem', color: '#fff', lineHeight: 1.3 }}>{name}</p>
+                  <p style={{ fontSize: '0.78rem', color: 'var(--muted)', lineHeight: 1.45 }}>
+                    {titleShort ? <><span className="md:hidden">{titleShort}</span><span className="hidden md:inline">{title}</span></> : title}{region && <><br />{region}</>}
+                  </p>
                 </div>
               </div>
             ))}
@@ -225,7 +233,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* ── MORE THAN TRAFFIC ── */}
-      <section style={{ background: 'var(--navy)', padding: '100px 0' }} aria-label="Group services">
+      <section style={{ background: '#0A1623', padding: '100px 0' }} aria-label="Group services">
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
 
           <div style={{ marginBottom: '80px' }}>
@@ -252,7 +260,6 @@ export default function AboutUsPage() {
                   flexDirection: 'column',
                   background: 'var(--charcoal)',
                   borderRadius: '2px',
-                  padding: '36px 32px',
                 }}
               >
                 {/* Logo container */}
@@ -285,7 +292,7 @@ export default function AboutUsPage() {
                 </p>
 
                 {/* Supporting copy */}
-                <p style={{
+                <p className="group-card-body" style={{
                   fontSize: '0.875rem',
                   lineHeight: 1.78,
                   color: 'var(--muted)',

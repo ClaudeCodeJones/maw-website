@@ -465,6 +465,15 @@ body {
 .stat-box:hover {
   box-shadow: 0 0 0 1px var(--orange), 0 8px 24px rgba(0, 0, 0, 0.3);
 }
+@media (max-width: 767px) {
+  .stat-box {
+    padding: 14px 16px;
+    min-height: 0;
+  }
+  .stat-box .font-display {
+    font-size: 1.5rem !important;
+  }
+}
 .stat-num {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
@@ -713,7 +722,7 @@ body {
 }
 .team-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.45), 0 2px 8px rgba(242,101,34,0.12);
 }
 
 /* ── Group entity cards (More Than Traffic section) ── */
@@ -754,6 +763,10 @@ body {
 .group-card--temp:focus-visible      { border-top-color: rgba(188,156,  34, 1); box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(188,156,  34, 0.22), 0 0 44px rgba(188,156,  34, 0.13); }
 .group-card--qualcard:hover,
 .group-card--qualcard:focus-visible  { border-top-color: rgba(162,128, 255, 1); box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(162,128, 255, 0.22), 0 0 44px rgba(162,128, 255, 0.13); }
+@media (max-width: 767px) {
+  .group-card { padding: 22px 20px; }
+  .group-card-body { display: none !important; }
+}
 .group-card-logo {
   width: 100%;
   max-width: 220px;
