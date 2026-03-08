@@ -10,12 +10,9 @@ export default function HomePage() {
       {/* ── HERO ── */}
       <section id="hero" aria-label="Hero">
         <div className="hero-bg" aria-hidden="true" />
-        <div className="hero-accent-line" aria-hidden="true" />
-        <div className="hero-panel" aria-hidden="true">
-          <div className="hero-panel-corner" aria-hidden="true" />
-        </div>
+        <div className="hero-panel" aria-hidden="true" />
 
-        <div className="hero-content-wrap" style={{ position: 'relative', zIndex: 10, maxWidth: '1280px', margin: '0 auto', padding: '200px 24px 160px', width: '100%' }}>
+        <div className="hero-content-wrap" style={{ position: 'relative', zIndex: 10, maxWidth: '1280px', margin: '0 auto', padding: 'clamp(120px,15vw,200px) 24px clamp(80px,12vw,160px)', width: '100%' }}>
           <div style={{ maxWidth: '660px' }}>
 
             <div className="reveal" style={{ marginBottom: '20px' }}>
@@ -23,9 +20,19 @@ export default function HomePage() {
             </div>
 
             <h1 className="reveal d1 font-display"
-                style={{ fontWeight: 700, fontSize: 'clamp(2.6rem,6vw,5rem)', lineHeight: 1.05, letterSpacing: '-0.03em' }}>
-              Traffic Management<br />
-              <span style={{ color: 'var(--orange)' }}>You Can Rely On</span>
+                style={{ fontWeight: 700, fontSize: 'clamp(2.6rem,6vw,5rem)', lineHeight: 1.12, letterSpacing: '-0.03em' }}>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                <span className="hidden md:block" style={{ width: '2px', height: '0.75em', background: 'var(--orange)', flexShrink: 0 }} aria-hidden="true" />
+                <span>Traffic</span>
+              </span>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                <span className="hidden md:block" style={{ width: '2px', height: '0.75em', background: 'var(--orange)', flexShrink: 0 }} aria-hidden="true" />
+                <span>Management</span>
+              </span>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                <span className="hidden md:block" style={{ width: '2px', height: '0.75em', background: '#fff', flexShrink: 0 }} aria-hidden="true" />
+                <span style={{ color: 'var(--orange)' }}>You Can Rely On</span>
+              </span>
             </h1>
 
             <p className="reveal d2 font-display"
@@ -251,7 +258,6 @@ export default function HomePage() {
 
           <div className="reveal" style={{ marginBottom: '64px' }}>
             <span className="eyebrow">Our Process</span>
-            <div style={{ width: '28px', height: '2px', background: 'var(--orange)', marginTop: '8px' }} />
             <h2 className="section-title" style={{ fontSize: 'clamp(1.8rem,3.5vw,3rem)', color: '#fff', marginTop: '8px' }}>
               Simple. Efficient.<br />
               <span style={{ color: 'var(--orange)' }}>Reliable.</span>

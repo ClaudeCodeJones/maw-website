@@ -248,8 +248,10 @@ export default function RequestQuotePage() {
           {status === 'success' ? 'Request Submitted' : 'Request an Estimate'}
         </h1>
         {status !== 'success' && (
-          <p className="reveal d2" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '480px', marginTop: '20px' }}>
-            Provide a few details about your project and our team will prepare pricing for you.
+          <p className="reveal d2" style={{ fontSize: '0.95rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '480px', marginTop: '20px' }}>
+            Provide a few details about your project and our team will prepare pricing for you, or please call us on{' '}
+            <a href="tel:0800636289" style={{ color: 'var(--orange)', textDecoration: 'none', fontWeight: 500 }}>0800 636 289</a>
+            {' '}to discuss your needs.
           </p>
         )}
       </div>
@@ -264,7 +266,7 @@ export default function RequestQuotePage() {
         <RevealObserver />
         {heroContent}
         <section style={{ background: 'var(--navy)', padding: '36px 0 100px' }}>
-          <div style={{ maxWidth: '700px', margin: '0 auto', padding: '0 24px' }}>
+          <div style={{ maxWidth: '800px', margin: '0 auto', padding: '0 24px' }}>
             <div style={{ background: 'var(--navy-mid)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '4px', padding: 'clamp(28px, 5vw, 48px)', textAlign: 'center' }}>
               <div style={{ width: '56px', height: '56px', borderRadius: '50%', background: 'rgba(74,222,128,0.1)', border: '1px solid rgba(74,222,128,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 24px' }}>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4ade80" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -295,7 +297,7 @@ export default function RequestQuotePage() {
       {heroContent}
 
       <section style={{ background: 'var(--navy)', padding: '36px 0 100px' }}>
-        <div style={{ maxWidth: '700px', margin: '0 auto', padding: '0 24px' }}>
+        <div style={{ maxWidth: '800px', margin: '0 auto', padding: '0 24px' }}>
 
           {/* Progress indicator */}
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '32px' }}>

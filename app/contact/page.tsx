@@ -113,16 +113,16 @@ export default function ContactPage() {
           <div style={{ width: '40px', height: '1px', background: 'rgba(255,255,255,0.15)', margin: '20px 0' }} />
           <p className="reveal d3" style={{ marginTop: '0', fontSize: '0.82rem', color: 'var(--muted)', lineHeight: 1.6 }}>
             Prefer to call or email?<br />
-            <span style={{ color: '#fff', fontWeight: 600 }}>0800 636 289</span>
+            <a href="tel:0800636289" style={{ color: 'var(--orange)', fontWeight: 500, textDecoration: 'none' }}>0800 636 289</a>
             <span style={{ margin: '0 8px', opacity: 0.4 }}>|</span>
-            <a href="mailto:office@menatwork.co.nz" style={{ color: '#fff', fontWeight: 600, textDecoration: 'none' }}>office@menatwork.co.nz</a>
+            <a href="mailto:office@menatwork.co.nz" style={{ color: 'var(--orange)', fontWeight: 500, textDecoration: 'none' }}>office@menatwork.co.nz</a>
           </p>
         </div>
       </section>
 
       {/* ── FORM SECTION ── */}
       <section style={{ background: 'var(--navy)', padding: '36px 0 100px' }}>
-        <div style={{ maxWidth: '700px', margin: '0 auto', padding: '0 24px' }}>
+        <div style={{ maxWidth: '800px', margin: '0 auto', padding: '0 24px' }}>
 
           <div
             className="reveal"

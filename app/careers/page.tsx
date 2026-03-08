@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Suspense } from 'react'
+import { ShieldCheck, Users, TrendingUp, GraduationCap, Award, MapPin } from 'lucide-react'
 import RevealObserver from '../components/RevealObserver'
 import CareerPath from '../components/careers/CareerPath'
 import BranchHiringCard from '../components/careers/BranchHiringCard'
@@ -15,32 +16,32 @@ export const metadata: Metadata = {
 
 const benefits = [
   {
-    icon: <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />,
+    icon: ShieldCheck,
     title: 'Safe by Default',
     body: 'Safety is not a box we tick. It is how every team member works, from day one.',
   },
   {
-    icon: <><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" /></>,
+    icon: Users,
     title: 'Real Teams',
     body: 'Work alongside experienced crews who support your development.',
   },
   {
-    icon: <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />,
+    icon: TrendingUp,
     title: 'Grow With Us',
     body: 'Clear pathways from TTM to STMS, Lead STMS, and beyond.',
   },
   {
-    icon: <><rect x="2" y="3" width="20" height="14" rx="2" ry="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" /></>,
+    icon: GraduationCap,
     title: 'Training Provided',
     body: 'In-house training that builds real qualifications and site experience.',
   },
   {
-    icon: <><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></>,
+    icon: Award,
     title: 'Industry Leadership',
     body: 'Trusted by contractors across the region for professional traffic management.',
   },
   {
-    icon: <><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></>,
+    icon: MapPin,
     title: 'Five Locations',
     body: 'Opportunities across Wellington, Nelson, Blenheim, Christchurch, and Timaru.',
   },
@@ -65,7 +66,7 @@ export default function CareersPage() {
         <div style={{ position: 'absolute', top: '-100px', left: '50%', transform: 'translateX(-50%)', width: '700px', height: '700px', background: 'radial-gradient(circle, rgba(242,101,34,0.07) 0%, transparent 65%)', pointerEvents: 'none' }} aria-hidden="true" />
         <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '3px', background: 'var(--orange)' }} aria-hidden="true" />
 
-        <div style={{ position: 'relative', zIndex: 10, maxWidth: '800px', margin: '0 auto', padding: '0 24px' }}>
+        <div style={{ position: 'relative', zIndex: 10, maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <div className="reveal" style={{ marginBottom: '20px' }}>
             <span className="eyebrow">Join the Team</span>
           </div>
@@ -78,7 +79,7 @@ export default function CareersPage() {
           <p className="reveal d3" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '540px', marginTop: '20px' }}>
             Men at Work has been building teams across New Zealand since 2008. We look for people who take safety seriously, show up, and want to grow in a hands-on industry.
           </p>
-          <div className="reveal d4" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '14px', marginTop: '40px' }}>
+          <div className="reveal d4" style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', marginTop: '40px' }}>
             <a href="#apply" className="btn-orange">
               Apply Now
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -188,12 +189,10 @@ export default function CareersPage() {
 
             {/* Right: feature list */}
             <div className="benefits-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '28px 40px' }}>
-              {benefits.map(({ icon, title, body }, i) => (
+              {benefits.map(({ icon: Icon, title, body }, i) => (
                 <div key={title} className={`reveal d${(i % 3) + 1}`} style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
                   <div style={{ width: '40px', height: '40px', borderRadius: '8px', background: 'rgba(242,101,34,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      {icon}
-                    </svg>
+                    <Icon size={20} color="var(--orange)" strokeWidth={2} aria-hidden="true" />
                   </div>
                   <div>
                     <h3 className="font-display" style={{ fontWeight: 600, fontSize: '1rem', color: '#fff', marginBottom: '6px' }}>{title}</h3>
@@ -274,13 +273,6 @@ export default function CareersPage() {
               <div className="orange-rule reveal d2" style={{ marginTop: '16px' }} />
               <p className="reveal d3" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', marginTop: '24px' }}>
                 Fill in the form and one of our team will be in touch. We review every application and aim to respond within a few business days.
-              </p>
-              <p className="reveal d4" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', marginTop: '16px' }}>
-                You can also reach us directly on{' '}
-                <a href="tel:0800636289" style={{ color: 'var(--orange)', textDecoration: 'none', fontWeight: 500 }}>
-                  0800 636 289
-                </a>
-                .
               </p>
 
               <div className="reveal d5" style={{ marginTop: '40px', padding: '24px', background: 'rgba(242,101,34,0.06)', border: '1px solid rgba(242,101,34,0.15)', borderLeft: '3px solid var(--orange)', borderRadius: '2px' }}>

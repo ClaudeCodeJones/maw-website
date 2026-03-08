@@ -90,7 +90,7 @@ export default function AboutUsPage() {
         <div style={{ position: 'absolute', top: '-100px', left: '50%', transform: 'translateX(-50%)', width: '700px', height: '700px', background: 'radial-gradient(circle, rgba(242,101,34,0.07) 0%, transparent 65%)', pointerEvents: 'none' }} aria-hidden="true" />
         <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '3px', background: 'var(--orange)' }} aria-hidden="true" />
 
-        <div style={{ position: 'relative', zIndex: 10, maxWidth: '800px', margin: '0 auto', padding: '0 24px' }}>
+        <div style={{ position: 'relative', zIndex: 10, maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <div className="reveal" style={{ marginBottom: '20px' }}>
             <span className="eyebrow">Who We Are</span>
           </div>
@@ -261,7 +261,7 @@ export default function AboutUsPage() {
                   width: '100%',
                   maxWidth: '220px',
                   height: '80px',
-                  margin: '0 auto',
+                  margin: '0',
                   flexShrink: 0,
                 }}>
                   <Image

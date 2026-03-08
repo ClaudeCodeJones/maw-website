@@ -195,7 +195,7 @@ body {
   overflow: hidden;
 }
 @media (min-width: 1024px) {
-  #hero { min-height: 90vh; }
+  #hero { min-height: 0; }
 }
 .hero-bg {
   position: absolute;
