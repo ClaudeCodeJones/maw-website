@@ -276,6 +276,7 @@ body {
 }
 @media (max-width: 640px) {
   .hero-content-wrap {
+    padding-top: 160px !important;
     padding-bottom: 80px !important;
   }
   .leadership-img-wrap {

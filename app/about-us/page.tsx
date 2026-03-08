@@ -55,19 +55,20 @@ const leadership = [
   { name: 'Hayden Wilson', title: 'General Manager', region: 'MW Group' },
   { name: 'Nathan Jones', title: 'Business Manager', region: 'MW Group' },
   { name: 'Daniel Adams', title: 'Training & Compliance Manager', region: 'National' },
+  { name: 'Brock Vuleta', title: 'Business Development Manager', titleShort: 'BDM', region: 'National' },
   { name: 'Kurt Puryer-Smith', title: 'Regional Manager', region: 'Central' },
   { name: 'Royden van Dyk', title: 'Regional Manager', region: 'Southern' },
-  { name: 'Brock Vuleta', title: 'Business Development Manager', titleShort: 'BDM', region: 'National' },
 ]
 
 const leadershipImages: Record<string, string> = {
-  'Dean Hyde': '/leadership/dean_hyde.png',
-  'Esther Hyde': '/leadership/esther_hyde.png',
-  'Hayden Wilson': '/leadership/hayden_wilson.png',
-  'Nathan Jones': '/leadership/nathan_jones.png',
-  'Daniel Adams': '/leadership/daniel_adams.png',
-  'Kurt Puryer-Smith': '/leadership/kurt_puryer_smith.png',
-  'Brock Vuleta': '/leadership/brock_vuleta.png',
+  'Dean Hyde': '/leadership/dean_hyde_new.png',
+  'Esther Hyde': '/leadership/esther_hyde_new.png',
+  'Hayden Wilson': '/leadership/hayden_wilson_new.png',
+  'Nathan Jones': '/leadership/nathan_jones_new.png',
+  'Daniel Adams': '/leadership/daniel_adams_new.png',
+  'Kurt Puryer-Smith': '/leadership/kurt_puryersmith_v2.png',
+  'Brock Vuleta': '/leadership/brock_vuleta_new.png',
+  'Royden van Dyk': '/leadership/royden_vandyk.png',
 }
 
 /* ── Page ── */
@@ -220,9 +221,30 @@ export default function AboutUsPage() {
                   )}
                 </div>
                 <div style={{ padding: '16px 18px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                  <p className="font-display" style={{ fontWeight: 600, fontSize: '0.9rem', color: '#fff', lineHeight: 1.3 }}>{name}</p>
+                  <p className="font-display" style={{ fontWeight: 600, fontSize: '0.9rem', color: '#fff', lineHeight: 1.3 }}>
+                    {name === 'Kurt Puryer-Smith' ? (
+                      <>
+                        <span className="md:hidden">Kurt<br />Puryer-Smith</span>
+                        <span className="hidden md:inline">Kurt Puryer-Smith</span>
+                      </>
+                    ) : name === 'Royden van Dyk' ? (
+                      <>
+                        <span className="md:hidden">Royden<br />van Dyk</span>
+                        <span className="hidden md:inline">Royden van Dyk</span>
+                      </>
+                    ) : name}
+                  </p>
                   <p style={{ fontSize: '0.78rem', color: 'var(--muted)', lineHeight: 1.45 }}>
-                    {titleShort ? <><span className="md:hidden">{titleShort}</span><span className="hidden md:inline">{title}</span></> : title}{region && <><br />{region}</>}
+                    {name === 'Daniel Adams' ? (
+                      <>
+                        <span className="md:hidden">Training &amp;<br />Compliance Mgr<br />National</span>
+                        <span className="hidden md:inline">{title}{region && <><br />{region}</>}</span>
+                      </>
+                    ) : titleShort ? (
+                      <><span className="md:hidden">{titleShort}</span><span className="hidden md:inline">{title}</span>{region && <><br />{region}</>}</>
+                    ) : (
+                      <>{title}{region && <><br />{region}</>}</>
+                    )}
                   </p>
                 </div>
               </div>
@@ -281,11 +303,7 @@ export default function AboutUsPage() {
                 </div>
 
                 {/* Positioning headline */}
-                <p className="font-display" style={{
-                  fontWeight: 600,
-                  fontSize: '1rem',
-                  color: '#fff',
-                  lineHeight: 1.45,
+                <p className="group-card-headline text-[var(--muted)] md:text-white text-base md:text-lg font-[400] md:font-[600] leading-relaxed max-w-[520px]" style={{
                   marginTop: '40px',
                 }}>
                   {headline}
