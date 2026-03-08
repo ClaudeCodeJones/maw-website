@@ -64,8 +64,13 @@ export default function Footer() {
           <div>
             <div className="footer-heading">Services</div>
             <ul style={{ display: 'flex', flexDirection: 'column', gap: '11px', listStyle: 'none' }}>
-              {['Traffic Management for Roadworks','Traffic Management Plans','Event Traffic Management'].map(s => (
-                <li key={s}><a href="/#services" className="footer-link">{s}</a></li>
+              {[
+                { label: 'Traffic Management for Roadworks', href: '/#service-roadworks' },
+                { label: 'Event Traffic Management', href: '/#service-events' },
+                { label: 'Traffic Management Plans', href: '/#service-tmp' },
+                { label: 'Industry Training', href: '/#service-training' },
+              ].map(({ label, href }) => (
+                <li key={label}><a href={href} className="footer-link">{label}</a></li>
               ))}
             </ul>
           </div>
