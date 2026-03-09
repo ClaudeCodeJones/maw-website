@@ -68,7 +68,7 @@ const leadershipImages: Record<string, string> = {
   'Daniel Adams': '/leadership/daniel_adams.png',
   'Kurt Puryer-Smith': '/leadership/kurt_puryersmith.png',
   'Brock Vuleta': '/leadership/brock_vuleta.png',
-  'Royden van Dyk': '/leadership/pete_manahi.png',
+  'Royden van Dyk': '/leadership/royden_vandyk.png',
 }
 
 /* ── Page ── */

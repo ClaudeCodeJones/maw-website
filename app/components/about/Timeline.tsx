@@ -5,10 +5,11 @@ type Milestone = {
   year: string
   title: string
   Icon: LucideIcon
+  subtext?: string
 }
 
 const milestones: Milestone[] = [
-  { year: '2008', title: 'Founded in Christchurch',          Icon: Flag         },
+  { year: '2008', title: 'Founded in Christchurch', Icon: Flag, subtext: 'Men at Work Traffic Management was founded in Christchurch.\nBuilt on a simple idea: reliable traffic management done properly.' },
   { year: '2012', title: 'Moved to Ohoka Rd, Kaiapoi',       Icon: Building2    },
   { year: '2017', title: 'Moved to Belfast Business Park',   Icon: Building2    },
   { year: '2017', title: 'Blenheim branch opens',           Icon: MapPin       },
@@ -19,7 +20,7 @@ const milestones: Milestone[] = [
   { year: '2025', title: 'The Temp Company established',     Icon: HardHat      },
 ]
 
-function MilestoneCard({ year, title, Icon, delayClass }: { year: string; title: string; Icon: LucideIcon; delayClass: string }) {
+function MilestoneCard({ year, title, Icon, delayClass, subtext }: { year: string; title: string; Icon: LucideIcon; delayClass: string; subtext?: string }) {
   return (
     <div className={`tl-card reveal ${delayClass}`} style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
       <span className="tl-card-year">{year}</span>
@@ -31,6 +32,13 @@ function MilestoneCard({ year, title, Icon, delayClass }: { year: string; title:
         </h3>
         <Icon size={16} stroke="var(--orange)" strokeWidth={2} style={{ flexShrink: 0, opacity: 0.85 }} aria-hidden="true" />
       </div>
+      {subtext && (
+        <p style={{ fontSize: '0.78rem', lineHeight: 1.6, color: 'var(--muted)', marginTop: '6px' }}>
+          {subtext.split('\n').map((line, i) => (
+            <span key={i}>{line}{i < subtext.split('\n').length - 1 && <br />}</span>
+          ))}
+        </p>
+      )}
     </div>
   )
 }
@@ -143,18 +151,18 @@ export default function Timeline() {
 
                 {/* ── Desktop: alternating layout ── */}
                 <div className="tl-side tl-side--left tl-desktop">
-                  {isLeft && <MilestoneCard year={m.year} title={m.title} Icon={m.Icon} delayClass={delayClass} />}
+                  {isLeft && <MilestoneCard year={m.year} title={m.title} Icon={m.Icon} delayClass={delayClass} subtext={m.subtext} />}
                 </div>
                 <div className="tl-spine-col tl-desktop" aria-hidden="true">
                   <div className="tl-dot" />
                 </div>
                 <div className="tl-side tl-side--right tl-desktop">
-                  {!isLeft && <MilestoneCard year={m.year} title={m.title} Icon={m.Icon} delayClass={delayClass} />}
+                  {!isLeft && <MilestoneCard year={m.year} title={m.title} Icon={m.Icon} delayClass={delayClass} subtext={m.subtext} />}
                 </div>
 
                 {/* ── Mobile: stacked layout ── */}
                 <div className="tl-mobile" style={{ width: '100%', paddingBottom: '4px' }}>
-                  <MilestoneCard year={m.year} title={m.title} Icon={m.Icon} delayClass={delayClass} />
+                  <MilestoneCard year={m.year} title={m.title} Icon={m.Icon} delayClass={delayClass} subtext={m.subtext} />
                 </div>
 
               </div>
