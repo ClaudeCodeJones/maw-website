@@ -1,6 +1,6 @@
 import { HardHat, TrafficCone, ShieldCheck, Users, ClipboardList, Briefcase } from 'lucide-react'
 
-const row1 = [
+const row1: CardData[] = [
   {
     title: 'TTM Worker',
     description: 'Start on the tools. Learn signals, site setup, and traffic management fundamentals.',
@@ -23,7 +23,7 @@ const row1 = [
   },
 ]
 
-const row2 = [
+const row2: CardData[] = [
   {
     title: 'Foreman',
     description: 'Lead multiple crews across projects and support operational planning.',
