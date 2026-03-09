@@ -238,7 +238,12 @@ export default function AboutUsPage() {
                     ) : name}
                   </p>
                   <p style={{ fontSize: '0.78rem', color: 'var(--muted)', lineHeight: 1.45 }}>
-                    {name === 'Daniel Adams' ? (
+                    {name === 'Brock Vuleta' ? (
+                      <>
+                        <span className="md:hidden">Business<br />Development Mgr<br />National</span>
+                        <span className="hidden md:inline">{title}{region && <><br />{region}</>}</span>
+                      </>
+                    ) : name === 'Daniel Adams' ? (
                       <>
                         <span className="md:hidden">Training &amp;<br />Compliance Mgr<br />National</span>
                         <span className="hidden md:inline">{title}{region && <><br />{region}</>}</span>
