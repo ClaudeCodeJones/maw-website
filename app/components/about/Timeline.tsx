@@ -1,4 +1,4 @@
-import { Flag, Building2, MapPin, Briefcase, GraduationCap, HardHat } from 'lucide-react'
+import { Flag, Building2, MapPin, GraduationCap, HardHat } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
 type Milestone = {
@@ -9,15 +9,15 @@ type Milestone = {
 }
 
 const milestones: Milestone[] = [
-  { year: '2008', title: 'Founded in Christchurch', Icon: Flag, subtext: 'Men at Work Traffic Management was founded in Christchurch.\nBuilt on a simple idea: reliable traffic management done properly.' },
-  { year: '2012', title: 'Moved to Ohoka Rd, Kaiapoi',       Icon: Building2    },
-  { year: '2017', title: 'Moved to Belfast Business Park',   Icon: Building2    },
-  { year: '2017', title: 'Blenheim branch opens',           Icon: MapPin       },
-  { year: '2021', title: 'Timaru branch opens',             Icon: MapPin       },
-  { year: '2021', title: 'Wellington branch opens',         Icon: MapPin       },
-  { year: '2023', title: 'Nelson branch opens',             Icon: MapPin       },
-  { year: '2023', title: 'MW Training & Planning established', Icon: GraduationCap },
-  { year: '2025', title: 'The Temp Company established',     Icon: HardHat      },
+  { year: '2008', title: 'Founded in Christchurch', Icon: Flag, subtext: 'Dean and Esther purchased Men at Work after its establishment in 2005. The business initially operated from their home in Woodend.' },
+  { year: '2012', title: 'Moved to Ohoka Rd, Kaiapoi', Icon: Building2, subtext: 'The business outgrew its original base and relocated to Kaiapoi.\nThis move gave the company room to grow its fleet and team.' },
+  { year: '2017', title: 'Moved to Belfast Business Park', Icon: Building2, subtext: 'Continued growth led to a move within Christchurch. A purpose-built Belfast Business Park facility became our new head office.' },
+  { year: '2017', title: 'Blenheim branch opens', Icon: MapPin, subtext: 'Expansion beyond Christchurch begins in Marlborough. The Blenheim branch supports projects across the wider region.' },
+  { year: '2021', title: 'Timaru branch opens', Icon: MapPin, subtext: 'The next step in our growth reaches South Canterbury. The Timaru branch opens with Christina Elliott leading the team.' },
+  { year: '2021', title: 'Wellington branch opens', Icon: MapPin, subtext: 'Men at Work opens its Wellington branch to support the Transmission Gully project, establishing a presence that remains a key part of the business.' },
+  { year: '2023', title: 'Nelson branch opens', Icon: MapPin, subtext: 'Men at Work arrives in Nelson to support the top of the South Island, providing local crews and faster response across the region.' },
+  { year: '2023', title: 'MW Training & Planning established', Icon: GraduationCap, subtext: 'MW Training & Planning is established to support our operations. Providing in-house training and professional TMP design.' },
+  { year: '2025', title: 'The Temp Company established', Icon: HardHat, subtext: 'The Temp Company launches in Blenheim initially, later growing further into Christchurch and Wellington to supply trained workers across the regions.' },
 ]
 
 function MilestoneCard({ year, title, Icon, delayClass, subtext }: { year: string; title: string; Icon: LucideIcon; delayClass: string; subtext?: string }) {
@@ -34,9 +34,7 @@ function MilestoneCard({ year, title, Icon, delayClass, subtext }: { year: strin
       </div>
       {subtext && (
         <p style={{ fontSize: '0.78rem', lineHeight: 1.6, color: 'var(--muted)', marginTop: '6px' }}>
-          {subtext.split('\n').map((line, i) => (
-            <span key={i}>{line}{i < subtext.split('\n').length - 1 && <br />}</span>
-          ))}
+          {subtext.replace(/\n/g, ' ')}
         </p>
       )}
     </div>

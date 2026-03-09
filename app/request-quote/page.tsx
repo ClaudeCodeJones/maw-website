@@ -589,17 +589,22 @@ export default function RequestQuotePage() {
 
                 {/* Meeting date + time (conditional) */}
                 {s2.onsiteMeeting === 'yes' && (
-                  <div style={{ ...fieldStyle, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4" style={{ marginBottom: '20px' }}>
                     <div>
                       <label htmlFor="meetingDate" style={labelStyle}>Date *</label>
-                      <input
-                        id="meetingDate"
-                        type="date"
-                        value={s2.meetingDate}
-                        min={new Date().toISOString().split('T')[0]}
-                        onChange={e => setF2('meetingDate', e.target.value)}
-                        style={{ ...inputStyle, borderColor: s2Errors.meetingDate ? '#f87171' : 'rgba(255,255,255,0.12)' }}
-                      />
+                      <div style={{ position: 'relative' }}>
+                        {!s2.meetingDate && (
+                          <span style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', fontFamily: 'Inter, sans-serif', fontSize: '0.9rem', color: 'rgba(255,255,255,0.45)', pointerEvents: 'none', zIndex: 1 }}>Select date</span>
+                        )}
+                        <input
+                          id="meetingDate"
+                          type="date"
+                          value={s2.meetingDate}
+                          min={new Date().toISOString().split('T')[0]}
+                          onChange={e => setF2('meetingDate', e.target.value)}
+                          style={{ ...inputStyle, borderColor: s2Errors.meetingDate ? '#f87171' : 'rgba(255,255,255,0.12)', color: s2.meetingDate ? '#fff' : 'transparent' }}
+                        />
+                      </div>
                       <FieldError msg={s2Errors.meetingDate} />
                     </div>
                     <div>

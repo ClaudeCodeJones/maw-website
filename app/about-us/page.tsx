@@ -167,6 +167,9 @@ export default function AboutUsPage() {
               Five Locations. One Standard.
             </h2>
             <div className="orange-rule reveal d2" style={{ marginTop: '16px' }} />
+            <p className="reveal d3" style={{ marginTop: '20px', fontSize: '1.05rem', lineHeight: 1.7, color: 'rgba(255,255,255,0.65)', maxWidth: '480px' }}>
+              Five locations across New Zealand, delivering the same professional standard on every site.
+            </p>
           </div>
 
           <div className="reveal d1">

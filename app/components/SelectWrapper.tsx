@@ -1,20 +1,6 @@
 'use client'
 
-import React from 'react'
-
-const inputStyle: React.CSSProperties = {
-  width: '100%',
-  background: 'rgba(255,255,255,0.05)',
-  border: '1px solid rgba(255,255,255,0.12)',
-  borderRadius: '2px',
-  padding: '12px 16px',
-  fontFamily: 'Inter, sans-serif',
-  fontSize: '0.9rem',
-  color: '#fff',
-  outline: 'none',
-  appearance: 'none' as const,
-  colorScheme: 'dark' as const,
-}
+import React, { useState, useRef, useEffect } from 'react'
 
 export default function SelectWrapper({
   id,
@@ -31,36 +17,135 @@ export default function SelectWrapper({
   placeholder: string
   children: React.ReactNode
 }) {
+  const [open, setOpen] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  // Build options from children
+  const options: { value: string; label: string }[] = []
+  React.Children.forEach(children, child => {
+    if (React.isValidElement(child) && child.type === 'option') {
+      const props = child.props as { value?: string; children?: React.ReactNode }
+      if (props.value !== undefined && props.value !== '') {
+        options.push({ value: props.value, label: String(props.children) })
+      }
+    }
+  })
+
+  const selected = options.find(o => o.value === value)
+
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClick)
+    return () => document.removeEventListener('mousedown', handleClick)
+  }, [])
+
+  function handleKey(e: React.KeyboardEvent) {
+    if (e.key === 'Escape') setOpen(false)
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setOpen(o => !o) }
+    if (e.key === 'ArrowDown') {
+      e.preventDefault()
+      const idx = options.findIndex(o => o.value === value)
+      const next = options[Math.min(idx + 1, options.length - 1)]
+      if (next) onChange(next.value)
+    }
+    if (e.key === 'ArrowUp') {
+      e.preventDefault()
+      const idx = options.findIndex(o => o.value === value)
+      const prev = options[Math.max(idx - 1, 0)]
+      if (prev) onChange(prev.value)
+    }
+  }
+
   return (
-    <div style={{ position: 'relative' }}>
-      <select
+    <div ref={ref} style={{ position: 'relative' }}>
+      <button
         id={id}
-        value={value}
-        onChange={e => onChange(e.target.value)}
+        type="button"
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        onClick={() => setOpen(o => !o)}
+        onKeyDown={handleKey}
         style={{
-          ...inputStyle,
+          width: '100%',
           background: '#0d1f33',
-          borderColor: error ? '#f87171' : 'rgba(255,255,255,0.12)',
-          paddingRight: '40px',
+          border: `1px solid ${error ? '#f87171' : 'rgba(255,255,255,0.12)'}`,
+          borderRadius: '2px',
+          padding: '12px 40px 12px 16px',
+          fontFamily: 'Inter, sans-serif',
+          fontSize: '0.9rem',
+          color: selected ? '#fff' : 'rgba(255,255,255,0.45)',
+          outline: 'none',
           cursor: 'pointer',
-          color: value === '' ? 'rgba(255,255,255,0.45)' : '#fff',
+          textAlign: 'left',
+          display: 'block',
         }}
       >
-        <option value="" disabled hidden style={{ background: '#0d1f33' }}>
-          {placeholder}
-        </option>
-        {children}
-      </select>
+        {selected ? selected.label : placeholder}
+      </button>
+
+      {/* Chevron */}
       <svg
-        width="14"
-        height="14"
-        viewBox="0 0 14 14"
-        fill="none"
-        style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', color: 'var(--muted)' }}
+        width="14" height="14" viewBox="0 0 14 14" fill="none"
+        style={{
+          position: 'absolute', right: '14px', top: '50%',
+          transform: `translateY(-50%) rotate(${open ? '180deg' : '0deg'})`,
+          transition: 'transform 0.18s ease',
+          pointerEvents: 'none', color: 'var(--muted)',
+        }}
         aria-hidden="true"
       >
         <path d="M3 5l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
+
+      {/* Dropdown list */}
+      {open && (
+        <ul
+          role="listbox"
+          style={{
+            position: 'absolute',
+            top: 'calc(100% + 4px)',
+            left: 0,
+            right: 0,
+            background: '#0d1f33',
+            border: '1px solid rgba(255,255,255,0.14)',
+            borderRadius: '2px',
+            margin: 0,
+            padding: '4px 0',
+            listStyle: 'none',
+            zIndex: 50,
+            boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
+          }}
+        >
+          {options.map(opt => (
+            <li
+              key={opt.value}
+              role="option"
+              aria-selected={opt.value === value}
+              onClick={() => { onChange(opt.value); setOpen(false) }}
+              style={{
+                padding: '10px 16px',
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '0.9rem',
+                cursor: 'pointer',
+                color: opt.value === value ? 'var(--orange)' : '#fff',
+                background: opt.value === value ? 'rgba(253,79,0,0.08)' : 'transparent',
+              }}
+              onMouseEnter={e => {
+                if (opt.value !== value) (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.05)'
+              }}
+              onMouseLeave={e => {
+                if (opt.value !== value) (e.currentTarget as HTMLElement).style.background = 'transparent'
+              }}
+            >
+              {opt.label}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   )
 }

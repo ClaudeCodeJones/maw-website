@@ -163,7 +163,7 @@ export default function CareersPage() {
             ))}
           </div>
           <p className="reveal d3" style={{ fontSize: '0.875rem', lineHeight: 1.72, color: 'var(--muted)', borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '20px' }}>
-            Check the hiring status for each location below before applying. Applications that do not meet the criteria above may not receive a response.
+            Applications that do not meet the criteria above may not receive a response.
           </p>
         </div>
       </section>
@@ -219,7 +219,7 @@ export default function CareersPage() {
             </h2>
             <div className="orange-rule reveal d2" style={{ marginTop: '16px' }} />
             <p className="reveal d3" style={{ fontSize: '1rem', lineHeight: 1.78, color: '#5a6a7a', marginTop: '20px' }}>
-              Most of our managers started on the tools. We build careers, not just short-term rosters.
+              Most of our managers started on the tools. We build careers, not just rosters.
             </p>
           </div>
 
@@ -241,7 +241,7 @@ export default function CareersPage() {
             </h2>
             <div className="orange-rule reveal d2" style={{ marginTop: '16px' }} />
             <p className="reveal d3" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '520px', marginTop: '20px' }}>
-              Hiring status is updated regularly. Applications are accepted only when a branch is actively hiring.
+              We only accept applications for the roles listed below at each branch. Applications for any other positions will not be considered and may not be acknowledged.
             </p>
           </div>
 
@@ -280,7 +280,10 @@ export default function CareersPage() {
                   Important for Casual Applicants
                 </p>
                 <p style={{ fontSize: '0.85rem', lineHeight: 1.65, color: 'var(--muted)', marginBottom: '14px' }}>
-                  The nature of casual work is sporadic. While this can offer flexibility, and we do promote from within our casual pool when full-time positions become available, it may not suit everyone. We want to ensure you fully understand the role before proceeding. If you require a consistent income, this may not be the right fit for you.
+                  The nature of casual work is sporadic. While this can offer flexibility, and we do promote from within our casual pool when full-time positions become available, it may not suit everyone.
+                </p>
+                <p style={{ fontSize: '0.85rem', lineHeight: 1.65, color: 'var(--muted)', marginBottom: '14px' }}>
+                  We want to ensure you fully understand the role before proceeding. If you require a consistent income, this may not be the right fit for you.
                 </p>
                 <p style={{ fontSize: '0.85rem', lineHeight: 1.65, color: 'var(--muted)' }}>
                   If you are applying for a casual traffic role, please read the{' '}

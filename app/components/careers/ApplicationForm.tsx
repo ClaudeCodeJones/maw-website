@@ -117,7 +117,7 @@ function CheckboxOption({
 
 export default function ApplicationForm() {
   const searchParams = useSearchParams()
-  const [step, setStep] = useState<1 | 2>(1)
+  const [step, setStep] = useState<1 | 2>(2)
   const [state, setState] = useState<FormState>('idle')
   const [errors, setErrors] = useState<Record<string, string>>({})
 
@@ -145,6 +145,10 @@ export default function ApplicationForm() {
     drugAlcoholConfirm: false,
     criminalHistoryConfirm: false,
     experienceOther: '',
+    rightToWork: '',
+    visaExpiry: '',
+    interviewDay: '',
+    interviewTime: '',
   })
 
   function set(field: string, value: string | boolean | string[]) {
@@ -178,6 +182,7 @@ export default function ApplicationForm() {
     if (!form.city.trim()) e.city = 'Required'
     if (!form.startDate) e.startDate = 'Required'
     if (!form.branch) e.branch = 'Select a branch'
+    if (!form.rightToWork) e.rightToWork = 'Required'
     return e
   }
 
@@ -190,6 +195,8 @@ export default function ApplicationForm() {
     if (!form.aboutYourself.trim()) e.aboutYourself = 'Required'
     if (!form.healthIssues.trim()) e.healthIssues = 'Required'
     if (!form.accHistory.trim()) e.accHistory = 'Required'
+    if (!form.drugAlcoholConfirm) e.drugAlcoholConfirm = 'You must confirm this before submitting'
+    if (!form.criminalHistoryConfirm) e.criminalHistoryConfirm = 'You must confirm this before submitting'
     return e
   }
 
@@ -284,16 +291,27 @@ export default function ApplicationForm() {
             <FieldError msg={errors.fullName} />
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
-            <div>
-              <label style={labelStyle}>Email</label>
-              <input
-                type="email" autoComplete="email" value={form.email}
-                onChange={e => set('email', e.target.value)}
-                style={{ ...inputStyle, borderColor: errors.email ? '#f87171' : 'rgba(255,255,255,0.12)' }}
-              />
-              <FieldError msg={errors.email} />
-            </div>
+          <div style={{ marginBottom: '20px' }}>
+            <label style={labelStyle}>Email</label>
+            <input
+              type="email" autoComplete="email" value={form.email}
+              onChange={e => set('email', e.target.value)}
+              style={{ ...inputStyle, borderColor: errors.email ? '#f87171' : 'rgba(255,255,255,0.12)' }}
+            />
+            <FieldError msg={errors.email} />
+          </div>
+
+          <div style={{ marginBottom: '20px' }}>
+            <label style={labelStyle}>City / Town</label>
+            <input
+              type="text" value={form.city}
+              onChange={e => set('city', e.target.value)}
+              style={{ ...inputStyle, borderColor: errors.city ? '#f87171' : 'rgba(255,255,255,0.12)' }}
+            />
+            <FieldError msg={errors.city} />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5" style={{ marginBottom: '20px' }}>
             <div>
               <label style={labelStyle}>Phone</label>
               <input
@@ -303,28 +321,48 @@ export default function ApplicationForm() {
               />
               <FieldError msg={errors.phone} />
             </div>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
-            <div>
-              <label style={labelStyle}>City / Town</label>
-              <input
-                type="text" value={form.city}
-                onChange={e => set('city', e.target.value)}
-                style={{ ...inputStyle, borderColor: errors.city ? '#f87171' : 'rgba(255,255,255,0.12)' }}
-              />
-              <FieldError msg={errors.city} />
-            </div>
             <div>
               <label style={labelStyle}>Earliest Start Date</label>
-              <input
-                type="date" value={form.startDate}
-                onChange={e => set('startDate', e.target.value)}
-                style={{ ...inputStyle, borderColor: errors.startDate ? '#f87171' : 'rgba(255,255,255,0.12)' }}
-              />
+              <div style={{ position: 'relative' }}>
+                {!form.startDate && (
+                  <span style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', fontFamily: 'Inter, sans-serif', fontSize: '0.9rem', color: 'rgba(255,255,255,0.45)', pointerEvents: 'none', zIndex: 1 }}>Select start date</span>
+                )}
+                <input
+                  type="date" value={form.startDate}
+                  onChange={e => set('startDate', e.target.value)}
+                  style={{ ...inputStyle, borderColor: errors.startDate ? '#f87171' : 'rgba(255,255,255,0.12)', color: form.startDate ? '#fff' : 'transparent' }}
+                />
+              </div>
               <FieldError msg={errors.startDate} />
             </div>
           </div>
+
+          <div style={fieldGroupStyle}>
+            <label style={labelStyle}>Right to Work (NZ)</label>
+            <SelectWrapper value={form.rightToWork} onChange={v => set('rightToWork', v)} error={errors.rightToWork} placeholder="Select one">
+              <option value="NZ Citizen / Resident (no work restrictions)" style={{ background: '#1F2D3D', color: '#fff' }}>NZ Citizen / Resident (no work restrictions)</option>
+              <option value="Valid Work Visa" style={{ background: '#1F2D3D', color: '#fff' }}>Valid Work Visa</option>
+              <option value="No current right to work in NZ" style={{ background: '#1F2D3D', color: '#fff' }}>No current right to work in NZ</option>
+            </SelectWrapper>
+            <FieldError msg={errors.rightToWork} />
+          </div>
+
+          {form.rightToWork === 'Valid Work Visa' && (
+            <div style={fieldGroupStyle}>
+              <label style={labelStyle}>Visa Expiry Date</label>
+              <div style={{ position: 'relative' }}>
+                {!form.visaExpiry && (
+                  <span style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', fontFamily: 'Inter, sans-serif', fontSize: '0.9rem', color: 'rgba(255,255,255,0.45)', pointerEvents: 'none', zIndex: 1 }}>Select expiry date</span>
+                )}
+                <input
+                  type="date"
+                  value={form.visaExpiry}
+                  onChange={e => set('visaExpiry', e.target.value)}
+                  style={{ ...inputStyle, borderColor: 'rgba(255,255,255,0.12)', color: form.visaExpiry ? '#fff' : 'transparent' }}
+                />
+              </div>
+            </div>
+          )}
 
           <div style={fieldGroupStyle}>
             <label style={labelStyle}>Applying For</label>
@@ -351,7 +389,7 @@ export default function ApplicationForm() {
           {/* TM Experience */}
           <div style={{ marginBottom: '28px' }}>
             <label style={labelStyle}>Traffic Management Qualifications</label>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 24px' }}>
+            <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: '0 24px' }}>
               {tmExperienceOptions.map(opt => (
                 <RadioOption
                   key={opt} name="experience" value={opt}
@@ -381,7 +419,7 @@ export default function ApplicationForm() {
           {/* Licences */}
           <div style={{ marginBottom: '28px' }}>
             <label style={labelStyle}>Licence(s) Held</label>
-            <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.75rem', color: 'rgba(251,191,36,0.8)', marginBottom: '10px', lineHeight: 1.5 }}>
+            <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', lineHeight: 1.6, color: 'rgba(255,255,255,0.35)', marginBottom: '10px' }}>
               Note: You must hold at least a Restricted (Car), Full (Car), or Class 2 licence. Learner licences or no licence are not accepted.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0 32px' }}>
@@ -438,6 +476,38 @@ export default function ApplicationForm() {
             />
           </div>
 
+          {/* Divider */}
+          <div style={{ height: '1px', background: 'rgba(255,255,255,0.06)', marginBottom: '28px' }} />
+
+          {/* Interview scheduling */}
+          <div style={{ marginBottom: '28px' }}>
+            <label style={labelStyle}>Preferred Interview Day &amp; Time</label>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5" style={{ marginBottom: '10px' }}>
+              <div>
+                <SelectWrapper value={form.interviewDay} onChange={v => set('interviewDay', v)} placeholder="Any day">
+                  <option value="Any day">Any day</option>
+                  <option value="Monday">Monday</option>
+                  <option value="Tuesday">Tuesday</option>
+                  <option value="Wednesday">Wednesday</option>
+                  <option value="Thursday">Thursday</option>
+                  <option value="Friday">Friday</option>
+                </SelectWrapper>
+              </div>
+              <div>
+                <SelectWrapper value={form.interviewTime} onChange={v => set('interviewTime', v)} placeholder="Any time">
+                  <option value="Any time">Any time</option>
+                  <option value="7:00 – 9:00">7:00 – 9:00</option>
+                  <option value="9:00 – 12:00">9:00 – 12:00</option>
+                  <option value="12:00 – 3:00">12:00 – 3:00</option>
+                  <option value="3:00 – 5:00">3:00 – 5:00</option>
+                </SelectWrapper>
+              </div>
+            </div>
+            <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', lineHeight: 1.6, color: 'rgba(255,255,255,0.35)' }}>
+              We will do our best to schedule your interview within your preferred time.
+            </p>
+          </div>
+
           {/* Contact preference */}
           <div style={{ marginBottom: '28px' }}>
             <label style={labelStyle}>Preferred Contact Method</label>
@@ -457,6 +527,9 @@ export default function ApplicationForm() {
             <FieldError msg={errors.contactMethod} />
           </div>
 
+          {/* Divider */}
+          <div style={{ height: '1px', background: 'rgba(255,255,255,0.06)', marginBottom: '28px' }} />
+
           {/* Confirmations */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '28px' }}>
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '2px' }}>
@@ -465,8 +538,11 @@ export default function ApplicationForm() {
                 value="casualConfirm"
                 checked={form.casualConfirm}
                 onChange={() => set('casualConfirm', !form.casualConfirm)}
-                label="I confirm I have read 'What to Expect as a Casual Worker' (see link above)"
+                label="I confirm I have read 'What to Expect as a Casual Worker'."
               />
+              <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', lineHeight: 1.6, color: 'rgba(255,255,255,0.35)', marginTop: '8px' }}>
+                See the link above for the full guide before confirming.
+              </p>
             </div>
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '2px' }}>
               <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--muted)', marginBottom: '8px' }}>Drug &amp; Alcohol Test</p>
@@ -476,6 +552,10 @@ export default function ApplicationForm() {
                 onChange={() => set('drugAlcoholConfirm', !form.drugAlcoholConfirm)}
                 label="I confirm that I am able to pass a drug and alcohol test."
               />
+              <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', lineHeight: 1.6, color: 'rgba(255,255,255,0.35)', marginTop: '8px' }}>
+                Drug and alcohol testing costs exceed $150. Please only proceed if you are confident you will pass the test.
+              </p>
+              <FieldError msg={errors.drugAlcoholConfirm} />
             </div>
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '2px' }}>
               <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--muted)', marginBottom: '8px' }}>Criminal History Check</p>
@@ -485,6 +565,7 @@ export default function ApplicationForm() {
                 onChange={() => set('criminalHistoryConfirm', !form.criminalHistoryConfirm)}
                 label="I confirm that, if successful in my application, I consent to a Ministry of Health criminal history check."
               />
+              <FieldError msg={errors.criminalHistoryConfirm} />
             </div>
           </div>
 
