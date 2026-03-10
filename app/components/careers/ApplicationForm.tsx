@@ -116,7 +116,7 @@ function CheckboxOption({
   )
 }
 
-export default function ApplicationForm({ onSuccess, sectionRef }: { onSuccess?: () => void; sectionRef?: React.RefObject<HTMLDivElement> }) {
+export default function ApplicationForm({ onSuccess, sectionRef }: { onSuccess?: () => void; sectionRef?: React.RefObject<HTMLDivElement | null> }) {
   const searchParams = useSearchParams()
   const [step, setStep] = useState<1 | 2>(1)
   const [state, setState] = useState<FormState>('idle')
