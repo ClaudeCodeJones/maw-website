@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import { ArrowRight, User } from 'lucide-react'
 import RevealObserver from '../components/RevealObserver'
 import LocationsMap from '../components/LocationsMap'
 import Timeline from '../components/about/Timeline'
@@ -218,9 +219,7 @@ export default function AboutUsPage() {
                       sizes="(max-width: 640px) 50vw, (max-width: 1280px) 25vw, 300px"
                     />
                   ) : (
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
-                    </svg>
+                    <User size={48} strokeWidth={1.5} aria-hidden="true" style={{ color: 'var(--muted)' }} />
                   )}
                 </div>
                 <div style={{ padding: '16px 18px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
@@ -331,9 +330,7 @@ export default function AboutUsPage() {
                 {/* CTA */}
                 <a href={href} target="_blank" rel="noopener noreferrer" className="group-card-cta" style={{ marginTop: '14px' }}>
                   Visit Site
-                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                    <path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
+                  <ArrowRight size={14} strokeWidth={1.5} aria-hidden="true" />
                 </a>
               </div>
             ))}
@@ -355,9 +352,7 @@ export default function AboutUsPage() {
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '14px', marginTop: '36px' }}>
               <Link href="/contact" className="btn-white">
                 Get in Touch
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+                <ArrowRight size={16} strokeWidth={1.5} aria-hidden="true" />
               </Link>
             </div>
           </div>

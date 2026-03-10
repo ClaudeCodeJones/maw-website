@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import { Phone, Mail } from 'lucide-react'
 
 export default function Footer() {
   return (
@@ -80,18 +81,14 @@ export default function Footer() {
             <div className="footer-heading">Contact</div>
             <ul style={{ display: 'flex', flexDirection: 'column', gap: '14px', listStyle: 'none' }}>
               <li>
-                <a href="tel:0800636289" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
-                  <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="var(--orange)" strokeWidth="1.4" aria-hidden="true">
-                    <path d="M13.5 9.7a1.17 1.17 0 0 1-1.07.77c-3.73.1-7.35-3.52-7.25-7.25A1.17 1.17 0 0 1 6 2.07l1.02-.49a.59.59 0 0 1 .66.25l1.75 2.93a.59.59 0 0 1-.12.75l-1.17.97a6.45 6.45 0 0 0 3.01 3.01l.97-1.17a.59.59 0 0 1 .75-.12l2.93 1.75a.59.59 0 0 1 .25.66l-.49 1.02Z"/>
-                  </svg>
+                <a href="tel:0800636289" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', color: 'var(--orange)' }}>
+                  <Phone size={15} strokeWidth={1.5} aria-hidden="true" />
                   <span style={{ fontSize: '0.82rem', color: 'var(--muted)' }}>0800 636 289</span>
                 </a>
               </li>
               <li>
-                <a href="mailto:info@menatwork.co.nz" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
-                  <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="var(--orange)" strokeWidth="1.4" aria-hidden="true">
-                    <rect x="1.5" y="3" width="12" height="9" rx="1"/><polyline points="1.5,3 7.5,8.5 13.5,3"/>
-                  </svg>
+                <a href="mailto:info@menatwork.co.nz" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', color: 'var(--orange)' }}>
+                  <Mail size={15} strokeWidth={1.5} aria-hidden="true" />
                   <span style={{ fontSize: '0.82rem', color: 'var(--muted)' }}>info@menatwork.co.nz</span>
                 </a>
               </li>

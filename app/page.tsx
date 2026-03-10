@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { ArrowRight, Phone, Check } from 'lucide-react'
 import RevealObserver from './components/RevealObserver'
 import WorksiteBanner from './components/WorksiteBanner'
 
@@ -70,9 +71,7 @@ export default function HomePage() {
             <div className="reveal d4" style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', marginTop: '36px' }}>
               <Link href="/request-quote" className="btn-orange" style={{ padding: '14px 28px', fontSize: '0.9rem' }}>
                 Get an Estimate
-                <svg width="17" height="17" viewBox="0 0 17 17" fill="none" aria-hidden="true">
-                  <path d="M3 8.5h11M10 5l3.5 3.5L10 12" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+                <ArrowRight size={17} strokeWidth={1.5} aria-hidden="true" />
               </Link>
               {/* View Services button hidden */}
             </div>
@@ -174,16 +173,12 @@ export default function HomePage() {
                 {linkExternal ? (
                   <a href={linkHref} target="_blank" rel="noopener noreferrer" className="service-link" style={{ marginTop: '16px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
                     {linkLabel}{' '}
-                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
-                      <path d="M2 6.5h9M8 3l3 3.5-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
+                    <ArrowRight size={13} strokeWidth={1.5} aria-hidden="true" />
                   </a>
                 ) : (
                   <Link href={linkHref} className="service-link" style={{ marginTop: '16px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
                     {linkLabel}{' '}
-                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
-                      <path d="M2 6.5h9M8 3l3 3.5-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
+                    <ArrowRight size={13} strokeWidth={1.5} aria-hidden="true" />
                   </Link>
                 )}
               </div>
@@ -220,9 +215,7 @@ export default function HomePage() {
                 ].map(({ d, title, body }) => (
                   <div key={title} className={`reveal ${d}`} style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
                     <div className="feature-icon">
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                        <path d="M2 8l4.5 4.5 7.5-9" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
+                      <Check size={16} strokeWidth={2} aria-hidden="true" />
                     </div>
                     <div>
                       <h4 className="font-display" style={{ fontWeight: 600, fontSize: '1rem', color: '#fff' }}>{title}</h4>
@@ -330,14 +323,10 @@ export default function HomePage() {
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '14px', marginTop: '36px' }}>
               <Link href="/request-quote" className="btn-white">
                 Get an Estimate
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+                <ArrowRight size={16} strokeWidth={1.5} aria-hidden="true" />
               </Link>
               <a href="tel:0800636289" className="btn-outline-white">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <path d="M14.5 10.3a1.25 1.25 0 0 1-1.14.84c-3.98.1-7.82-3.74-7.72-7.72A1.25 1.25 0 0 1 6.48 2.28l1.09-.52a.63.63 0 0 1 .7.27l1.88 3.13a.63.63 0 0 1-.13.8l-1.25 1.04a6.88 6.88 0 0 0 3.22 3.22l1.04-1.25a.63.63 0 0 1 .8-.13l3.13 1.88a.63.63 0 0 1 .27.7l-.52 1.09Z" stroke="currentColor" strokeWidth="1.3"/>
-                </svg>
+                <Phone size={16} strokeWidth={1.5} aria-hidden="true" />
                 0800 636 289
               </a>
             </div>

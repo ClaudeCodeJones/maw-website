@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
 import type { BranchHiring, HiringStatus } from '../../../data/hiringStatus'
 import { statusLabel } from '../../../data/hiringStatus'
 
@@ -138,9 +139,7 @@ export default function BranchHiringCard({ item }: { item: BranchHiring }) {
               style={{ color: colors.text }}
             >
               Apply Now
-              <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              <ArrowRight size={13} strokeWidth={1.5} aria-hidden="true" />
             </Link>
             {/* Desktop: full-width pill */}
             <Link
@@ -149,9 +148,7 @@ export default function BranchHiringCard({ item }: { item: BranchHiring }) {
               style={{ paddingTop: '14px', paddingBottom: '14px', color: colors.text, borderColor: `${colors.text}40` }}
             >
               Apply Now
-              <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              <ArrowRight size={13} strokeWidth={1.5} aria-hidden="true" />
             </Link>
           </>
         ) : (
@@ -159,16 +156,12 @@ export default function BranchHiringCard({ item }: { item: BranchHiring }) {
             {/* Mobile: disabled text */}
             <span className="md:hidden inline-flex items-center gap-2 text-xs font-medium cursor-not-allowed select-none" style={{ color: colors.text }}>
               Apply Now
-              <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              <ArrowRight size={13} strokeWidth={1.5} aria-hidden="true" />
             </span>
             {/* Desktop: disabled pill */}
             <span className="hidden md:inline-flex items-center justify-center gap-2 w-full rounded-full border bg-transparent px-8 text-xs font-medium cursor-not-allowed select-none" style={{ paddingTop: '14px', paddingBottom: '14px', color: colors.text, borderColor: `${colors.text}40` }}>
               Apply Now
-              <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              <ArrowRight size={13} strokeWidth={1.5} aria-hidden="true" />
             </span>
           </>
         )}

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef, ChangeEvent } from 'react'
+import { Phone, Mail, Calendar } from 'lucide-react'
 import Link from 'next/link'
 import Turnstile from 'react-turnstile'
 import RevealObserver from '../components/RevealObserver'
@@ -253,15 +254,26 @@ export default function RequestQuotePage() {
           {status === 'success' ? 'Request Submitted' : 'Request an Estimate'}
         </h1>
         {status !== 'success' && (
-          <div className="reveal d2" style={{ fontSize: '0.95rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '480px', marginTop: '20px' }}>
-            <p>Provide a few details about your project and we&apos;ll prepare pricing for you. If we need any additional information, we&apos;ll get in touch.</p>
-            <p style={{ marginTop: '12px' }}>
-              Prefer to discuss it first? Call us on{' '}
-              <a href="tel:0800636289" style={{ color: 'var(--orange)', textDecoration: 'none', fontWeight: 500 }}>0800 636 289</a>
-              {' '}or email{' '}
-              <a href="mailto:office@menatwork.co.nz" style={{ color: 'var(--orange)', textDecoration: 'none', fontWeight: 500 }}>office@menatwork.co.nz</a>
-            </p>
-          </div>
+          <>
+            <div className="reveal d2" style={{ fontSize: '0.95rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '480px', marginTop: '20px' }}>
+              <p>Provide a few details about your project and we&apos;ll prepare pricing for you. If we need any additional information, we&apos;ll get in touch.</p>
+            </div>
+            <div className="reveal d2" style={{ width: '40px', height: '1px', background: 'rgba(255,255,255,0.15)', margin: '20px 0' }} />
+            <div className="reveal d3" style={{ fontSize: '0.95rem', lineHeight: 1.78, color: 'var(--muted)' }}>
+              <p>Prefer to discuss it first?</p>
+              <div style={{ marginTop: '8px', display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+                <a href="tel:0800636289" className="flex items-center gap-2 hover:opacity-80" style={{ color: 'var(--orange)', fontWeight: 500, textDecoration: 'none', fontSize: '0.85rem' }}>
+                  <Phone size={14} />
+                  0800 636 289
+                </a>
+                <span style={{ color: 'rgba(255,255,255,0.2)' }}>|</span>
+                <a href="mailto:office@menatwork.co.nz" className="flex items-center gap-2 hover:opacity-80" style={{ color: 'var(--orange)', fontWeight: 500, textDecoration: 'none', fontSize: '0.85rem' }}>
+                  <Mail size={14} />
+                  office@menatwork.co.nz
+                </a>
+              </div>
+            </div>
+          </>
         )}
       </div>
     </section>
@@ -447,15 +459,15 @@ export default function RequestQuotePage() {
                 {/* Project name */}
                 <div style={fieldStyle}>
                   <label htmlFor="projectName" style={labelStyle}>Project/Job Name *</label>
-                  <input id="projectName" type="text" value={s2.projectName} onChange={e => setF2('projectName', e.target.value)}
+                  <input id="projectName" type="text" placeholder='e.g. "Main St Bridge Maintenance"' value={s2.projectName} onChange={e => setF2('projectName', e.target.value)}
                     style={{ ...inputStyle, borderColor: s2Errors.projectName ? '#f87171' : 'rgba(255,255,255,0.12)' }} />
                   <FieldError msg={s2Errors.projectName} />
                 </div>
 
                 {/* Project Timing */}
                 <div style={fieldStyle}>
-                  <label htmlFor="projectTiming" style={labelStyle}>Expected Project Timing / Start Date *</label>
-                  <input id="projectTiming" type="text" placeholder='e.g. "late May", "next week", or "TBC"' value={s2.projectTiming} onChange={e => setF2('projectTiming', e.target.value)}
+                  <label htmlFor="projectTiming" style={labelStyle}>Project Timing / Start Date *</label>
+                  <input id="projectTiming" type="text" placeholder='e.g. "11 May", "Late July" or "TBC"' value={s2.projectTiming} onChange={e => setF2('projectTiming', e.target.value)}
                     style={{ ...inputStyle, borderColor: s2Errors.projectTiming ? '#f87171' : 'rgba(255,255,255,0.12)' }} />
                   <FieldError msg={s2Errors.projectTiming} />
                 </div>
@@ -464,12 +476,9 @@ export default function RequestQuotePage() {
 
                 {/* Location */}
                 <div style={fieldStyle}>
-                  <label htmlFor="location" style={labelStyle}>Location and supporting documents *</label>
-                  <input id="location" type="text" value={s2.location} onChange={e => setF2('location', e.target.value)}
+                  <label htmlFor="location" style={labelStyle}>Location &amp; supporting documents *</label>
+                  <input id="location" type="text" placeholder="Enter the site address or description of area" value={s2.location} onChange={e => setF2('location', e.target.value)}
                     style={{ ...inputStyle, borderColor: s2Errors.location ? '#f87171' : 'rgba(255,255,255,0.12)' }} />
-                  <p style={{ fontSize: '0.75rem', color: 'var(--muted)', marginTop: '6px', lineHeight: 1.5 }}>
-                    Enter the site address or description of where the work will occur.
-                  </p>
                   <FieldError msg={s2Errors.location} />
                 </div>
 
@@ -536,7 +545,7 @@ export default function RequestQuotePage() {
                 {/* Unattended site */}
                 <div style={fieldStyle}>
                   <label style={labelStyle}>Will you need an unattended site? *</label>
-                  <RadioGroup name="unattendedSite" value={s2.unattendedSite} onChange={v => setF2('unattendedSite', v)} options={yesNo} error={s2Errors.unattendedSite} />
+                  <RadioGroup name="unattendedSite" value={s2.unattendedSite} onChange={v => setF2('unattendedSite', v)} options={yesNoUnsure} error={s2Errors.unattendedSite} />
                 </div>
                 <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', margin: '0 0 24px' }} />
 
@@ -547,7 +556,7 @@ export default function RequestQuotePage() {
                     name="selfTM"
                     value={s2.selfTM}
                     onChange={v => { setF2('selfTM', v); if (v !== 'yes') setF2('selfTMDetail', '') }}
-                    options={yesNo}
+                    options={yesNoUnsure}
                     error={s2Errors.selfTM}
                   />
                 </div>
@@ -570,7 +579,7 @@ export default function RequestQuotePage() {
                     name="wantsTMP"
                     value={s2.wantsTMP}
                     onChange={v => { setF2('wantsTMP', v); if (v !== 'yes') setF2('wantsCAR', '') }}
-                    options={yesNo}
+                    options={yesNoUnsure}
                     error={s2Errors.wantsTMP}
                   />
                 </div>
@@ -640,11 +649,7 @@ export default function RequestQuotePage() {
                           tabIndex={-1}
                           aria-label="Open date picker"
                         >
-                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                            <rect x="1" y="3" width="14" height="12" rx="1.5" stroke="currentColor" strokeWidth="1.4"/>
-                            <path d="M1 7h14" stroke="currentColor" strokeWidth="1.4"/>
-                            <path d="M5 1v4M11 1v4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
-                          </svg>
+                          <Calendar size={16} strokeWidth={1.5} aria-hidden="true" />
                         </button>
                       </div>
                       <FieldError msg={s2Errors.meetingDate} />

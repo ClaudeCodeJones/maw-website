@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { ShieldCheck, Users, TrendingUp, GraduationCap, Award, MapPin } from 'lucide-react'
+import { ShieldCheck, Users, TrendingUp, GraduationCap, Award, MapPin, ArrowRight } from 'lucide-react'
 import RevealObserver from '../components/RevealObserver'
 import CareerPath from '../components/careers/CareerPath'
 import BranchHiringCard from '../components/careers/BranchHiringCard'
@@ -80,9 +80,7 @@ export default function CareersPage() {
           <div className="reveal d4" style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', marginTop: '40px' }}>
             <a href="#apply" className="btn-orange">
               Apply Now
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              <ArrowRight size={16} strokeWidth={1.5} aria-hidden="true" />
             </a>
             <a href="#openings" className="btn-ghost">
               View Openings

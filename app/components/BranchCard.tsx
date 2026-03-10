@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import type { HiringStatus } from '../../data/hiringStatus'
+import { ArrowRight, X } from 'lucide-react'
 
 export type Branch = {
   name: string
@@ -70,9 +71,7 @@ export default function BranchCard({
           flexShrink: 0,
         }}
       >
-        <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
-          <path d="M1 1l9 9M10 1L1 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        </svg>
+        <X size={11} strokeWidth={1.5} aria-hidden="true" />
       </button>
 
       {/* Growing content area */}
@@ -129,9 +128,7 @@ export default function BranchCard({
           style={{ width: '100%', justifyContent: 'center', fontSize: '0.82rem', padding: '11px 20px' }}
         >
           Get an Estimate
-          <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+          <ArrowRight size={13} strokeWidth={1.5} aria-hidden="true" />
         </Link>
       </div>
     </div>

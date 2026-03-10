@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
+import { ArrowRight } from 'lucide-react'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -83,9 +84,7 @@ export default function Navbar() {
           <div id="hdrcta-wrap">
             <Link id="hdrcta" href="/request-quote" className="btn-orange" style={{ fontSize: '0.8rem', padding: '10px 20px' }}>
               Get an Estimate
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+              <ArrowRight size={14} strokeWidth={1.5} aria-hidden="true" />
             </Link>
           </div>
           <button

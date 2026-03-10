@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, Suspense } from 'react'
 import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
 import ApplicationForm from './ApplicationForm'
 
 export default function ApplicationSection() {
@@ -116,15 +117,10 @@ export default function ApplicationSection() {
               <h2 className="font-display" style={{ fontWeight: 700, fontSize: 'clamp(2rem,4.5vw,4rem)', color: '#fff', lineHeight: 1.1, letterSpacing: '-0.02em' }}>
                 Ready to join the team?
               </h2>
-              <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.88)', maxWidth: '480px', margin: '20px auto 0', lineHeight: 1.72 }}>
-                Apply above or reach out to your nearest branch directly.
-              </p>
               <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '14px', marginTop: '36px' }}>
                 <a href="#apply" className="btn-white">
                   Apply Now
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                    <path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
+                  <ArrowRight size={16} strokeWidth={1.5} aria-hidden="true" />
                 </a>
                 <Link href="/contact" className="btn-outline-white">
                   Contact Us

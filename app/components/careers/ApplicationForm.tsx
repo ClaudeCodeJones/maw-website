@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react'
 import { useSearchParams } from 'next/navigation'
+import { ArrowRight, Calendar } from 'lucide-react'
 import Turnstile from 'react-turnstile'
 import SelectWrapper from '../SelectWrapper'
 
@@ -350,11 +351,7 @@ export default function ApplicationForm({ onSuccess, sectionRef }: { onSuccess?:
                   tabIndex={-1}
                   aria-label="Open date picker"
                 >
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                    <rect x="1" y="3" width="14" height="12" rx="1.5" stroke="currentColor" strokeWidth="1.4"/>
-                    <path d="M1 7h14" stroke="currentColor" strokeWidth="1.4"/>
-                    <path d="M5 1v4M11 1v4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
-                  </svg>
+                  <Calendar size={16} strokeWidth={1.5} aria-hidden="true" />
                 </button>
               </div>
               <FieldError msg={errors.startDate} />
@@ -400,9 +397,7 @@ export default function ApplicationForm({ onSuccess, sectionRef }: { onSuccess?:
 
           <button type="button" onClick={handleNext} className="btn-orange" style={{ width: '100%', justifyContent: 'center' }}>
             Next
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <ArrowRight size={16} strokeWidth={1.5} aria-hidden="true" />
           </button>
         </div>
       )}
@@ -628,9 +623,7 @@ export default function ApplicationForm({ onSuccess, sectionRef }: { onSuccess?:
             >
               {state === 'submitting' ? 'Sending...' : 'Submit Application'}
               {state !== 'submitting' && (
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                <ArrowRight size={16} strokeWidth={1.5} aria-hidden="true" />
               )}
             </button>
           </div>

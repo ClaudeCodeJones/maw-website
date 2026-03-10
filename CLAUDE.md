@@ -6,6 +6,16 @@ My name is Jonesy, you can call me that rather than User
 
 ---
 
+## Commands
+
+```bash
+npm run dev      # Start dev server at http://localhost:3000
+npm run build    # Production build
+npm run lint     # ESLint check
+```
+
+---
+
 ## Environment & Architecture
 
 - This project uses Next.js (App Router).
@@ -15,7 +25,7 @@ My name is Jonesy, you can call me that rather than User
   npm run dev
 
 - The site runs at:
-  
+
   http://localhost:3000
 
 - Never start custom static servers.
@@ -23,6 +33,66 @@ My name is Jonesy, you can call me that rather than User
 - Never spawn background Node HTTP servers.
 - Never run multiple dev servers simultaneously.
 - Do not perform screenshot automation unless explicitly requested.
+
+### Project Structure
+
+```
+app/
+  components/          # Global reusable components
+    about/             # About page components (Timeline.tsx)
+    careers/           # Careers page components (ApplicationForm, BranchHiringCard, ApplicationSection, CareerPath)
+  about-us/            # About Us page
+  careers/             # Careers page
+  contact/             # Contact page
+  request-quote/       # Quote request page
+  api/                 # API routes: contact, careers-application, request-quote
+  globals.css          # Brand CSS variables and utility classes
+  layout.tsx           # Root layout (Navbar + Footer)
+  page.tsx             # Home page
+data/
+  hiringStatus.ts      # Branch hiring data (BranchHiring type, branchHiring array, statusLabel)
+lib/
+  email.ts             # sendEmail() via Autosend API
+  emailTemplate.ts     # buildEmailTemplate() helper
+brand_assets/          # Logos and brand guidelines — always check here first
+public/
+  logos/               # Brand logos
+  services/            # Service imagery
+  leadership/          # Leadership team photos
+```
+
+### Brand CSS Variables (globals.css)
+
+```css
+--orange:      #F26522   /* Primary brand — use var(--orange) */
+--orange-dark: #CC5015
+--navy:        #0D1B2A   /* Page background */
+--navy-mid:    #162435
+--charcoal:    #1F2D3D   /* Card backgrounds */
+--slate:       #2A3D52
+--muted:       #7A8FA3   /* Secondary text */
+--light:       #C5D0DC
+```
+
+Utility classes: `.eyebrow`, `.section-title`, `.font-display`, `.orange-rule`, `.btn-orange`, `.btn-ghost`, `.btn-white`, `.reveal`, `.cta-section`
+
+### Styling Approach
+
+- Tailwind v4 via `@tailwindcss/postcss` — no tailwind.config.js file.
+- Mix of Tailwind classes and inline `style={}` props throughout. Both patterns are acceptable.
+- Scroll-reveal animations use `.reveal` + `.d1`–`.d4` delay classes, driven by `RevealObserver.tsx`.
+
+### Forms & API
+
+All three forms (contact, careers, request-quote) share the same security pattern:
+- Cloudflare Turnstile captcha (`react-turnstile`, `NEXT_PUBLIC_TURNSTILE_SITE_KEY` / `TURNSTILE_SECRET_KEY`)
+- Honeypot field
+- Server-side rate limiting
+- Email sent via Autosend API (`AUTOSEND_API_KEY`)
+
+### Data Layer
+
+Hiring status for branch cards is driven entirely by `data/hiringStatus.ts`. Update `branchHiring[]` there to change which branches are hiring and what roles appear on the Careers page.
 
 ---
 ## Brand Naming Rules (Strict)

@@ -15,7 +15,12 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.18); font-size: 0.85em; }
+input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.38); font-size: 0.85em; }
+input { text-overflow: ellipsis; }
+/* Native select: dark theme colours for mobile OS pickers */
+@media (max-width: 767px) {
+  select { color-scheme: dark; }
+}
 html { scroll-behavior: smooth; }
 
 body {

@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useRef, useEffect } from 'react'
+import { ChevronDown } from 'lucide-react'
 
 export default function SelectWrapper({
   id,
@@ -60,92 +61,119 @@ export default function SelectWrapper({
     }
   }
 
+  const borderColor = error ? '#f87171' : 'rgba(255,255,255,0.12)'
+  const sharedInputStyle: React.CSSProperties = {
+    width: '100%',
+    background: '#0d1f33',
+    border: `1px solid ${borderColor}`,
+    borderRadius: '2px',
+    padding: '12px 16px',
+    fontFamily: 'Inter, sans-serif',
+    fontSize: '0.9rem',
+    outline: 'none',
+  }
+
   return (
     <div ref={ref} style={{ position: 'relative' }}>
-      <button
+
+      {/* Native select — mobile only (md and up: hidden) */}
+      <select
         id={id}
-        type="button"
-        aria-haspopup="listbox"
-        aria-expanded={open}
-        onClick={() => setOpen(o => !o)}
-        onKeyDown={handleKey}
+        value={value}
+        onChange={e => onChange(e.target.value)}
+        className="block md:hidden"
         style={{
-          width: '100%',
-          background: '#0d1f33',
-          border: `1px solid ${error ? '#f87171' : 'rgba(255,255,255,0.12)'}`,
-          borderRadius: '2px',
-          padding: '12px 40px 12px 16px',
-          fontFamily: 'Inter, sans-serif',
-          fontSize: '0.9rem',
-          color: selected ? '#fff' : 'rgba(255,255,255,0.45)',
-          outline: 'none',
-          cursor: 'pointer',
-          textAlign: 'left',
-          display: 'block',
+          ...sharedInputStyle,
+          color: value ? '#fff' : 'rgba(255,255,255,0.45)',
+          paddingRight: '16px',
         }}
       >
-        {selected ? selected.label : placeholder}
-      </button>
+        <option value="" disabled>{placeholder}</option>
+        {options.map(opt => (
+          <option key={opt.value} value={opt.value}>{opt.label}</option>
+        ))}
+      </select>
 
-      {/* Chevron */}
-      <svg
-        width="14" height="14" viewBox="0 0 14 14" fill="none"
-        style={{
-          position: 'absolute', right: '14px', top: '50%',
-          transform: `translateY(-50%) rotate(${open ? '180deg' : '0deg'})`,
-          transition: 'transform 0.18s ease',
-          pointerEvents: 'none', color: 'var(--muted)',
-        }}
-        aria-hidden="true"
-      >
-        <path d="M3 5l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-
-      {/* Dropdown list */}
-      {open && (
-        <ul
-          role="listbox"
+      {/* Custom dropdown — desktop only (below md: hidden) */}
+      <div className="hidden md:block">
+        <button
+          id={id}
+          type="button"
+          aria-haspopup="listbox"
+          aria-expanded={open}
+          onClick={() => setOpen(o => !o)}
+          onKeyDown={handleKey}
           style={{
-            position: 'absolute',
-            top: 'calc(100% + 4px)',
-            left: 0,
-            right: 0,
-            background: '#0d1f33',
-            border: '1px solid rgba(255,255,255,0.14)',
-            borderRadius: '2px',
-            margin: 0,
-            padding: '4px 0',
-            listStyle: 'none',
-            zIndex: 50,
-            boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
+            ...sharedInputStyle,
+            padding: '12px 40px 12px 16px',
+            color: selected ? '#fff' : 'rgba(255,255,255,0.45)',
+            cursor: 'pointer',
+            textAlign: 'left',
+            display: 'block',
           }}
         >
-          {options.map(opt => (
-            <li
-              key={opt.value}
-              role="option"
-              aria-selected={opt.value === value}
-              onClick={() => { onChange(opt.value); setOpen(false) }}
-              style={{
-                padding: '10px 16px',
-                fontFamily: 'Inter, sans-serif',
-                fontSize: '0.9rem',
-                cursor: 'pointer',
-                color: opt.value === value ? 'var(--orange)' : '#fff',
-                background: opt.value === value ? 'rgba(253,79,0,0.08)' : 'transparent',
-              }}
-              onMouseEnter={e => {
-                if (opt.value !== value) (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.05)'
-              }}
-              onMouseLeave={e => {
-                if (opt.value !== value) (e.currentTarget as HTMLElement).style.background = 'transparent'
-              }}
-            >
-              {opt.label}
-            </li>
-          ))}
-        </ul>
-      )}
+          {selected ? selected.label : placeholder}
+        </button>
+
+        {/* Chevron */}
+        <ChevronDown
+          size={14}
+          strokeWidth={1.5}
+          style={{
+            position: 'absolute', right: '14px', top: '50%',
+            transform: `translateY(-50%) rotate(${open ? '180deg' : '0deg'})`,
+            transition: 'transform 0.18s ease',
+            pointerEvents: 'none', color: 'var(--muted)',
+          }}
+          aria-hidden="true"
+        />
+
+        {/* Dropdown list */}
+        {open && (
+          <ul
+            role="listbox"
+            style={{
+              position: 'absolute',
+              top: 'calc(100% + 4px)',
+              left: 0,
+              right: 0,
+              background: '#0d1f33',
+              border: '1px solid rgba(255,255,255,0.14)',
+              borderRadius: '2px',
+              margin: 0,
+              padding: '4px 0',
+              listStyle: 'none',
+              zIndex: 50,
+              boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
+            }}
+          >
+            {options.map(opt => (
+              <li
+                key={opt.value}
+                role="option"
+                aria-selected={opt.value === value}
+                onClick={() => { onChange(opt.value); setOpen(false) }}
+                style={{
+                  padding: '10px 16px',
+                  fontFamily: 'Inter, sans-serif',
+                  fontSize: '0.9rem',
+                  cursor: 'pointer',
+                  color: opt.value === value ? 'var(--orange)' : '#fff',
+                  background: opt.value === value ? 'rgba(253,79,0,0.08)' : 'transparent',
+                }}
+                onMouseEnter={e => {
+                  if (opt.value !== value) (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.05)'
+                }}
+                onMouseLeave={e => {
+                  if (opt.value !== value) (e.currentTarget as HTMLElement).style.background = 'transparent'
+                }}
+              >
+                {opt.label}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   )
 }

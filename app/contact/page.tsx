@@ -118,15 +118,16 @@ export default function ContactPage() {
               Send us your enquiry and our team will respond as soon as possible.
             </p>
             <div style={{ width: '40px', height: '1px', background: 'rgba(255,255,255,0.15)', margin: '20px 0' }} />
-            <div className="reveal d3" style={{ marginTop: '0', fontSize: '0.82rem', color: 'var(--muted)', lineHeight: 1.6 }}>
+            <div className="reveal d3" style={{ marginTop: '0', fontSize: '0.95rem', lineHeight: 1.78, color: 'var(--muted)' }}>
               <p>Prefer to call or email?</p>
-              <div style={{ marginTop: '10px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <a href="tel:0800636289" className="flex items-center gap-2 hover:opacity-80" style={{ color: 'var(--orange)', fontWeight: 500, textDecoration: 'none' }}>
-                  <Phone size={15} />
+              <div style={{ marginTop: '8px', display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+                <a href="tel:0800636289" className="flex items-center gap-2 hover:opacity-80" style={{ color: 'var(--orange)', fontWeight: 500, textDecoration: 'none', fontSize: '0.85rem' }}>
+                  <Phone size={14} />
                   0800 636 289
                 </a>
-                <a href="mailto:office@menatwork.co.nz" className="flex items-center gap-2 hover:opacity-80" style={{ color: 'var(--orange)', fontWeight: 500, textDecoration: 'none' }}>
-                  <Mail size={15} />
+                <span style={{ color: 'rgba(255,255,255,0.2)' }}>|</span>
+                <a href="mailto:office@menatwork.co.nz" className="flex items-center gap-2 hover:opacity-80" style={{ color: 'var(--orange)', fontWeight: 500, textDecoration: 'none', fontSize: '0.85rem' }}>
+                  <Mail size={14} />
                   office@menatwork.co.nz
                 </a>
               </div>
