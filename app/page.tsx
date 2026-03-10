@@ -303,7 +303,7 @@ export default function HomePage() {
               Contact our team today for a free consultation and estimate. We&apos;ll have a plan ready before your project begins.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '14px', marginTop: '36px' }}>
-              <Link href="/contact" className="btn-white">
+              <Link href="/request-quote" className="btn-white">
                 Get an Estimate
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                   <path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>

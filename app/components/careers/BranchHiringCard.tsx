@@ -83,24 +83,35 @@ export default function BranchHiringCard({ item }: { item: BranchHiring }) {
 
       {/* Roles */}
       {item.roles.length > 0 ? (
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-          {item.roles.map(role => (
-            <span
-              key={role}
-              style={{
-                fontFamily: 'Inter, sans-serif',
-                fontSize: '0.75rem',
-                fontWeight: 500,
-                color: 'rgba(255,255,255,0.65)',
-                background: 'rgba(255,255,255,0.06)',
-                border: '1px solid rgba(255,255,255,0.08)',
-                borderRadius: '2px',
-                padding: '4px 10px',
-              }}
-            >
-              {role}
-            </span>
-          ))}
+        <div>
+          <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: '8px' }}>
+            Roles Available
+          </p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+            {item.roles.map(role => {
+              const borderColor =
+                role === 'STMS (Practicing)' ? 'rgba(56,189,248,0.5)' :
+                role === 'Casuals' ? 'rgba(167,139,250,0.5)' :
+                'rgba(255,255,255,0.12)'
+              return (
+                <span
+                  key={role}
+                  style={{
+                    fontFamily: 'Inter, sans-serif',
+                    fontSize: '0.75rem',
+                    fontWeight: 500,
+                    color: 'rgba(255,255,255,0.65)',
+                    background: 'rgba(255,255,255,0.06)',
+                    border: `1px solid ${borderColor}`,
+                    borderRadius: '2px',
+                    padding: '4px 10px',
+                  }}
+                >
+                  {role}
+                </span>
+              )
+            })}
+          </div>
         </div>
       ) : (
         <p
@@ -115,20 +126,6 @@ export default function BranchHiringCard({ item }: { item: BranchHiring }) {
         </p>
       )}
 
-      {/* Sister company callout */}
-      {item.tempCompany && (
-        <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', color: 'rgba(255,255,255,0.35)', lineHeight: 1.5 }}>
-          Casual positions may be available through our Labour Hire division,{' '}
-          <a
-            href="https://www.thetempcompany.co.nz"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: 'rgba(242,101,34,0.7)', textDecoration: 'none', fontWeight: 500 }}
-          >
-            The Temp Company
-          </a>
-        </p>
-      )}
 
       {/* CTA — separated with divider */}
       <div style={{ marginTop: '20px', paddingTop: '20px', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
@@ -137,7 +134,8 @@ export default function BranchHiringCard({ item }: { item: BranchHiring }) {
             {/* Mobile: text link */}
             <Link
               href={`/careers?branch=${item.branch.toLowerCase()}#apply`}
-              className="md:hidden inline-flex items-center gap-2 text-xs font-medium text-white/40 hover:text-[#F26522] transition duration-200"
+              className="md:hidden inline-flex items-center gap-2 text-xs font-medium transition duration-200 hover:text-[#F26522]"
+              style={{ color: colors.text }}
             >
               Apply Now
               <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -147,8 +145,8 @@ export default function BranchHiringCard({ item }: { item: BranchHiring }) {
             {/* Desktop: full-width pill */}
             <Link
               href={`/careers?branch=${item.branch.toLowerCase()}#apply`}
-              className="hidden md:inline-flex items-center justify-center gap-2 w-full rounded-full border border-slate-600 bg-transparent px-8 text-xs font-medium text-white/40 transition duration-200 hover:border-[#F26522]/60 hover:text-[#F26522] active:scale-[0.98]"
-              style={{ paddingTop: '14px', paddingBottom: '14px' }}
+              className="hidden md:inline-flex items-center justify-center gap-2 w-full rounded-full border bg-transparent px-8 text-xs font-medium transition duration-200 hover:text-[#F26522] hover:border-[#F26522]/60 active:scale-[0.98]"
+              style={{ paddingTop: '14px', paddingBottom: '14px', color: colors.text, borderColor: `${colors.text}40` }}
             >
               Apply Now
               <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -159,14 +157,14 @@ export default function BranchHiringCard({ item }: { item: BranchHiring }) {
         ) : (
           <>
             {/* Mobile: disabled text */}
-            <span className="md:hidden inline-flex items-center gap-2 text-xs font-medium text-white/20 cursor-not-allowed select-none">
+            <span className="md:hidden inline-flex items-center gap-2 text-xs font-medium cursor-not-allowed select-none" style={{ color: colors.text }}>
               Apply Now
               <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </span>
             {/* Desktop: disabled pill */}
-            <span className="hidden md:inline-flex items-center justify-center gap-2 w-full rounded-full border border-slate-600/40 bg-transparent px-8 text-xs font-medium text-white/20 cursor-not-allowed select-none" style={{ paddingTop: '14px', paddingBottom: '14px' }}>
+            <span className="hidden md:inline-flex items-center justify-center gap-2 w-full rounded-full border bg-transparent px-8 text-xs font-medium cursor-not-allowed select-none" style={{ paddingTop: '14px', paddingBottom: '14px', color: colors.text, borderColor: `${colors.text}40` }}>
               Apply Now
               <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />

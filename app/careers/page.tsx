@@ -245,7 +245,23 @@ export default function CareersPage() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '20px' }}>
+          <div style={{ marginBottom: '32px', padding: '24px', background: 'rgba(242,101,34,0.06)', border: '1px solid rgba(242,101,34,0.15)', borderLeft: '3px solid var(--orange)', borderRadius: '2px' }}>
+            <p className="font-display" style={{ fontWeight: 600, fontSize: '0.9rem', color: '#fff', marginBottom: '8px' }}>
+              Casual Traffic Roles
+            </p>
+            <p style={{ fontSize: '0.85rem', lineHeight: 1.65, color: 'var(--muted)', marginBottom: '10px' }}>
+              Roles below STMS level are hired on a casual basis, including unqualified and TTM workers.
+            </p>
+            <p style={{ fontSize: '0.85rem', lineHeight: 1.65, color: 'var(--muted)', marginBottom: '10px' }}>
+              Casual traffic roles in Christchurch, Wellington and Blenheim may be available through our labour hire division,{' '}
+              <a href="https://www.thetempcompany.co.nz" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--orange)', textDecoration: 'none', fontWeight: 500 }}>The Temp Company</a>.
+            </p>
+            <p style={{ fontSize: '0.85rem', lineHeight: 1.65, color: 'var(--muted)' }}>
+              Casual work can provide a pathway into full-time traffic management roles with Men at Work as positions become available.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             {[...branchHiring].sort((a, b) => ({ hiring: 0, limited: 1, closed: 2 }[a.status] ?? 3) - ({ hiring: 0, limited: 1, closed: 2 }[b.status] ?? 3)).map((item, i) => (
               <div key={item.branch} className={`reveal d${(i % 4) + 1}`}>
                 <BranchHiringCard item={item} />

@@ -532,18 +532,20 @@ export default function ApplicationForm() {
 
           {/* Confirmations */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '28px' }}>
-            <div style={{ padding: '16px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '2px' }}>
-              <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--muted)', marginBottom: '8px' }}>Casual Worker Guide</p>
-              <CheckboxOption
-                value="casualConfirm"
-                checked={form.casualConfirm}
-                onChange={() => set('casualConfirm', !form.casualConfirm)}
-                label="I confirm I have read 'What to Expect as a Casual Worker'."
-              />
-              <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', lineHeight: 1.6, color: 'rgba(255,255,255,0.35)', marginTop: '8px' }}>
-                See the link above for the full guide before confirming.
-              </p>
-            </div>
+            {!['STMS Cat A/B', 'STMS Cat C'].includes(form.experience) && (
+              <div style={{ padding: '16px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '2px' }}>
+                <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--muted)', marginBottom: '8px' }}>Casual Worker Guide</p>
+                <CheckboxOption
+                  value="casualConfirm"
+                  checked={form.casualConfirm}
+                  onChange={() => set('casualConfirm', !form.casualConfirm)}
+                  label="I confirm I have read 'What to Expect as a Casual Worker'."
+                />
+                <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', lineHeight: 1.6, color: 'rgba(255,255,255,0.35)', marginTop: '8px' }}>
+                  See the link above for the full guide before confirming.
+                </p>
+              </div>
+            )}
             <div style={{ padding: '16px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '2px' }}>
               <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--muted)', marginBottom: '8px' }}>Drug &amp; Alcohol Test</p>
               <CheckboxOption
@@ -563,8 +565,11 @@ export default function ApplicationForm() {
                 value="criminalHistoryConfirm"
                 checked={form.criminalHistoryConfirm}
                 onChange={() => set('criminalHistoryConfirm', !form.criminalHistoryConfirm)}
-                label="I confirm that, if successful in my application, I consent to a Ministry of Health criminal history check."
+                label="I consent to a Ministry of Justice criminal history check if required."
               />
+              <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', lineHeight: 1.6, color: 'rgba(255,255,255,0.35)', marginTop: '8px' }}>
+                This check only applies if you are successful in your application.
+              </p>
               <FieldError msg={errors.criminalHistoryConfirm} />
             </div>
           </div>
