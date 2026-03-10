@@ -49,7 +49,7 @@ export default function Navbar() {
   const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/about-us', label: 'About Us' },
-    { href: '/careers', label: 'Careers' },
+    { href: '/careers', label: 'Careers', scrollTop: true },
     { href: '/contact', label: 'Contact' },
   ]
 
@@ -71,8 +71,8 @@ export default function Navbar() {
 
         {/* Desktop links */}
         <div className="hidden lg:flex items-center gap-6">
-          {navLinks.map(({ href, label }) => (
-            <Link key={href} href={href} className={`nav-link${isActive(href) ? ' active' : ''}`}>
+          {navLinks.map(({ href, label, scrollTop }) => (
+            <Link key={href} href={href} className={`nav-link${isActive(href) ? ' active' : ''}`} onClick={scrollTop ? () => window.scrollTo({ top: 0 }) : undefined}>
               {label}
             </Link>
           ))}
@@ -105,13 +105,13 @@ export default function Navbar() {
       {/* Mobile menu */}
       <div id="mobile-menu" className={`fixed left-0 right-0 top-[96px] w-full max-w-full overflow-x-hidden z-40 ${menuOpen ? 'open' : ''}`} style={{ background: 'var(--navy-mid)', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '20px 24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          {navLinks.map(({ href, label }, i) => (
+          {navLinks.map(({ href, label, scrollTop }, i) => (
             <Link
               key={href}
               href={href}
               className="nav-link"
               style={{ fontSize: '1rem', padding: '8px 0', borderBottom: i < navLinks.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none' }}
-              onClick={closeMenu}
+              onClick={() => { closeMenu(); if (scrollTop) window.scrollTo({ top: 0 }) }}
             >
               {label}
             </Link>

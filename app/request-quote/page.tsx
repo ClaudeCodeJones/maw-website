@@ -129,6 +129,7 @@ export default function RequestQuotePage() {
   const [turnstileToken, setTurnstileToken] = useState('')
   const fileRef = useRef<HTMLInputElement>(null)
   const honeypotRef = useRef<HTMLInputElement>(null)
+  const meetingDateRef = useRef<HTMLInputElement>(null)
 
   function setF1(field: keyof S1, value: string) {
     setS1(f => ({ ...f, [field]: value }))
@@ -283,11 +284,14 @@ export default function RequestQuotePage() {
               <h2 className="font-display" style={{ fontWeight: 700, fontSize: '1.5rem', color: '#fff', marginBottom: '12px' }}>
                 Request Submitted
               </h2>
-              <p style={{ fontSize: '0.95rem', color: 'var(--muted)', lineHeight: 1.75, maxWidth: '400px', margin: '0 auto 32px' }}>
+              <p style={{ fontSize: '0.95rem', color: 'var(--muted)', lineHeight: 1.75, maxWidth: '400px', margin: '0 auto' }}>
                 Thank you for providing your project details. Our team will review the information and get back to you shortly.
               </p>
-              <Link href="/" className="btn-orange" style={{ justifyContent: 'center' }}>
-                Return to Home
+              <Link
+                href="/"
+                className="inline-flex items-center gap-2 text-orange-500 font-semibold hover:text-orange-400 transition-colors mt-6"
+              >
+                Back to Home →
               </Link>
             </div>
           </div>
@@ -435,6 +439,9 @@ export default function RequestQuotePage() {
             {/* ── STEP 2: PROJECT DETAILS ── */}
             {step === 2 && (
               <div>
+                <p style={{ fontSize: '0.82rem', color: 'var(--muted)', lineHeight: 1.65, marginBottom: '24px' }}>
+                  If you&apos;re unsure about any field, simply enter &ldquo;Unsure&rdquo; and we can discuss the details later.
+                </p>
 
                 {/* Project name */}
                 <div style={fieldStyle}>
@@ -500,7 +507,7 @@ export default function RequestQuotePage() {
                 <div style={fieldStyle}>
                   <label htmlFor="plantNeeded" style={labelStyle}>What plant will be needed on site? *</label>
                   <textarea id="plantNeeded" rows={4} value={s2.plantNeeded} onChange={e => setF2('plantNeeded', e.target.value)}
-                    placeholder="Enter N/A if unsure"
+                    placeholder=""
                     style={{ ...inputStyle, borderColor: s2Errors.plantNeeded ? '#f87171' : 'rgba(255,255,255,0.12)', resize: 'vertical' as const }} />
                   <FieldError msg={s2Errors.plantNeeded} />
                 </div>
@@ -510,7 +517,7 @@ export default function RequestQuotePage() {
                 <div style={fieldStyle}>
                   <label htmlFor="workTimes" style={labelStyle}>What are your work times for your crew? *</label>
                   <input id="workTimes" type="text" value={s2.workTimes} onChange={e => setF2('workTimes', e.target.value)}
-                    placeholder="Enter N/A if unsure"
+                    placeholder=""
                     style={{ ...inputStyle, borderColor: s2Errors.workTimes ? '#f87171' : 'rgba(255,255,255,0.12)' }} />
                   <FieldError msg={s2Errors.workTimes} />
                 </div>
@@ -608,13 +615,27 @@ export default function RequestQuotePage() {
                           <span style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', fontFamily: 'Inter, sans-serif', fontSize: '0.9rem', color: 'rgba(255,255,255,0.45)', pointerEvents: 'none', zIndex: 1 }}>Select date</span>
                         )}
                         <input
+                          ref={meetingDateRef}
                           id="meetingDate"
                           type="date"
                           value={s2.meetingDate}
                           min={new Date().toISOString().split('T')[0]}
                           onChange={e => setF2('meetingDate', e.target.value)}
-                          style={{ ...inputStyle, borderColor: s2Errors.meetingDate ? '#f87171' : 'rgba(255,255,255,0.12)', color: s2.meetingDate ? '#fff' : 'transparent' }}
+                          style={{ ...inputStyle, borderColor: s2Errors.meetingDate ? '#f87171' : 'rgba(255,255,255,0.12)', color: s2.meetingDate ? '#fff' : 'transparent', paddingRight: '44px' }}
                         />
+                        <button
+                          type="button"
+                          onClick={() => meetingDateRef.current?.showPicker()}
+                          style={{ position: 'absolute', right: '12px', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', padding: '4px', cursor: 'pointer', color: 'rgba(255,255,255,0.4)', display: 'flex', alignItems: 'center' }}
+                          tabIndex={-1}
+                          aria-label="Open date picker"
+                        >
+                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                            <rect x="1" y="3" width="14" height="12" rx="1.5" stroke="currentColor" strokeWidth="1.4"/>
+                            <path d="M1 7h14" stroke="currentColor" strokeWidth="1.4"/>
+                            <path d="M5 1v4M11 1v4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+                          </svg>
+                        </button>
                       </div>
                       <FieldError msg={s2Errors.meetingDate} />
                     </div>

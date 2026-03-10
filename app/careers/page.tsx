@@ -1,11 +1,9 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
-import { Suspense } from 'react'
 import { ShieldCheck, Users, TrendingUp, GraduationCap, Award, MapPin } from 'lucide-react'
 import RevealObserver from '../components/RevealObserver'
 import CareerPath from '../components/careers/CareerPath'
 import BranchHiringCard from '../components/careers/BranchHiringCard'
-import ApplicationForm from '../components/careers/ApplicationForm'
+import ApplicationSection from '../components/careers/ApplicationSection'
 import { branchHiring } from '../../data/hiringStatus'
 
 export const metadata: Metadata = {
@@ -273,85 +271,7 @@ export default function CareersPage() {
       </section>
 
       {/* ── APPLICATION FORM ── */}
-      <section id="apply" style={{ background: '#0A1623', padding: '100px 0', borderTop: '1px solid rgba(255,255,255,0.04)' }} aria-label="Apply now">
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-
-          <div className="two-col-grid" style={{ alignItems: 'start' }}>
-
-            {/* Left: copy */}
-            <div>
-              <div className="reveal" style={{ marginBottom: '10px' }}>
-                <span className="eyebrow">Get In Touch</span>
-                </div>
-              <h2 className="section-title reveal d1" style={{ fontSize: 'clamp(1.8rem,3.5vw,3rem)', color: '#fff' }}>
-                Apply Now
-              </h2>
-              <div className="orange-rule reveal d2" style={{ marginTop: '16px' }} />
-              <p className="reveal d3" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', marginTop: '24px' }}>
-                Fill in the form and one of our team will be in touch. We review every application and aim to respond within a few business days.
-              </p>
-
-              <div className="reveal d5" style={{ marginTop: '40px', padding: '24px', background: 'rgba(242,101,34,0.06)', border: '1px solid rgba(242,101,34,0.15)', borderLeft: '3px solid var(--orange)', borderRadius: '2px' }}>
-                <p className="font-display" style={{ fontWeight: 600, fontSize: '0.9rem', color: '#fff', marginBottom: '8px' }}>
-                  Important for Casual Applicants
-                </p>
-                <p style={{ fontSize: '0.85rem', lineHeight: 1.65, color: 'var(--muted)', marginBottom: '14px' }}>
-                  The nature of casual work is sporadic. While this can offer flexibility, and we do promote from within our casual pool when full-time positions become available, it may not suit everyone.
-                </p>
-                <p style={{ fontSize: '0.85rem', lineHeight: 1.65, color: 'var(--muted)', marginBottom: '14px' }}>
-                  We want to ensure you fully understand the role before proceeding. If you require a consistent income, this may not be the right fit for you.
-                </p>
-                <p style={{ fontSize: '0.85rem', lineHeight: 1.65, color: 'var(--muted)' }}>
-                  If you are applying for a casual traffic role, please read the{' '}
-                  <a
-                    href="https://assets.zyrosite.com/AE0ryZVv54tkZZN7/what-to-expect-as-a-casual-employee-ttc-AMqDWav4NQCQ4qOe.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ color: 'var(--orange)', textDecoration: 'none', fontWeight: 500 }}
-                  >
-                    What to Expect as a Casual Worker
-                  </a>
-                  {' '}guide before completing the application form.
-                </p>
-              </div>
-            </div>
-
-            {/* Right: form */}
-            <div className="reveal d2">
-              <Suspense fallback={<div />}>
-                <ApplicationForm />
-              </Suspense>
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* ── CTA ── */}
-      <section className="cta-section" aria-label="Call to action">
-        <div style={{ position: 'relative', zIndex: 10, maxWidth: '1280px', margin: '0 auto', padding: '80px 24px', textAlign: 'center' }}>
-          <div className="reveal">
-            <h2 className="font-display" style={{ fontWeight: 700, fontSize: 'clamp(2rem,4.5vw,4rem)', color: '#fff', lineHeight: 1.1, letterSpacing: '-0.02em' }}>
-              Ready to join the team?
-            </h2>
-            <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.88)', maxWidth: '480px', margin: '20px auto 0', lineHeight: 1.72 }}>
-              Apply above or reach out to your nearest branch directly.
-            </p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '14px', marginTop: '36px' }}>
-              <a href="#apply" className="btn-white">
-                Apply Now
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </a>
-              <Link href="/contact" className="btn-outline-white">
-                Contact Us
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ApplicationSection />
 
     </>
   )

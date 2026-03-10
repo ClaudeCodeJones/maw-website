@@ -1,7 +1,8 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useSearchParams } from 'next/navigation'
+import Turnstile from 'react-turnstile'
 import SelectWrapper from '../SelectWrapper'
 
 type FormState = 'idle' | 'submitting' | 'success' | 'error'
@@ -115,11 +116,15 @@ function CheckboxOption({
   )
 }
 
-export default function ApplicationForm() {
+export default function ApplicationForm({ onSuccess, sectionRef }: { onSuccess?: () => void; sectionRef?: React.RefObject<HTMLDivElement> }) {
   const searchParams = useSearchParams()
-  const [step, setStep] = useState<1 | 2>(2)
+  const [step, setStep] = useState<1 | 2>(1)
   const [state, setState] = useState<FormState>('idle')
   const [errors, setErrors] = useState<Record<string, string>>({})
+  const [turnstileToken, setTurnstileToken] = useState('')
+  const honeypotRef = useRef<HTMLInputElement>(null)
+  const cardRef = useRef<HTMLDivElement>(null)
+  const dateRef = useRef<HTMLInputElement>(null)
 
   const branchParam = searchParams.get('branch')
   const preselectedBranch = branchParam
@@ -205,7 +210,7 @@ export default function ApplicationForm() {
     if (Object.keys(e).length > 0) { setErrors(e); return }
     setErrors({})
     setStep(2)
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    requestAnimationFrame(() => { if (cardRef.current) { const headerOffset = 100; const y = cardRef.current.getBoundingClientRect().top + window.scrollY - headerOffset; window.scrollTo({ top: y, behavior: 'smooth' }) } })
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -219,9 +224,14 @@ export default function ApplicationForm() {
       const res = await fetch('/api/careers-application', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, turnstileToken, companyPhone: honeypotRef.current?.value ?? '' }),
       })
-      setState(res.ok ? 'success' : 'error')
+      if (res.ok) {
+        if (onSuccess) { onSuccess(); return }
+        setState('success')
+      } else {
+        setState('error')
+      }
     } catch {
       setState('error')
     }
@@ -262,7 +272,7 @@ export default function ApplicationForm() {
   }
 
   return (
-    <div style={cardStyle}>
+    <div ref={cardRef} style={cardStyle}>
       {/* Step indicator */}
       <div style={{ marginBottom: '32px' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
@@ -280,7 +290,10 @@ export default function ApplicationForm() {
 
       {/* ── STEP 1 ── */}
       {step === 1 && (
-        <div>
+        <div style={{ paddingBottom: '40px' }}>
+          {/* Honeypot field – hidden from users */}
+          <input ref={honeypotRef} type="text" name="companyPhone" tabIndex={-1} autoComplete="off" className="absolute left-[-9999px] opacity-0 pointer-events-none" />
+
           <div style={{ marginBottom: '20px' }}>
             <label style={labelStyle}>Full Name</label>
             <input
@@ -324,14 +337,25 @@ export default function ApplicationForm() {
             <div>
               <label style={labelStyle}>Earliest Start Date</label>
               <div style={{ position: 'relative' }}>
-                {!form.startDate && (
-                  <span style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', fontFamily: 'Inter, sans-serif', fontSize: '0.9rem', color: 'rgba(255,255,255,0.45)', pointerEvents: 'none', zIndex: 1 }}>Select start date</span>
-                )}
                 <input
+                  ref={dateRef}
                   type="date" value={form.startDate}
                   onChange={e => set('startDate', e.target.value)}
-                  style={{ ...inputStyle, borderColor: errors.startDate ? '#f87171' : 'rgba(255,255,255,0.12)', color: form.startDate ? '#fff' : 'transparent' }}
+                  style={{ ...inputStyle, borderColor: errors.startDate ? '#f87171' : 'rgba(255,255,255,0.12)', paddingRight: '44px' }}
                 />
+                <button
+                  type="button"
+                  onClick={() => dateRef.current?.showPicker()}
+                  style={{ position: 'absolute', right: '12px', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', padding: '4px', cursor: 'pointer', color: 'rgba(255,255,255,0.4)', display: 'flex', alignItems: 'center' }}
+                  tabIndex={-1}
+                  aria-label="Open date picker"
+                >
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <rect x="1" y="3" width="14" height="12" rx="1.5" stroke="currentColor" strokeWidth="1.4"/>
+                    <path d="M1 7h14" stroke="currentColor" strokeWidth="1.4"/>
+                    <path d="M5 1v4M11 1v4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+                  </svg>
+                </button>
               </div>
               <FieldError msg={errors.startDate} />
             </div>
@@ -385,7 +409,7 @@ export default function ApplicationForm() {
 
       {/* ── STEP 2 ── */}
       {step === 2 && (
-        <form onSubmit={handleSubmit} noValidate>
+        <form autoComplete="off" onSubmit={handleSubmit} noValidate>
           {/* TM Experience */}
           <div style={{ marginBottom: '28px' }}>
             <label style={labelStyle}>Traffic Management Qualifications</label>
@@ -580,10 +604,17 @@ export default function ApplicationForm() {
             </p>
           )}
 
+          {/* Turnstile – invisible mode */}
+          <Turnstile
+            sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+            size="invisible"
+            onVerify={(token) => setTurnstileToken(token)}
+          />
+
           <div style={{ display: 'flex', gap: '12px' }}>
             <button
               type="button"
-              onClick={() => { setStep(1); setErrors({}) }}
+              onClick={() => { setStep(1); setErrors({}); requestAnimationFrame(() => { if (cardRef.current) { const headerOffset = 100; const y = cardRef.current.getBoundingClientRect().top + window.scrollY - headerOffset; window.scrollTo({ top: y, behavior: 'smooth' }) } }) }}
               className="btn-ghost"
               style={{ flexShrink: 0 }}
             >

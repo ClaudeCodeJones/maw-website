@@ -30,8 +30,27 @@ export async function POST(req: NextRequest) {
       fullName, email, phone, city, startDate, branch,
       experience, licences, contactMethod,
       workHistory, aboutYourself, healthIssues, accHistory,
-      howDidYouHear, casualConfirm,
+      howDidYouHear, casualConfirm, turnstileToken, companyPhone,
     } = body
+
+    // Honeypot check
+    if (companyPhone) {
+      return NextResponse.json({ success: true })
+    }
+
+    // Verify Turnstile token
+    const verifyResponse = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        secret: process.env.TURNSTILE_SECRET_KEY,
+        response: turnstileToken,
+      }),
+    })
+    const verifyData = await verifyResponse.json()
+    if (!verifyData.success) {
+      return NextResponse.json({ error: 'Turnstile verification failed' }, { status: 400 })
+    }
 
     // Basic validation
     if (!fullName || !email || !phone || !city || !branch ||
