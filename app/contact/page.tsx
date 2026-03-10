@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { Phone, Mail } from 'lucide-react'
 import RevealObserver from '../components/RevealObserver'
 import SelectWrapper from '../components/SelectWrapper'
 
@@ -108,21 +109,38 @@ export default function ContactPage() {
             Contact Us
           </h1>
           <p className="reveal d2" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '480px', marginTop: '20px' }}>
-            Send us the details of your project and our team will respond as soon as possible.
+            Send us your enquiry and our team will respond as soon as possible.
           </p>
           <div style={{ width: '40px', height: '1px', background: 'rgba(255,255,255,0.15)', margin: '20px 0' }} />
-          <p className="reveal d3" style={{ marginTop: '0', fontSize: '0.82rem', color: 'var(--muted)', lineHeight: 1.6 }}>
-            Prefer to call or email?<br />
-            <a href="tel:0800636289" style={{ color: 'var(--orange)', fontWeight: 500, textDecoration: 'none' }}>0800 636 289</a>
-            <span style={{ margin: '0 8px', opacity: 0.4 }}>|</span>
-            <a href="mailto:office@menatwork.co.nz" style={{ color: 'var(--orange)', fontWeight: 500, textDecoration: 'none' }}>office@menatwork.co.nz</a>
-          </p>
+          <div className="reveal d3" style={{ marginTop: '0', fontSize: '0.82rem', color: 'var(--muted)', lineHeight: 1.6 }}>
+            <p>Prefer to call or email?</p>
+            <div style={{ marginTop: '10px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <a href="tel:0800636289" className="flex items-center gap-2 hover:opacity-80" style={{ color: 'var(--orange)', fontWeight: 500, textDecoration: 'none' }}>
+                <Phone size={15} />
+                0800 636 289
+              </a>
+              <a href="mailto:office@menatwork.co.nz" className="flex items-center gap-2 hover:opacity-80" style={{ color: 'var(--orange)', fontWeight: 500, textDecoration: 'none' }}>
+                <Mail size={15} />
+                office@menatwork.co.nz
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ── FORM SECTION ── */}
       <section style={{ background: 'var(--navy)', padding: '36px 0 100px' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto', padding: '0 24px' }}>
+
+          <div style={{ marginBottom: '32px', padding: '24px', background: 'rgba(242,101,34,0.06)', border: '1px solid rgba(242,101,34,0.15)', borderLeft: '3px solid var(--orange)', borderRadius: '2px' }}>
+            <p className="font-display" style={{ fontWeight: 600, fontSize: '0.9rem', color: '#fff', marginBottom: '8px' }}>Looking for an Estimate?</p>
+            <p style={{ fontSize: '0.85rem', lineHeight: 1.65, color: 'var(--muted)', marginBottom: '14px' }}>
+              If you&apos;re looking for pricing for traffic management on a project or job, please use our{' '}
+              <a href="/request-quote" style={{ color: 'var(--orange)', fontWeight: 500, textDecoration: 'none' }}>Get an Estimate</a>{' '}
+              page so we can gather the details needed to provide an accurate quote.
+            </p>
+            <p style={{ fontSize: '0.85rem', lineHeight: 1.65, color: 'var(--muted)' }}>For general enquiries, feel free to use the form below.</p>
+          </div>
 
           <div
             className="reveal"

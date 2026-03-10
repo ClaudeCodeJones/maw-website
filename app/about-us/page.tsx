@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 const groupEntities = [
   {
     name: 'MW Training & Planning',
-    headline: 'Specialist TMP design, planning, and industry training services.',
+    headline: 'Specialist TMP design, risk assessment, planning, and industry training services.',
     body: 'We design compliant Traffic Management Plans and deliver practical training to support safe, professional worksites.',
     href: 'https://www.mwtrainplan.co.nz',
     logo: '/logos/mwtrainingandplanning_white.webp',
@@ -33,7 +33,7 @@ const groupEntities = [
   },
   {
     name: 'Sweepco',
-    headline: 'Professional sweeping services for construction sites, industrial yards, and public spaces.',
+    headline: 'Professional sweeping for construction sites, industrial yards and public spaces.',
     body: 'From post-construction clean-ups to site maintenance, our sweepers remove debris, dust, and loose material to keep surfaces safe and operational.',
     href: 'https://www.sweepco.co.nz',
     logo: '/logos/sweepco_white.png',

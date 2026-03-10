@@ -1,6 +1,25 @@
 import { NextResponse } from "next/server"
 import { sendEmail } from "@/lib/email"
 
+const rateLimitMap = new Map<string, { count: number; lastRequest: number }>()
+
+function checkRateLimit(req: Request): boolean {
+  const ip = req.headers.get('x-forwarded-for') ?? req.headers.get('x-real-ip') ?? 'unknown'
+  const now = Date.now()
+  const windowMs = 60 * 1000
+  const limit = 5
+  const record = rateLimitMap.get(ip)
+  if (record && now - record.lastRequest < windowMs) {
+    if (record.count >= limit) return false
+    record.count++
+    record.lastRequest = now
+    rateLimitMap.set(ip, record)
+  } else {
+    rateLimitMap.set(ip, { count: 1, lastRequest: now })
+  }
+  return true
+}
+
 // ── Email routing ─────────────────────────────────────────────────────────────
 // Update sendTo per branch as needed. Currently all branches route to the same address.
 // To route by branch, replace the static value below with a lookup:
@@ -31,6 +50,10 @@ function section(heading: string, rows: string) {
 }
 
 export async function POST(req: Request) {
+  if (!checkRateLimit(req)) {
+    return new Response('Too many requests', { status: 429 })
+  }
+
   try {
     const body = await req.json()
     const {
@@ -38,8 +61,27 @@ export async function POST(req: Request) {
       projectName, location, plantNeeded, workTimes, unattendedSite,
       selfTM, selfTMDetail, wantsTMP, wantsCAR,
       costType, onsiteMeeting, meetingDate, meetingTime,
-      otherInfo, fileData,
+      otherInfo, fileData, turnstileToken, companyPhone,
     } = body
+
+    // Honeypot check
+    if (companyPhone) {
+      return NextResponse.json({ success: true })
+    }
+
+    // Verify Turnstile token
+    const verifyResponse = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        secret: process.env.TURNSTILE_SECRET_KEY,
+        response: turnstileToken,
+      }),
+    })
+    const verifyData = await verifyResponse.json()
+    if (!verifyData.success) {
+      return NextResponse.json({ error: 'Turnstile verification failed' }, { status: 400 })
+    }
 
     const meetingInfo = onsiteMeeting === 'yes' && meetingDate
       ? `${meetingDate} at ${meetingTime}`

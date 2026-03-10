@@ -913,12 +913,6 @@ input:focus, select:focus, textarea:focus {
   padding-bottom: 48px;
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
-.process-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
-  position: relative;
-}
 
 /* ── Responsive ── */
 @media (max-width: 900px) {
@@ -933,13 +927,26 @@ input:focus, select:focus, textarea:focus {
     grid-template-columns: 1fr;
     gap: 36px;
   }
-  .process-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-  }
-  .process-connector { display: none; }
 }
 @media (max-width: 580px) {
   .cta-section a { width: 100%; justify-content: center; }
-  .process-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Process section responsive ── */
+.process-step-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  max-width: 24rem;
+  margin: 0 auto;
+}
+.process-step-title { margin-top: 2px; }
+@media (min-width: 1024px) {
+  .process-step-inner {
+    display: block;
+    text-align: center;
+    max-width: none;
+    margin: 0;
+  }
+  .process-step-title { margin-top: 20px; }
 }

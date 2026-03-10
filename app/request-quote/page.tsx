@@ -2,6 +2,7 @@
 
 import { useState, useRef, ChangeEvent } from 'react'
 import Link from 'next/link'
+import Turnstile from 'react-turnstile'
 import RevealObserver from '../components/RevealObserver'
 import SelectWrapper from '../components/SelectWrapper'
 
@@ -107,7 +108,7 @@ type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function RequestQuotePage() {
-  const [step, setStep] = useState<1 | 2>(1)
+  const [step, setStep] = useState<1 | 2>(2)
   const [status, setStatus] = useState<FormStatus>('idle')
 
   const [s1, setS1] = useState<S1>({
@@ -125,7 +126,9 @@ export default function RequestQuotePage() {
   })
   const [s2Errors, setS2Errors] = useState<S2Errors>({})
   const [fileError, setFileError] = useState('')
+  const [turnstileToken, setTurnstileToken] = useState('')
   const fileRef = useRef<HTMLInputElement>(null)
+  const honeypotRef = useRef<HTMLInputElement>(null)
 
   function setF1(field: keyof S1, value: string) {
     setS1(f => ({ ...f, [field]: value }))
@@ -221,7 +224,7 @@ export default function RequestQuotePage() {
       const res = await fetch('/api/request-quote', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...s1, ...s2, locationFile: undefined, fileData }),
+        body: JSON.stringify({ ...s1, ...s2, locationFile: undefined, fileData, turnstileToken, companyPhone: honeypotRef.current?.value ?? '' }),
       })
       if (!res.ok) throw new Error()
       setStatus('success')
@@ -248,11 +251,15 @@ export default function RequestQuotePage() {
           {status === 'success' ? 'Request Submitted' : 'Request an Estimate'}
         </h1>
         {status !== 'success' && (
-          <p className="reveal d2" style={{ fontSize: '0.95rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '480px', marginTop: '20px' }}>
-            Provide a few details about your project and our team will prepare pricing for you, or please call us on{' '}
-            <a href="tel:0800636289" style={{ color: 'var(--orange)', textDecoration: 'none', fontWeight: 500 }}>0800 636 289</a>
-            {' '}to discuss your needs.
-          </p>
+          <div className="reveal d2" style={{ fontSize: '0.95rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '480px', marginTop: '20px' }}>
+            <p>Provide a few details about your project and we&apos;ll prepare pricing for you. If we need any additional information, we&apos;ll get in touch.</p>
+            <p style={{ marginTop: '12px' }}>
+              Prefer to discuss it first? Call us on{' '}
+              <a href="tel:0800636289" style={{ color: 'var(--orange)', textDecoration: 'none', fontWeight: 500 }}>0800 636 289</a>
+              {' '}or email{' '}
+              <a href="mailto:office@menatwork.co.nz" style={{ color: 'var(--orange)', textDecoration: 'none', fontWeight: 500 }}>office@menatwork.co.nz</a>
+            </p>
+          </div>
         )}
       </div>
     </section>
@@ -345,6 +352,9 @@ export default function RequestQuotePage() {
             {/* ── STEP 1: CLIENT DETAILS ── */}
             {step === 1 && (
               <div>
+
+                {/* Honeypot field – hidden from users */}
+                <input ref={honeypotRef} type="text" name="companyPhone" tabIndex={-1} autoComplete="off" className="absolute left-[-9999px] opacity-0 pointer-events-none" />
 
                 <div style={fieldStyle}>
                   <label htmlFor="fullName" style={labelStyle}>Full Name *</label>
@@ -589,6 +599,7 @@ export default function RequestQuotePage() {
 
                 {/* Meeting date + time (conditional) */}
                 {s2.onsiteMeeting === 'yes' && (
+                  <>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4" style={{ marginBottom: '20px' }}>
                     <div>
                       <label htmlFor="meetingDate" style={labelStyle}>Date *</label>
@@ -615,6 +626,10 @@ export default function RequestQuotePage() {
                       <FieldError msg={s2Errors.meetingTime} />
                     </div>
                   </div>
+                  <p style={{ fontSize: '0.75rem', color: 'var(--muted)', marginTop: '-8px', marginBottom: '20px' }}>
+                    We&apos;ll do our best to accommodate your requested date and time.
+                  </p>
+                  </>
                 )}
                 <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', margin: '0 0 24px' }} />
 
@@ -626,6 +641,13 @@ export default function RequestQuotePage() {
                 </div>
 
                 <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', margin: '0 0 24px' }} />
+
+                {/* Turnstile – invisible mode */}
+                <Turnstile
+                  sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+                  size="invisible"
+                  onVerify={(token) => setTurnstileToken(token)}
+                />
 
                 {/* Buttons */}
                 <div style={{ display: 'flex', flexDirection: 'column' as const, gap: '12px' }}>

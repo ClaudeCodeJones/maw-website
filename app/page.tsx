@@ -193,9 +193,9 @@ export default function HomePage() {
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', marginTop: '36px' }}>
                 {[
-                  { d: 'd1', title: 'Fully Accredited & Certified', body: 'All team members hold current qualifications and competencies to the highest industry standards.' },
-                  { d: 'd2', title: 'Tailored to Your Project', body: 'No two projects are the same. Every traffic management plan is custom-built for your site, scope, and schedule.' },
-                  { d: 'd3', title: 'Zero Compromise on Safety', body: 'Field-tested safety protocols backed by Sitewise Gold accreditation. Every decision, every deployment, every plan is safety-driven.' },
+                  { d: 'd1', title: 'Crews You Can Rely On', body: 'When we commit to a job, our crews are there. Contractors rely on us to turn up prepared, ready to work, and keep the site moving.' },
+                  { d: 'd2', title: 'Experienced Traffic Professionals', body: 'Experienced STMS and crews delivering safe, efficient traffic management from highways to local road works.' },
+                  { d: 'd3', title: 'Professional On Every Site', body: 'Clear communication, proper paperwork, and well-run setups. Our crews work closely with site managers to keep projects running smoothly.' },
                 ].map(({ d, title, body }) => (
                   <div key={title} className={`reveal ${d}`} style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
                     <div className="feature-icon">
@@ -269,8 +269,8 @@ export default function HomePage() {
             <div className="orange-rule" style={{ marginTop: '16px' }} />
           </div>
 
-          <div className="process-grid">
-            <div className="process-connector" style={{ position: 'absolute', top: '27px', left: '12.5%', right: '12.5%', height: '2px', background: 'linear-gradient(90deg, var(--orange) 0%, rgba(242,101,34,0.15) 100%)', pointerEvents: 'none', zIndex: 0 }} />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 relative">
+            <div className="hidden lg:block absolute" style={{ top: '27px', left: '12.5%', right: '12.5%', height: '2px', background: 'var(--orange)', pointerEvents: 'none', zIndex: 0 }} />
 
             {[
               { n: '01', title: 'Initial Consult', body: 'We discuss your project, timeline, and site-specific needs to understand the full scope.', solid: false },
@@ -278,13 +278,17 @@ export default function HomePage() {
               { n: '03', title: 'Deploy & Execute', body: 'Accredited teams arrive on-site with equipment and signage ready to go from day one.', solid: false },
               { n: '04', title: 'Ongoing Site Management', body: 'Ongoing site monitoring ensures traffic management remains safe and effective as work progresses.', solid: false },
             ].map(({ n, title, body, note, solid }, i) => (
-              <div key={n} className={`reveal d${i+1}`} style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
-                <div className={solid ? 'step-circle-solid' : 'step-circle-outline'} style={{ margin: '0 auto' }}>
-                  <span className="step-num">{n}</span>
+              <div key={n} className={`reveal d${i+1}`} style={{ position: 'relative', zIndex: 1 }}>
+                <div className="process-step-inner">
+                  <div className={`${solid ? 'step-circle-solid' : 'step-circle-outline'} shrink-0`} style={{ margin: '0 auto' }}>
+                    <span className="step-num">{n}</span>
+                  </div>
+                  <div>
+                    <h3 className="font-display process-step-title" style={{ fontWeight: 600, fontSize: '1rem', color: '#fff', lineHeight: 1.3 }}>{title}</h3>
+                    <p style={{ fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: 1.7, marginTop: '8px' }}>{body}</p>
+                    {note && <p style={{ fontSize: '0.75rem', color: 'var(--muted)', lineHeight: 1.6, marginTop: '10px', opacity: 0.7 }}>{note}</p>}
+                  </div>
                 </div>
-                <h3 className="font-display" style={{ fontWeight: 600, fontSize: '1rem', color: '#fff', marginTop: '20px' }}>{title}</h3>
-                <p style={{ fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: 1.7, marginTop: '10px' }}>{body}</p>
-                {note && <p style={{ fontSize: '0.75rem', color: 'var(--muted)', lineHeight: 1.6, marginTop: '14px', opacity: 0.7 }}>{note}</p>}
               </div>
             ))}
           </div>
