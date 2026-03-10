@@ -127,7 +127,7 @@ export default function Timeline() {
         {/* Track with spine */}
         <div style={{ position: 'relative' }}>
 
-          {/* Vertical spine — desktop only */}
+          {/* Vertical spine, desktop only */}
           <div
             className="tl-desktop"
             aria-hidden="true"

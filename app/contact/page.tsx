@@ -1,7 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
+import Link from 'next/link'
 import { Phone, Mail } from 'lucide-react'
+import Turnstile from 'react-turnstile'
 import RevealObserver from '../components/RevealObserver'
 import SelectWrapper from '../components/SelectWrapper'
 
@@ -47,6 +49,9 @@ export default function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', branch: '', message: '' })
   const [errors, setErrors] = useState<Partial<typeof form>>({})
   const [status, setStatus] = useState<FormState>('idle')
+  const [errorMessage, setErrorMessage] = useState('Something went wrong. Please try again or call us on 0800 636 289.')
+  const [turnstileToken, setTurnstileToken] = useState('')
+  const honeypotRef = useRef<HTMLInputElement>(null)
 
   function set(field: keyof typeof form, value: string) {
     setForm(f => ({ ...f, [field]: value }))
@@ -73,60 +78,105 @@ export default function ContactPage() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, turnstileToken, companyPhone: honeypotRef.current?.value ?? '' }),
       })
-      if (!res.ok) throw new Error()
+      const data = await res.json()
+      if (!res.ok) {
+        setErrorMessage(data.error || 'Something went wrong. Please try again or call us on 0800 636 289.')
+        setStatus('error')
+        return
+      }
       setStatus('success')
-      setForm({ name: '', email: '', phone: '', branch: '', message: '' })
     } catch {
       setStatus('error')
     }
   }
 
+  const heroContent = (
+    <section
+      style={{
+        position: 'relative',
+        background: '#070f1b',
+        paddingTop: '180px',
+        paddingBottom: '56px',
+        overflow: 'hidden',
+      }}
+      aria-label="Contact hero"
+    >
+      <div style={{ position: 'absolute', top: '-100px', left: '50%', transform: 'translateX(-50%)', width: '700px', height: '700px', background: 'radial-gradient(circle, rgba(242,101,34,0.07) 0%, transparent 65%)', pointerEvents: 'none' }} aria-hidden="true" />
+
+      <div style={{ position: 'relative', zIndex: 10, maxWidth: '800px', margin: '0 auto', padding: '0 24px' }}>
+        <div className="reveal" style={{ marginBottom: '20px' }}>
+          <span className="eyebrow">Contact</span>
+        </div>
+        <h1 className="reveal d1 font-display" style={{ fontWeight: 700, fontSize: 'clamp(2.4rem,5vw,4.5rem)', lineHeight: 1.05, letterSpacing: '-0.03em', color: '#fff' }}>
+          {status === 'success' ? 'Message Sent' : 'Contact Us'}
+        </h1>
+        {status !== 'success' && (
+          <>
+            <p className="reveal d2" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '480px', marginTop: '20px' }}>
+              Send us your enquiry and our team will respond as soon as possible.
+            </p>
+            <div style={{ width: '40px', height: '1px', background: 'rgba(255,255,255,0.15)', margin: '20px 0' }} />
+            <div className="reveal d3" style={{ marginTop: '0', fontSize: '0.82rem', color: 'var(--muted)', lineHeight: 1.6 }}>
+              <p>Prefer to call or email?</p>
+              <div style={{ marginTop: '10px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <a href="tel:0800636289" className="flex items-center gap-2 hover:opacity-80" style={{ color: 'var(--orange)', fontWeight: 500, textDecoration: 'none' }}>
+                  <Phone size={15} />
+                  0800 636 289
+                </a>
+                <a href="mailto:office@menatwork.co.nz" className="flex items-center gap-2 hover:opacity-80" style={{ color: 'var(--orange)', fontWeight: 500, textDecoration: 'none' }}>
+                  <Mail size={15} />
+                  office@menatwork.co.nz
+                </a>
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+    </section>
+  )
+
+  // ── Success state ──────────────────────────────────────────────────────────
+
+  if (status === 'success') {
+    return (
+      <>
+        <RevealObserver />
+        {heroContent}
+        <section style={{ background: 'var(--navy)', padding: '36px 0 100px' }}>
+          <div style={{ maxWidth: '800px', margin: '0 auto', padding: '0 24px' }}>
+            <div style={{ background: 'var(--navy-mid)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '4px', padding: 'clamp(28px, 5vw, 48px)', textAlign: 'center' }}>
+              <div style={{ width: '56px', height: '56px', borderRadius: '50%', background: 'rgba(74,222,128,0.1)', border: '1px solid rgba(74,222,128,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 24px' }}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4ade80" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </div>
+              <h2 className="font-display" style={{ fontWeight: 700, fontSize: '1.5rem', color: '#fff', marginBottom: '12px' }}>
+                Message Sent
+              </h2>
+              <p style={{ fontSize: '0.95rem', color: 'var(--muted)', lineHeight: 1.75, maxWidth: '400px', margin: '0 auto' }}>
+                Thanks for contacting Men at Work. Our team will respond shortly.
+              </p>
+              <Link
+                href="/"
+                className="text-orange-500 text-sm hover:text-orange-400 transition mt-6 inline-block"
+              >
+                Back to Home →
+              </Link>
+            </div>
+          </div>
+        </section>
+      </>
+    )
+  }
+
+  // ── Form ───────────────────────────────────────────────────────────────────
+
   return (
     <>
       <RevealObserver />
-
-      {/* ── HERO ── */}
-      <section
-        style={{
-          position: 'relative',
-          background: '#070f1b',
-          paddingTop: '180px',
-          paddingBottom: '56px',
-          overflow: 'hidden',
-        }}
-        aria-label="Contact hero"
-      >
-        <div style={{ position: 'absolute', top: '-100px', left: '50%', transform: 'translateX(-50%)', width: '700px', height: '700px', background: 'radial-gradient(circle, rgba(242,101,34,0.07) 0%, transparent 65%)', pointerEvents: 'none' }} aria-hidden="true" />
-
-
-        <div style={{ position: 'relative', zIndex: 10, maxWidth: '800px', margin: '0 auto', padding: '0 24px' }}>
-          <div className="reveal" style={{ marginBottom: '20px' }}>
-            <span className="eyebrow">Contact</span>
-          </div>
-          <h1 className="reveal d1 font-display" style={{ fontWeight: 700, fontSize: 'clamp(2.4rem,5vw,4.5rem)', lineHeight: 1.05, letterSpacing: '-0.03em', color: '#fff' }}>
-            Contact Us
-          </h1>
-          <p className="reveal d2" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '480px', marginTop: '20px' }}>
-            Send us your enquiry and our team will respond as soon as possible.
-          </p>
-          <div style={{ width: '40px', height: '1px', background: 'rgba(255,255,255,0.15)', margin: '20px 0' }} />
-          <div className="reveal d3" style={{ marginTop: '0', fontSize: '0.82rem', color: 'var(--muted)', lineHeight: 1.6 }}>
-            <p>Prefer to call or email?</p>
-            <div style={{ marginTop: '10px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              <a href="tel:0800636289" className="flex items-center gap-2 hover:opacity-80" style={{ color: 'var(--orange)', fontWeight: 500, textDecoration: 'none' }}>
-                <Phone size={15} />
-                0800 636 289
-              </a>
-              <a href="mailto:office@menatwork.co.nz" className="flex items-center gap-2 hover:opacity-80" style={{ color: 'var(--orange)', fontWeight: 500, textDecoration: 'none' }}>
-                <Mail size={15} />
-                office@menatwork.co.nz
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      {heroContent}
 
       {/* ── FORM SECTION ── */}
       <section style={{ background: 'var(--navy)', padding: '36px 0 100px' }}>
@@ -151,7 +201,10 @@ export default function ContactPage() {
               padding: 'clamp(28px, 5vw, 48px)',
             }}
           >
-            <form onSubmit={handleSubmit} noValidate>
+            <form autoComplete="off" onSubmit={handleSubmit} noValidate>
+
+              {/* Honeypot field – hidden from users */}
+              <input ref={honeypotRef} type="text" name="companyPhone" tabIndex={-1} autoComplete="off" className="absolute left-[-9999px] opacity-0 pointer-events-none" />
 
               <div style={fieldStyle}>
                 <label htmlFor="name" style={labelStyle}>Name</label>
@@ -184,6 +237,8 @@ export default function ContactPage() {
                 <input
                   id="phone"
                   type="tel"
+                  inputMode="numeric"
+                  pattern="[0-9+\s-]*"
                   autoComplete="tel"
                   value={form.phone}
                   onChange={e => set('phone', e.target.value)}
@@ -205,12 +260,23 @@ export default function ContactPage() {
                 <textarea
                   id="message"
                   rows={5}
+                  minLength={10}
+                  required
                   value={form.message}
                   onChange={e => set('message', e.target.value)}
                   style={{ ...inputStyle, borderColor: errors.message ? '#f87171' : 'rgba(255,255,255,0.12)', resize: 'vertical' as const }}
                 />
                 <FieldError msg={errors.message} />
               </div>
+
+              <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', margin: '0 0 24px' }} />
+
+              {/* Turnstile – invisible mode */}
+              <Turnstile
+                sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+                size="invisible"
+                onVerify={(token) => setTurnstileToken(token)}
+              />
 
               <button
                 type="submit"
@@ -221,23 +287,13 @@ export default function ContactPage() {
                 {status === 'submitting' ? 'Sending...' : 'Send Message'}
               </button>
 
-              {status === 'success' && (
-                <p
-                  role="status"
-                  aria-live="polite"
-                  style={{ marginTop: '20px', fontSize: '0.9rem', color: '#4ade80', textAlign: 'center', lineHeight: 1.6 }}
-                >
-                  Thanks for contacting Men at Work. Our team will respond shortly.
-                </p>
-              )}
-
               {status === 'error' && (
                 <p
                   role="alert"
                   aria-live="assertive"
                   style={{ marginTop: '20px', fontSize: '0.9rem', color: '#f87171', textAlign: 'center', lineHeight: 1.6 }}
                 >
-                  Something went wrong. Please try again or call us on 0800 636 289.
+                  {errorMessage}
                 </p>
               )}
 

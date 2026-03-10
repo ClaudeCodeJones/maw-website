@@ -94,7 +94,7 @@ type S1 = {
 }
 
 type S2 = {
-  projectName: string; location: string; hasLocationFile: boolean; locationFile: File | null
+  projectName: string; projectTiming: string; location: string; hasLocationFile: boolean; locationFile: File | null
   plantNeeded: string; workTimes: string; unattendedSite: string
   selfTM: string; selfTMDetail: string; wantsTMP: string; wantsCAR: string
   costType: string; onsiteMeeting: string; meetingDate: string; meetingTime: string
@@ -118,7 +118,7 @@ export default function RequestQuotePage() {
   const [s1Errors, setS1Errors] = useState<S1Errors>({})
 
   const [s2, setS2] = useState<S2>({
-    projectName: '', location: '', hasLocationFile: false, locationFile: null,
+    projectName: '', projectTiming: '', location: '', hasLocationFile: false, locationFile: null,
     plantNeeded: '', workTimes: '', unattendedSite: '',
     selfTM: '', selfTMDetail: '', wantsTMP: '', wantsCAR: '',
     costType: '', onsiteMeeting: '', meetingDate: '', meetingTime: '',
@@ -163,6 +163,7 @@ export default function RequestQuotePage() {
   function validateStep2(): boolean {
     const e: S2Errors = {}
     if (!s2.projectName.trim()) e.projectName = 'Required'
+    if (!s2.projectTiming.trim()) e.projectTiming = 'Required'
     if (!s2.location.trim()) e.location = 'Required'
     if (!s2.plantNeeded.trim()) e.plantNeeded = 'Required'
     if (!s2.workTimes.trim()) e.workTimes = 'Required'
@@ -289,7 +290,7 @@ export default function RequestQuotePage() {
               </p>
               <Link
                 href="/"
-                className="inline-flex items-center gap-2 text-orange-500 font-semibold hover:text-orange-400 transition-colors mt-6"
+                className="text-orange-500 text-sm hover:text-orange-400 transition mt-6 inline-block"
               >
                 Back to Home →
               </Link>
@@ -350,7 +351,7 @@ export default function RequestQuotePage() {
             }}
           >
             <p style={{ fontSize: '0.68rem', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: 'var(--orange)', marginBottom: '28px' }}>
-              Step {step} of 2 — {step === 1 ? 'Client Details' : 'Project Details'}
+              Step {step} of 2: {step === 1 ? 'Client Details' : 'Project Details'}
             </p>
 
             {/* ── STEP 1: CLIENT DETAILS ── */}
@@ -383,7 +384,7 @@ export default function RequestQuotePage() {
 
                 <div style={fieldStyle}>
                   <label htmlFor="phone" style={labelStyle}>Phone Number *</label>
-                  <input id="phone" type="tel" autoComplete="tel" value={s1.phone} onChange={e => setF1('phone', e.target.value)}
+                  <input id="phone" type="tel" inputMode="numeric" pattern="[0-9+\s-]*" autoComplete="tel" value={s1.phone} onChange={e => setF1('phone', e.target.value)}
                     style={{ ...inputStyle, borderColor: s1Errors.phone ? '#f87171' : 'rgba(255,255,255,0.12)' }} />
                   <FieldError msg={s1Errors.phone} />
                 </div>
@@ -450,6 +451,15 @@ export default function RequestQuotePage() {
                     style={{ ...inputStyle, borderColor: s2Errors.projectName ? '#f87171' : 'rgba(255,255,255,0.12)' }} />
                   <FieldError msg={s2Errors.projectName} />
                 </div>
+
+                {/* Project Timing */}
+                <div style={fieldStyle}>
+                  <label htmlFor="projectTiming" style={labelStyle}>Expected Project Timing / Start Date *</label>
+                  <input id="projectTiming" type="text" placeholder='e.g. "late May", "next week", or "TBC"' value={s2.projectTiming} onChange={e => setF2('projectTiming', e.target.value)}
+                    style={{ ...inputStyle, borderColor: s2Errors.projectTiming ? '#f87171' : 'rgba(255,255,255,0.12)' }} />
+                  <FieldError msg={s2Errors.projectTiming} />
+                </div>
+
                 <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', margin: '0 0 24px' }} />
 
                 {/* Location */}

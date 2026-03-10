@@ -127,7 +127,7 @@ export default function BranchHiringCard({ item }: { item: BranchHiring }) {
       )}
 
 
-      {/* CTA — separated with divider */}
+      {/* CTA, separated with divider */}
       <div style={{ marginTop: '20px', paddingTop: '20px', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
         {item.status !== 'closed' ? (
           <>

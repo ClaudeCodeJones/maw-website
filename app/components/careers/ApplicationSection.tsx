@@ -43,7 +43,7 @@ export default function ApplicationSection() {
               </p>
               <Link
                 href="/"
-                className="inline-flex items-center gap-2 text-orange-500 font-semibold hover:text-orange-400 transition-colors mt-6"
+                className="text-orange-500 text-sm hover:text-orange-400 transition mt-6 inline-block"
               >
                 Back to Home →
               </Link>

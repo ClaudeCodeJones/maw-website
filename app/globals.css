@@ -749,13 +749,13 @@ body {
   outline: none;
 }
 
-/* Brand colour modifier — resting top border */
+/* Brand colour modifier, resting top border */
 .group-card--sweepco  { border-top: 2px solid rgba(204,  35,  36, 0.65); }
 .group-card--training { border-top: 2px solid rgba( 41,131, 194, 0.65); }
 .group-card--temp     { border-top: 2px solid rgba(188,156,  34, 0.65); }
 .group-card--qualcard { border-top: 2px solid rgba(162,128, 255, 0.65); }
 
-/* Brand colour modifier — hover glow */
+/* Brand colour modifier, hover glow */
 .group-card--sweepco:hover,
 .group-card--sweepco:focus-visible   { border-top-color: rgba(204,  35,  36, 1); box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(204,  35,  36, 0.22), 0 0 44px rgba(204,  35,  36, 0.13); }
 .group-card--training:hover,

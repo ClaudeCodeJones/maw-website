@@ -10,7 +10,7 @@ type FormState = 'idle' | 'submitting' | 'success' | 'error'
 const branches = ['Wellington', 'Nelson', 'Blenheim', 'Christchurch', 'Timaru']
 
 const tmExperienceOptions = [
-  'No qualifications',
+  'None',
   'TTM Worker',
   'TMO (NP)',
   'TMO (P)',
@@ -328,7 +328,7 @@ export default function ApplicationForm({ onSuccess, sectionRef }: { onSuccess?:
             <div>
               <label style={labelStyle}>Phone</label>
               <input
-                type="tel" autoComplete="tel" value={form.phone}
+                type="tel" inputMode="numeric" pattern="[0-9+\s-]*" autoComplete="tel" value={form.phone}
                 onChange={e => set('phone', e.target.value)}
                 style={{ ...inputStyle, borderColor: errors.phone ? '#f87171' : 'rgba(255,255,255,0.12)' }}
               />
