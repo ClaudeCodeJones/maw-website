@@ -4,8 +4,21 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 
 export const metadata: Metadata = {
-  title: 'MW Traffic Management | Professional Traffic Solutions',
-  description: 'Professional traffic management for road works, construction, events, and infrastructure projects. Accredited, reliable, and safety-first.',
+  metadataBase: new URL('https://www.menatwork.co.nz'),
+  title: 'Men at Work Traffic Management',
+  description: 'Professional traffic management services across Wellington, Christchurch, Nelson, Blenheim, and Timaru. Traffic control, TMP design, event traffic management, and consultancy.',
+  openGraph: {
+    title: 'Men at Work Traffic Management',
+    description: 'Professional traffic management services across five South Island locations.',
+    url: 'https://www.menatwork.co.nz',
+    siteName: 'Men at Work Traffic Management',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Men at Work Traffic Management',
+    description: 'Professional traffic management services across New Zealand.',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

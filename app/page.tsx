@@ -1,10 +1,31 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import RevealObserver from './components/RevealObserver'
 import WorksiteBanner from './components/WorksiteBanner'
 
+export const metadata: Metadata = {
+  title: 'Men at Work Traffic Management | Christchurch, Wellington, Nelson, Blenheim & Timaru',
+  description: 'Professional traffic management services across Christchurch, Wellington, Nelson, Blenheim and Timaru. Traffic control, TMP design, event traffic management and consultancy.',
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Men at Work Traffic Management',
+  url: 'https://www.menatwork.co.nz',
+  description: 'Professional traffic management services including traffic control, TMP design, event traffic management, and consultancy.',
+  areaServed: ['Christchurch', 'Wellington', 'Nelson', 'Blenheim', 'Timaru'],
+  serviceType: 'Traffic Management',
+  sameAs: [],
+}
+
 export default function HomePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <RevealObserver />
 
       {/* ── HERO ── */}
