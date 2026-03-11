@@ -82,7 +82,7 @@ export default function Navbar() {
         {/* CTA + hamburger */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
           <div id="hdrcta-wrap">
-            <Link id="hdrcta" href="/request-quote" className="btn-orange" style={{ fontSize: '0.8rem', padding: '10px 20px' }}>
+            <Link id="hdrcta" href="/estimate" className="btn-orange" style={{ fontSize: '0.8rem', padding: '10px 20px' }}>
               Get an Estimate
               <ArrowRight size={14} strokeWidth={1.5} aria-hidden="true" />
             </Link>
@@ -115,7 +115,7 @@ export default function Navbar() {
               {label}
             </Link>
           ))}
-          <Link id="mobcta" href="/request-quote" className="lg:hidden btn-orange w-full" style={{ textAlign: 'center', marginTop: '8px' }} onClick={closeMenu}>
+          <Link id="mobcta" href="/estimate" className="lg:hidden btn-orange w-full" style={{ textAlign: 'center', marginTop: '8px' }} onClick={closeMenu}>
             Get an Estimate
           </Link>
         </div>

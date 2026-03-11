@@ -135,7 +135,7 @@ export default function BranchHiringCard({ item }: { item: BranchHiring }) {
             {/* Mobile: text link */}
             <Link
               href={`/careers?branch=${item.branch.toLowerCase()}#apply`}
-              className="md:hidden inline-flex items-center gap-2 text-xs font-medium transition duration-200 hover:text-[#F26522]"
+              className="md:hidden inline-flex items-center gap-2 text-xs font-medium transition duration-200 hover:text-[#fd4f00]"
               style={{ color: colors.text }}
             >
               Apply Now
@@ -144,7 +144,7 @@ export default function BranchHiringCard({ item }: { item: BranchHiring }) {
             {/* Desktop: full-width pill */}
             <Link
               href={`/careers?branch=${item.branch.toLowerCase()}#apply`}
-              className="hidden md:inline-flex items-center justify-center gap-2 w-full rounded-full border bg-transparent px-8 text-xs font-medium transition duration-200 hover:text-[#F26522] hover:border-[#F26522]/60 active:scale-[0.98]"
+              className="hidden md:inline-flex items-center justify-center gap-2 w-full rounded-full border bg-transparent px-8 text-xs font-medium transition duration-200 hover:text-[#fd4f00] hover:border-[#fd4f00]/60 active:scale-[0.98]"
               style={{ paddingTop: '14px', paddingBottom: '14px', color: colors.text, borderColor: `${colors.text}40` }}
             >
               Apply Now

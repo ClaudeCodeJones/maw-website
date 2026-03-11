@@ -37,7 +37,7 @@ function row(label: string, value: string) {
 function section(heading: string, rows: string) {
   return `
     <tr>
-      <td colspan="2" style="padding:16px 16px 8px;background:#0a1628;color:#f26522;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;border-bottom:2px solid #f26522;">
+      <td colspan="2" style="padding:16px 16px 8px;background:#0a1628;color:#fd4f00;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;border-bottom:2px solid #fd4f00;">
         ${heading}
       </td>
     </tr>

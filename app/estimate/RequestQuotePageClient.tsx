@@ -49,19 +49,30 @@ function RadioGroup({ name, value, onChange, options, error }: {
   return (
     <>
       <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' as const }}>
-        {options.map(opt => (
-          <label key={opt.value} style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '0.9rem', color: value === opt.value ? '#fff' : 'var(--muted)' }}>
-            <input
-              type="radio"
-              name={name}
-              value={opt.value}
-              checked={value === opt.value}
-              onChange={() => onChange(opt.value)}
-              style={{ accentColor: 'var(--orange)', width: '16px', height: '16px', cursor: 'pointer' }}
-            />
-            {opt.label}
-          </label>
-        ))}
+        {options.map(opt => {
+          const selected = value === opt.value
+          return (
+            <label key={opt.value} style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '0.9rem', color: selected ? '#fff' : 'var(--muted)' }}>
+              <input
+                type="radio"
+                name={name}
+                value={opt.value}
+                checked={selected}
+                onChange={() => onChange(opt.value)}
+                style={{ position: 'absolute', opacity: 0, width: 0, height: 0 }}
+              />
+              <span style={{
+                width: '16px', height: '16px', borderRadius: '50%', flexShrink: 0,
+                border: selected ? '2px solid #fd4f00' : '2px solid #9ca3af',
+                background: selected ? '#fd4f00' : 'transparent',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>
+                {selected && <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#fff' }} />}
+              </span>
+              {opt.label}
+            </label>
+          )
+        })}
       </div>
       {error && <p style={{ fontSize: '0.75rem', color: '#f87171', marginTop: '4px' }}>{error}</p>}
     </>
@@ -109,7 +120,7 @@ type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function RequestQuotePageClient() {
-  const [step, setStep] = useState<1 | 2>(2)
+  const [step, setStep] = useState<1 | 2>(1)
   const [status, setStatus] = useState<FormStatus>('idle')
 
   const [s1, setS1] = useState<S1>({

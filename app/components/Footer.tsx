@@ -26,12 +26,14 @@ export default function Footer() {
             </p>
             <div style={{ display: 'flex', gap: '10px', marginTop: '24px' }}>
               {[
-                { label: 'Facebook', path: 'M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z', filled: true },
-                { label: 'LinkedIn', path: 'M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z', extra: <circle cx="4" cy="4" r="2" key="c" />, filled: false },
-              ].map(({ label }) => (
+                { label: 'Facebook', href: 'https://www.facebook.com/menatworknz/', path: 'M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z', filled: true },
+                { label: 'LinkedIn', href: 'https://nz.linkedin.com/company/men-at-work-traffic-management-new-zealand', path: 'M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z', extra: <circle cx="4" cy="4" r="2" key="c" />, filled: false },
+              ].map(({ label, href }) => (
                 <a
                   key={label}
-                  href="#"
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   style={{ width: '36px', height: '36px', background: 'var(--navy-mid)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '2px', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'border-color 0.2s ease' }}
                   onMouseOver={e => (e.currentTarget.style.borderColor = 'var(--orange)')}
@@ -117,8 +119,8 @@ export default function Footer() {
         <div style={{ paddingTop: '28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
           <p style={{ fontSize: '0.78rem', color: 'var(--muted)' }}>© 2026 MW Traffic Management. All rights reserved.</p>
           <div style={{ display: 'flex', gap: '24px' }}>
-            <a href="#" className="footer-link" style={{ fontSize: '0.78rem' }}>Privacy Policy</a>
-            <a href="#" className="footer-link" style={{ fontSize: '0.78rem' }}>Terms of Service</a>
+            <a href="/privacy" className="footer-link" style={{ fontSize: '0.78rem' }}>Privacy Policy</a>
+            <a href="/terms" className="footer-link" style={{ fontSize: '0.78rem' }}>Terms of Service</a>
           </div>
         </div>
 

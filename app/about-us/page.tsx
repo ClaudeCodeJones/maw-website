@@ -40,7 +40,7 @@ const groupEntities = [
     headline: 'Professional sweeping for construction sites, industrial yards and public spaces.',
     body: 'From post-construction clean-ups to site maintenance, our sweepers remove debris, dust, and loose material to keep surfaces safe and operational.',
     href: 'https://www.sweepco.co.nz',
-    logo: '/logos/sweepco_white.png',
+    logo: '/logos/sweepco_white.webp',
     modifier: 'group-card--sweepco',
   },
   {

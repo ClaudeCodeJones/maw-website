@@ -73,7 +73,7 @@ export default function HomePage() {
             </p>
 
             <div className="reveal d4" style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', marginTop: '36px' }}>
-              <Link href="/request-quote" className="btn-orange" style={{ padding: '14px 28px', fontSize: '0.9rem' }}>
+              <Link href="/estimate" className="btn-orange" style={{ padding: '14px 28px', fontSize: '0.9rem' }}>
                 Get an Estimate
                 <ArrowRight size={17} strokeWidth={1.5} aria-hidden="true" />
               </Link>
@@ -117,7 +117,7 @@ export default function HomePage() {
                 body: 'Experienced traffic management for roadworks, helping contractors deliver projects safely while minimising disruption to road users.',
                 delay: 'd1',
                 image: '/services/works.webp',
-                linkHref: '/request-quote',
+                linkHref: '/estimate',
                 linkLabel: 'Get an Estimate',
                 linkExternal: false,
               },
@@ -131,7 +131,7 @@ export default function HomePage() {
                 image: '/services/events.webp',
                 bgSize: '120%',
                 bgPosition: 'center top',
-                linkHref: '/request-quote',
+                linkHref: '/estimate',
                 linkLabel: 'Get an Estimate',
                 linkExternal: false,
               },
@@ -170,7 +170,7 @@ export default function HomePage() {
                     src={logo}
                     alt=""
                     aria-hidden="true"
-                    style={{ position: 'absolute', top: '14px', right: '14px', height: '36px', width: 'auto', opacity: 0.85, zIndex: 2, pointerEvents: 'none' }}
+                    style={{ position: 'absolute', top: '28px', right: '14px', height: '36px', width: 'auto', opacity: 0.85, zIndex: 2, pointerEvents: 'none' }}
                   />
                 )}
                 <div className="service-icon">
@@ -331,7 +331,7 @@ export default function HomePage() {
               Contact our team today for a free consultation and estimate. We&apos;ll have a plan ready before your project begins.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '14px', marginTop: '36px' }}>
-              <Link href="/request-quote" className="btn-white">
+              <Link href="/estimate" className="btn-white">
                 Get an Estimate
                 <ArrowRight size={16} strokeWidth={1.5} aria-hidden="true" />
               </Link>

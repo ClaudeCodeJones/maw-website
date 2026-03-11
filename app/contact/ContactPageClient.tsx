@@ -187,7 +187,7 @@ export default function ContactPageClient() {
             <p className="font-display" style={{ fontWeight: 600, fontSize: '0.9rem', color: '#fff', marginBottom: '8px' }}>Looking for an Estimate?</p>
             <p style={{ fontSize: '0.85rem', lineHeight: 1.65, color: 'var(--muted)', marginBottom: '14px' }}>
               If you&apos;re looking for pricing for traffic management on a project or job, please use our{' '}
-              <a href="/request-quote" style={{ color: 'var(--orange)', fontWeight: 500, textDecoration: 'none' }}>Get an Estimate</a>{' '}
+              <a href="/estimate" style={{ color: 'var(--orange)', fontWeight: 500, textDecoration: 'none' }}>Get an Estimate</a>{' '}
               page so we can gather the details needed to provide an accurate quote.
             </p>
             <p style={{ fontSize: '0.85rem', lineHeight: 1.65, color: 'var(--muted)' }}>For general enquiries, feel free to use the form below.</p>

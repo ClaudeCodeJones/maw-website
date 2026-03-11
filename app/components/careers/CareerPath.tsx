@@ -33,7 +33,7 @@ const row2: CardData[] = [
   {
     title: 'Operations Supervisor',
     description: 'Support regional operations, crew coordination, and project delivery.',
-    image: '/roles/operations_coordinator.png',
+    image: '/roles/operations_coordinator.webp',
     LucideIcon: ClipboardList,
   },
   {

@@ -78,10 +78,11 @@ function RadioOption({
       />
       <span style={{
         width: '16px', height: '16px', borderRadius: '50%', flexShrink: 0,
-        border: checked ? '2px solid var(--orange)' : '2px solid rgba(255,255,255,0.2)',
+        border: checked ? '2px solid #fd4f00' : '2px solid #9ca3af',
+        background: checked ? '#fd4f00' : 'transparent',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
       }}>
-        {checked && <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--orange)' }} />}
+        {checked && <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#fff' }} />}
       </span>
       <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.85rem', color: 'rgba(255,255,255,0.8)', lineHeight: 1.4 }}>{label}</span>
     </label>
@@ -595,7 +596,7 @@ export default function ApplicationForm({ onSuccess, sectionRef }: { onSuccess?:
 
           {state === 'error' && (
             <p style={{ fontSize: '0.85rem', color: '#f87171', marginBottom: '16px' }}>
-              Something went wrong. Please try again or call us on 0800 639 289.
+              Something went wrong. Please try again or call us on 0800 636 289.
             </p>
           )}
 

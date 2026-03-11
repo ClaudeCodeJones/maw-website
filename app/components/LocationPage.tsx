@@ -112,7 +112,7 @@ export default function LocationPage({ city, region, coverage }: LocationPagePro
             Men at Work provides professional traffic management services across {city} and the wider {region} region. From roadworks and infrastructure projects to events and temporary traffic control, our experienced team keeps worksites safe and compliant.
           </p>
           <div className="reveal d3" style={{ marginTop: '36px' }}>
-            <Link href="/request-quote" className="btn-orange" style={{ padding: '14px 28px', fontSize: '0.9rem' }}>
+            <Link href="/estimate" className="btn-orange" style={{ padding: '14px 28px', fontSize: '0.9rem' }}>
               Request an Estimate
               <ArrowRight size={17} strokeWidth={1.5} aria-hidden="true" />
             </Link>
@@ -330,7 +330,7 @@ export default function LocationPage({ city, region, coverage }: LocationPagePro
                 marginTop: '36px',
               }}
             >
-              <Link href="/request-quote" className="btn-white">
+              <Link href="/estimate" className="btn-white">
                 Request an Estimate
                 <ArrowRight size={16} strokeWidth={1.5} aria-hidden="true" />
               </Link>

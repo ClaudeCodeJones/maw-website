@@ -47,7 +47,7 @@ const faqs: { question: string; answer: string | ReactNode; schemaAnswer: string
     answer: (
       <>
         Request traffic management services by completing our{' '}
-        <Link href="/request-quote" style={linkStyle}>Get an Estimate</Link>
+        <Link href="/estimate" style={linkStyle}>Get an Estimate</Link>
         {' '}form or contacting our team through the{' '}
         <Link href="/contact" style={linkStyle}>Contact</Link>
         {' '}page to discuss your project.

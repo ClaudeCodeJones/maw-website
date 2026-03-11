@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     'Request a quote for traffic management services, TMP design, event traffic management or project support across Christchurch, Wellington, Nelson, Blenheim and Timaru.',
   alternates: {
-    canonical: '/request-quote',
+    canonical: '/estimate',
   },
 }
 

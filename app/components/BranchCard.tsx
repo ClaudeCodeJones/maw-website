@@ -28,17 +28,17 @@ export default function BranchCard({
     <style>{`
       .bc-cta {
         background: transparent;
-        border: 1px solid #F26522;
-        color: #F26522;
+        border: 1px solid #fd4f00;
+        color: #fd4f00;
         transition: background 220ms ease, color 220ms ease;
       }
       .bc-cta:hover {
-        background: #F26522;
+        background: #fd4f00;
         color: #fff;
       }
     `}</style>
     <div
-      className="relative flex flex-col transition duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_14px_40px_rgba(242,101,34,0.18)] hover:border-[#F26522]/40"
+      className="relative flex flex-col transition duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_14px_40px_rgba(242,101,34,0.18)] hover:border-[#fd4f00]/40"
       style={{
         background: '#0D1B2A',
         borderRadius: '12px',
@@ -48,7 +48,7 @@ export default function BranchCard({
         width: '100%',
       }}
     >
-      <div className="absolute top-0 left-0 h-[3px] w-full bg-[#F26522]" />
+      <div className="absolute top-0 left-0 h-[3px] w-full bg-[#fd4f00]" />
 
       {/* Close button */}
       <button
@@ -76,7 +76,7 @@ export default function BranchCard({
 
       {/* Growing content area */}
       <div className="flex flex-col flex-grow" style={{ padding: '28px 28px 0' }}>
-        <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.625rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#F26522', marginBottom: '8px' }}>
+        <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.625rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#fd4f00', marginBottom: '8px' }}>
           Branch
         </p>
 
@@ -100,7 +100,7 @@ export default function BranchCard({
             <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
               {branch.servingAreas.map(area => (
                 <li key={area} style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.8rem', color: 'rgba(255,255,255,0.55)', lineHeight: 1.7, paddingLeft: '12px', position: 'relative' }}>
-                  <span style={{ position: 'absolute', left: 0, color: '#F26522' }}>·</span>
+                  <span style={{ position: 'absolute', left: 0, color: '#fd4f00' }}>·</span>
                   {area}
                 </li>
               ))}
@@ -123,7 +123,7 @@ export default function BranchCard({
 
       <div style={{ padding: '20px 28px 28px' }}>
         <Link
-          href="/request-quote"
+          href="/estimate"
           className="btn-orange bc-cta"
           style={{ width: '100%', justifyContent: 'center', fontSize: '0.82rem', padding: '11px 20px' }}
         >

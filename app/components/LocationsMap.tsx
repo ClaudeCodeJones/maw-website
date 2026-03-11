@@ -112,7 +112,7 @@ export default function LocationsMap() {
               {/* Glow halo */}
               <circle
                 r={34}
-                fill="#F26522"
+                fill="#fd4f00"
                 opacity={
                   activeBranch?.name === location.name
                     ? 0.14
@@ -124,7 +124,7 @@ export default function LocationsMap() {
               <circle
                 r={16}
                 fill="none"
-                stroke="#F26522"
+                stroke="#fd4f00"
                 strokeWidth={
                   activeBranch?.name === location.name
                     ? 4
@@ -133,7 +133,7 @@ export default function LocationsMap() {
               />
 
               {/* Core dot */}
-              <circle r={7} fill="#F26522" />
+              <circle r={7} fill="#fd4f00" />
             </g>
           ))}
         </svg>
