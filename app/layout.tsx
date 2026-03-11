@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: 'Professional traffic management services across Wellington, Christchurch, Nelson, Blenheim, and Timaru. Traffic control, TMP design, event traffic management, and consultancy.',
   openGraph: {
     title: 'Men at Work Traffic Management',
-    description: 'Professional traffic management services across five South Island locations.',
+    description: 'Professional traffic management services across five South Island branches.',
     url: 'https://www.menatwork.co.nz',
     siteName: 'Men at Work Traffic Management',
     type: 'website',

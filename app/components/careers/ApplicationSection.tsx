@@ -87,7 +87,7 @@ export default function ApplicationSection() {
                 <p style={{ fontSize: '0.85rem', lineHeight: 1.65, color: 'var(--muted)' }}>
                   If you are applying for a casual traffic role, please read the{' '}
                   <a
-                    href="https://assets.zyrosite.com/AE0ryZVv54tkZZN7/what-to-expect-as-a-casual-employee-ttc-AMqDWav4NQCQ4qOe.pdf"
+                    href="/docs/maw_casual_worker_guide.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{ color: 'var(--orange)', textDecoration: 'none', fontWeight: 500 }}

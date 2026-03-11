@@ -76,6 +76,22 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Locations */}
+          <div>
+            <div className="footer-heading">Branches</div>
+            <ul style={{ display: 'flex', flexDirection: 'column', gap: '11px', listStyle: 'none' }}>
+              {[
+                { label: 'Wellington',   href: '/traffic-management-wellington' },
+                { label: 'Christchurch', href: '/traffic-management-christchurch' },
+                { label: 'Nelson',       href: '/traffic-management-nelson' },
+                { label: 'Blenheim',     href: '/traffic-management-blenheim' },
+                { label: 'Timaru',       href: '/traffic-management-timaru' },
+              ].map(({ label, href }) => (
+                <li key={label}><Link href={href} className="footer-link">{label}</Link></li>
+              ))}
+            </ul>
+          </div>
+
           {/* Contact */}
           <div>
             <div className="footer-heading">Contact</div>
@@ -87,9 +103,9 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="mailto:info@menatwork.co.nz" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', color: 'var(--orange)' }}>
+                <a href="mailto:office@menatwork.co.nz" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', color: 'var(--orange)' }}>
                   <Mail size={15} strokeWidth={1.5} aria-hidden="true" />
-                  <span style={{ fontSize: '0.82rem', color: 'var(--muted)' }}>info@menatwork.co.nz</span>
+                  <span style={{ fontSize: '0.82rem', color: 'var(--muted)' }}>office@menatwork.co.nz</span>
                 </a>
               </li>
             </ul>

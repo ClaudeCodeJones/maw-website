@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: 'About Us | Men at Work Traffic Management',
   description:
     'Learn about Men at Work Traffic Management, founded in 2008 and operating across five South Island locations. Discover our leadership team and group services.',
+  alternates: {
+    canonical: '/about',
+  },
 }
 
 /* ── Data ── */
@@ -62,14 +65,14 @@ const leadership = [
 ]
 
 const leadershipImages: Record<string, string> = {
-  'Dean Hyde': '/leadership/dean_hyde.png',
-  'Esther Hyde': '/leadership/esther_hyde.png',
-  'Hayden Wilson': '/leadership/hayden_wilson.png',
-  'Nathan Jones': '/leadership/nathan_jones.png',
-  'Daniel Adams': '/leadership/daniel_adams.png',
-  'Kurt Puryer-Smith': '/leadership/kurt_puryersmith.png',
-  'Brock Vuleta': '/leadership/brock_vuleta.png',
-  'Royden van Dyk': '/leadership/royden_vandyk.png',
+  'Dean Hyde': '/leadership/deanhyde.webp',
+  'Esther Hyde': '/leadership/estherhyde.webp',
+  'Hayden Wilson': '/leadership/haydenwilson.webp',
+  'Nathan Jones': '/leadership/nathanjones.webp',
+  'Daniel Adams': '/leadership/danadams.webp',
+  'Kurt Puryer-Smith': '/leadership/kurtpuryersmith.webp',
+  'Brock Vuleta': '/leadership/brockvuleta.webp',
+  'Royden van Dyk': '/leadership/roydenvandyk.webp',
 }
 
 /* ── Page ── */
@@ -165,11 +168,11 @@ export default function AboutUsPage() {
               <span className="eyebrow">Where We Operate</span>
             </div>
             <h2 className="section-title reveal d1" style={{ fontSize: 'clamp(1.8rem,3.5vw,3rem)', color: '#fff' }}>
-              Five Locations. One Standard.
+              Five Branches. One Standard.
             </h2>
             <div className="orange-rule reveal d2" style={{ marginTop: '16px' }} />
             <p className="reveal d3" style={{ marginTop: '20px', fontSize: '1.05rem', lineHeight: 1.7, color: 'rgba(255,255,255,0.65)', maxWidth: '480px' }}>
-              Five locations across New Zealand, delivering the same professional standard on every site.
+              Five branches across New Zealand, delivering the same professional standard on every site.
             </p>
           </div>
 
@@ -181,14 +184,14 @@ export default function AboutUsPage() {
       </section>
 
       {/* ── LEADERSHIP ── */}
-      <section style={{ background: 'var(--navy)', padding: '100px 0', borderTop: '1px solid rgba(255,255,255,0.04)' }} aria-label="Leadership team">
+      <section style={{ background: 'var(--off-white)', padding: '100px 0', borderTop: '1px solid rgba(13,27,42,0.06)' }} aria-label="Leadership team">
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
 
           <div style={{ marginBottom: '60px' }}>
             <div className="reveal" style={{ marginBottom: '10px' }}>
               <span className="eyebrow">Our People</span>
             </div>
-            <h2 className="section-title reveal d1" style={{ fontSize: 'clamp(1.8rem,3.5vw,3rem)', color: '#fff' }}>
+            <h2 className="section-title reveal d1" style={{ fontSize: 'clamp(1.8rem,3.5vw,3rem)', color: 'var(--navy)' }}>
               Leadership
             </h2>
             <div className="orange-rule reveal d2" style={{ marginTop: '16px' }} />
@@ -197,58 +200,150 @@ export default function AboutUsPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {leadership.map(({ name, title, titleShort, region }, i) => (
+          {/* Row 1 — Senior Leadership */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4" style={{ marginBottom: '16px' }}>
+
+            {/* Label card */}
+            <div
+              style={{
+                background: 'rgba(242,101,34,0.04)',
+                border: '1px solid rgba(226,226,226,0.9)',
+                borderLeft: '4px solid var(--orange)',
+                borderRadius: '2px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                padding: '24px 20px',
+                boxShadow: 'inset 4px 0 12px rgba(242,101,34,0.06)',
+              }}
+            >
+              <div>
+                <p className="font-display" style={{ fontWeight: 700, fontSize: '1.125rem', color: 'var(--navy)', lineHeight: 1.3, marginBottom: '8px' }}>
+                  Senior Leadership Team
+                </p>
+                <p style={{ fontSize: '0.8125rem', color: 'var(--muted)', lineHeight: 1.5 }}>
+                  Executive leadership of the MW Group
+                </p>
+              </div>
+            </div>
+
+            {leadership.slice(0, 4).map(({ name, title, titleShort, region }, i) => (
               <div
                 key={name}
-                className={`team-card reveal d${(i % 4) + 1}`}
+                className={`team-card reveal d${i + 1}`}
                 style={{
-                  background: 'var(--navy-mid)',
-                  border: '1px solid rgba(255,255,255,0.07)',
+                  background: '#fff',
+                  border: '1px solid rgba(242,101,34,0.2)',
                   borderRadius: '2px',
                   overflow: 'hidden',
                 }}
               >
-                <div className="leadership-img-wrap" style={{ position: 'relative', width: '100%', aspectRatio: '1', background: 'var(--charcoal)', borderBottom: '2px solid var(--orange)', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div className="leadership-img-wrap" style={{ position: 'relative', width: '100%', aspectRatio: '1', background: 'var(--light)', borderBottom: '2px solid var(--orange)', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   {leadershipImages[name] ? (
                     <Image
                       src={leadershipImages[name]}
                       alt={name}
                       fill
                       style={{ objectFit: 'cover', objectPosition: 'center top' }}
-                      sizes="(max-width: 640px) 50vw, (max-width: 1280px) 25vw, 300px"
+                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1280px) 33vw, 260px"
                     />
                   ) : (
                     <User size={48} strokeWidth={1.5} aria-hidden="true" style={{ color: 'var(--muted)' }} />
                   )}
                 </div>
                 <div style={{ padding: '16px 18px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                  <p className="font-display" style={{ fontWeight: 600, fontSize: '0.9rem', color: '#fff', lineHeight: 1.3 }}>
+                  <p className="font-display" style={{ fontWeight: 600, fontSize: '0.9rem', color: 'var(--navy)', lineHeight: 1.3 }}>
+                    {name}
+                  </p>
+                  <p style={{ fontSize: '0.78rem', color: 'var(--muted)', lineHeight: 1.45 }}>
+                    {titleShort ? (
+                      <><span className="lg:hidden">{titleShort}</span><span className="hidden lg:inline">{title}</span></>
+                    ) : title}
+                    {region && <><br />{region}</>}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Row 2 — Leadership Team */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+
+            {/* Label card */}
+            <div
+              style={{
+                background: 'rgba(242,101,34,0.04)',
+                border: '1px solid rgba(226,226,226,0.9)',
+                borderLeft: '4px solid var(--orange)',
+                borderRadius: '2px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                padding: '24px 20px',
+                boxShadow: 'inset 4px 0 12px rgba(242,101,34,0.06)',
+              }}
+            >
+              <div>
+                <p className="font-display" style={{ fontWeight: 700, fontSize: '1.125rem', color: 'var(--navy)', lineHeight: 1.3, marginBottom: '8px' }}>
+                  Leadership Team
+                </p>
+                <p style={{ fontSize: '0.8125rem', color: 'var(--muted)', lineHeight: 1.5 }}>
+                  Regional and operational management across branches
+                </p>
+              </div>
+            </div>
+
+            {leadership.slice(4).map(({ name, title, titleShort, region }, i) => (
+              <div
+                key={name}
+                className={`team-card reveal d${i + 1}`}
+                style={{
+                  background: '#fff',
+                  border: '1px solid rgba(242,101,34,0.2)',
+                  borderRadius: '2px',
+                  overflow: 'hidden',
+                }}
+              >
+                <div className="leadership-img-wrap" style={{ position: 'relative', width: '100%', aspectRatio: '1', background: 'var(--light)', borderBottom: '2px solid var(--orange)', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  {leadershipImages[name] ? (
+                    <Image
+                      src={leadershipImages[name]}
+                      alt={name}
+                      fill
+                      style={{ objectFit: 'cover', objectPosition: 'center top' }}
+                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1280px) 33vw, 260px"
+                    />
+                  ) : (
+                    <User size={48} strokeWidth={1.5} aria-hidden="true" style={{ color: 'var(--muted)' }} />
+                  )}
+                </div>
+                <div style={{ padding: '16px 18px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                  <p className="font-display" style={{ fontWeight: 600, fontSize: '0.9rem', color: 'var(--navy)', lineHeight: 1.3 }}>
                     {name === 'Kurt Puryer-Smith' ? (
                       <>
-                        <span className="md:hidden">Kurt<br />Puryer-Smith</span>
-                        <span className="hidden md:inline">Kurt Puryer-Smith</span>
+                        <span className="lg:hidden">Kurt<br />Puryer-Smith</span>
+                        <span className="hidden lg:inline">Kurt Puryer-Smith</span>
                       </>
                     ) : name === 'Royden van Dyk' ? (
                       <>
-                        <span className="md:hidden">Royden<br />van Dyk</span>
-                        <span className="hidden md:inline">Royden van Dyk</span>
+                        <span className="lg:hidden">Royden<br />van Dyk</span>
+                        <span className="hidden lg:inline">Royden van Dyk</span>
                       </>
                     ) : name}
                   </p>
                   <p style={{ fontSize: '0.78rem', color: 'var(--muted)', lineHeight: 1.45 }}>
                     {name === 'Brock Vuleta' ? (
                       <>
-                        <span className="md:hidden">Business<br />Development Mgr<br />National</span>
-                        <span className="hidden md:inline">{title}{region && <><br />{region}</>}</span>
+                        <span className="lg:hidden">Business Dev Mgr<br />National</span>
+                        <span className="hidden lg:inline">{title}<br />{region}</span>
                       </>
                     ) : name === 'Daniel Adams' ? (
                       <>
-                        <span className="md:hidden">Training &amp;<br />Compliance Mgr<br />National</span>
-                        <span className="hidden md:inline">{title}{region && <><br />{region}</>}</span>
+                        <span className="lg:hidden">Training &amp; Compliance Mgr<br />National</span>
+                        <span className="hidden lg:inline">{title}<br />{region}</span>
                       </>
                     ) : titleShort ? (
-                      <><span className="md:hidden">{titleShort}</span><span className="hidden md:inline">{title}</span>{region && <><br />{region}</>}</>
+                      <><span className="lg:hidden">{titleShort}</span><span className="hidden lg:inline">{title}</span>{region && <><br />{region}</>}</>
                     ) : (
                       <>{title}{region && <><br />{region}</>}</>
                     )}

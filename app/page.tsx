@@ -3,10 +3,14 @@ import Link from 'next/link'
 import { ArrowRight, Phone, Check } from 'lucide-react'
 import RevealObserver from './components/RevealObserver'
 import WorksiteBanner from './components/WorksiteBanner'
+import FaqSection from './components/home/FaqSection'
 
 export const metadata: Metadata = {
   title: 'Men at Work Traffic Management | Christchurch, Wellington, Nelson, Blenheim & Timaru',
   description: 'Professional traffic management services across Christchurch, Wellington, Nelson, Blenheim and Timaru. Traffic control, TMP design, event traffic management and consultancy.',
+  alternates: {
+    canonical: '/',
+  },
 }
 
 const jsonLd = {
@@ -95,6 +99,12 @@ export default function HomePage() {
               Comprehensive Traffic<br />Management Services
             </h2>
             <div className="orange-rule reveal d2" style={{ marginTop: '16px' }} />
+            <p className="reveal d2" style={{ marginTop: '20px', fontSize: '1rem', lineHeight: 1.7, color: 'var(--muted)', maxWidth: '680px' }}>
+              Men at Work Traffic Management (MW Traffic Management) provides professional traffic management services from our central bases in <strong>Christchurch</strong>, <strong>Wellington</strong>, <strong>Nelson</strong>, <strong>Blenheim</strong>, and <strong>Timaru</strong>.
+            </p>
+            <p className="reveal d3" style={{ marginTop: '14px', fontSize: '1rem', lineHeight: 1.7, color: 'var(--muted)', maxWidth: '680px' }}>
+              From these branches we support projects across the <strong>Canterbury</strong>, <strong>Greater Wellington</strong>, <strong>Tasman</strong>, <strong>Marlborough</strong>, and <strong>South Canterbury</strong> regions, delivering comprehensive traffic and event management, TMP design, industry training, and consultancy services.
+            </p>
           </div>
 
           <div className="services-grid">
@@ -104,7 +114,7 @@ export default function HomePage() {
                 icon: <><polygon points="12,2 17,18 7,18"/><rect x="5" y="19" width="14" height="3" rx="1"/><line x1="8.5" y1="10" x2="15.5" y2="10"/><line x1="7.5" y1="14" x2="16.5" y2="14"/></>,
                 extra: null,
                 title: 'Traffic Management for Roadworks',
-                body: 'Experienced traffic management for roadworks, helping contractors complete projects safely while minimising disruption to road users.',
+                body: 'Experienced traffic management for roadworks, helping contractors deliver projects safely while minimising disruption to road users.',
                 delay: 'd1',
                 image: '/services/works.webp',
                 linkHref: '/request-quote',
@@ -116,7 +126,7 @@ export default function HomePage() {
                 icon: <><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></>,
                 extra: null,
                 title: 'Event Traffic Management',
-                body: 'Professional traffic management for events, helping keep participants, road users, and surrounding areas safe and moving smoothly.',
+                body: 'Professional traffic management for events, keeping participants, road users, and surrounding areas safe and traffic moving smoothly.',
                 delay: 'd2',
                 image: '/services/events.webp',
                 bgSize: '120%',
@@ -129,8 +139,8 @@ export default function HomePage() {
                 id: 'service-tmp',
                 icon: <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>,
                 extra: <><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10,9 9,9 8,9"/></>,
-                title: 'Traffic Management Plans',
-                body: 'Traffic Management Plans developed by our specialist planning division, MW Training & Planning, ensuring safe and compliant traffic management.',
+                title: 'Traffic Management Plans (TMPs)',
+                body: 'TMP design delivered by our specialist division, MW Training & Planning, ensuring safe and compliant traffic management for roadworks, infrastructure and events.',
                 delay: 'd3',
                 image: '/services/tmps.webp',
                 logo: '/logos/mwtrainingandplanning_white.webp',
@@ -333,6 +343,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <FaqSection />
 
     </>
   )

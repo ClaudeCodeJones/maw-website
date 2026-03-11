@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: 'Careers | Men at Work Traffic Management',
   description:
     'Join the Men at Work team. We are looking for traffic controllers, supervisors, and planners across our South Island branches. View current openings and apply today.',
+  alternates: {
+    canonical: '/careers',
+  },
 }
 
 const benefits = [

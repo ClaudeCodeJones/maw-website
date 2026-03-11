@@ -39,7 +39,7 @@ const row2: CardData[] = [
   {
     title: 'Manager',
     description: 'Progress into regional operations, training, or business development.',
-    image: '/roles/mananger.webp',
+    image: '/roles/manager.webp',
     LucideIcon: Briefcase,
   },
 ]

@@ -728,7 +728,7 @@ body {
 }
 .team-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.45), 0 2px 8px rgba(242,101,34,0.12);
+  box-shadow: 0 4px 16px rgba(13,27,42,0.12), 0 16px 40px rgba(242,101,34,0.1);
 }
 
 /* ── Group entity cards (More Than Traffic section) ── */
@@ -913,8 +913,9 @@ input:focus, select:focus, textarea:focus {
 }
 .footer-top-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 48px;
+  align-items: start;
   padding-bottom: 48px;
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
