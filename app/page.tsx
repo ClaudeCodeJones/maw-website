@@ -143,7 +143,7 @@ export default function HomePage() {
                 body: 'TMP design delivered by our specialist division, MW Training & Planning, ensuring safe and compliant traffic management for roadworks, infrastructure and events.',
                 delay: 'd3',
                 image: '/services/tmps.webp',
-                logo: '/logos/mwtrainingandplanning_white.webp',
+                logo: '/logos/mwtrainingandplanning_white_vetical.webp',
                 modifier: 'service-card--training',
                 linkHref: 'https://www.mwtrainplan.co.nz/tmpdesign',
                 linkLabel: 'Request a TMP',
@@ -157,22 +157,14 @@ export default function HomePage() {
                 body: 'Industry-recognised traffic management training delivered through our specialist division, MW Training & Planning, helping workers start and progress their careers.',
                 delay: 'd4',
                 image: '/services/training.webp',
-                logo: '/logos/mwtrainingandplanning_white.webp',
+                logo: '/logos/mwtrainingandplanning_white_vetical.webp',
                 modifier: 'service-card--training',
                 linkHref: 'https://www.mwtrainplan.co.nz/courses',
-                linkLabel: 'View Training Courses',
+                linkLabel: 'View Courses',
                 linkExternal: true,
               },
             ].map(({ id, icon, extra, title, body, delay, image, bgSize, bgPosition, logo, modifier, linkHref, linkLabel, linkExternal }) => (
-              <div key={title} id={id} className={`service-card reveal ${delay}${modifier ? ` ${modifier}` : ''}`} style={{ backgroundImage: `url(${image})`, ...(bgSize && { backgroundSize: bgSize }), ...(bgPosition && { backgroundPosition: bgPosition }) }}>
-                {logo && (
-                  <img
-                    src={logo}
-                    alt=""
-                    aria-hidden="true"
-                    style={{ position: 'absolute', top: '28px', right: '14px', height: '36px', width: 'auto', opacity: 0.85, zIndex: 2, pointerEvents: 'none' }}
-                  />
-                )}
+              <div key={title} id={id} className={`service-card reveal scroll-mt-32 ${delay}${modifier ? ` ${modifier}` : ''}`} style={{ backgroundImage: `url(${image})`, ...(bgSize && { backgroundSize: bgSize }), ...(bgPosition && { backgroundPosition: bgPosition }) }}>
                 <div className="service-icon">
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     {icon}{extra}
@@ -180,16 +172,26 @@ export default function HomePage() {
                 </div>
                 <h3 className="font-display" style={{ fontWeight: 600, fontSize: '1.1rem', color: '#fff' }}>{title}</h3>
                 <p style={{ fontSize: '1rem', lineHeight: 1.7, color: 'rgba(255,255,255,0.62)', marginTop: '10px' }}>{body}</p>
-                {linkExternal ? (
-                  <a href={linkHref} target="_blank" rel="noopener noreferrer" className="service-link" style={{ marginTop: '16px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                    {linkLabel}{' '}
-                    <ArrowRight size={13} strokeWidth={1.5} aria-hidden="true" />
-                  </a>
-                ) : (
-                  <Link href={linkHref} className="service-link" style={{ marginTop: '16px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                    {linkLabel}{' '}
-                    <ArrowRight size={13} strokeWidth={1.5} aria-hidden="true" />
-                  </Link>
+                <div style={{ marginTop: '16px' }}>
+                  {linkExternal ? (
+                    <a href={linkHref} target="_blank" rel="noopener noreferrer" className="service-link" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                      {linkLabel}{' '}
+                      <ArrowRight size={13} strokeWidth={1.5} aria-hidden="true" />
+                    </a>
+                  ) : (
+                    <Link href={linkHref} className="service-link" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                      {linkLabel}{' '}
+                      <ArrowRight size={13} strokeWidth={1.5} aria-hidden="true" />
+                    </Link>
+                  )}
+                </div>
+                {logo && (
+                  <img
+                    src={logo}
+                    alt=""
+                    aria-hidden="true"
+                    style={{ position: 'absolute', top: '14px', right: '20px', height: '78px', width: 'auto', opacity: 0.7, pointerEvents: 'none' }}
+                  />
                 )}
               </div>
             ))}

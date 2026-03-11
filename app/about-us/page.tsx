@@ -201,16 +201,16 @@ export default function AboutUsPage() {
           </div>
 
           {/* Row 1 — Senior Leadership */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4" style={{ marginBottom: '16px' }}>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4" style={{ marginBottom: '16px' }}>
 
             {/* Label card */}
             <div
+              className="hidden md:flex"
               style={{
                 background: 'rgba(242,101,34,0.04)',
                 border: '1px solid rgba(226,226,226,0.9)',
                 borderLeft: '4px solid var(--orange)',
                 borderRadius: '2px',
-                display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
                 padding: '24px 20px',
@@ -267,16 +267,16 @@ export default function AboutUsPage() {
           </div>
 
           {/* Row 2 — Leadership Team */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
 
             {/* Label card */}
             <div
+              className="hidden md:flex"
               style={{
                 background: 'rgba(242,101,34,0.04)',
                 border: '1px solid rgba(226,226,226,0.9)',
                 borderLeft: '4px solid var(--orange)',
                 borderRadius: '2px',
-                display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
                 padding: '24px 20px',

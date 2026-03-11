@@ -68,7 +68,7 @@ export default function Footer() {
             <div className="footer-heading">Services</div>
             <ul style={{ display: 'flex', flexDirection: 'column', gap: '11px', listStyle: 'none' }}>
               {[
-                { label: 'Traffic Management for Roadworks', href: '/#service-roadworks' },
+                { label: 'Traffic Management', href: '/#service-roadworks' },
                 { label: 'Event Traffic Management', href: '/#service-events' },
                 { label: 'Traffic Management Plans', href: '/#service-tmp' },
                 { label: 'Industry Training', href: '/#service-training' },

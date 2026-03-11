@@ -31,7 +31,7 @@ const contactOptions = [
 
 const inputStyle: React.CSSProperties = {
   width: '100%',
-  background: 'rgba(255,255,255,0.05)',
+  background: '#0A1623',
   border: '1px solid rgba(255,255,255,0.12)',
   borderRadius: '2px',
   padding: '12px 16px',
