@@ -20,7 +20,7 @@ export default function BlenheimPage() {
         'Picton',
         'Renwick',
         'Seddon',
-        'Marlborough',
+        'Kaikoura',
         'Havelock',
       ]}
       teamDescription="The Blenheim branch is led by Branch Manager Luke Roberts and Lead STMS Josh Thomason, who coordinate scheduling and client communication, supported by a team of STMS and traffic management crews operating across the Marlborough region."

@@ -19,6 +19,7 @@ export default function NelsonPage() {
         'Nelson',
         'Richmond',
         'Motueka',
+        'Murchison',
         'Tasman',
         'Golden Bay',
       ]}

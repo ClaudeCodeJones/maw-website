@@ -10,11 +10,11 @@ const VB_H = 795
 type Location = Branch & { x: number; y: number }
 
 const locations: Location[] = [
-  { name: 'Nelson',       x: 295, y: 414, manager: 'Darryn Clearwater', role: 'Operations Co-ordinator', phone: '0800 636 289', address: '750 Lower Queen St, Richmond',      illustration: '/images/nsn-sun.svg',        servingAreas: ['Nelson', 'Tasman', 'Golden Bay'] },
-  { name: 'Blenheim',     x: 332, y: 458, manager: 'Luke Roberts',       role: 'Branch Manager',          phone: '0800 636 289', address: '7 Freswick St, Blenheim Central',                                              servingAreas: ['Marlborough', 'Kaikoura', 'Wairau Valley'] },
-  { name: 'Wellington',   x: 389, y: 423, manager: 'Jason Rankin',       role: 'Branch Manager',          phone: '0800 636 289', address: '23 Meachen St, Seaview',            illustration: '/images/wlg-beehive.svg',    servingAreas: ['Wellington Region', 'Kapiti Coast', 'Hutt Valley', 'Wider Lower North Island'] },
-  { name: 'Christchurch', x: 264, y: 560, manager: 'Pete Manahi',        role: 'Branch Manager',          phone: '0800 636 289', address: '25 Blakes Rd, Belfast',             illustration: '/images/chc-cathedral.svg',  servingAreas: ['Christchurch', 'North Canterbury', 'Selwyn', 'Wider Canterbury Region'] },
-  { name: 'Timaru',       x: 194, y: 624, manager: 'Christina Elliott',  role: 'Branch Manager',          phone: '0800 636 289', address: '83 Meadows Rd, Washdyke',           illustration: '/images/tiu-lighthouse.svg', servingAreas: ['South Canterbury', 'Mackenzie', 'Waitaki'] },
+  { name: 'Nelson',       x: 295, y: 414, manager: 'Darryn Clearwater', role: 'Operations Co-ordinator', phone: '0800 636 289', address: '750 Lower Queen St, Richmond',      illustration: '/images/nsn-sun.svg',        servingAreas: ['Golden Bay', 'Motueka', 'Murchison', 'Nelson', 'Richmond', 'Tasman', 'Upper South Island'] },
+  { name: 'Blenheim',     x: 332, y: 458, manager: 'Luke Roberts',       role: 'Branch Manager',          phone: '0800 636 289', address: '7 Freswick St, Blenheim Central',                                              servingAreas: ['Blenheim', 'Havelock', 'Kaikoura', 'Picton', 'Renwick', 'Seddon', 'Wider Marlborough Region'] },
+  { name: 'Wellington',   x: 389, y: 423, manager: 'Jason Rankin',       role: 'Branch Manager',          phone: '0800 636 289', address: '23 Meachen St, Seaview',            illustration: '/images/wlg-beehive.svg',    servingAreas: ['Kapiti Coast', 'Lower Hutt', 'Porirua', 'Upper Hutt', 'Wairarapa', 'Wellington', 'Lower North Island'] },
+  { name: 'Christchurch', x: 264, y: 560, manager: 'Pete Manahi',        role: 'Branch Manager',          phone: '0800 636 289', address: '25 Blakes Rd, Belfast',             illustration: '/images/chc-cathedral.svg',  servingAreas: ['Ashburton', 'Banks Peninsula', 'Christchurch', 'North Canterbury', 'Rangiora', 'Rolleston', 'Central South Island'] },
+  { name: 'Timaru',       x: 194, y: 624, manager: 'Christina Elliott',  role: 'Branch Manager',          phone: '0800 636 289', address: '83 Meadows Rd, Washdyke',           illustration: '/images/tiu-lighthouse.svg', servingAreas: ['Geraldine', 'Mackenzie District', 'Temuka', 'Timaru', 'Twizel', 'Waimate', 'Lower South Island'] },
 ]
 
 export default function LocationsMap() {
