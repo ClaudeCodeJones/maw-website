@@ -17,9 +17,14 @@ export const metadata: Metadata = {
 
 const benefits = [
   {
-    icon: ShieldCheck,
-    title: 'Safe by Default',
-    body: 'Safety is not a box we tick. It is how every team member works, from day one.',
+    icon: GraduationCap,
+    title: 'Training Provided',
+    body: 'In-house training that builds real qualifications and site experience.',
+  },
+  {
+    icon: TrendingUp,
+    title: 'Grow With Us',
+    body: 'Trusted by contractors across the region to deliver safe traffic management.',
   },
   {
     icon: Users,
@@ -27,14 +32,9 @@ const benefits = [
     body: 'Work alongside experienced crews who support your development.',
   },
   {
-    icon: TrendingUp,
-    title: 'Grow With Us',
-    body: 'Clear pathways from TTM to STMS, Lead STMS, and beyond.',
-  },
-  {
-    icon: GraduationCap,
-    title: 'Training Provided',
-    body: 'In-house training that builds real qualifications and site experience.',
+    icon: ShieldCheck,
+    title: 'Safe by Default',
+    body: 'Safety comes first on every site, every day.',
   },
   {
     icon: Award,
@@ -78,7 +78,7 @@ export default function CareersPage() {
             Real work. Solid teams. A clear path forward.
           </p>
           <p className="reveal d3" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '540px', marginTop: '20px' }}>
-            Men at Work has been building teams across New Zealand since 2008. We look for people who take safety seriously, show up, and want to grow in a hands-on industry.
+            Men at Work has been building teams since 2008. We look for people who take safety seriously, show up ready to work, and want to build a future in a hands-on industry.
           </p>
           <div className="reveal d4" style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', marginTop: '40px' }}>
             <a href="#apply" className="btn-orange">
@@ -99,7 +99,7 @@ export default function CareersPage() {
             <span className="eyebrow">Before You Apply</span>
           </div>
           <p className="reveal d1" style={{ fontSize: '1.05rem', lineHeight: 1.8, color: 'var(--light)', marginBottom: '24px' }}>
-            We are always looking for great people, whether you are already qualified or just starting out. Traffic management offers a clear career pathway, and we support our team to develop and progress.
+            We are always looking for great people, whether you are already qualified or just starting out. Traffic management offers a clear career pathway, and we support our team to develop their skills and progress.
             <br /><br />
             Before applying, please ensure you meet the basic requirements below.
           </p>
@@ -132,7 +132,7 @@ export default function CareersPage() {
               },
               {
                 label: 'Licence Requirement',
-                body: 'A minimum Restricted Class 1 (car) licence is required. A Full Class 1 is preferred.',
+                body: 'A minimum Restricted Class 1 (car) licence is required. A Full Class 1 licence is preferred.',
                 icon: (
                   <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
                     <rect x="3" y="8" width="26" height="16" rx="2" stroke="currentColor" strokeWidth="1.8"/>
@@ -143,7 +143,7 @@ export default function CareersPage() {
               },
               {
                 label: 'Criminal Checks',
-                body: 'All successful applicants may be subject to Ministry of Justice criminal history checks, which may affect employment eligibility.',
+                body: 'All successful applicants may be subject to a Ministry of Justice criminal history check.',
                 icon: (
                   <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
                     <path d="M16 3L5 7v9c0 6 5 10 11 13 6-3 11-7 11-13V7L16 3z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round"/>
@@ -162,7 +162,7 @@ export default function CareersPage() {
             ))}
           </div>
           <p className="reveal d3" style={{ fontSize: '0.875rem', lineHeight: 1.72, color: 'var(--muted)', borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '20px' }}>
-            Applications that do not meet the criteria above may not receive a response.
+            Only applications that meet the criteria above will be considered.
           </p>
         </div>
       </section>

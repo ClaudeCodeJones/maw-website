@@ -11,7 +11,7 @@ const row1: CardData[] = [
   },
   {
     title: 'STMS',
-    description: 'Manage traffic sites and ensure safe traffic operations.',
+    description: 'Manage traffic management sites and ensure safe operations on the road.',
     image: '/roles/stms.webp',
     LucideIcon: HardHat,
   },
@@ -38,7 +38,7 @@ const row2: CardData[] = [
   },
   {
     title: 'Manager',
-    description: 'Progress into regional operations, training, or business development.',
+    description: 'Move into regional operations, training leadership, or business development.',
     image: '/roles/manager.webp',
     LucideIcon: Briefcase,
   },

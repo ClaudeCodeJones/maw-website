@@ -299,10 +299,10 @@ export default function HomePage() {
             <div className="hidden lg:block absolute" style={{ top: '27px', left: '12.5%', right: '12.5%', height: '2px', background: 'var(--orange)', pointerEvents: 'none', zIndex: 0 }} />
 
             {[
-              { n: '01', title: 'Initial Consult', body: 'We discuss your project, timeline, and site-specific needs to understand the full scope.', solid: false },
-              { n: '02', title: 'Plan & Design *', body: 'Our designers develop a detailed, compliant traffic management plan tailored to your project.', note: '* Not required if you already have an approved plan in place.', solid: false },
-              { n: '03', title: 'Deploy & Execute', body: 'Accredited teams arrive on-site with equipment and signage ready to go from day one.', solid: false },
-              { n: '04', title: 'Ongoing Site Management', body: 'Ongoing site monitoring ensures traffic management remains safe and effective as work progresses.', solid: false },
+              { n: '01', title: 'Initial Consultation', body: 'We discuss your project, timeline, and site-specific needs to understand the full scope.', solid: false },
+              { n: '02', title: 'Plan & Design *', body: 'Our planning team develops a compliant Traffic Management Plan tailored to your project requirements.', note: '* Not required if you already have an approved plan in place.', solid: false },
+              { n: '03', title: 'Deploy & Execute', body: 'Qualified crews arrive on-site with equipment and signage ready to go from day one.', solid: false },
+              { n: '04', title: 'Ongoing Traffic Management', body: 'Ongoing site monitoring ensures traffic management remains safe and effective as work progresses.', solid: false },
             ].map(({ n, title, body, note, solid }, i) => (
               <div key={n} className={`reveal d${i+1}`} style={{ position: 'relative', zIndex: 1 }}>
                 <div className="process-step-inner">

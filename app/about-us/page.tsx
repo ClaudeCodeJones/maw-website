@@ -104,10 +104,10 @@ export default function AboutUsPage() {
             About Men at Work
           </h1>
           <p className="reveal d2 font-display" style={{ fontWeight: 600, fontSize: 'clamp(1rem,2vw,1.3rem)', letterSpacing: '-0.01em', color: 'var(--light)', marginTop: '20px' }}>
-            Built on hard work. Grown on trust. Since 2008.
+            Built on hard work. Grown on trust.
           </p>
           <p className="reveal d3" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '540px', marginTop: '20px' }}>
-            Since 2008, Men at Work has grown from an owner-operated traffic management company into a multi-division group delivering traffic management, planning, and consultancy services across New Zealand.
+            Men at Work has grown from an owner-operated traffic management company into a multi-division group delivering traffic management, planning, and consultancy services across New Zealand.
           </p>
         </div>
       </section>
@@ -126,9 +126,12 @@ export default function AboutUsPage() {
                 <div className="orange-rule" style={{ marginTop: '16px' }} />
               </div>
               <p className="reveal d1" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', marginTop: '24px', maxWidth: '540px' }}>
-                In 2008, Dean and Esther Hyde took ownership of Men at Work and have led the business as hands-on owner-operators ever since. What began as a focused traffic management company in Christchurch has grown steadily through strong leadership, experienced crews, and long-term client relationships.
+                In 2008, Dean and Esther Hyde took ownership of Men at Work and have led the business as hands-on owner-operators ever since.
               </p>
               <p className="reveal d2" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', marginTop: '16px', maxWidth: '540px' }}>
+                What began as a focused traffic management company in Christchurch has grown steadily through strong leadership, experienced crews, and long-term client relationships.
+              </p>
+              <p className="reveal d3" style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', marginTop: '16px', maxWidth: '540px' }}>
                 Today, Men at Work operates across multiple regions with a purpose-built head office in Belfast and a reputation for practical, dependable traffic management across civil, infrastructure, and event projects.
               </p>
             </div>
@@ -160,10 +163,10 @@ export default function AboutUsPage() {
       </section>
 
       {/* ── LOCATIONS ── */}
-      <section style={{ background: '#0A1623', padding: '80px 0', borderTop: '1px solid rgba(255,255,255,0.04)' }} aria-label="Our locations">
+      <section style={{ background: '#0A1623', padding: '80px 0 40px', borderTop: '1px solid rgba(255,255,255,0.04)' }} aria-label="Our locations">
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
 
-          <div style={{ marginBottom: '40px' }}>
+          <div style={{ marginBottom: '20px' }}>
             <div className="reveal" style={{ marginBottom: '10px' }}>
               <span className="eyebrow">Where We Operate</span>
             </div>
@@ -172,7 +175,7 @@ export default function AboutUsPage() {
             </h2>
             <div className="orange-rule reveal d2" style={{ marginTop: '16px' }} />
             <p className="reveal d3" style={{ marginTop: '20px', fontSize: '1.05rem', lineHeight: 1.7, color: 'rgba(255,255,255,0.65)', maxWidth: '480px' }}>
-              Five branches across New Zealand, delivering the same professional standard on every site.
+              Five branches delivering the same professional standard across every region we operate.
             </p>
           </div>
 
