@@ -51,7 +51,7 @@ export const branchHiring: BranchHiring[] = [
     region: 'South Canterbury',
     status: 'limited',
     fulltimeRoles: ['STMS (Practicing)'],
-    casualRoles: ['TMO P'],
+    casualRoles: ['TMO P', 'Unqualified', 'TTM Worker'],
     tagline: 'No current vacancies. Register your interest for future roles.',
   },
 ]

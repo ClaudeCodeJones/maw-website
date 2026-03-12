@@ -120,7 +120,7 @@ type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function RequestQuotePageClient() {
-  const [step, setStep] = useState<1 | 2>(1)
+  const [step, setStep] = useState<1 | 2>(2)
   const [status, setStatus] = useState<FormStatus>('idle')
 
   const [s1, setS1] = useState<S1>({
@@ -393,7 +393,7 @@ export default function RequestQuotePageClient() {
 
                 <div style={fieldStyle}>
                   <label htmlFor="companyName" style={labelStyle}>Company Name *</label>
-                  <input id="companyName" type="text" autoComplete="organization" value={s1.companyName} onChange={e => setF1('companyName', e.target.value)}
+                  <input id="companyName" type="text" autoComplete="organization" placeholder="e.g. Jeslanvy Civil" value={s1.companyName} onChange={e => setF1('companyName', e.target.value)}
                     style={{ ...inputStyle, borderColor: s1Errors.companyName ? '#f87171' : 'rgba(255,255,255,0.12)' }} />
                   <FieldError msg={s1Errors.companyName} />
                 </div>
@@ -516,15 +516,34 @@ export default function RequestQuotePageClient() {
                 {/* File upload (conditional) */}
                 {s2.hasLocationFile && (
                   <div style={fieldStyle}>
-                    <label htmlFor="locationFile" style={labelStyle}>Upload Location Information</label>
+                    <label htmlFor="locationFile" style={{ ...labelStyle, marginBottom: '4px' }}>Upload Location Information</label>
                     <input
                       ref={fileRef}
                       id="locationFile"
                       type="file"
                       accept=".docx,.jpeg,.jpg,.pdf,.png"
                       onChange={handleFileChange}
-                      style={{ ...inputStyle, padding: '10px 16px', cursor: 'pointer' }}
+                      className="hidden"
                     />
+                    <label
+                      htmlFor="locationFile"
+                      style={{
+                        ...inputStyle,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        cursor: 'pointer',
+                        padding: '12px 16px',
+                        transition: 'border-color 0.2s',
+                      }}
+                      onMouseEnter={e => (e.currentTarget.style.borderColor = 'var(--orange)')}
+                      onMouseLeave={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)')}
+                    >
+                      <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.875rem' }}>Click here to upload file</span>
+                      <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.875rem', maxWidth: '55%', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', textAlign: 'right' }}>
+                        {s2.locationFile ? s2.locationFile.name : 'No file selected'}
+                      </span>
+                    </label>
                     <p style={{ fontSize: '0.75rem', color: 'var(--muted)', marginTop: '6px', lineHeight: 1.5 }}>
                       Accepted formats: DOCX, JPEG, PDF, PNG. Maximum file size 5MB.
                     </p>

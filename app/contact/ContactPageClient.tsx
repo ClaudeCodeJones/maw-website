@@ -43,7 +43,7 @@ function FieldError({ msg }: { msg?: string }) {
   return <p style={{ fontSize: '0.75rem', color: '#f87171', marginTop: '4px' }}>{msg}</p>
 }
 
-const branches = ['Wellington', 'Christchurch', 'Nelson', 'Blenheim', 'Timaru']
+const branches = ['Wellington', 'Nelson', 'Blenheim', 'Christchurch', 'Timaru']
 
 export default function ContactPageClient() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', branch: '', message: '' })

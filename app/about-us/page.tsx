@@ -72,7 +72,7 @@ const leadershipImages: Record<string, string> = {
   'Daniel Adams': '/leadership/danadams.webp',
   'Kurt Puryer-Smith': '/leadership/kurtpuryersmith.webp',
   'Brock Vuleta': '/leadership/brockvuleta.webp',
-  'Royden van Dyk': '/leadership/roydenvandyk.webp',
+  'Royden van Dyk': '/leadership/roydenvandyk-v2.webp',
 }
 
 /* ── Page ── */
