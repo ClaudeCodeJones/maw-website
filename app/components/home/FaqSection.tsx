@@ -10,9 +10,9 @@ const faqs: { question: string; answer: string | ReactNode; schemaAnswer: string
   {
     question: 'Who provides traffic management services in New Zealand?',
     answer:
-      'Men at Work Traffic Management provides professional traffic control, temporary traffic management plans (TMPs), and event traffic management services from our branches in Christchurch, Wellington, Nelson, Blenheim and Timaru.',
+      'Men at Work Traffic Management provides professional traffic management, temporary traffic management plans (TMPs), and event traffic management services from our branches in Christchurch, Wellington, Nelson, Blenheim and Timaru.',
     schemaAnswer:
-      'Men at Work Traffic Management provides professional traffic control, temporary traffic management plans (TMPs), and event traffic management services from our branches in Christchurch, Wellington, Nelson, Blenheim and Timaru.',
+      'Men at Work Traffic Management provides professional traffic management, temporary traffic management plans (TMPs), and event traffic management services from our branches in Christchurch, Wellington, Nelson, Blenheim and Timaru.',
   },
   {
     question: 'What does a traffic management company do?',
@@ -31,16 +31,16 @@ const faqs: { question: string; answer: string | ReactNode; schemaAnswer: string
   {
     question: 'Do you provide traffic management plans (TMPs)?',
     answer:
-      'Yes. Our specialist planning division, MW Training & Planning, designs compliant Traffic Management Plans (TMPs) for roadworks, civil works, infrastructure projects and events.',
+      'Yes. Our specialist division, MW Training & Planning, designs compliant, risk-based Traffic Management Plans (TMPs) for everything from minor roadworks to major infrastructure projects and large-scale events.',
     schemaAnswer:
-      'Yes. Our specialist planning division, MW Training & Planning, designs compliant Traffic Management Plans (TMPs) for roadworks, civil works, infrastructure projects and events.',
+      'Yes. Our specialist division, MW Training & Planning, designs compliant, risk-based Traffic Management Plans (TMPs) for everything from minor roadworks to major infrastructure projects and large-scale events.',
   },
   {
     question: 'Can you provide traffic management for events?',
     answer:
-      'Yes. We provide professional traffic management for concerts, festivals, sporting events and public gatherings, including event traffic planning and on-site traffic control crews.',
+      'Yes. We provide professional traffic management for concerts, festivals, sporting events and public gatherings, including event traffic planning and on-site traffic management crews.',
     schemaAnswer:
-      'Yes. We provide professional traffic management for concerts, festivals, sporting events and public gatherings, including event traffic planning and on-site traffic control crews.',
+      'Yes. We provide professional traffic management for concerts, festivals, sporting events and public gatherings, including event traffic planning and on-site traffic management crews.',
   },
   {
     question: 'How do I request traffic management services?',

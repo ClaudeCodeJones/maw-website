@@ -6,25 +6,29 @@ type LocationPageProps = {
   city: string
   region: string
   coverage: string[]
+  teamDescription: string
+  history: string
 }
 
 const services = [
-  'Traffic Management',
+  'Onsite Traffic Management',
   'Temporary Traffic Management Plans (TMP)',
   'Event Traffic Management',
-  'Traffic Control Crews',
+  'Traffic Management Crews',
   'Site Setup and Monitoring',
   'Traffic Management Consultancy',
+  'Corridor Access Requests (CAR)',
+  'Auditing',
 ]
 
 const reasons = [
-  'Experienced STMS supervisors',
+  'Qualified, competent traffic management staff',
   'Modern traffic management fleet',
-  `Reliable response across the region`,
+  'Responsive crews across the region',
   'Proven safety and compliance systems',
 ]
 
-export default function LocationPage({ city, region, coverage }: LocationPageProps) {
+export default function LocationPage({ city, region, coverage, teamDescription, history }: LocationPageProps) {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
@@ -40,7 +44,7 @@ export default function LocationPage({ city, region, coverage }: LocationPagePro
       '@type': 'AdministrativeArea',
       name: region,
     },
-    description: `Traffic management services in ${city}. Men at Work provides traffic control, TMP design, event traffic management and consultancy.`,
+    description: `Traffic management services in ${city}. Men at Work provides traffic management, TMP design, event traffic management and consultancy.`,
     provider: {
       '@type': 'Organization',
       name: 'Men at Work Traffic Management',
@@ -109,7 +113,7 @@ export default function LocationPage({ city, region, coverage }: LocationPagePro
               marginTop: '24px',
             }}
           >
-            Men at Work provides professional traffic management services across {city} and the wider {region} region. From roadworks and infrastructure projects to events and temporary traffic control, our experienced team keeps worksites safe and compliant.
+            Men at Work provides professional traffic management services across {city} and the wider {region} region. From roadworks and infrastructure projects to events and temporary traffic management, our experienced team keeps worksites safe and compliant.
           </p>
           <div className="reveal d3" style={{ marginTop: '36px' }}>
             <Link href="/estimate" className="btn-orange" style={{ padding: '14px 28px', fontSize: '0.9rem' }}>
@@ -237,6 +241,46 @@ export default function LocationPage({ city, region, coverage }: LocationPagePro
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── BRANCH TEAM ── */}
+      <section style={{ background: 'var(--off-white)', padding: 'clamp(60px,8vw,100px) 0' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 clamp(24px,5vw,48px)' }}>
+          <div style={{ marginBottom: '40px' }}>
+            <div className="reveal" style={{ marginBottom: '10px' }}>
+              <span className="eyebrow" style={{ color: 'var(--orange)' }}>Our {city} Branch</span>
+            </div>
+            <h2
+              className="section-title reveal d1"
+              style={{ fontSize: 'clamp(1.8rem,3.5vw,2.8rem)', color: 'var(--navy)' }}
+            >
+              People Behind the Branch
+            </h2>
+            <div className="orange-rule reveal d2" style={{ marginTop: '16px' }} />
+          </div>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+              gap: '40px',
+              alignItems: 'start',
+            }}
+          >
+            <p
+              className="reveal d2"
+              style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '560px' }}
+            >
+              {teamDescription}
+            </p>
+            <p
+              className="reveal d3"
+              style={{ fontSize: '1rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '560px' }}
+            >
+              {history}
+            </p>
           </div>
         </div>
       </section>

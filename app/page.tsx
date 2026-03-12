@@ -7,7 +7,7 @@ import FaqSection from './components/home/FaqSection'
 
 export const metadata: Metadata = {
   title: 'Men at Work Traffic Management | Christchurch, Wellington, Nelson, Blenheim & Timaru',
-  description: 'Professional traffic management services across Christchurch, Wellington, Nelson, Blenheim and Timaru. Traffic control, TMP design, event traffic management and consultancy.',
+  description: 'Professional traffic management services across Christchurch, Wellington, Nelson, Blenheim and Timaru. Traffic management, TMP design, event traffic management and consultancy.',
   alternates: {
     canonical: '/',
   },
@@ -18,7 +18,7 @@ const jsonLd = {
   '@type': 'LocalBusiness',
   name: 'Men at Work Traffic Management',
   url: 'https://www.menatwork.co.nz',
-  description: 'Professional traffic management services including traffic control, TMP design, event traffic management, and consultancy.',
+  description: 'Professional traffic management services including traffic management, TMP design, event traffic management, and consultancy.',
   areaServed: ['Christchurch', 'Wellington', 'Nelson', 'Blenheim', 'Timaru'],
   serviceType: 'Traffic Management',
   sameAs: [],

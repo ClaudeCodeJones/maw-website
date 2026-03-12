@@ -21,6 +21,29 @@ const statusColors: Record<HiringStatus, { bg: string; text: string; dot: string
   },
 }
 
+const TEMP_COMPANY_ROLE = 'Apply via The Temp Company'
+
+const ROLE_ORDER: Record<string, number> = {
+  'STMS (Practicing)': 0,
+  'TMO P':             1,
+  'TTM Worker':        2,
+  'Unqualified':       3,
+  [TEMP_COMPANY_ROLE]: 4,
+}
+
+function sortRoles(roles: string[]): string[] {
+  return [...roles].sort((a, b) => (ROLE_ORDER[a] ?? 99) - (ROLE_ORDER[b] ?? 99))
+}
+
+function roleBorderColor(role: string): string {
+  if (role === 'STMS (Practicing)')   return 'rgba(56,189,248,0.5)'   // cyan
+  if (role === 'TMO P')               return 'rgba(52,211,153,0.5)'    // emerald
+  if (role === 'TTM Worker')          return 'rgba(167,139,250,0.5)'   // violet
+  if (role === 'Unqualified')         return 'rgba(239,68,68,0.4)'     // muted red
+  if (role === TEMP_COMPANY_ROLE)     return 'rgba(188,156,34,0.4)'      // gold muted
+  return 'rgba(255,255,255,0.12)'
+}
+
 export default function BranchHiringCard({ item }: { item: BranchHiring }) {
   const colors = statusColors[item.status]
 
@@ -83,87 +106,91 @@ export default function BranchHiringCard({ item }: { item: BranchHiring }) {
       <div style={{ width: '100%', height: '1px', background: 'rgba(255,255,255,0.08)' }} />
 
       {/* Roles */}
-      {item.roles.length > 0 ? (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+
+        {/* Fulltime / Part Time */}
         <div>
           <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: '8px' }}>
-            Roles Available
+            Roles Available — Fulltime / Part Time
           </p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-            {item.roles.map(role => {
-              const borderColor =
-                role === 'STMS (Practicing)' ? 'rgba(56,189,248,0.5)' :
-                role === 'Casuals' ? 'rgba(167,139,250,0.5)' :
-                'rgba(255,255,255,0.12)'
-              return (
-                <span
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', minHeight: '28px' }}>
+            {sortRoles(item.fulltimeRoles).map(role => (
+              <span
+                key={role}
+                style={{
+                  fontFamily: 'Inter, sans-serif',
+                  fontSize: '0.75rem',
+                  fontWeight: 500,
+                  color: 'rgba(255,255,255,0.65)',
+                  background: 'rgba(255,255,255,0.06)',
+                  border: `1px solid ${roleBorderColor(role)}`,
+                  borderRadius: '2px',
+                  padding: '4px 10px',
+                }}
+              >
+                {role}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Divider between sections */}
+        <div style={{ width: '100%', height: '1px', background: 'rgba(255,255,255,0.08)' }} />
+
+        {/* Casual */}
+        <div>
+          <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: '8px' }}>
+            Roles Available — Casual
+          </p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', minHeight: '28px' }}>
+            {sortRoles(item.casualRoles).map(role => {
+              const badgeStyle = {
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '0.75rem',
+                fontWeight: 500,
+                color: 'rgba(255,255,255,0.65)',
+                background: 'rgba(255,255,255,0.06)',
+                border: `1px solid ${roleBorderColor(role)}`,
+                borderRadius: '2px',
+                padding: '4px 10px',
+                textDecoration: 'none' as const,
+              }
+              return role === TEMP_COMPANY_ROLE ? (
+                <a
                   key={role}
-                  style={{
-                    fontFamily: 'Inter, sans-serif',
-                    fontSize: '0.75rem',
-                    fontWeight: 500,
-                    color: 'rgba(255,255,255,0.65)',
-                    background: 'rgba(255,255,255,0.06)',
-                    border: `1px solid ${borderColor}`,
-                    borderRadius: '2px',
-                    padding: '4px 10px',
-                  }}
+                  href="https://www.thetempcompany.co.nz"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ ...badgeStyle, cursor: 'pointer' }}
                 >
                   {role}
-                </span>
+                </a>
+              ) : (
+                <span key={role} style={badgeStyle}>{role}</span>
               )
             })}
           </div>
         </div>
-      ) : (
-        <p
-          style={{
-            fontFamily: 'Inter, sans-serif',
-            fontSize: '0.8rem',
-            color: 'rgba(255,255,255,0.3)',
-            fontStyle: 'italic',
-          }}
-        >
-          No current openings
-        </p>
-      )}
+
+      </div>
 
 
       {/* CTA, separated with divider */}
       <div style={{ marginTop: '20px', paddingTop: '20px', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
         {item.status !== 'closed' ? (
-          <>
-            {/* Mobile: text link */}
-            <Link
-              href={`/careers?branch=${item.branch.toLowerCase()}#apply`}
-              className="md:hidden inline-flex items-center gap-2 text-xs font-medium transition duration-200 hover:text-[#fd4f00]"
-              style={{ color: colors.text }}
-            >
-              Apply Now
-              <ArrowRight size={13} strokeWidth={1.5} aria-hidden="true" />
-            </Link>
-            {/* Desktop: full-width pill */}
-            <Link
-              href={`/careers?branch=${item.branch.toLowerCase()}#apply`}
-              className="hidden md:inline-flex items-center justify-center gap-2 w-full rounded-full border bg-transparent px-8 text-xs font-medium transition duration-200 hover:text-[#fd4f00] hover:border-[#fd4f00]/60 active:scale-[0.98]"
-              style={{ paddingTop: '14px', paddingBottom: '14px', color: colors.text, borderColor: `${colors.text}40` }}
-            >
-              Apply Now
-              <ArrowRight size={13} strokeWidth={1.5} aria-hidden="true" />
-            </Link>
-          </>
+          <Link
+            href={`/careers?branch=${item.branch.toLowerCase()}#apply`}
+            className="inline-flex items-center gap-2 text-xs font-medium transition duration-200 hover:text-[#fd4f00]"
+            style={{ color: colors.text }}
+          >
+            Apply Now
+            <ArrowRight size={13} strokeWidth={1.5} aria-hidden="true" />
+          </Link>
         ) : (
-          <>
-            {/* Mobile: disabled text */}
-            <span className="md:hidden inline-flex items-center gap-2 text-xs font-medium cursor-not-allowed select-none" style={{ color: colors.text }}>
-              Apply Now
-              <ArrowRight size={13} strokeWidth={1.5} aria-hidden="true" />
-            </span>
-            {/* Desktop: disabled pill */}
-            <span className="hidden md:inline-flex items-center justify-center gap-2 w-full rounded-full border bg-transparent px-8 text-xs font-medium cursor-not-allowed select-none" style={{ paddingTop: '14px', paddingBottom: '14px', color: colors.text, borderColor: `${colors.text}40` }}>
-              Apply Now
-              <ArrowRight size={13} strokeWidth={1.5} aria-hidden="true" />
-            </span>
-          </>
+          <span className="inline-flex items-center gap-2 text-xs font-medium cursor-not-allowed select-none" style={{ color: colors.text }}>
+            Apply Now
+            <ArrowRight size={13} strokeWidth={1.5} aria-hidden="true" />
+          </span>
         )}
       </div>
     </div>

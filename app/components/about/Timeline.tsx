@@ -12,7 +12,7 @@ const milestones: Milestone[] = [
   { year: '2008', title: 'The Early Years', Icon: Flag, subtext: 'Dean and Esther purchased Men at Work after its earlier establishment in 2005. The business initially operated from their home in Woodend.' },
   { year: '2012', title: 'Moved to Kaiapoi', Icon: Building2, subtext: 'The business outgrew its original base and relocated to Kaiapoi.\nThis move gave the company room to grow its fleet and team.' },
   { year: '2017', title: 'Moved to Belfast Business Park', Icon: Building2, subtext: 'Continued growth led to a move within Christchurch. A purpose-built Belfast Business Park facility became our new head office.' },
-  { year: '2017', title: 'Blenheim branch opens', Icon: MapPin, subtext: 'Expansion beyond Christchurch begins in Marlborough. The Blenheim branch supports projects across the wider region.' },
+  { year: '2017', title: 'Blenheim branch opens', Icon: MapPin, subtext: 'Expansion beyond Christchurch begins in Marlborough led by Kurt Puryer-Smith. The Blenheim branch supports projects across the wider region.' },
   { year: '2021', title: 'Timaru branch opens', Icon: MapPin, subtext: 'The next step in our growth reaches South Canterbury. The Timaru branch opens with Christina Elliott leading the team.' },
   { year: '2021', title: 'Wellington branch opens', Icon: MapPin, subtext: 'Men at Work opens its Wellington branch to support the Transmission Gully project, establishing a presence that remains a key part of the business.' },
   { year: '2023', title: 'Nelson branch opens', Icon: MapPin, subtext: 'Men at Work arrives in Nelson to support the top of the South Island, providing local crews and faster response across the region.' },

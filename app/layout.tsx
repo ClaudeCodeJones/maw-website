@@ -6,7 +6,7 @@ import Footer from './components/Footer'
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.menatwork.co.nz'),
   title: 'Men at Work Traffic Management',
-  description: 'Professional traffic management services across Wellington, Christchurch, Nelson, Blenheim, and Timaru. Traffic control, TMP design, event traffic management, and consultancy.',
+  description: 'Professional traffic management services across Wellington, Christchurch, Nelson, Blenheim, and Timaru. Traffic management, TMP design, event traffic management, and consultancy.',
   openGraph: {
     title: 'Men at Work Traffic Management',
     description: 'Professional traffic management services across five South Island branches.',

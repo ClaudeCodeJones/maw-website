@@ -252,8 +252,8 @@ export default function CareersPage() {
               Roles below STMS level are hired on a casual basis, including unqualified and TTM workers.
             </p>
             <p style={{ fontSize: '0.85rem', lineHeight: 1.65, color: 'var(--muted)', marginBottom: '10px' }}>
-              Casual traffic roles in Christchurch, Wellington and Blenheim may be available through our labour hire division,{' '}
-              <a href="https://www.thetempcompany.co.nz" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--orange)', textDecoration: 'none', fontWeight: 500 }}>The Temp Company</a>.
+              Casual traffic roles in Christchurch, Wellington and Blenheim are managed through our labour hire division,{' '}
+              <a href="https://www.thetempcompany.co.nz" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--orange)', textDecoration: 'none', fontWeight: 500 }}>The Temp Company</a>
             </p>
             <p style={{ fontSize: '0.85rem', lineHeight: 1.65, color: 'var(--muted)' }}>
               Casual work can provide a pathway into full-time traffic management roles with Men at Work as positions become available.

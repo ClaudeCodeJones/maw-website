@@ -4,7 +4,8 @@ export type BranchHiring = {
   branch: string
   region: string
   status: HiringStatus
-  roles: string[]
+  fulltimeRoles: string[]
+  casualRoles: string[]
   tagline: string
   tempCompany?: boolean
 }
@@ -14,7 +15,8 @@ export const branchHiring: BranchHiring[] = [
     branch: 'Wellington',
     region: 'Capital Region',
     status: 'limited',
-    roles: ['STMS (Practicing)'],
+    fulltimeRoles: ['STMS (Practicing)'],
+    casualRoles: ['Apply via The Temp Company'],
     tagline: 'Selective intake. Experienced controllers only.',
     tempCompany: true,
   },
@@ -22,14 +24,16 @@ export const branchHiring: BranchHiring[] = [
     branch: 'Nelson',
     region: 'Tasman',
     status: 'hiring',
-    roles: ['STMS (Practicing)', 'Casuals'],
+    fulltimeRoles: ['STMS (Practicing)', 'TMO P'],
+    casualRoles: ['Unqualified', 'TTM Worker'],
     tagline: 'Growing fast. Looking for experienced controllers and coordinators.',
   },
   {
     branch: 'Blenheim',
     region: 'Marlborough',
     status: 'limited',
-    roles: ['STMS (Practicing)'],
+    fulltimeRoles: ['STMS (Practicing)', 'TMO P'],
+    casualRoles: ['Apply via The Temp Company'],
     tagline: 'One or two roles available for the right candidates.',
     tempCompany: true,
   },
@@ -37,7 +41,8 @@ export const branchHiring: BranchHiring[] = [
     branch: 'Christchurch',
     region: 'Head Office',
     status: 'limited',
-    roles: ['STMS (Practicing)'],
+    fulltimeRoles: ['STMS (Practicing)'],
+    casualRoles: ['Apply via The Temp Company'],
     tagline: 'Our busiest hub. Multiple openings across operations and planning.',
     tempCompany: true,
   },
@@ -45,7 +50,8 @@ export const branchHiring: BranchHiring[] = [
     branch: 'Timaru',
     region: 'South Canterbury',
     status: 'limited',
-    roles: ['STMS (Practicing)'],
+    fulltimeRoles: ['STMS (Practicing)'],
+    casualRoles: ['TMO P'],
     tagline: 'No current vacancies. Register your interest for future roles.',
   },
 ]
