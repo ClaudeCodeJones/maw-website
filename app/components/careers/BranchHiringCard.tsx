@@ -111,7 +111,7 @@ export default function BranchHiringCard({ item }: { item: BranchHiring }) {
         {/* Fulltime / Part Time */}
         <div>
           <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: '8px' }}>
-            Roles Available — Fulltime / Part Time
+            Fulltime / Part Time
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', minHeight: '28px' }}>
             {sortRoles(item.fulltimeRoles).map(role => (
@@ -140,7 +140,7 @@ export default function BranchHiringCard({ item }: { item: BranchHiring }) {
         {/* Casual */}
         <div>
           <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: '8px' }}>
-            Roles Available — Casual
+            Casual
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', minHeight: '28px' }}>
             {sortRoles(item.casualRoles).map(role => {
