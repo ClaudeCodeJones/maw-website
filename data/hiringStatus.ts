@@ -31,7 +31,7 @@ export const branchHiring: BranchHiring[] = [
   {
     branch: 'Blenheim',
     region: 'Marlborough',
-    status: 'limited',
+    status: 'hiring',
     fulltimeRoles: ['STMS (Practicing)', 'TMO P'],
     casualRoles: ['Apply via The Temp Company'],
     tagline: 'One or two roles available for the right candidates.',
@@ -49,7 +49,7 @@ export const branchHiring: BranchHiring[] = [
   {
     branch: 'Timaru',
     region: 'South Canterbury',
-    status: 'limited',
+    status: 'hiring',
     fulltimeRoles: ['STMS (Practicing)'],
     casualRoles: ['TMO P', 'Unqualified', 'TTM Worker'],
     tagline: 'No current vacancies. Register your interest for future roles.',

@@ -120,7 +120,7 @@ type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function RequestQuotePageClient() {
-  const [step, setStep] = useState<1 | 2>(2)
+  const [step, setStep] = useState<1 | 2>(1)
   const [status, setStatus] = useState<FormStatus>('idle')
 
   const [s1, setS1] = useState<S1>({
@@ -660,9 +660,6 @@ export default function RequestQuotePageClient() {
                     <div>
                       <label htmlFor="meetingDate" style={labelStyle}>Date *</label>
                       <div style={{ position: 'relative' }}>
-                        {!s2.meetingDate && (
-                          <span style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', fontFamily: 'Inter, sans-serif', fontSize: '0.9rem', color: 'rgba(255,255,255,0.45)', pointerEvents: 'none', zIndex: 1 }}>Select date</span>
-                        )}
                         <input
                           ref={meetingDateRef}
                           id="meetingDate"
@@ -670,7 +667,7 @@ export default function RequestQuotePageClient() {
                           value={s2.meetingDate}
                           min={new Date().toISOString().split('T')[0]}
                           onChange={e => setF2('meetingDate', e.target.value)}
-                          style={{ ...inputStyle, borderColor: s2Errors.meetingDate ? '#f87171' : 'rgba(255,255,255,0.12)', color: s2.meetingDate ? '#fff' : 'transparent', paddingRight: '44px' }}
+                          style={{ ...inputStyle, borderColor: s2Errors.meetingDate ? '#f87171' : 'rgba(255,255,255,0.12)', color: s2.meetingDate ? '#fff' : 'rgba(255,255,255,0.45)', paddingRight: '44px' }}
                         />
                         <button
                           type="button"
