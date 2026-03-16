@@ -705,12 +705,13 @@ export default function RequestQuotePageClient() {
 
                 <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', margin: '0 0 24px' }} />
 
-                {/* Turnstile – invisible mode */}
-                <Turnstile
-                  sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
-                  size="invisible"
-                  onVerify={(token) => setTurnstileToken(token)}
-                />
+                <div style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden', opacity: 0, pointerEvents: 'none' }}>
+                  <Turnstile
+                    sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+                    size="normal"
+                    onVerify={(token) => setTurnstileToken(token)}
+                  />
+                </div>
 
                 {/* Buttons */}
                 <div style={{ display: 'flex', flexDirection: 'column' as const, gap: '12px' }}>
