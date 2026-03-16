@@ -269,20 +269,13 @@ export default function RequestQuotePageClient() {
             <div className="reveal d2" style={{ fontSize: '0.95rem', lineHeight: 1.78, color: 'var(--muted)', maxWidth: '480px', marginTop: '20px' }}>
               <p>Provide a few details about your project and we&apos;ll prepare pricing for you. If we need any additional information, we&apos;ll get in touch.</p>
             </div>
-            <div className="reveal d2" style={{ width: '40px', height: '1px', background: 'rgba(255,255,255,0.15)', margin: '20px 0' }} />
-            <div className="reveal d3" style={{ fontSize: '0.95rem', lineHeight: 1.78, color: 'var(--muted)' }}>
-              <p>Prefer to discuss it first?</p>
-              <div style={{ marginTop: '8px', display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
-                <a href="tel:0800636289" className="flex items-center gap-2 hover:opacity-80" style={{ color: 'var(--orange)', fontWeight: 500, textDecoration: 'none', fontSize: '0.85rem' }}>
-                  <Phone size={14} />
-                  0800 636 289
-                </a>
-                <span style={{ color: 'rgba(255,255,255,0.2)' }}>|</span>
-                <a href="mailto:office@menatwork.co.nz" className="flex items-center gap-2 hover:opacity-80" style={{ color: 'var(--orange)', fontWeight: 500, textDecoration: 'none', fontSize: '0.85rem' }}>
-                  <Mail size={14} />
-                  office@menatwork.co.nz
-                </a>
-              </div>
+            <div className="reveal d3" style={{ marginTop: '24px', display: 'inline-block', padding: '20px 28px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '4px', borderLeft: '3px solid var(--orange)' }}>
+              <p style={{ fontSize: '0.9rem', lineHeight: 1.7, color: 'var(--muted)', marginBottom: '10px' }}>Prefer to discuss it first?</p>
+              <p style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--light)' }}>
+                <a href="tel:0800636289" style={{ color: 'inherit', textDecoration: 'none' }}>0800 636 289</a>
+                {' '}<span style={{ color: 'var(--muted)', fontWeight: 400 }}>|</span>{' '}
+                <a href="mailto:office@menatwork.co.nz" style={{ color: 'var(--orange)', textDecoration: 'none' }}>office@menatwork.co.nz</a>
+              </p>
             </div>
           </>
         )}
