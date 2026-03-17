@@ -73,10 +73,46 @@ const jsonLd = {
   '@type': 'LocalBusiness',
   name: 'Men at Work Traffic Management',
   url: 'https://www.menatwork.co.nz',
+  telephone: '+6480063629',
+  image: 'https://www.menatwork.co.nz/logos/mwtrafficmanagement_white.webp',
   description: 'Professional traffic management services including traffic management, TMP design, event traffic management, and consultancy.',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '25 Blakes Road',
+    addressLocality: 'Belfast, Christchurch',
+    postalCode: '8051',
+    addressCountry: 'NZ',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: -43.456,
+    longitude: 172.637,
+  },
+  openingHours: 'Mo-Fr 05:00-18:00',
   areaServed: ['Christchurch', 'Wellington', 'Nelson', 'Blenheim', 'Timaru'],
   serviceType: 'Traffic Management',
-  sameAs: [],
+  sameAs: [
+    'https://www.facebook.com/menatworknz/',
+    'https://nz.linkedin.com/company/men-at-work-traffic-management-new-zealand',
+    'https://www.instagram.com/menatworknz/',
+    'https://share.google/VVXCqod2DsbdcqYfV',
+  ],
+}
+
+const organisationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Men at Work Traffic Management',
+  url: 'https://www.menatwork.co.nz',
+  logo: 'https://www.menatwork.co.nz/logos/mwtrafficmanagement_white.webp',
+  foundingDate: '2008',
+  description: 'Professional traffic management services across Christchurch, Wellington, Nelson, Blenheim and Timaru.',
+  sameAs: [
+    'https://www.facebook.com/menatworknz/',
+    'https://nz.linkedin.com/company/men-at-work-traffic-management-new-zealand',
+    'https://www.instagram.com/menatworknz/',
+    'https://share.google/VVXCqod2DsbdcqYfV',
+  ],
 }
 
 export default function HomePage() {
@@ -89,6 +125,10 @@ export default function HomePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organisationJsonLd) }}
       />
       <RevealObserver />
 

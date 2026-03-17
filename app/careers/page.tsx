@@ -6,6 +6,53 @@ import BranchHiringCard from '../components/careers/BranchHiringCard'
 import ApplicationSection from '../components/careers/ApplicationSection'
 import { branchHiring } from '../../data/hiringStatus'
 
+const hiringOrganization = {
+  '@type': 'Organization',
+  name: 'Men at Work Traffic Management',
+  sameAs: 'https://www.menatwork.co.nz',
+}
+
+const jobPostingsJsonLd = branchHiring
+  .filter((b) => b.status !== 'closed')
+  .flatMap((b) => [
+    ...b.fulltimeRoles.map((role) => ({
+      '@context': 'https://schema.org',
+      '@type': 'JobPosting',
+      title: role,
+      datePosted: '2026-04-01',
+      employmentType: 'FULL_TIME',
+      hiringOrganization,
+      jobLocation: {
+        '@type': 'Place',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: b.branch,
+          addressCountry: 'NZ',
+        },
+      },
+      description: `${role} position at Men at Work Traffic Management, ${b.branch} branch. ${b.tagline}`,
+    })),
+    ...b.casualRoles
+      .filter((role) => !role.startsWith('Apply via'))
+      .map((role) => ({
+        '@context': 'https://schema.org',
+        '@type': 'JobPosting',
+        title: role,
+        datePosted: '2026-04-01',
+        employmentType: 'PART_TIME',
+        hiringOrganization,
+        jobLocation: {
+          '@type': 'Place',
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: b.branch,
+            addressCountry: 'NZ',
+          },
+        },
+        description: `${role} casual position at Men at Work Traffic Management, ${b.branch} branch. ${b.tagline}`,
+      })),
+  ])
+
 export const metadata: Metadata = {
   title: 'Careers | Men at Work Traffic Management',
   description:
@@ -51,6 +98,10 @@ const benefits = [
 export default function CareersPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jobPostingsJsonLd) }}
+      />
       <RevealObserver />
 
       {/* ── HERO ── */}

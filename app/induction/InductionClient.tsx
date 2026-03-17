@@ -22,7 +22,7 @@ const baseSteps: Step[] = [
     title: 'Onboarding Form',
     body: 'Complete the online form so we have your employment details before your first shift.',
     href: 'https://forms.fillout.com/t/6VC3sHexLhus',
-    cta: 'VIEW',
+    cta: 'FILL OUT FORM',
     icon: ClipboardList,
   },
   {
@@ -30,7 +30,7 @@ const baseSteps: Step[] = [
     title: 'Welcome & Overview',
     body: 'A short presentation covering the Men at Work story, what to expect, and how we operate.',
     href: 'https://www.canva.com/design/DAFVKc9tbmc/_2yXJwgjEN_HKKAdSa85zQ/view?utm_content=DAFVKc9tbmc&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h887e787189',
-    cta: 'VIEW',
+    cta: 'WATCH VIDEO',
     icon: MonitorPlay,
   },
 ]
@@ -42,16 +42,16 @@ const handbookSteps: Record<EmploymentType, Step> = {
     titleNode: <><span style={{ color: 'var(--orange)' }}>Casual</span> Staff Handbook</>,
     body: 'Read the handbook covering company procedures, payroll, and health and safety guidance for casual staff.',
     href: 'https://www.canva.com/design/DAGwfPCiAbU/wC1htAzirsbbrTMUQswGhw/view?utm_content=DAGwfPCiAbU&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h8336729aa1',
-    cta: 'VIEW',
+    cta: 'READ HANDBOOK',
     icon: BookOpen,
   },
   fulltime: {
     number: '03',
     title: 'Full Time Staff Handbook',
-    titleNode: <><span style={{ color: 'var(--orange)' }}>Full Time</span> Staff Handbook</>,
+    titleNode: <><span style={{ color: 'var(--orange)' }}>Permanent</span> Staff Handbook</>,
     body: 'Read the handbook covering company procedures, payroll, and health and safety guidance for full time staff.',
     href: 'https://www.canva.com/design/DAFXO2SEMZI/ZIcQwB7IihETDcxh7Q3DTQ/view?utm_content=DAFXO2SEMZI&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hfb8e0cb77d',
-    cta: 'VIEW',
+    cta: 'READ HANDBOOK',
     icon: BookMarked,
   },
 }
@@ -214,7 +214,7 @@ export default function InductionClient() {
             <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
               {(['casual', 'fulltime'] as EmploymentType[]).map((type) => {
                 const selected = employmentType === type
-                const label = type === 'casual' ? 'Casual' : 'Full Time'
+                const label = type === 'casual' ? 'Casual' : 'Permanent'
                 return (
                   <button
                     key={type}
@@ -307,7 +307,7 @@ export default function InductionClient() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-orange"
-                  style={{ textAlign: 'center', fontSize: '0.78rem', padding: '10px 20px', letterSpacing: '0.08em' }}
+                  style={{ display: 'flex', justifyContent: 'center', fontSize: '0.78rem', padding: '10px 20px', letterSpacing: '0.08em' }}
                 >
                   {step.cta}
                 </a>

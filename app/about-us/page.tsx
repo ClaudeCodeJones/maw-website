@@ -75,11 +75,28 @@ const leadershipImages: Record<string, string> = {
   'Royden van Dyk': '/leadership/roydenvandyk-v2.webp',
 }
 
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Dean Hyde',
+  jobTitle: 'Managing Director',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Men at Work Traffic Management',
+    url: 'https://www.menatwork.co.nz',
+  },
+  image: 'https://www.menatwork.co.nz/leadership/deanhyde.webp',
+}
+
 /* ── Page ── */
 
 export default function AboutUsPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+      />
       <RevealObserver />
 
       {/* ── HERO ── */}

@@ -13,6 +13,14 @@ export const metadata: Metadata = {
     url: 'https://www.menatwork.co.nz',
     siteName: 'Men at Work Traffic Management',
     type: 'website',
+    images: [
+      {
+        url: '/logos/mwtrafficmanagement_white.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Men at Work Traffic Management',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
