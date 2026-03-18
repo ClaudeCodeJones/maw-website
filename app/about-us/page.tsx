@@ -65,8 +65,8 @@ const leadership = [
 ]
 
 const leadershipImages: Record<string, string> = {
-  'Dean Hyde': '/leadership/deanhyde.webp',
-  'Esther Hyde': '/leadership/estherhyde.webp',
+  'Dean Hyde': '/leadership/dean_hyde_v2.webp',
+  'Esther Hyde': '/leadership/estherhyde_v1.webp',
   'Hayden Wilson': '/leadership/haydenwilson.webp',
   'Nathan Jones': '/leadership/nathanjones.webp',
   'Daniel Adams': '/leadership/danadams.webp',
