@@ -194,6 +194,9 @@ export default function AboutUsPage() {
             <p className="reveal d3" style={{ marginTop: '20px', fontSize: '1.05rem', lineHeight: 1.7, color: 'rgba(255,255,255,0.65)', maxWidth: '480px' }}>
               Five branches delivering the same professional standard across every region we operate.
             </p>
+            <p className="reveal d3" style={{ marginTop: '10px', fontSize: '0.8rem', color: 'rgba(255,255,255,0.35)', fontStyle: 'normal' }}>
+              <span style={{ color: 'rgba(242,101,34,0.55)' }}>→</span> Select a branch to view details
+            </p>
           </div>
 
           <div className="reveal d1">
