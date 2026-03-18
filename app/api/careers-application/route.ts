@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { sendEmail } from "@/lib/email"
-import { buildEmailTemplate } from "@/lib/emailTemplate"
+import { buildEmailTemplate, row, section } from "@/lib/emailTemplate"
 
 const rateLimitMap = new Map<string, { count: number; lastRequest: number }>()
 
@@ -79,24 +79,30 @@ export async function POST(req: NextRequest) {
     }
 
     const content = `
-<table style="border-collapse:collapse;width:100%">
-<tr><td style="font-weight:bold;padding:6px 0">Name</td><td>${fullName}</td></tr>
-<tr><td style="font-weight:bold;padding:6px 0">Email</td><td><a href="mailto:${email}">${email}</a></td></tr>
-<tr><td style="font-weight:bold;padding:6px 0">Phone</td><td>${phone}</td></tr>
-<tr><td style="font-weight:bold;padding:6px 0">City</td><td>${city}</td></tr>
-<tr><td style="font-weight:bold;padding:6px 0">Branch</td><td>${branch}</td></tr>
-<tr><td style="font-weight:bold;padding:6px 0">Available From</td><td>${startDate || 'Not specified'}</td></tr>
-<tr><td style="font-weight:bold;padding:6px 0">Experience</td><td>${experience}</td></tr>
-<tr><td style="font-weight:bold;padding:6px 0">Licences</td><td>${Array.isArray(licences) ? licences.join(', ') : licences}</td></tr>
-<tr><td style="font-weight:bold;padding:6px 0">Preferred Contact</td><td>${contactMethod}</td></tr>
-<tr><td style="font-weight:bold;padding:6px 0">Work History</td><td>${workHistory}</td></tr>
-<tr><td style="font-weight:bold;padding:6px 0">About Yourself</td><td>${aboutYourself}</td></tr>
-<tr><td style="font-weight:bold;padding:6px 0">Health Issues</td><td>${healthIssues}</td></tr>
-<tr><td style="font-weight:bold;padding:6px 0">ACC History</td><td>${accHistory}</td></tr>
-<tr><td style="font-weight:bold;padding:6px 0">How Did You Hear</td><td>${howDidYouHear || 'Not specified'}</td></tr>
-<tr><td style="font-weight:bold;padding:6px 0">Casual Confirmed</td><td>${casualConfirm ? 'Yes' : 'No'}</td></tr>
-</table>
-`
+      <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;border:1px solid #1f2d3d;">
+        ${section('Applicant Details', `
+          ${row('Name', fullName)}
+          ${row('Email', `<a href="mailto:${email}" style="color:#F26522;text-decoration:none;">${email}</a>`)}
+          ${row('Phone', phone)}
+          ${row('City', city)}
+          ${row('Branch', branch)}
+          ${row('Available From', startDate || 'Not specified')}
+        `)}
+        ${section('Experience & Eligibility', `
+          ${row('Experience', experience)}
+          ${row('Licences', Array.isArray(licences) ? licences.join(', ') : licences)}
+          ${row('Preferred Contact', contactMethod)}
+          ${row('How Did You Hear', howDidYouHear || 'Not specified')}
+          ${row('Casual Confirmed', casualConfirm ? 'Yes' : 'No')}
+        `)}
+        ${section('Additional Information', `
+          ${row('Work History', workHistory)}
+          ${row('About Yourself', aboutYourself)}
+          ${row('Health Issues', healthIssues)}
+          ${row('ACC History', accHistory)}
+        `)}
+      </table>
+    `
 
     const html = buildEmailTemplate("Website Job Application", content)
 

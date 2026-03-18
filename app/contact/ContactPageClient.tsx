@@ -183,6 +183,11 @@ export default function ContactPageClient() {
               <a href="/estimate" style={{ color: 'var(--orange)', fontWeight: 500, textDecoration: 'none' }}>Get an Estimate</a>{' '}
               page so we can gather the details needed to provide an accurate quote.
             </p>
+            <p style={{ fontSize: '0.85rem', lineHeight: 1.65, color: 'var(--muted)', marginBottom: '14px' }}>
+              Looking for work? Head to our{' '}
+              <a href="/careers" style={{ color: 'var(--orange)', fontWeight: 500, textDecoration: 'none' }}>Careers page</a>{' '}
+              to view opportunities and apply.
+            </p>
             <p style={{ fontSize: '0.85rem', lineHeight: 1.65, color: 'var(--muted)' }}>For general enquiries, feel free to use the form below.</p>
           </div>
 
@@ -232,7 +237,7 @@ export default function ContactPageClient() {
                   id="phone"
                   type="tel"
                   inputMode="numeric"
-                  pattern="[0-9+\s-]*"
+                  pattern="[0-9+\s\-]*"
                   autoComplete="tel"
                   value={form.phone}
                   onChange={e => set('phone', e.target.value)}
@@ -244,6 +249,7 @@ export default function ContactPageClient() {
               <div style={fieldStyle}>
                 <label htmlFor="branch" style={labelStyle}>Branch</label>
                 <SelectWrapper id="branch" value={form.branch} onChange={v => set('branch', v)} error={errors.branch} placeholder="Select a branch">
+                  <option value="General Enquiry" style={{ background: '#0d1f33', color: '#fff' }}>General Enquiry</option>
                   {branches.map(b => <option key={b} value={b} style={{ background: '#0d1f33', color: '#fff' }}>{b}</option>)}
                 </SelectWrapper>
                 <FieldError msg={errors.branch} />

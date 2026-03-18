@@ -400,7 +400,7 @@ export default function RequestQuotePageClient() {
 
                 <div style={fieldStyle}>
                   <label htmlFor="phone" style={labelStyle}>Phone Number *</label>
-                  <input id="phone" type="tel" inputMode="numeric" pattern="[0-9+\s-]*" autoComplete="tel" value={s1.phone} onChange={e => setF1('phone', e.target.value)}
+                  <input id="phone" type="tel" inputMode="numeric" pattern="[0-9+\s\-]*" autoComplete="tel" value={s1.phone} onChange={e => setF1('phone', e.target.value)}
                     style={{ ...inputStyle, borderColor: s1Errors.phone ? '#f87171' : 'rgba(255,255,255,0.12)' }} />
                   <FieldError msg={s1Errors.phone} />
                 </div>
@@ -623,11 +623,6 @@ export default function RequestQuotePageClient() {
                     {costTypes.map(t => <option key={t} value={t} style={{ background: '#0d1f33', color: '#fff' }}>{t}</option>)}
                   </SelectWrapper>
                   <FieldError msg={s2Errors.costType} />
-                  {s1.branch && s1.branch !== 'Wellington' && (
-                    <p style={{ fontSize: '0.75rem', color: 'var(--muted)', marginTop: '6px', lineHeight: 1.5 }}>
-                      Lump Sum pricing is only available for the Wellington branch.
-                    </p>
-                  )}
                 </div>
                 <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', margin: '0 0 24px' }} />
 

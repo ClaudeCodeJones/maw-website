@@ -299,7 +299,7 @@ export default function ApplicationForm({ onSuccess, sectionRef }: { onSuccess?:
           <div style={{ marginBottom: '20px' }}>
             <label style={labelStyle}>Full Name</label>
             <input
-              type="text" autoComplete="name" value={form.fullName}
+              type="text" autoComplete="name" value={form.fullName} placeholder="e.g. Richard Scarlett"
               onChange={e => set('fullName', e.target.value)}
               style={{ ...inputStyle, borderColor: errors.fullName ? '#f87171' : 'rgba(255,255,255,0.12)' }}
             />
@@ -319,7 +319,7 @@ export default function ApplicationForm({ onSuccess, sectionRef }: { onSuccess?:
           <div style={{ marginBottom: '20px' }}>
             <label style={labelStyle}>City / Town</label>
             <input
-              type="text" value={form.city}
+              type="text" value={form.city} placeholder="e.g. Richmond"
               onChange={e => set('city', e.target.value)}
               style={{ ...inputStyle, borderColor: errors.city ? '#f87171' : 'rgba(255,255,255,0.12)' }}
             />
@@ -330,7 +330,7 @@ export default function ApplicationForm({ onSuccess, sectionRef }: { onSuccess?:
             <div>
               <label style={labelStyle}>Phone</label>
               <input
-                type="tel" inputMode="numeric" pattern="[0-9+\s-]*" autoComplete="tel" value={form.phone}
+                type="tel" inputMode="numeric" pattern="[0-9+\s\-]*" autoComplete="tel" value={form.phone} placeholder="e.g. 021 234 789"
                 onChange={e => set('phone', e.target.value)}
                 style={{ ...inputStyle, borderColor: errors.phone ? '#f87171' : 'rgba(255,255,255,0.12)' }}
               />
@@ -369,6 +369,26 @@ export default function ApplicationForm({ onSuccess, sectionRef }: { onSuccess?:
             <FieldError msg={errors.rightToWork} />
           </div>
 
+          {form.rightToWork === 'No current right to work in NZ' && (
+            <>
+              <div style={{
+                background: 'rgba(220,38,38,0.08)',
+                border: '1px solid rgba(220,38,38,0.35)',
+                borderRadius: '10px',
+                padding: '16px 20px',
+                display: 'flex',
+                alignItems: 'flex-start',
+                gap: '12px',
+              }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f87171" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: '1px' }}><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <div>
+                  <p style={{ margin: 0, color: '#f87171', fontWeight: 700, fontSize: '0.95rem', fontFamily: 'Inter, sans-serif' }}>Application cannot proceed</p>
+                  <p style={{ margin: '4px 0 0', color: '#fca5a5', fontSize: '0.875rem', fontFamily: 'Inter, sans-serif', lineHeight: 1.5 }}>You must have the legal right to work in New Zealand to apply for a position with Men at Work.</p>
+                </div>
+              </div>
+            </>
+          )}
+
           {form.rightToWork === 'Valid Work Visa' && (
             <div style={fieldGroupStyle}>
               <label style={labelStyle}>Visa Expiry Date</label>
@@ -386,7 +406,7 @@ export default function ApplicationForm({ onSuccess, sectionRef }: { onSuccess?:
             </div>
           )}
 
-          <div style={fieldGroupStyle}>
+          <div style={{ ...fieldGroupStyle, marginTop: form.rightToWork === 'No current right to work in NZ' ? '12px' : undefined }}>
             <label style={labelStyle}>Applying For</label>
             <SelectWrapper value={form.branch} onChange={v => set('branch', v)} error={errors.branch} placeholder="Select branch">
               {branches.map(b => (
@@ -396,7 +416,18 @@ export default function ApplicationForm({ onSuccess, sectionRef }: { onSuccess?:
             <FieldError msg={errors.branch} />
           </div>
 
-          <button type="button" onClick={handleNext} className="btn-orange" style={{ width: '100%', justifyContent: 'center' }}>
+          <button
+            type="button"
+            onClick={handleNext}
+            disabled={form.rightToWork === 'No current right to work in NZ'}
+            className="btn-orange"
+            style={{
+              width: '100%',
+              justifyContent: 'center',
+              opacity: form.rightToWork === 'No current right to work in NZ' ? 0.35 : 1,
+              cursor: form.rightToWork === 'No current right to work in NZ' ? 'not-allowed' : 'pointer',
+            }}
+          >
             Next
             <ArrowRight size={16} strokeWidth={1.5} aria-hidden="true" />
           </button>
@@ -506,11 +537,11 @@ export default function ApplicationForm({ onSuccess, sectionRef }: { onSuccess?:
               <div>
                 <SelectWrapper value={form.interviewDay} onChange={v => set('interviewDay', v)} placeholder="Any day">
                   <option value="Any day">Any day</option>
-                  <option value="Monday">Monday</option>
-                  <option value="Tuesday">Tuesday</option>
-                  <option value="Wednesday">Wednesday</option>
-                  <option value="Thursday">Thursday</option>
-                  <option value="Friday">Friday</option>
+                  <option value="Monday's">Monday&apos;s</option>
+                  <option value="Tuesday's">Tuesday&apos;s</option>
+                  <option value="Wednesday's">Wednesday&apos;s</option>
+                  <option value="Thursday's">Thursday&apos;s</option>
+                  <option value="Friday's">Friday&apos;s</option>
                 </SelectWrapper>
               </div>
               <div>

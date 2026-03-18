@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server"
 import { sendEmail } from "@/lib/email"
-import { buildEmailTemplate } from "@/lib/emailTemplate"
+import { buildEmailTemplate, row, section } from "@/lib/emailTemplate"
+
+let globalEmailCount = 0
+const MAX_EMAILS_PER_DEPLOYMENT = 200
 
 const rateLimitMap = new Map<string, { count: number; lastRequest: number }>()
 
@@ -27,16 +30,25 @@ export async function POST(req: Request) {
     return new Response('Too many requests', { status: 429 })
   }
 
+  // 2. Global email cap
+  if (globalEmailCount >= MAX_EMAILS_PER_DEPLOYMENT) {
+    console.warn('Email cap reached:', globalEmailCount)
+    return NextResponse.json(
+      { error: 'Email limit reached. Please try again later.' },
+      { status: 429 }
+    )
+  }
+
   try {
     const body = await req.json()
     const { name, email, phone, branch, message, turnstileToken, companyPhone } = body
 
-    // 2. Honeypot check
+    // 3. Honeypot check
     if (companyPhone) {
       return NextResponse.json({ success: true })
     }
 
-    // 3. Turnstile verification
+    // 4. Turnstile verification
     const verifyResponse = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -66,35 +78,16 @@ export async function POST(req: Request) {
 
     // 4 & 5. Process and send email
     const content = `
-<table style="border-collapse:collapse;width:100%">
-
-<tr>
-<td style="font-weight:bold;padding:6px 0">Name</td>
-<td>${name}</td>
-</tr>
-
-<tr>
-<td style="font-weight:bold;padding:6px 0">Email</td>
-<td><a href="mailto:${email}">${email}</a></td>
-</tr>
-
-<tr>
-<td style="font-weight:bold;padding:6px 0">Phone</td>
-<td>${phone}</td>
-</tr>
-
-<tr>
-<td style="font-weight:bold;padding:6px 0">Branch</td>
-<td>${branch}</td>
-</tr>
-
-<tr>
-<td style="font-weight:bold;padding:6px 0">Message</td>
-<td>${message}</td>
-</tr>
-
-</table>
-`
+      <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;border:1px solid #1f2d3d;">
+        ${section('Enquiry Details', `
+          ${row('Name', name)}
+          ${row('Email', `<a href="mailto:${email}" style="color:#F26522;text-decoration:none;">${email}</a>`)}
+          ${row('Phone', phone)}
+          ${row('Branch', branch)}
+          ${row('Message', message)}
+        `)}
+      </table>
+    `
 
     const html = buildEmailTemplate("Website Enquiry", content)
 
@@ -104,6 +97,9 @@ export async function POST(req: Request) {
       replyTo: { email },
       html,
     })
+
+    globalEmailCount++
+    console.log('Global email count:', globalEmailCount)
 
     return NextResponse.json({ success: true })
   } catch (error) {

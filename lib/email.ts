@@ -3,11 +3,13 @@ export async function sendEmail({
   subject,
   html,
   replyTo,
+  attachments,
 }: {
   to: { email: string; name?: string } | { email: string; name?: string }[]
   subject: string
   html: string
   replyTo?: { email: string }
+  attachments?: { fileName: string; content: string; contentType: string }[]
 }) {
   const response = await fetch("https://api.autosend.com/v1/mails/send", {
     method: "POST",
@@ -24,6 +26,7 @@ export async function sendEmail({
       subject,
       html,
       replyTo,
+      ...(attachments?.length ? { attachments } : {}),
     }),
   })
 

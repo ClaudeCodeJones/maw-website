@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
 import { sendEmail } from "@/lib/email"
-import { buildEmailTemplate } from "@/lib/emailTemplate"
+import { buildEmailTemplate, row, section } from "@/lib/emailTemplate"
 
 const rateLimitMap = new Map<string, { count: number; lastRequest: number }>()
 
@@ -26,23 +26,6 @@ function yn(val: string) {
   return val === 'yes' ? 'Yes' : val === 'no' ? 'No' : val || '-'
 }
 
-function row(label: string, value: string) {
-  return `
-    <tr>
-      <td style="padding:10px 16px;background:#0d1b2a;color:#7a8fa3;font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;border-bottom:1px solid #1f2d3d;">${label}</td>
-      <td style="padding:10px 16px;background:#162435;color:#fff;font-size:14px;border-bottom:1px solid #1f2d3d;">${value || '-'}</td>
-    </tr>`
-}
-
-function section(heading: string, rows: string) {
-  return `
-    <tr>
-      <td colspan="2" style="padding:16px 16px 8px;background:#0a1628;color:#fd4f00;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;border-bottom:2px solid #fd4f00;">
-        ${heading}
-      </td>
-    </tr>
-    ${rows}`
-}
 
 export async function POST(req: Request) {
   if (!checkRateLimit(req)) {
@@ -89,7 +72,7 @@ export async function POST(req: Request) {
       : yn(onsiteMeeting) === 'No' ? 'No' : '-'
 
     const fileInfo = fileData
-      ? `${fileData.name} (attached)`
+      ? fileData.name
       : 'Not provided'
 
     const content = `
@@ -99,7 +82,7 @@ export async function POST(req: Request) {
           ${row('Company', companyName)}
           ${row('Title', title)}
           ${row('Phone', phone)}
-          ${row('Email', email)}
+          ${row('Email', `<a href="mailto:${email}" style="color:#F26522;text-decoration:none;">${email}</a>`)}
           ${row('Existing Account', yn(hasAccount))}
           ${row('Branch', branch)}
         `)}
@@ -124,15 +107,25 @@ export async function POST(req: Request) {
 
     const html = buildEmailTemplate("Website Quote Request", content)
 
-    const subject = projectName
-      ? `Estimate Request - ${projectName} (${companyName})`
-      : `Estimate Request (${companyName})`
+    const branchCode: Record<string, string> = {
+      Christchurch: 'CHC',
+      Wellington: 'WLG',
+      Timaru: 'TIU',
+      Blenheim: 'BHE',
+      Nelson: 'NSN',
+    }
+    const code = branchCode[branch] ?? branch
+
+    const subject = `Estimate - ${projectName} (${companyName}) - ${code}`
 
     await sendEmail({
       to: { email: "nathan.jones@menatwork.co.nz", name: "Nathan Jones" },
       subject,
       replyTo: { email },
       html,
+      attachments: fileData
+        ? [{ fileName: fileData.name, content: fileData.base64, contentType: fileData.type }]
+        : undefined,
     })
 
     return NextResponse.json({ success: true })
