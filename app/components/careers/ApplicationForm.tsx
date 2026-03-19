@@ -127,6 +127,7 @@ export default function ApplicationForm({ onSuccess, sectionRef }: { onSuccess?:
   const honeypotRef = useRef<HTMLInputElement>(null)
   const cardRef = useRef<HTMLDivElement>(null)
   const dateRef = useRef<HTMLInputElement>(null)
+  const visaDateRef = useRef<HTMLInputElement>(null)
 
   const branchParam = searchParams.get('branch')
   const preselectedBranch = branchParam
@@ -393,15 +394,22 @@ export default function ApplicationForm({ onSuccess, sectionRef }: { onSuccess?:
             <div style={fieldGroupStyle}>
               <label style={labelStyle}>Visa Expiry Date</label>
               <div style={{ position: 'relative' }}>
-                {!form.visaExpiry && (
-                  <span style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', fontFamily: 'Inter, sans-serif', fontSize: '0.9rem', color: 'rgba(255,255,255,0.45)', pointerEvents: 'none', zIndex: 1 }}>Select expiry date</span>
-                )}
                 <input
+                  ref={visaDateRef}
                   type="date"
                   value={form.visaExpiry}
                   onChange={e => set('visaExpiry', e.target.value)}
-                  style={{ ...inputStyle, borderColor: 'rgba(255,255,255,0.12)', color: form.visaExpiry ? '#fff' : 'transparent' }}
+                  style={{ ...inputStyle, borderColor: 'rgba(255,255,255,0.12)', paddingRight: '44px' }}
                 />
+                <button
+                  type="button"
+                  onClick={() => visaDateRef.current?.showPicker()}
+                  style={{ position: 'absolute', right: '12px', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', padding: '4px', cursor: 'pointer', color: 'rgba(255,255,255,0.4)', display: 'flex', alignItems: 'center' }}
+                  tabIndex={-1}
+                  aria-label="Open date picker"
+                >
+                  <Calendar size={16} strokeWidth={1.5} aria-hidden="true" />
+                </button>
               </div>
             </div>
           )}

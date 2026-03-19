@@ -33,6 +33,8 @@ export async function POST(req: NextRequest) {
       experience, licences, contactMethod,
       workHistory, aboutYourself, healthIssues, accHistory,
       howDidYouHear, casualConfirm, turnstileToken, companyPhone,
+      rightToWork, visaExpiry, drugAlcoholConfirm, criminalHistoryConfirm,
+      experienceOther, interviewDay, interviewTime,
     } = body
 
     // Honeypot check
@@ -87,13 +89,20 @@ export async function POST(req: NextRequest) {
           ${row('City', city)}
           ${row('Branch', branch)}
           ${row('Available From', startDate || 'Not specified')}
+          ${row('Right to Work', rightToWork || 'Not specified')}
+          ${visaExpiry ? row('Visa Expiry', visaExpiry) : ''}
         `)}
         ${section('Experience & Eligibility', `
           ${row('Experience', experience)}
+          ${experienceOther ? row('Experience Detail', experienceOther) : ''}
           ${row('Licences', Array.isArray(licences) ? licences.join(', ') : licences)}
           ${row('Preferred Contact', contactMethod)}
           ${row('How Did You Hear', howDidYouHear || 'Not specified')}
           ${row('Casual Confirmed', casualConfirm ? 'Yes' : 'No')}
+        `)}
+        ${section('Declarations', `
+          ${row('Drug & Alcohol Policy', drugAlcoholConfirm ? 'Confirmed' : 'Not confirmed')}
+          ${row('Criminal History', criminalHistoryConfirm ? 'Confirmed' : 'Not confirmed')}
         `)}
         ${section('Additional Information', `
           ${row('Work History', workHistory)}
@@ -101,6 +110,10 @@ export async function POST(req: NextRequest) {
           ${row('Health Issues', healthIssues)}
           ${row('ACC History', accHistory)}
         `)}
+        ${interviewDay || interviewTime ? section('Interview Preference', `
+          ${interviewDay ? row('Preferred Day', interviewDay) : ''}
+          ${interviewTime ? row('Preferred Time', interviewTime) : ''}
+        `) : ''}
       </table>
     `
 
