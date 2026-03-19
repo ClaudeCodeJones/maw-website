@@ -212,7 +212,7 @@ export default function HomePage() {
                 id: 'service-roadworks',
                 icon: <><polygon points="12,2 17,18 7,18"/><rect x="5" y="19" width="14" height="3" rx="1"/><line x1="8.5" y1="10" x2="15.5" y2="10"/><line x1="7.5" y1="14" x2="16.5" y2="14"/></>,
                 extra: null,
-                title: 'Traffic Management for Roadworks',
+                title: 'Onsite Traffic Management',
                 body: 'Experienced traffic management for roadworks, helping contractors deliver projects safely while minimising disruption to road users.',
                 delay: 'd1',
                 image: '/services/works.webp',
