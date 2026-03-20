@@ -42,6 +42,7 @@ const groupEntities = [
     href: 'https://www.sweepco.co.nz',
     logo: '/logos/sweepco_white.webp',
     modifier: 'group-card--sweepco',
+    comingSoon: true,
   },
   {
     name: 'QualCard',
@@ -398,7 +399,7 @@ export default function AboutUsPage() {
 
           {/* 2×2 card grid */}
           <div className="group-grid">
-            {groupEntities.map(({ name, headline, body, href, logo, modifier }, i) => (
+            {groupEntities.map(({ name, headline, body, href, logo, modifier, comingSoon }, i) => (
               <div
                 key={name}
                 className={`group-card ${modifier} reveal d${(i % 2) + 1}`}
@@ -446,10 +447,16 @@ export default function AboutUsPage() {
                 </p>
 
                 {/* CTA */}
-                <a href={href} target="_blank" rel="noopener noreferrer" className="group-card-cta" style={{ marginTop: '14px' }}>
-                  Visit Site
-                  <ArrowRight size={14} strokeWidth={1.5} aria-hidden="true" />
-                </a>
+                {comingSoon ? (
+                  <span className="group-card-cta" style={{ marginTop: '14px', opacity: 0.5, cursor: 'default', pointerEvents: 'none' }}>
+                    Coming Soon
+                  </span>
+                ) : (
+                  <a href={href} target="_blank" rel="noopener noreferrer" className="group-card-cta" style={{ marginTop: '14px' }}>
+                    Visit Site
+                    <ArrowRight size={14} strokeWidth={1.5} aria-hidden="true" />
+                  </a>
+                )}
               </div>
             ))}
           </div>
