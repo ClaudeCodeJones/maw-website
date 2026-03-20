@@ -225,7 +225,7 @@ body {
   z-index: 0;
   background-image: url('/images/hero.webp');
   background-size: cover;
-  background-position: center center;
+  background-position: right center;
   background-repeat: no-repeat;
   filter: brightness(0.6) contrast(1.05);
 }
@@ -270,8 +270,8 @@ body {
     -52deg,
     transparent,
     transparent 32px,
-    rgba(242, 101, 34, 0.02) 32px,
-    rgba(242, 101, 34, 0.02) 36px
+    rgba(242, 101, 34, 0.04) 32px,
+    rgba(242, 101, 34, 0.04) 36px
   );
 }
 .hero-panel::after {
