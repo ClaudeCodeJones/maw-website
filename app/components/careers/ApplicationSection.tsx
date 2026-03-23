@@ -74,7 +74,7 @@ export default function ApplicationSection() {
                 Fill in the form and one of our team will be in touch. We review every application and aim to respond within a few business days.
               </p>
 
-              <div className="reveal d5" style={{ marginTop: '40px', padding: '24px', background: 'rgba(242,101,34,0.06)', border: '1px solid rgba(242,101,34,0.15)', borderLeft: '3px solid var(--orange)', borderRadius: '2px' }}>
+              <div className="reveal d5" style={{ marginTop: '40px', padding: '24px', background: 'rgba(253,79,0,0.06)', border: '1px solid rgba(253,79,0,0.15)', borderLeft: '3px solid var(--orange)', borderRadius: '2px' }}>
                 <p className="font-display" style={{ fontWeight: 600, fontSize: '0.9rem', color: '#fff', marginBottom: '8px' }}>
                   Important for Casual Applicants
                 </p>

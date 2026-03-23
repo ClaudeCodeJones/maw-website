@@ -103,7 +103,7 @@ export default function ContactPageClient() {
       }}
       aria-label="Contact hero"
     >
-      <div style={{ position: 'absolute', top: '-100px', left: '50%', transform: 'translateX(-50%)', width: '700px', height: '700px', background: 'radial-gradient(circle, rgba(242,101,34,0.07) 0%, transparent 65%)', pointerEvents: 'none' }} aria-hidden="true" />
+      <div style={{ position: 'absolute', top: '-100px', left: '50%', transform: 'translateX(-50%)', width: '700px', height: '700px', background: 'radial-gradient(circle, rgba(253,79,0,0.07) 0%, transparent 65%)', pointerEvents: 'none' }} aria-hidden="true" />
 
       <div style={{ position: 'relative', zIndex: 10, maxWidth: '800px', margin: '0 auto', padding: '0 24px' }}>
         <div className="reveal" style={{ marginBottom: '20px' }}>
@@ -176,7 +176,7 @@ export default function ContactPageClient() {
       <section style={{ background: 'var(--navy)', padding: '36px 0 100px' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto', padding: '0 24px' }}>
 
-          <div style={{ marginBottom: '32px', padding: '24px', background: 'rgba(242,101,34,0.06)', border: '1px solid rgba(242,101,34,0.15)', borderLeft: '3px solid var(--orange)', borderRadius: '2px' }}>
+          <div style={{ marginBottom: '32px', padding: '24px', background: 'rgba(253,79,0,0.06)', border: '1px solid rgba(253,79,0,0.15)', borderLeft: '3px solid var(--orange)', borderRadius: '2px' }}>
             <p className="font-display" style={{ fontWeight: 600, fontSize: '0.9rem', color: '#fff', marginBottom: '8px' }}>Looking for an Estimate?</p>
             <p style={{ fontSize: '0.85rem', lineHeight: 1.65, color: 'var(--muted)', marginBottom: '14px' }}>
               If you&apos;re looking for pricing for traffic management on a project or job, please use our{' '}
@@ -271,13 +271,11 @@ export default function ContactPageClient() {
 
               <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', margin: '0 0 24px' }} />
 
-              <div style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden', opacity: 0, pointerEvents: 'none' }}>
-                <Turnstile
-                  sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
-                  size="normal"
-                  onVerify={(token) => setTurnstileToken(token)}
-                />
-              </div>
+              <Turnstile
+                sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+                size="invisible"
+                onVerify={(token) => setTurnstileToken(token)}
+              />
 
               <button
                 type="submit"

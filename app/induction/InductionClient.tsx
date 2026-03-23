@@ -93,7 +93,7 @@ export default function InductionClient() {
             transform: 'translateX(-50%)',
             width: '800px',
             height: '800px',
-            background: 'radial-gradient(circle, rgba(242,101,34,0.08) 0%, transparent 65%)',
+            background: 'radial-gradient(circle, rgba(253,79,0,0.08) 0%, transparent 65%)',
             pointerEvents: 'none',
           }}
           aria-hidden="true"
@@ -227,7 +227,7 @@ export default function InductionClient() {
                       letterSpacing: '0.02em',
                       border: selected ? '1px solid var(--orange)' : '1px solid rgba(255,255,255,0.12)',
                       borderRadius: '3px',
-                      background: selected ? 'rgba(242,101,34,0.12)' : 'rgba(255,255,255,0.04)',
+                      background: selected ? 'rgba(253,79,0,0.12)' : 'rgba(255,255,255,0.04)',
                       color: selected ? 'var(--orange)' : 'var(--muted)',
                       cursor: 'pointer',
                       transition: 'border-color 0.15s, background 0.15s, color 0.15s',

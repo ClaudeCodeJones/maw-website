@@ -97,7 +97,6 @@ export default function SelectWrapper({
       {/* Custom dropdown — desktop only (below md: hidden) */}
       <div className="hidden md:block">
         <button
-          id={id}
           type="button"
           aria-haspopup="listbox"
           aria-expanded={open}

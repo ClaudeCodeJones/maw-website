@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight, Phone, Check } from 'lucide-react'
 import RevealObserver from './components/RevealObserver'
 import WorksiteBanner from './components/WorksiteBanner'
@@ -13,60 +14,6 @@ export const metadata: Metadata = {
   },
 }
 
-const faqJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'Who provides traffic management services in New Zealand?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Men at Work Traffic Management provides professional traffic management, temporary traffic management plans (TMPs), and event traffic management services from branches in Christchurch, Wellington, Nelson, Blenheim and Timaru.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What does a traffic management company do?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'A traffic management company provides trained traffic controllers, traffic management plans, signage and equipment to safely manage traffic around roadworks, construction sites, infrastructure projects and public events.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What areas does Men at Work cover?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Men at Work operates from five branches across New Zealand: Christchurch, Wellington, Nelson, Blenheim and Timaru. From these branches we support projects throughout the South Island and the lower North Island.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Do you provide traffic management plans (TMPs)?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Yes. Our specialist division, MW Training & Planning, designs compliant, risk-based Traffic Management Plans (TMPs) for everything from minor roadworks to major infrastructure projects and large-scale events.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Can you provide traffic management for events?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Yes. We provide professional traffic management for concerts, festivals, sporting events and public gatherings, including event traffic planning and on-site traffic management crews.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'How do I request traffic management services?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Request traffic management services by completing our Get an Estimate form at menatwork.co.nz or calling 0800 636 289 to discuss your project with our team.',
-      },
-    },
-  ],
-}
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -122,11 +69,7 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
-      <script
+<script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organisationJsonLd) }}
       />
@@ -285,10 +228,12 @@ export default function HomePage() {
                   )}
                 </div>
                 {logo && (
-                  <img
+                  <Image
                     src={logo}
                     alt=""
                     aria-hidden="true"
+                    width={44}
+                    height={78}
                     style={{ position: 'absolute', top: '14px', right: '20px', height: '78px', width: 'auto', opacity: 0.7, pointerEvents: 'none' }}
                   />
                 )}

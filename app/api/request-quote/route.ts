@@ -1,35 +1,16 @@
 import { NextResponse } from "next/server"
 import { sendEmail } from "@/lib/email"
-import { buildEmailTemplate, row, section } from "@/lib/emailTemplate"
-
-const rateLimitMap = new Map<string, { count: number; lastRequest: number }>()
-
-function checkRateLimit(req: Request): boolean {
-  const ip = req.headers.get('x-forwarded-for') ?? req.headers.get('x-real-ip') ?? 'unknown'
-  const now = Date.now()
-  const windowMs = 60 * 1000
-  const limit = 5
-  const record = rateLimitMap.get(ip)
-  if (record && now - record.lastRequest < windowMs) {
-    if (record.count >= limit) return false
-    record.count++
-    record.lastRequest = now
-    rateLimitMap.set(ip, record)
-  } else {
-    rateLimitMap.set(ip, { count: 1, lastRequest: now })
-  }
-  return true
-}
-
+import { buildEmailTemplate, row, rowHtml, section } from "@/lib/emailTemplate"
+import { escapeHtml } from "@/lib/escapeHtml"
+import { checkRateLimit, quoteLimiter } from "@/lib/rateLimit"
 
 function yn(val: string) {
   return val === 'yes' ? 'Yes' : val === 'no' ? 'No' : val || '-'
 }
 
-
 export async function POST(req: Request) {
-  if (!checkRateLimit(req)) {
-    return new Response('Too many requests', { status: 429 })
+  if (!await checkRateLimit(quoteLimiter, req)) {
+    return NextResponse.json({ success: false, message: 'Too many requests. Please try again shortly.' }, { status: 429 })
   }
 
   try {
@@ -47,7 +28,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ success: true })
     }
 
-    // Verify Turnstile token
+    // Turnstile verification
     const verifyResponse = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -71,10 +52,11 @@ export async function POST(req: Request) {
       ? `${meetingDate} at ${meetingTime}`
       : yn(onsiteMeeting) === 'No' ? 'No' : '-'
 
-    const fileInfo = fileData
-      ? fileData.name
-      : 'Not provided'
+    const fileInfo = fileData ? fileData.name : 'Not provided'
 
+    // Build email — all user values are escaped via row().
+    // rowHtml is used only for the mailto link with pre-escaped parts.
+    const escapedEmail = escapeHtml(email)
     const content = `
       <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;border:1px solid #1f2d3d;">
         ${section('Client Details', `
@@ -82,7 +64,7 @@ export async function POST(req: Request) {
           ${row('Company', companyName)}
           ${row('Title', title)}
           ${row('Phone', phone)}
-          ${row('Email', `<a href="mailto:${email}" style="color:#F26522;text-decoration:none;">${email}</a>`)}
+          ${rowHtml('Email', `<a href="mailto:${escapedEmail}" style="color:#fd4f00;text-decoration:none;">${escapedEmail}</a>`)}
           ${row('Existing Account', yn(hasAccount))}
           ${row('Branch', branch)}
         `)}

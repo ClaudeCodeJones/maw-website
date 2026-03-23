@@ -1,8 +1,28 @@
+import { escapeHtml } from './escapeHtml'
+
+/**
+ * Renders a table row with both label and value HTML-escaped.
+ * Use this for all user-supplied text values.
+ */
 export function row(label: string, value: string) {
   return `
     <tr>
-      <td style="padding:10px 16px;background:#0d1b2a;color:#7a8fa3;font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;border-bottom:1px solid #1f2d3d;">${label}</td>
-      <td style="padding:10px 16px;background:#162435;color:#fff;font-size:14px;border-bottom:1px solid #1f2d3d;">${value || '-'}</td>
+      <td style="padding:10px 16px;background:#0d1b2a;color:#7a8fa3;font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;border-bottom:1px solid #1f2d3d;">${escapeHtml(label)}</td>
+      <td style="padding:10px 16px;background:#162435;color:#fff;font-size:14px;border-bottom:1px solid #1f2d3d;">${escapeHtml(value) || '-'}</td>
+    </tr>`
+}
+
+/**
+ * Renders a table row where the value is trusted HTML constructed internally.
+ * Only use this when YOU are building the HTML (e.g. a mailto anchor where
+ * all interpolated parts have already been passed through escapeHtml).
+ * Never pass raw user input directly into this function.
+ */
+export function rowHtml(label: string, trustedHtml: string) {
+  return `
+    <tr>
+      <td style="padding:10px 16px;background:#0d1b2a;color:#7a8fa3;font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;border-bottom:1px solid #1f2d3d;">${escapeHtml(label)}</td>
+      <td style="padding:10px 16px;background:#162435;color:#fff;font-size:14px;border-bottom:1px solid #1f2d3d;">${trustedHtml || '-'}</td>
     </tr>`
 }
 
@@ -10,7 +30,7 @@ export function section(heading: string, rows: string) {
   return `
     <tr>
       <td colspan="2" style="padding:16px 16px 8px;background:#0a1628;color:#fd4f00;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;border-bottom:2px solid #fd4f00;">
-        ${heading}
+        ${escapeHtml(heading)}
       </td>
     </tr>
     ${rows}`
@@ -48,14 +68,14 @@ export function buildEmailTemplate(title: string, content: string) {
           <!-- Title -->
           <tr>
             <td style="background:#ffffff;padding:24px 20px 4px 20px;font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:bold;color:#111111;">
-              ${title}
+              ${escapeHtml(title)}
             </td>
           </tr>
 
           <!-- Submitted date -->
           <tr>
             <td style="background:#ffffff;padding:0 20px 20px 20px;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#666666;">
-              Submitted: ${timestamp}
+              Submitted: ${escapeHtml(timestamp)}
             </td>
           </tr>
 

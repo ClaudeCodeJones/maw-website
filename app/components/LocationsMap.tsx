@@ -77,7 +77,7 @@ export default function LocationsMap() {
       }}
     >
       {/* Map column */}
-      <div style={{ flex: '1 1 340px', minWidth: 0, maxWidth: '500px', background: 'radial-gradient(circle at center, rgba(242,101,34,0.08) 0%, rgba(242,101,34,0.03) 40%, transparent 70%)', borderRadius: '12px' }}>
+      <div style={{ flex: '1 1 340px', minWidth: 0, maxWidth: '500px', background: 'radial-gradient(circle at center, rgba(253,79,0,0.08) 0%, rgba(253,79,0,0.03) 40%, transparent 70%)', borderRadius: '12px' }}>
         <svg
           viewBox={`0 0 ${VB_W} ${VB_H}`}
           className="block w-full h-auto"

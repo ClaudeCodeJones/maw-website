@@ -43,76 +43,7 @@ function MilestoneCard({ year, title, Icon, delayClass, subtext }: { year: strin
 
 export default function Timeline() {
   return (
-    <>
-      <style>{`
-        .tl-card {
-          background: #fff;
-          border-radius: 2px;
-          padding: 14px 18px;
-          box-shadow: 0 2px 8px rgba(13,27,42,0.08), 0 8px 24px rgba(13,27,42,0.06);
-          max-width: 360px;
-          width: 100%;
-          transition: transform 0.28s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.28s ease;
-        }
-        .tl-card:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 4px 16px rgba(13,27,42,0.12), 0 16px 40px rgba(242,101,34,0.1);
-        }
-        .tl-card-year {
-          display: block;
-          font-size: 0.7rem;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-          color: var(--orange);
-          font-weight: 600;
-          margin-bottom: 6px;
-          opacity: 0.9;
-        }
-        .tl-row {
-          display: flex;
-          align-items: center;
-          gap: 0;
-          padding: 6px 0;
-        }
-        .tl-side {
-          flex: 1;
-          min-width: 0;
-          display: flex;
-        }
-        .tl-side--left  { justify-content: flex-end; padding-right: 36px; }
-        .tl-side--right { justify-content: flex-start; padding-left: 36px; }
-        .tl-spine-col {
-          width: 60px;
-          flex-shrink: 0;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          position: relative;
-          z-index: 1;
-        }
-        .tl-dot {
-          width: 10px;
-          height: 10px;
-          border-radius: 50%;
-          background: var(--orange);
-          border: 3px solid #f2efe9;
-          flex-shrink: 0;
-        }
-
-        /* Desktop-only elements */
-        .tl-desktop { display: flex; }
-        .tl-mobile  { display: none; }
-
-        /* Mobile: stacked single column */
-        @media (max-width: 767px) {
-          .tl-desktop { display: none !important; }
-          .tl-mobile  { display: block; }
-          .tl-row { padding: 8px 0; }
-          .tl-card { max-width: 100%; }
-        }
-      `}</style>
-
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '80px 24px 96px' }}>
+    <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '80px 24px 96px' }}>
 
         {/* Header */}
         <div style={{ marginBottom: '56px' }}>
@@ -169,6 +100,5 @@ export default function Timeline() {
 
         </div>
       </div>
-    </>
   )
 }

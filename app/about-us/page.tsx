@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description:
     'Learn about Men at Work Traffic Management, founded in 2008 and operating across five South Island locations. Discover our leadership team and group services.',
   alternates: {
-    canonical: '/about',
+    canonical: '/about-us',
   },
 }
 
@@ -111,7 +111,7 @@ export default function AboutUsPage() {
         }}
         aria-label="About Us hero"
       >
-        <div style={{ position: 'absolute', top: '-100px', left: '50%', transform: 'translateX(-50%)', width: '700px', height: '700px', background: 'radial-gradient(circle, rgba(242,101,34,0.07) 0%, transparent 65%)', pointerEvents: 'none' }} aria-hidden="true" />
+        <div style={{ position: 'absolute', top: '-100px', left: '50%', transform: 'translateX(-50%)', width: '700px', height: '700px', background: 'radial-gradient(circle, rgba(253,79,0,0.07) 0%, transparent 65%)', pointerEvents: 'none' }} aria-hidden="true" />
 
 
         <div style={{ position: 'relative', zIndex: 10, maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
@@ -196,7 +196,7 @@ export default function AboutUsPage() {
               Five branches delivering the same professional standard across every region we operate.
             </p>
             <p className="reveal d3" style={{ marginTop: '10px', fontSize: '0.8rem', color: 'rgba(255,255,255,0.35)', fontStyle: 'normal' }}>
-              <span style={{ color: 'rgba(242,101,34,0.55)' }}>→</span> Select a branch to view details
+              <span style={{ color: 'rgba(253,79,0,0.55)' }}>→</span> Select a branch to view details
             </p>
           </div>
 
@@ -231,14 +231,14 @@ export default function AboutUsPage() {
             <div
               className="hidden md:flex"
               style={{
-                background: 'rgba(242,101,34,0.04)',
+                background: 'rgba(253,79,0,0.04)',
                 border: '1px solid rgba(226,226,226,0.9)',
                 borderLeft: '4px solid var(--orange)',
                 borderRadius: '2px',
                 flexDirection: 'column',
                 justifyContent: 'center',
                 padding: '24px 20px',
-                boxShadow: 'inset 4px 0 12px rgba(242,101,34,0.06)',
+                boxShadow: 'inset 4px 0 12px rgba(253,79,0,0.06)',
               }}
             >
               <div>
@@ -257,7 +257,7 @@ export default function AboutUsPage() {
                 className={`team-card reveal d${i + 1}`}
                 style={{
                   background: '#fff',
-                  border: '1px solid rgba(242,101,34,0.2)',
+                  border: '1px solid rgba(253,79,0,0.2)',
                   borderRadius: '2px',
                   overflow: 'hidden',
                 }}
@@ -297,14 +297,14 @@ export default function AboutUsPage() {
             <div
               className="hidden md:flex"
               style={{
-                background: 'rgba(242,101,34,0.04)',
+                background: 'rgba(253,79,0,0.04)',
                 border: '1px solid rgba(226,226,226,0.9)',
                 borderLeft: '4px solid var(--orange)',
                 borderRadius: '2px',
                 flexDirection: 'column',
                 justifyContent: 'center',
                 padding: '24px 20px',
-                boxShadow: 'inset 4px 0 12px rgba(242,101,34,0.06)',
+                boxShadow: 'inset 4px 0 12px rgba(253,79,0,0.06)',
               }}
             >
               <div>
@@ -323,7 +323,7 @@ export default function AboutUsPage() {
                 className={`team-card reveal d${i + 1}`}
                 style={{
                   background: '#fff',
-                  border: '1px solid rgba(242,101,34,0.2)',
+                  border: '1px solid rgba(253,79,0,0.2)',
                   borderRadius: '2px',
                   overflow: 'hidden',
                 }}

@@ -60,7 +60,7 @@ export default function BranchHiringCard({ item }: { item: BranchHiring }) {
         gap: '16px',
         transition: 'transform 0.28s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.28s ease',
       }}
-      className="hiring-card hover:-translate-y-1 hover:shadow-[0_14px_40px_rgba(242,101,34,0.14)]"
+      className="hiring-card hover:-translate-y-1 hover:shadow-[0_14px_40px_rgba(253,79,0,0.14)]"
     >
       {/* Header */}
       <div>
@@ -187,9 +187,14 @@ export default function BranchHiringCard({ item }: { item: BranchHiring }) {
             <ArrowRight size={13} strokeWidth={1.5} aria-hidden="true" />
           </Link>
         ) : (
-          <span className="inline-flex items-center gap-2 text-xs font-medium cursor-not-allowed select-none" style={{ color: colors.text }}>
-            Apply Now
-            <ArrowRight size={13} strokeWidth={1.5} aria-hidden="true" />
+          <span
+            className="inline-flex items-center gap-2 text-xs font-medium cursor-not-allowed select-none"
+            style={{ color: colors.text }}
+            aria-disabled="true"
+            role="link"
+            aria-label="Applications closed for this branch"
+          >
+            Applications Closed
           </span>
         )}
       </div>

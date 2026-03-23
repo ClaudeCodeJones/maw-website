@@ -639,13 +639,11 @@ export default function ApplicationForm({ onSuccess, sectionRef }: { onSuccess?:
             </p>
           )}
 
-          <div style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden', opacity: 0, pointerEvents: 'none' }}>
-            <Turnstile
-              sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
-              size="normal"
-              onVerify={(token) => setTurnstileToken(token)}
-            />
-          </div>
+          <Turnstile
+            sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+            size="invisible"
+            onVerify={(token) => setTurnstileToken(token)}
+          />
 
           <div style={{ display: 'flex', gap: '12px' }}>
             <button

@@ -255,7 +255,7 @@ export default function RequestQuotePageClient() {
       style={{ position: 'relative', background: '#070f1b', paddingTop: '180px', paddingBottom: '56px', overflow: 'hidden' }}
       aria-label="Request an estimate"
     >
-      <div style={{ position: 'absolute', top: '-100px', left: '50%', transform: 'translateX(-50%)', width: '700px', height: '700px', background: 'radial-gradient(circle, rgba(242,101,34,0.07) 0%, transparent 65%)', pointerEvents: 'none' }} aria-hidden="true" />
+      <div style={{ position: 'absolute', top: '-100px', left: '50%', transform: 'translateX(-50%)', width: '700px', height: '700px', background: 'radial-gradient(circle, rgba(253,79,0,0.07) 0%, transparent 65%)', pointerEvents: 'none' }} aria-hidden="true" />
 
       <div style={{ position: 'relative', zIndex: 10, maxWidth: '800px', margin: '0 auto', padding: '0 24px' }}>
         <div className="reveal" style={{ marginBottom: '20px' }}>
@@ -693,13 +693,11 @@ export default function RequestQuotePageClient() {
 
                 <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', margin: '0 0 24px' }} />
 
-                <div style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden', opacity: 0, pointerEvents: 'none' }}>
-                  <Turnstile
-                    sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
-                    size="normal"
-                    onVerify={(token) => setTurnstileToken(token)}
-                  />
-                </div>
+                <Turnstile
+                  sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+                  size="invisible"
+                  onVerify={(token) => setTurnstileToken(token)}
+                />
 
                 {/* Buttons */}
                 <div style={{ display: 'flex', flexDirection: 'column' as const, gap: '12px' }}>

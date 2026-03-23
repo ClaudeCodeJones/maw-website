@@ -24,25 +24,12 @@ export default function BranchCard({
   hiringStatus?: HiringStatus
 }) {
   return (
-    <>
-    <style>{`
-      .bc-cta {
-        background: transparent;
-        border: 1px solid #fd4f00;
-        color: #fd4f00;
-        transition: background 220ms ease, color 220ms ease;
-      }
-      .bc-cta:hover {
-        background: #fd4f00;
-        color: #fff;
-      }
-    `}</style>
     <div
-      className="relative flex flex-col transition duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_14px_40px_rgba(242,101,34,0.18)] hover:border-[#fd4f00]/40"
+      className="relative flex flex-col transition duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_14px_40px_rgba(253,79,0,0.18)] hover:border-[#fd4f00]/40"
       style={{
         background: '#0D1B2A',
         borderRadius: '12px',
-        boxShadow: '0 0 0 1px rgba(242,101,34,0.15), 0 4px 6px rgba(0,0,0,0.2), 0 24px 48px rgba(0,0,0,0.5)',
+        boxShadow: '0 0 0 1px rgba(253,79,0,0.15), 0 4px 6px rgba(0,0,0,0.2), 0 24px 48px rgba(0,0,0,0.5)',
         border: '1px solid rgba(255,255,255,0.14)',
         overflow: 'hidden',
         width: '100%',
@@ -132,6 +119,5 @@ export default function BranchCard({
         </Link>
       </div>
     </div>
-    </>
   )
 }
