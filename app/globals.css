@@ -775,7 +775,7 @@ body {
 .group-card--sweepco  { border-top: 2px solid rgba(204,  35,  36, 0.65); }
 .group-card--training { border-top: 2px solid rgba( 41,131, 194, 0.65); }
 .group-card--temp     { border-top: 2px solid rgba(188,156,  34, 0.65); }
-.group-card--qualcard { border-top: 2px solid rgba(162,128, 255, 0.65); }
+.group-card--qualcard { border-top: 2px solid rgba(47, 111, 106, 0.65); }
 
 /* Brand colour modifier, hover glow */
 .group-card--sweepco:hover,
@@ -785,7 +785,7 @@ body {
 .group-card--temp:hover,
 .group-card--temp:focus-visible      { border-top-color: rgba(188,156,  34, 1); box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(188,156,  34, 0.22), 0 0 44px rgba(188,156,  34, 0.13); }
 .group-card--qualcard:hover,
-.group-card--qualcard:focus-visible  { border-top-color: rgba(162,128, 255, 1); box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(162,128, 255, 0.22), 0 0 44px rgba(162,128, 255, 0.13); }
+.group-card--qualcard:focus-visible  { border-top-color: rgba(47, 111, 106, 1); box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(47, 111, 106, 0.22), 0 0 44px rgba(47, 111, 106, 0.13); }
 @media (max-width: 767px) {
   .group-card { padding: 22px 20px; }
   .group-card-body { display: none !important; }
