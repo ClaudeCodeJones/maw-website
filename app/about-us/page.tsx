@@ -42,7 +42,6 @@ const groupEntities = [
     href: 'https://www.sweepco.co.nz',
     logo: '/logos/sweepco_white.webp',
     modifier: 'group-card--sweepco',
-    comingSoon: true,
   },
   {
     name: 'QualCard',
