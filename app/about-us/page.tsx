@@ -398,7 +398,7 @@ export default function AboutUsPage() {
 
           {/* 2×2 card grid */}
           <div className="group-grid">
-            {groupEntities.map(({ name, headline, body, href, logo, modifier, comingSoon }, i) => (
+            {groupEntities.map(({ name, headline, body, href, logo, modifier, comingSoon = false }, i) => (
               <div
                 key={name}
                 className={`group-card ${modifier} reveal d${(i % 2) + 1}`}
