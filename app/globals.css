@@ -826,7 +826,7 @@ body {
 .group-card--sweepco  .group-card-cta { color: #cc2324; }
 .group-card--training .group-card-cta { color: rgb(41,131,194); }
 .group-card--temp     .group-card-cta { color: rgb(188,156,34); }
-.group-card--qualcard .group-card-cta { color: rgb(162,128,255); }
+.group-card--qualcard .group-card-cta { color: rgb(47, 111, 106); }
 @media (max-width: 580px) {
   .group-grid { grid-template-columns: 1fr; }
 }
