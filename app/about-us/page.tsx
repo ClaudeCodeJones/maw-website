@@ -17,8 +17,17 @@ export const metadata: Metadata = {
 
 /* ── Data ── */
 
+type GroupEntity = {
+  name: string
+  headline: string
+  body: string
+  href: string
+  logo: string
+  modifier: string
+  comingSoon?: boolean
+}
 
-const groupEntities = [
+const groupEntities: GroupEntity[] = [
   {
     name: 'MW Training & Planning',
     headline: 'Specialist TMP design, risk assessment, planning, and industry training services.',
@@ -398,7 +407,7 @@ export default function AboutUsPage() {
 
           {/* 2×2 card grid */}
           <div className="group-grid">
-            {groupEntities.map(({ name, headline, body, href, logo, modifier, comingSoon = false }, i) => (
+            {groupEntities.map(({ name, headline, body, href, logo, modifier, comingSoon }, i) => (
               <div
                 key={name}
                 className={`group-card ${modifier} reveal d${(i % 2) + 1}`}
