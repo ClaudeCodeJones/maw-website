@@ -379,7 +379,7 @@ export default function RequestQuotePageClient() {
 
                 <div style={fieldStyle}>
                   <label htmlFor="fullName" style={labelStyle}>Full Name *</label>
-                  <input id="fullName" type="text" autoComplete="name" placeholder="e.g. Blair Johnson" value={s1.fullName} onChange={e => setF1('fullName', e.target.value)}
+                  <input id="fullName" type="text" autoComplete="name" placeholder="e.g. Richard Scarlett" value={s1.fullName} onChange={e => setF1('fullName', e.target.value)}
                     style={{ ...inputStyle, borderColor: s1Errors.fullName ? '#f87171' : 'rgba(255,255,255,0.12)' }} />
                   <FieldError msg={s1Errors.fullName} />
                 </div>
