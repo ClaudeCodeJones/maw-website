@@ -185,9 +185,9 @@ export default function ContactPageClient() {
             </p>
             <p className="font-display" style={{ fontWeight: 600, fontSize: '0.9rem', color: '#fff', marginBottom: '8px' }}>Looking for Work?</p>
             <p style={{ fontSize: '0.85rem', lineHeight: 1.65, color: 'var(--muted)', marginBottom: '14px' }}>
-              Head to our{' '}
+              Check out our{' '}
               <a href="/careers" style={{ color: 'var(--orange)', fontWeight: 500, textDecoration: 'none' }}>Careers page</a>{' '}
-              to view opportunities and apply.
+              to see what roles are available and apply.
             </p>
             <p className="font-display" style={{ fontWeight: 600, fontSize: '0.9rem', color: '#fff', marginBottom: '8px' }}>General Enquiries</p>
             <p style={{ fontSize: '0.85rem', lineHeight: 1.65, color: 'var(--muted)' }}>Feel free to use the form below.</p>
