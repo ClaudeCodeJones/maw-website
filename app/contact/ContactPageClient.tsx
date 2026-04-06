@@ -183,12 +183,14 @@ export default function ContactPageClient() {
               <a href="/estimate" style={{ color: 'var(--orange)', fontWeight: 500, textDecoration: 'none' }}>Get an Estimate</a>{' '}
               page so we can gather the details needed to provide an accurate quote.
             </p>
+            <p className="font-display" style={{ fontWeight: 600, fontSize: '0.9rem', color: '#fff', marginBottom: '8px' }}>Looking for Work?</p>
             <p style={{ fontSize: '0.85rem', lineHeight: 1.65, color: 'var(--muted)', marginBottom: '14px' }}>
-              Looking for work? Head to our{' '}
+              Head to our{' '}
               <a href="/careers" style={{ color: 'var(--orange)', fontWeight: 500, textDecoration: 'none' }}>Careers page</a>{' '}
               to view opportunities and apply.
             </p>
-            <p style={{ fontSize: '0.85rem', lineHeight: 1.65, color: 'var(--muted)' }}>For general enquiries, feel free to use the form below.</p>
+            <p className="font-display" style={{ fontWeight: 600, fontSize: '0.9rem', color: '#fff', marginBottom: '8px' }}>General Enquiries</p>
+            <p style={{ fontSize: '0.85rem', lineHeight: 1.65, color: 'var(--muted)' }}>Feel free to use the form below.</p>
           </div>
 
           <div
