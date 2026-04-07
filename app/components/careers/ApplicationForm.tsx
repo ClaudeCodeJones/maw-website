@@ -300,7 +300,7 @@ export default function ApplicationForm({ onSuccess, sectionRef }: { onSuccess?:
           <div style={{ marginBottom: '20px' }}>
             <label style={labelStyle}>Full Name</label>
             <input
-              type="text" autoComplete="name" value={form.fullName} placeholder="e.g. Jason Keeys"
+              type="text" autoComplete="name" value={form.fullName} placeholder="e.g. Jason Keys"
               onChange={e => set('fullName', e.target.value)}
               style={{ ...inputStyle, borderColor: errors.fullName ? '#f87171' : 'rgba(255,255,255,0.12)' }}
             />
