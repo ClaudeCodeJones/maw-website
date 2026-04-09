@@ -2,12 +2,18 @@ import Link from 'next/link'
 import { ArrowRight, Check, MapPin, Phone } from 'lucide-react'
 import RevealObserver from './RevealObserver'
 
+type Faq = {
+  question: string
+  answer: string
+}
+
 type LocationPageProps = {
   city: string
   region: string
   coverage: string[]
   teamDescription: string
   history: string
+  faqs?: Faq[]
 }
 
 const services = [
@@ -28,7 +34,7 @@ const reasons = [
   'Proven safety and compliance systems',
 ]
 
-export default function LocationPage({ city, region, coverage, teamDescription, history }: LocationPageProps) {
+export default function LocationPage({ city, region, coverage, teamDescription, history, faqs }: LocationPageProps) {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
@@ -52,12 +58,31 @@ export default function LocationPage({ city, region, coverage, teamDescription, 
     },
   }
 
+  const faqJsonLd = faqs?.length ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  } : null
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
       <RevealObserver />
 
       {/* ── HERO ── */}
@@ -328,6 +353,69 @@ export default function LocationPage({ city, region, coverage, teamDescription, 
           </div>
         </div>
       </section>
+
+      {/* ── FAQ ── */}
+      {faqs?.length && (
+        <section
+          style={{
+            background: 'var(--navy-mid)',
+            borderTop: '1px solid rgba(255,255,255,0.06)',
+            padding: 'clamp(60px,8vw,100px) 0',
+          }}
+        >
+          <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 clamp(24px,5vw,48px)' }}>
+            <div style={{ marginBottom: '48px' }}>
+              <div className="reveal" style={{ marginBottom: '10px' }}>
+                <span className="eyebrow">FAQs</span>
+              </div>
+              <h2
+                className="section-title reveal d1"
+                style={{ fontSize: 'clamp(1.8rem,3.5vw,2.8rem)' }}
+              >
+                Frequently Asked Questions
+              </h2>
+              <div className="orange-rule reveal d2" style={{ marginTop: '16px' }} />
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              {faqs.map((faq) => (
+                <div
+                  key={faq.question}
+                  className="reveal"
+                  style={{
+                    background: 'var(--navy)',
+                    border: '1px solid rgba(255,255,255,0.07)',
+                    borderRadius: '4px',
+                    padding: 'clamp(20px,3vw,28px)',
+                  }}
+                >
+                  <h3
+                    style={{
+                      fontSize: '1rem',
+                      fontWeight: 600,
+                      color: 'var(--orange)',
+                      marginBottom: '10px',
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    {faq.question}
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: '0.9375rem',
+                      color: 'var(--muted)',
+                      lineHeight: 1.72,
+                      margin: 0,
+                    }}
+                  >
+                    {faq.answer}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── CTA ── */}
       <section className="cta-section" aria-label="Request a quote">

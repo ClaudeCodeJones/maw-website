@@ -49,6 +49,7 @@ export default function Navbar() {
 
   const navLinks = [
     { href: '/', label: 'Home' },
+    { href: '/#services', label: 'Services' },
     { href: '/about-us', label: 'About Us' },
     { href: '/careers', label: 'Careers', scrollTop: true },
     { href: '/contact', label: 'Contact' },
